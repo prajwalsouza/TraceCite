@@ -14,7 +14,7 @@
   'use strict';
   const doc = window.OUTLINE_SEED || { blocks: [], tagTree: [] };
   const CONFIG = { minTransitions: 3, ...(doc.flow || {}) };
-  const HIDE = /^(collab-|heading$|document-structure|math$|xref$)/;
+  const HIDE = /^(collab-|heading$|document-structure|math$|xref$|links$)/;
   const TONE = { move: 'plum', role: 'blue', support: 'amber', topic: 'green', 'learning-topics': 'green', revision: 'plum', planning: 'plum' };
 
   // ---------- data ----------
@@ -144,7 +144,7 @@
     const n = f.main.length;
     const horizontal = W >= 640 && n > 1 && n * 150 <= W - 40;
     const nodes = []; const pos = new Map();
-    const add = (s, x, y, kind) => { const d = { id: 'f-' + s, key: s, state: s, text: label(s), meta: '', icon: true, kind, x, y, w: cw(s), h: CARD_H }; nodes.push(d); pos.set(s, d); };
+    const add = (s, x, y, kind) => { const d = { id: 'f-' + s, key: s, state: s, text: label(s), meta: '', icon: true, kind, x, y, w: cw(s), h: fitLabel(label(s), cw(s), true).h }; nodes.push(d); pos.set(s, d); };
     let H;
     if (horizontal) {
       const margin = 24 + Math.max(...f.main.map(cw)) / 2;
@@ -261,7 +261,18 @@
   // ---------- layouts ----------
   // Node cards in the Mermaid Replay manner: soft rounded cards, label, a quiet count beneath.
   const cardW = (t) => Math.max(84, Math.min(220, 28 + t.length * 7.1));
-  const CARD_H = 32;
+  const CARD_H = 32, CARD_H2 = 46, CH_W = 7.1;
+  // Labels wrap to at most two lines inside the card; beyond that the second line ends in an ellipsis.
+  const fitLabel = (text, w, icon) => {
+    const max = Math.max(6, Math.floor((w - (icon ? 42 : 24)) / CH_W));
+    if (text.length <= max) return { lines: [text], h: CARD_H };
+    const words = text.split(' '); let l1 = '', i = 0;
+    for (; i < words.length; i++) { const t = (l1 ? l1 + ' ' : '') + words[i]; if (t.length > max) break; l1 = t; }
+    if (!l1) return { lines: [text.slice(0, max - 1) + '…'], h: CARD_H };
+    let l2 = words.slice(i).join(' ');
+    if (l2.length > max) { l2 = l2.slice(0, max - 1); l2 = (l2.includes(' ') ? l2.replace(/\s+\S*$/, '') : l2) + '…'; }
+    return { lines: [l1, l2], h: CARD_H2 };
+  };
   // Path: runs left to right, wrapping into rows; rows join with an S-curve.
   function layoutPath(a, W) {
     const nodes = []; const gapX = 34, rowGap = 50, padX = 6;
@@ -299,7 +310,7 @@
       let up = 54, down = 24;
       for (const e of a.edges) { if (e.a === e.b) continue; const i = a.order.indexOf(e.a), j = a.order.indexOf(e.b); const h = heightOf(Math.abs(xs[j] - xs[i])); if (j > i) up = Math.max(up, h + 22); else down = Math.max(down, h + 22); }
       const y = up + CARD_H / 2 + 4;
-      a.order.forEach((s, i) => { const c = card(s); const d = { id: 'tag-' + s, key: s, state: s, text: c.text, meta: `${a.freq.get(s) || 0}`, x: xs[i], y, w: c.w, h: CARD_H, kind: 'tag' }; nodes.push(d); pos.set(s, d); });
+      a.order.forEach((s, i) => { const c = card(s); const d = { id: 'tag-' + s, key: s, state: s, text: c.text, meta: `${a.freq.get(s) || 0}`, x: xs[i], y, w: c.w, h: fitLabel(c.text, c.w, false).h, kind: 'tag' }; nodes.push(d); pos.set(s, d); });
       edgeFor = (e, s, t) => {
         if (e.a === e.b) { const ex = s.x + s.w / 2, ey = s.y - s.h / 2; return { c: [P(ex - 16, ey), P(ex - 16, ey - 34), P(ex + 26, ey - 28), P(ex + 4, ey - 2)], label: P(ex + 8, ey - 32) }; }
         const fwd = t.x > s.x; const dir = fwd ? -1 : 1; const h = heightOf(Math.abs(t.x - s.x)); const off = 6;
@@ -388,7 +399,8 @@
         const ico = d.icon && window.TraceTagIcon ? `<svg class="fl-ico" x="${(x + 11).toFixed(1)}" y="${(d.y - 7).toFixed(1)}" width="14" height="14" viewBox="0 0 24 24">${window.TraceTagIcon.inner(window.TraceTagIcon.iconFor(d.state, d.text))}</svg>` : '';
         // With an icon the label starts just after it (a chip), so the two never collide.
         const tx = d.icon ? x + 31 : d.x;
-        out += `<g class="fl-node${d.kind === 'side' ? ' fl-side' : ''}" data-id="${esc(d.key)}" tabindex="0" role="button" style="opacity:${d.o.toFixed(3)}"><rect class="fl-card" x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${d.w.toFixed(1)}" height="${d.h}" rx="11"/>${ico}<text class="fl-label" x="${tx.toFixed(1)}" y="${(d.y + 4).toFixed(1)}" text-anchor="${d.icon ? 'start' : 'middle'}">${esc(d.text)}</text>${d.meta ? `<text class="fl-meta" x="${d.x.toFixed(1)}" y="${(d.y + d.h / 2 + 13).toFixed(1)}" text-anchor="middle">${esc(d.meta)}</text>` : ''}</g>`;
+        out += `<g class="fl-node${d.kind === 'side' ? ' fl-side' : ''}" data-id="${esc(d.key)}" tabindex="0" role="button" style="opacity:${d.o.toFixed(3)}"><rect class="fl-card" x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${d.w.toFixed(1)}" height="${d.h}" rx="11"/>${ico}${(() => { const f = fitLabel(d.text, d.w, d.icon), ls = d.h >= CARD_H2 ? f.lines : [f.lines.length > 1 ? f.lines[0] + '…' : f.lines[0]];
+          return `<text class="fl-label" x="${tx.toFixed(1)}" y="${(d.y + (ls.length > 1 ? -3.5 : 4)).toFixed(1)}" text-anchor="${d.icon ? 'start' : 'middle'}">${ls.map((l, k) => `<tspan x="${tx.toFixed(1)}" dy="${k ? 15 : 0}">${esc(l)}</tspan>`).join('')}<title>${esc(d.text)}</title></text>`; })()}${d.meta ? `<text class="fl-meta" x="${d.x.toFixed(1)}" y="${(d.y + d.h / 2 + 13).toFixed(1)}" text-anchor="middle">${esc(d.meta)}</text>` : ''}</g>`;
       }
       out += '</g>';
       svg.innerHTML = out; svg.dataset.tone = tone;

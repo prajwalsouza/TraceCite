@@ -17,6 +17,13 @@ export async function validate(doc, baseDir = '.') {
   if (errors.length) return { errors, warnings };
   const tagIds = new Set();
   (function tags(list, depth) { for (const t of list) { if (!/^[a-zA-Z0-9_-]{1,128}$/.test(t.id || '')) err(`tag id "${t.id}" is not valid`); if (tagIds.has(t.id)) err(`duplicate tag id ${t.id}`); tagIds.add(t.id); if (!t.name) err(`tag ${t.id} has no name`); if (!Array.isArray(t.children)) err(`tag ${t.id} needs a children array`); else tags(t.children, depth + 1); } })(doc.tagTree, 0);
+  // Connected highlights: "slot" 1–5 and "symbols" (TeX strings) on tags; span tags and links in text (spans.mjs).
+  (function slots(list) { for (const t of list || []) {
+    if (t.slot !== undefined && !(Number.isInteger(t.slot) && t.slot >= 1 && t.slot <= 5)) err(`tag ${t.id}: slot must be a whole number from 1 to 5`);
+    if (t.symbols !== undefined && !(Array.isArray(t.symbols) && t.symbols.every((s) => typeof s === 'string' && s.trim()))) err(`tag ${t.id}: symbols must be a list of TeX strings`);
+    slots(t.children); } })(doc.tagTree);
+  const { scan } = await import('./spans.mjs');
+  const QUOTED = /^(Exact quote|Quote context|Quote location|Bib data|APA reference|APA citation)/;
   const TYPES = new Set(['section', 'paragraph', 'sentence', 'citation', 'reference', 'note', 'figure', 'table', 'table-row', 'table-cell']);
   const ids = new Set(), sourceIds = new Set(doc.sources.map((s) => s.id));
   const get = (b, k) => b.fields?.find((f) => f.key === k)?.value;
@@ -33,6 +40,12 @@ export async function validate(doc, baseDir = '.') {
       // Trace refuses to draw a page whose blocks carry a tag missing from tagTree.
       for (const t of b.tags || []) if (!tagIds.has(t)) err(`${where}: tag "${t}" is not in tagTree (Trace will not draw the page)`);
       for (const f of b.fields || []) if (typeof f.key !== 'string' || typeof f.value !== 'string') err(`${where}: fields must be {key, value} strings`);
+      for (const text of [b.text, ...(b.fields || []).filter((f) => !QUOTED.test(f.key)).map((f) => f.value)]) {
+        const found = scan(text);
+        for (const s of found.spans) if (!tagIds.has(s.tag)) err(`${where}: span tag "${s.tag}" ([${s.text}]{.${s.tag}}) is not in tagTree`);
+        for (const l of found.links) if (!l.kind) warn(`${where}: link "${l.url}" is not allowed (use https://, http://, mailto: or #/at/<block id>); it shows as plain text`);
+          else if (l.kind === 'internal' && !JSON.stringify(doc.blocks).includes(`"id":"${l.url.slice(5)}"`)) warn(`${where}: internal link ${l.url} names no block`);
+      }
       // LaTeX: \( … \) inline, \[ … \] or $$ … $$ display. Unbalanced delimiters show as raw TeX.
       for (const [label, text] of [['text', b.text], ...(b.fields || []).map((f) => [`field "${f.key}"`, f.value])]) {
         if (typeof text !== 'string') continue;
@@ -47,7 +60,7 @@ export async function validate(doc, baseDir = '.') {
       if (b.type === 'figure') {
         const raw = get(b, 'Assets');
         if (raw) { try { for (const a of JSON.parse(raw)) assetChecks.push([where, a]); } catch { err(`${where}: Assets must be a JSON array string`); } }
-        if (!raw && !get(b, 'Video asset')) warn(`${where}: a figure without Assets or Video asset`);
+        if (!raw && !get(b, 'Video asset') && !get(b, 'Viz') && !get(b, 'Interactive')) warn(`${where}: a figure without Assets or Video asset`);
       }
       walk(b.children || [], b);
     }

@@ -87,7 +87,7 @@ html.paper-card.house main{background:var(--surface)!important;box-shadow:var(--
 .settings-top{position:fixed;top:24px;right:24px;z-index:45;display:grid;place-items:center;width:46px;height:46px;border-radius:50%;border:1px solid #d5ddc9;background:var(--paper);color:var(--muted);box-shadow:0 8px 24px #4a55300f;cursor:pointer}
 .settings-top svg,.nav-button svg,.settings-view svg{width:15px;height:15px;fill:currentColor}
 .settings-top:hover,.settings-top[aria-current=page]{color:var(--green)}
-#settings-nav svg{width:15px;height:15px;fill:currentColor}
+:is(#settings-nav,#export-nav) svg{width:15px;height:15px;fill:currentColor}
 body.settings-mode .document-header,body.settings-mode #view-caption,body.settings-mode #outline,body.settings-mode .document-end,body.settings-mode #reading-tag-rail,body.settings-mode #sentence-hover-rail,body.settings-mode .reading-focus-dock{display:none!important}
 .settings-view{max-width:880px;padding:10px 0 40px;color:var(--ink)}
 .settings-view .back{display:inline-flex;align-items:center;gap:8px;min-height:44px;color:var(--muted);font-size:13px;background:none;border:0;padding:0;cursor:pointer;font-family:inherit}
@@ -160,8 +160,8 @@ body.settings-mode .document-header,body.settings-mode #view-caption,body.settin
 .sentence-review .review-heading{color:var(--faint)!important}
 .sentence-review p{color:var(--ink)}
 /* The sidebar Settings row is a plain row, not a count badge. */
-#settings-nav span,html.house #settings-nav span{margin-left:0!important;background:none!important;min-width:0!important;padding:0!important;border-radius:0!important;color:inherit!important;text-align:left!important}
-#settings-nav{gap:11px}
+:is(#settings-nav,#export-nav) span,html.house :is(#settings-nav,#export-nav) span{margin-left:0!important;background:none!important;min-width:0!important;padding:0!important;border-radius:0!important;color:inherit!important;text-align:left!important}
+:is(#settings-nav,#export-nav){gap:11px}
 
 /* ---------- the opened sentence: even spacing ---------- */
 .apa-evidence{margin:16px 0 8px!important;padding:14px 18px 10px!important}
@@ -323,9 +323,9 @@ html[data-theme="neumorphism"] #sidebar.open{box-shadow:var(--panel-shadow)!impo
 #sidebar .reading-focus-status{margin:0 0 4px!important;padding:0 var(--side-pad)!important;font-size:11px!important;color:var(--faint)!important}
 /* Rows: contents, tags and Settings share one row shape */
 #sidebar #contents{display:flex;flex-direction:column;gap:1px}
-#sidebar .contents-link,#sidebar #settings-nav{display:flex!important;align-items:center;gap:12px!important;min-height:var(--row)!important;padding:6px var(--side-pad)!important;margin:0!important;border:0!important;border-radius:10px!important;background:none!important;color:var(--muted)!important;font-size:13px!important;line-height:1.4!important;text-align:left;cursor:pointer}
+#sidebar .contents-link,#sidebar :is(#settings-nav,#export-nav){display:flex!important;align-items:center;gap:12px!important;min-height:var(--row)!important;padding:6px var(--side-pad)!important;margin:0!important;border:0!important;border-radius:10px!important;background:none!important;color:var(--muted)!important;font-size:13px!important;line-height:1.4!important;text-align:left;cursor:pointer}
 #sidebar .contents-link .nav-number{min-width:18px;font-size:10.5px!important;color:var(--faint)!important;font-variant-numeric:tabular-nums;opacity:1!important}
-#sidebar .contents-link:hover,#sidebar #settings-nav:hover{color:var(--ink)!important;background:color-mix(in srgb,var(--ink) 4%,transparent)!important}
+#sidebar .contents-link:hover,#sidebar :is(#settings-nav,#export-nav):hover{color:var(--ink)!important;background:color-mix(in srgb,var(--ink) 4%,transparent)!important}
 #sidebar .contents-link.active{color:var(--green)!important}
 html.house #sidebar .contents-link.active{color:var(--accent)!important}
 #sidebar .contents-link.active .nav-number{color:inherit!important}
@@ -337,8 +337,8 @@ html.house #sidebar .contents-link.active{color:var(--accent)!important}
 #sidebar .reading-tag-select{text-align:left}
 #sidebar .reading-tag-toggle svg{width:12px;height:12px}
 #sidebar .sidebar-bottom{margin-top:auto!important;padding:8px 0 0!important;border:0!important}
-#settings-nav svg{width:14px!important;height:14px!important;color:var(--faint)}
-#settings-nav:hover svg{color:var(--ink)}
+:is(#settings-nav,#export-nav) svg{width:14px!important;height:14px!important;color:var(--faint)}
+:is(#settings-nav,#export-nav):hover svg{color:var(--ink)}
 
 /* ======================= Menu and search buttons ======================= */
 .nav-buttons{display:flex;gap:8px;pointer-events:auto}
@@ -381,7 +381,7 @@ html.house .spot-row.on mark{color:inherit;text-decoration:none}
   #mobile-menu,.search-trigger{width:50px!important;height:50px!important;min-height:50px!important}
   .reading-focus-dock{left:136px!important}
   #sidebar,#sidebar.open{padding:max(16px,env(safe-area-inset-top)) 10px calc(14px + env(safe-area-inset-bottom))!important;box-shadow:none!important}
-  #sidebar .contents-link,#sidebar #settings-nav,#sidebar .reading-tag-select,#sidebar .reading-tag-toggle{min-height:48px!important;font-size:14.5px!important}
+  #sidebar .contents-link,#sidebar :is(#settings-nav,#export-nav),#sidebar .reading-tag-select,#sidebar .reading-tag-toggle{min-height:48px!important;font-size:14.5px!important}
   #sidebar .navigation-heading .brand{font-size:15px!important}
   #close-navigation{width:44px!important;height:44px!important}
   .spot-scrim{padding:max(10px,env(safe-area-inset-top)) 10px 10px;background:color-mix(in srgb,var(--ink) 16%,transparent)}
@@ -532,13 +532,13 @@ html.house .toc-row:hover .toc-title{color:var(--accent)}
 #reading-tag-rail:empty,#sentence-hover-rail:empty{visibility:hidden}
 
 /* ---------- sidebar rows: colour-only hover and focus, never a box or outline ---------- */
-#sidebar .side-item,#sidebar .contents-link,#sidebar #settings-nav,#close-navigation{transition:color .15s ease!important}
-#sidebar .side-item:is(:hover,:focus,:focus-visible),#sidebar .contents-link:is(:hover,:focus,:focus-visible),#sidebar #settings-nav:is(:hover,:focus,:focus-visible),#close-navigation:is(:hover,:focus,:focus-visible){background:none!important;outline:none!important;box-shadow:none!important;color:var(--ink)!important}
-#sidebar .side-item:is(:hover,:focus-visible) svg,#sidebar #settings-nav:is(:hover,:focus-visible) svg{color:var(--green)!important}
-html.house #sidebar .side-item:is(:hover,:focus-visible) svg,html.house #sidebar #settings-nav:is(:hover,:focus-visible) svg{color:var(--accent)!important}
+#sidebar .side-item,#sidebar .contents-link,#sidebar :is(#settings-nav,#export-nav),#close-navigation{transition:color .15s ease!important}
+#sidebar .side-item:is(:hover,:focus,:focus-visible),#sidebar .contents-link:is(:hover,:focus,:focus-visible),#sidebar :is(#settings-nav,#export-nav):is(:hover,:focus,:focus-visible),#close-navigation:is(:hover,:focus,:focus-visible){background:none!important;outline:none!important;box-shadow:none!important;color:var(--ink)!important}
+#sidebar .side-item:is(:hover,:focus-visible) svg,#sidebar :is(#settings-nav,#export-nav):is(:hover,:focus-visible) svg{color:var(--green)!important}
+html.house #sidebar .side-item:is(:hover,:focus-visible) svg,html.house #sidebar :is(#settings-nav,#export-nav):is(:hover,:focus-visible) svg{color:var(--accent)!important}
 #sidebar .contents-link:is(:hover,:focus-visible) .nav-number{color:var(--muted)!important}
 /* while one row is under the pointer, the rest step back a little */
-#sidebar:has(.side-item:hover,.contents-link:hover,#settings-nav:hover) :is(.side-item,.contents-link,#settings-nav):not(:hover){color:color-mix(in srgb,var(--muted) 75%,var(--side-bg))!important}
+#sidebar:has(.side-item:hover,.contents-link:hover,:is(#settings-nav,#export-nav):hover) :is(.side-item,.contents-link,:is(#settings-nav,#export-nav)):not(:hover){color:color-mix(in srgb,var(--muted) 75%,var(--side-bg))!important}
 
 /* ======================= Desktop: persistent, collapsible sidebar ======================= */
 .side-toggle{display:none}
@@ -558,9 +558,9 @@ html.house #sidebar .side-item:is(:hover,:focus-visible) svg,html.house #sidebar
   /* collapsed: an icon rail */
   html.side-shut #sidebar{padding:14px 6px 10px!important}
   html.side-shut #sidebar .navigation-heading{justify-content:center!important;padding:2px 0 14px!important}
-  html.side-shut #sidebar .navigation-heading .brand,html.side-shut #sidebar #outline-navigation,html.side-shut #sidebar .side-item span,html.side-shut #sidebar .side-kbd,html.side-shut #settings-nav span,html.side-shut #sidebar .reading-focus-status{display:none!important}
-  html.side-shut #sidebar .side-item,html.side-shut #settings-nav{justify-content:center!important;padding:6px 0!important;gap:0!important;min-height:40px!important}
-  html.side-shut #sidebar .side-item svg,html.side-shut #settings-nav svg{width:15px!important;height:15px!important}
+  html.side-shut #sidebar .navigation-heading .brand,html.side-shut #sidebar #outline-navigation,html.side-shut #sidebar .side-item span,html.side-shut #sidebar .side-kbd,html.side-shut :is(#settings-nav,#export-nav) span,html.side-shut #sidebar .reading-focus-status{display:none!important}
+  html.side-shut #sidebar .side-item,html.side-shut :is(#settings-nav,#export-nav){justify-content:center!important;padding:6px 0!important;gap:0!important;min-height:40px!important}
+  html.side-shut #sidebar .side-item svg,html.side-shut :is(#settings-nav,#export-nav) svg{width:15px!important;height:15px!important}
   html.side-shut .side-menu{gap:4px}
 }
 @media(min-width:761px) and (prefers-reduced-motion:reduce){body,#sidebar,#reading-tag-rail{transition:none!important}}
@@ -632,22 +632,22 @@ html.house .tb-focus{color:var(--accent)}
 #sidebar .nav-heading,#sidebar .nav-heading span{color:var(--h4)!important;font-weight:600!important}
 #sidebar .contents-link{color:var(--h3)!important;font-weight:400!important}
 #sidebar .contents-link .nav-number{color:var(--h4)!important}
-#sidebar #settings-nav{color:var(--h3)!important;font-weight:400!important}
-#sidebar #settings-nav svg{color:var(--h4)!important}
+#sidebar :is(#settings-nav,#export-nav){color:var(--h3)!important;font-weight:400!important}
+#sidebar :is(#settings-nav,#export-nav) svg{color:var(--h4)!important}
 .side-kbd,#sidebar .side-toggle{color:var(--h4)!important}
 /* hover: one step up, colour only */
-#sidebar .side-item:is(:hover,:focus-visible),#sidebar .contents-link:is(:hover,:focus-visible),#sidebar #settings-nav:is(:hover,:focus-visible){color:var(--h1)!important}
-#sidebar .side-item:is(:hover,:focus-visible) svg,#sidebar #settings-nav:is(:hover,:focus-visible) svg{color:var(--green)!important}
-html.house #sidebar .side-item:is(:hover,:focus-visible) svg,html.house #sidebar #settings-nav:is(:hover,:focus-visible) svg{color:var(--accent)!important}
+#sidebar .side-item:is(:hover,:focus-visible),#sidebar .contents-link:is(:hover,:focus-visible),#sidebar :is(#settings-nav,#export-nav):is(:hover,:focus-visible){color:var(--h1)!important}
+#sidebar .side-item:is(:hover,:focus-visible) svg,#sidebar :is(#settings-nav,#export-nav):is(:hover,:focus-visible) svg{color:var(--green)!important}
+html.house #sidebar .side-item:is(:hover,:focus-visible) svg,html.house #sidebar :is(#settings-nav,#export-nav):is(:hover,:focus-visible) svg{color:var(--accent)!important}
 #sidebar .contents-link:is(:hover,:focus-visible) .nav-number{color:var(--h3)!important}
 #sidebar .side-toggle:hover{color:var(--h1)!important}
-#sidebar:has(.side-item:hover,.contents-link:hover,#settings-nav:hover) :is(.side-item,.contents-link,#settings-nav):not(:hover){color:inherit}
-#sidebar:has(.side-item:hover,.contents-link:hover,#settings-nav:hover) .side-item:not(:hover){color:var(--h2)!important}
-#sidebar:has(.side-item:hover,.contents-link:hover,#settings-nav:hover) .contents-link:not(:hover),#sidebar:has(.side-item:hover,.contents-link:hover,#settings-nav:hover) #settings-nav:not(:hover){color:var(--h3)!important}
+#sidebar:has(.side-item:hover,.contents-link:hover,:is(#settings-nav,#export-nav):hover) :is(.side-item,.contents-link,:is(#settings-nav,#export-nav)):not(:hover){color:inherit}
+#sidebar:has(.side-item:hover,.contents-link:hover,:is(#settings-nav,#export-nav):hover) .side-item:not(:hover){color:var(--h2)!important}
+#sidebar:has(.side-item:hover,.contents-link:hover,:is(#settings-nav,#export-nav):hover) .contents-link:not(:hover),#sidebar:has(.side-item:hover,.contents-link:hover,:is(#settings-nav,#export-nav):hover) :is(#settings-nav,#export-nav):not(:hover){color:var(--h3)!important}
 /* active: the accent, and only the accent */
-#sidebar .side-item.active,#sidebar .contents-link.active,#sidebar #settings-nav.active{color:var(--green)!important}
-#sidebar .side-item.active svg,#sidebar #settings-nav.active svg{color:var(--green)!important}
-html.house #sidebar .side-item.active,html.house #sidebar .contents-link.active,html.house #sidebar #settings-nav.active,html.house #sidebar .side-item.active svg,html.house #sidebar #settings-nav.active svg{color:var(--accent)!important}
+#sidebar .side-item.active,#sidebar .contents-link.active,#sidebar :is(#settings-nav,#export-nav).active{color:var(--green)!important}
+#sidebar .side-item.active svg,#sidebar :is(#settings-nav,#export-nav).active svg{color:var(--green)!important}
+html.house #sidebar .side-item.active,html.house #sidebar .contents-link.active,html.house #sidebar :is(#settings-nav,#export-nav).active,html.house #sidebar .side-item.active svg,html.house #sidebar :is(#settings-nav,#export-nav).active svg{color:var(--accent)!important}
 /* Trace's old Tag tree / Contents switch: gone for good (the menu has both). */
 #sidebar #reading-sidebar-switch,#sidebar #reading-sidebar-switch:not([hidden]){display:none!important}
 
@@ -962,7 +962,7 @@ html.house .peek-current{color:var(--link)!important}
 }
 /* Fewer type sizes: one size for small labels, one per row family. */
 #sidebar .nav-heading,#sidebar .nav-heading span,.pm-heading,.tb-sec,.fl-k,.ev-tags,.spot-group,.side-kbd,.dock-count,.pm-axis,.pm-cap,.pm-clear,.tb-meta,.tt-where,.ev-where,.ev-ref,.ev-flag{font-size:10.5px!important}
-#sidebar .side-item,#sidebar .contents-link,#sidebar #settings-nav{font-size:13px!important}
+#sidebar .side-item,#sidebar .contents-link,#sidebar :is(#settings-nav,#export-nav){font-size:13px!important}
 #sidebar .contents-link .nav-number{font-size:10.5px!important}
 #reading-tag-rail .reading-tag-select,#reading-tag-rail .reading-tag-toggle,.pm-name,.pm-sub .pm-name{font-size:12px!important}
 .pm-badge{font-size:10.5px}
@@ -1636,3 +1636,195 @@ body > .search-trigger{display:none!important}
 #reading-tag-rail .rail-note p{margin:6px 0 0;font-size:11.5px;line-height:1.5;color:color-mix(in srgb,var(--ink) 58%,transparent)}
 #reading-tag-rail .rail-note p + p{margin-top:5px}
 @media (prefers-reduced-motion:reduce){#reading-tag-rail .rail-note{transition:none}}
+/* The trace's "Tags" label sits in its own flex row: keep the gap under it small (the row gap was 16 px). */
+#outline .ev > .ev-top{row-gap:2px}
+#outline .ev > .ev-top::before{margin-bottom:2px}
+
+/* ---------- Interactives (scripts/viz.js): colours only from the theme ---------- */
+.viz{--v-ink:var(--ink);--v-muted:var(--ink2,var(--muted));--v-faint:var(--ink3,var(--faint));--v-line:var(--line);--v-acc:var(--accent,var(--green));--v-paper:var(--surface,var(--paper,#fff));
+  margin:6px 0 10px;font-family:inherit;color:var(--v-ink)}
+.viz-svg{display:block;margin:0 auto;overflow:visible}
+.viz-svg text{font-size:12px;fill:var(--v-muted);stroke:none;font-family:inherit}
+.viz-svg .t-ink{fill:var(--v-ink)} .viz-svg .t-acc{fill:var(--v-acc)} .viz-svg .t-faint{fill:var(--v-faint)}
+.viz-svg .t-blue{fill:var(--reading-blue)} .viz-svg .t-teal{fill:var(--reading-teal,var(--reading-blue))} .viz-svg .t-plum{fill:var(--reading-plum)} .viz-svg .t-green{fill:var(--reading-green)}
+.viz-svg .t-big{font-size:14px} .viz-svg .t-small{font-size:10.5px} .viz-svg .t-bold{font-weight:600}
+.viz-svg [class*="v-"]{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.viz-svg .v-ink{stroke:var(--v-ink)} .viz-svg .v-muted{stroke:var(--v-muted)} .viz-svg .v-faint{stroke:var(--v-faint)} .viz-svg .v-line{stroke:var(--v-line)}
+.viz-svg .v-acc{stroke:var(--v-acc)} .viz-svg .v-blue{stroke:var(--reading-blue)} .viz-svg .v-teal{stroke:var(--reading-teal,var(--reading-blue))}
+.viz-svg .v-plum{stroke:var(--reading-plum)} .viz-svg .v-green{stroke:var(--reading-green)} .viz-svg .v-indigo{stroke:var(--reading-indigo,var(--reading-blue))} .viz-svg .v-olive{stroke:var(--reading-olive,var(--reading-green))}
+.viz-svg .f-ink{fill:var(--v-ink)} .viz-svg .f-acc{fill:var(--v-acc)} .viz-svg .f-paper{fill:var(--v-paper)} .viz-svg .f-faint{fill:var(--v-faint)}
+.viz-svg .f-blue{fill:var(--reading-blue)} .viz-svg .f-teal{fill:var(--reading-teal,var(--reading-blue))} .viz-svg .f-plum{fill:var(--reading-plum)} .viz-svg .f-green{fill:var(--reading-green)}
+.viz-svg .f-wash{fill:color-mix(in srgb,var(--v-acc) 12%,transparent)} .viz-svg .f-wash-ink{fill:color-mix(in srgb,var(--v-ink) 6%,transparent)}
+.viz-svg .dash{stroke-dasharray:4 4} .viz-svg .dot{stroke-dasharray:1.5 4}
+.viz-svg .grab{cursor:grab} .viz-svg .grab:active{cursor:grabbing}
+.viz-controls{display:flex;flex-wrap:wrap;gap:6px 22px;justify-content:center;margin:8px auto 2px;max-width:640px}
+.viz-slider{display:grid;grid-template-columns:auto minmax(140px,240px) 4.2em;align-items:center;gap:10px;font-size:12.5px;color:var(--v-muted)}
+.viz-slider-name{white-space:nowrap}
+.viz-slider-value{font-variant-numeric:tabular-nums;color:var(--v-ink);text-align:left}
+.viz-slider input{-webkit-appearance:none;appearance:none;width:100%;height:20px;background:none;cursor:pointer;margin:0}
+.viz-slider input::-webkit-slider-runnable-track{height:3px;border-radius:2px;background:linear-gradient(90deg,var(--v-acc) var(--viz-fill,50%),color-mix(in srgb,var(--v-ink) 14%,transparent) var(--viz-fill,50%))}
+.viz-slider input::-moz-range-track{height:3px;border-radius:2px;background:color-mix(in srgb,var(--v-ink) 14%,transparent)}
+.viz-slider input::-moz-range-progress{height:3px;border-radius:2px;background:var(--v-acc)}
+.viz-slider input::-webkit-slider-thumb{-webkit-appearance:none;width:15px;height:15px;border-radius:50%;background:var(--v-paper);border:2px solid var(--v-acc);margin-top:-6px}
+.viz-slider input::-moz-range-thumb{width:13px;height:13px;border-radius:50%;background:var(--v-paper);border:2px solid var(--v-acc)}
+.viz-slider input:focus-visible{outline:2px solid color-mix(in srgb,var(--v-acc) 50%,transparent);outline-offset:3px;border-radius:4px}
+.viz-note{text-align:center;font-size:12.5px;color:var(--v-muted);margin:4px auto 0;max-width:560px;min-height:1.4em}
+.viz-failed{font-size:12.5px;color:var(--v-faint)}
+@media (max-width:760px){.viz-slider{grid-template-columns:1fr 4em;}.viz-slider-name{grid-column:1 / -1}}
+
+/* Standalone reader (trace-reader.html): the drop zone before a package is opened. Colour only, no boxes
+   until a file is dragged over the page; then one quiet dashed outline marks where it will land. */
+html.is-reader-empty .document-header p,html.is-reader-empty .document-end,html.is-reader-empty #sidebar,html.is-reader-empty #mobile-menu,html.is-reader-empty .reading-rail,html.is-reader-empty .reading-tag-rail{display:none!important}
+.drop-zone{max-width:34em;margin:8vh auto 0;padding:28px 24px;border-radius:22px;border:1.5px dashed transparent;font-family:var(--font-ui,'Poppins',sans-serif);color:var(--ink2);transition:border-color .15s,background-color .15s}
+html.is-dragging .drop-zone{border-color:var(--accent);background:var(--soft2,transparent)}
+.drop-zone .drop-title{margin:0 0 8px;font-size:18px;font-weight:500;color:var(--ink)}
+.drop-zone .drop-why{margin:0 0 18px;font-size:15px;line-height:1.6}
+.drop-zone .drop-pick{font:inherit;font-size:15px;min-height:48px;padding:0 20px;border-radius:999px;border:0;background:var(--accent-fill,var(--accent));color:var(--on-accent,#fff);cursor:pointer}
+.drop-zone .drop-pick:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+/* Export, just above Settings, shares every Settings-row rule above (:is(:is(#settings-nav,#export-nav),#export-nav)). */
+/* Variables in an opened trace show only the symbol: the variable icon beside it read like a multiplication sign. */
+#outline .ev-math .ev-tag:is([data-tag-id^="math-v-"],[data-tag-id^="math-i-"],[data-tag-id^="math-s-"]) .tg-ico{display:none}
+#outline .ev-math .ev-math-group:not(.ev-math-kinds){gap:4px 14px}
+
+/* ---------- Import: the drop overlay, the staged loader, the banner (boot.js) ----------
+   One full-page layer catches a dropped file anywhere, on any page. The page behind dims and blurs; a round
+   target bobs while a file hovers, squashes when it lands, then becomes a progress ring while each real stage
+   (read, unzip, manifest, prepare, draw) ticks off. Colour only for state; red only for a failed file. */
+.td{position:fixed;inset:0;z-index:2147483000;display:grid;place-items:center;padding:16px;background:color-mix(in srgb,var(--bg,var(--canvas,#f4f4ef)) 62%,transparent);-webkit-backdrop-filter:blur(7px) saturate(.9);backdrop-filter:blur(7px) saturate(.9);opacity:0;transition:opacity .2s ease;font-family:var(--font-ui,'Poppins',system-ui,sans-serif)}
+.td[data-state]:not([data-state=""]):not([data-state=leaving]){opacity:1}
+.td[hidden]{display:none}
+.td-card{width:min(440px,100%);padding:28px 26px 22px;border-radius:24px;background:var(--panel,var(--paper,#fff));box-shadow:var(--panel-shadow,0 18px 60px -20px rgba(0,0,0,.28));color:var(--ink2);text-align:center;transform:translateY(6px) scale(.985);transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+.td:not([data-state=leaving]) .td-card{transform:none}
+.td-target{--size:108px;position:relative;width:var(--size);height:var(--size);margin:0 auto 14px;color:var(--accent)}
+.td-ring{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg)}
+.td-ring circle{fill:none;stroke-width:3}
+.td-ring-bg{stroke:color-mix(in srgb,var(--accent) 22%,transparent);stroke-dasharray:4 7}
+.td-ring-fg{stroke:var(--accent);stroke-linecap:round;stroke-dasharray:100;stroke-dashoffset:calc(100 - var(--td-progress,0) * 100);transition:stroke-dashoffset .45s cubic-bezier(.2,.8,.2,1);opacity:0}
+.td-icon{position:absolute;left:50%;top:50%;width:40px;height:40px;margin:-20px 0 0 -20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.td-check{stroke-dasharray:24;stroke-dashoffset:24;opacity:0}
+.td-title{margin:0 0 4px;font-size:19px;font-weight:500;color:var(--ink)}
+.td-sub{margin:0;font-size:14px;line-height:1.55;color:var(--ink3,var(--ink2));overflow-wrap:anywhere}
+.td-stages{list-style:none;margin:18px 0 0;padding:0;text-align:left;display:none}
+.td-stages li{display:grid;grid-template-columns:18px 1fr;column-gap:10px;align-items:baseline;padding:5px 0;font-size:14px;color:var(--ink3,var(--ink2));transition:color .2s}
+.td-stages li.skip{display:none}
+.td-dot{width:8px;height:8px;margin:0 5px;border-radius:50%;background:color-mix(in srgb,var(--ink3,#888) 35%,transparent);transform:translateY(-1px);transition:background .2s,transform .2s}
+.td-stages li.now{color:var(--ink)}
+.td-stages li.now .td-dot{background:var(--accent)}
+.td-stages li.done{color:var(--ink2)}
+.td-stages li.done .td-dot{background:var(--accent);transform:translateY(-1px) scale(.75)}
+.td-detail{grid-column:2;font-size:12.5px;color:var(--ink3,var(--ink2));min-height:0}
+.td-detail:empty{display:none}
+.td-actions{display:none;gap:10px;justify-content:center;margin-top:18px;flex-wrap:wrap}
+.td-btn{font:inherit;font-size:15px;min-height:48px;padding:0 20px;border-radius:999px;border:1px solid var(--control-border,var(--line,#ccc));background:transparent;color:var(--ink);cursor:pointer}
+.td-btn.td-primary{border-color:transparent;background:var(--accent-fill,var(--accent));color:var(--on-accent,#fff)}
+.td-btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+/* drag: the target waits; caught: it squashes; work: it becomes a ring; done: a check; error: one red ring */
+.td[data-state=drag] .td-target{animation:td-bob 1.6s ease-in-out infinite}
+.td[data-state=drag] .td-ring{animation:td-spin 14s linear infinite}
+.td[data-state=caught] .td-target{animation:td-catch .34s cubic-bezier(.3,1.6,.5,1) both}
+.td[data-state=caught] .td-arrow{animation:td-drop .3s ease-in both}
+.td:is([data-state=work],[data-state=done]) .td-ring-fg{opacity:1}
+.td:is([data-state=work],[data-state=done]) .td-ring-bg{stroke-dasharray:none;stroke:color-mix(in srgb,var(--accent) 14%,transparent)}
+.td:is([data-state=work],[data-state=done]) .td-stages{display:block}
+.td[data-state=work] .td-arrow,.td[data-state=done] .td-arrow{opacity:0}
+.td[data-state=work] .td-tray{animation:td-breathe 1.4s ease-in-out infinite}
+.td[data-state=done] .td-tray{opacity:0;transition:opacity .2s}
+.td[data-state=done] .td-check{opacity:1;stroke-dashoffset:0;transition:stroke-dashoffset .35s ease .05s}
+.td[data-state=done] .td-target{animation:td-catch .4s cubic-bezier(.3,1.6,.5,1) both}
+.td[data-state=error] .td-target{color:var(--bad,#b4463c)}
+.td[data-state=error] .td-ring-bg{stroke:var(--bad,#b4463c);stroke-dasharray:none;opacity:.5}
+.td[data-state=error] .td-arrow{d:path("M12 6.5v6.5");}
+.td[data-state=error] .td-tray{d:path("M12 17h.01");stroke-width:2.6}
+.td[data-state=error] .td-actions{display:flex}
+@keyframes td-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes td-spin{to{transform:rotate(270deg)}}
+@keyframes td-catch{0%{transform:scale(1)}40%{transform:scale(.88,.94)}100%{transform:scale(1)}}
+@keyframes td-drop{to{transform:translateY(4px);opacity:.3}}
+@keyframes td-breathe{0%,100%{opacity:1}50%{opacity:.45}}
+/* behind the overlay, the page softens; when the new document arrives it eases in */
+html.td-open body>*:not(.td){transition:filter .2s}
+html.td-arrived #outline,html.td-arrived .document-header{animation:td-arrive .7s cubic-bezier(.2,.8,.2,1) both}
+@keyframes td-arrive{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+/* the quiet note after an import: what opened, the way back, anything missing */
+.td-banner{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;margin:0 0 18px;padding:10px 14px;border-radius:14px;background:color-mix(in srgb,var(--accent) 9%,transparent);font-family:var(--font-ui,'Poppins',system-ui,sans-serif);font-size:13.5px;line-height:1.5;color:var(--ink2)}
+.td-banner-back{font:inherit;color:var(--accent);background:none;border:0;padding:6px 0;cursor:pointer}
+.td-banner-note{flex-basis:100%;color:var(--ink3,var(--ink2))}
+.td-banner-x{margin-left:auto;font:inherit;font-size:18px;line-height:1;min-width:32px;min-height:32px;color:var(--ink3,var(--ink2));background:none;border:0;cursor:pointer}
+.td-banner>span:first-child{color:var(--ink)}
+@media (prefers-reduced-motion: reduce){
+  .td,.td-card,.td-ring-fg,.td-check,.td-stages li,.td-dot{transition:none!important}
+  .td *,html.td-arrived #outline,html.td-arrived .document-header{animation:none!important}
+}
+/* Settings → Document: import, export and the version history */
+.doc-actions{display:flex;flex-wrap:wrap;gap:10px;margin:6px 0 22px}
+.doc-actions button{font:inherit;font-size:15px;min-height:48px;padding:0 20px;border-radius:999px;border:1px solid var(--control-border,var(--line,#ccc));background:transparent;color:var(--ink);cursor:pointer;display:inline-flex;align-items:center;gap:9px}
+.doc-actions button.primary{border-color:transparent;background:var(--accent-fill,var(--accent));color:var(--on-accent,#fff)}
+.doc-actions svg{width:15px;height:15px;fill:currentColor}
+.doc-history{list-style:none;margin:0;padding:0}
+.doc-history li{display:grid;grid-template-columns:auto 1fr;column-gap:14px;padding:10px 0;border-top:1px solid color-mix(in srgb,var(--ink) 8%,transparent)}
+.doc-history .v{font-variant-numeric:tabular-nums;color:var(--accent);font-weight:500}
+.doc-history .when{color:var(--ink)}
+.doc-history .meta{grid-column:2;font-size:12.5px;color:var(--ink3,var(--ink2));overflow-wrap:anywhere}
+
+/* Following header, redesigned: centred over the paper, the current section in normal text on top and the
+   document title as a much smaller, lighter line below it; a little more room at the top. */
+.read-head{flex-direction:column-reverse;justify-content:center;align-items:center;gap:2px;text-align:center;flex-wrap:nowrap;
+  padding-top:16px;min-height:62px}
+.read-head .read-head-sep{display:none}
+.read-head .read-head-section{display:block;max-width:min(64ch,100%);font-size:13.5px;font-weight:500;line-height:1.35;color:var(--ink);
+  white-space:normal;overflow:visible;text-overflow:clip;min-width:0;flex:0 0 auto}
+.read-head .read-head-title{display:block;max-width:min(80ch,100%);font-size:10.5px;font-weight:400;letter-spacing:.02em;line-height:1.3;
+  color:color-mix(in srgb,var(--ink) 45%,transparent);white-space:normal;overflow:visible;text-overflow:clip;flex:0 0 auto}
+/* In views (Settings, Contents …) the view's name is the title line and there is no section: show it at normal size. */
+.read-head .read-head-section[hidden] ~ .read-head-title,.read-head .read-head-title:only-of-type{font-size:13.5px;font-weight:500;color:var(--ink)}
+.read-head .read-head-back{position:absolute;left:calc(var(--side-w,0px) + 18px);top:14px;margin:0}
+@media(max-width:760px){.read-head{padding-top:max(12px,env(safe-area-inset-top))}.read-head .read-head-section{display:block;font-size:12.5px}.read-head .read-head-title{font-size:10px}}
+
+/* ---------- Span tags, connected highlights and links (spans.mjs, rich-text.js) ----------
+   Five slot colours, one per thread of connected highlights: calm, readable as text, never amber or red.
+   A slotted span takes its colour and a soft tint (boot.js writes one rule per slotted tag); its symbols in
+   every formula take the same colour. Tag focus deepens the tint of exactly the matching spans. */
+:root{--slot-1:hsla(214,62%,40%,1);--slot-2:hsla(172,62%,28%,1);--slot-3:hsla(292,42%,42%,1);--slot-4:hsla(252,50%,52%,1);--slot-5:hsla(140,44%,30%,1)}
+html.dark{--slot-1:hsla(212,80%,76%,1);--slot-2:hsla(168,58%,64%,1);--slot-3:hsla(296,52%,78%,1);--slot-4:hsla(250,78%,82%,1);--slot-5:hsla(138,46%,68%,1)}
+.tag-span{border-radius:4px;padding:0 1px;-webkit-box-decoration-break:clone;box-decoration-break:clone;transition:background-color .15s ease,color .15s ease}
+.tag-span.lit{background:color-mix(in srgb,var(--hl,var(--accent,var(--green))) 26%,transparent)!important;color:var(--hl,var(--ink))}
+mjx-container g[class^="hl-"],mjx-container g[class*=" hl-"]{transition:color .15s ease}
+@media (prefers-reduced-motion: reduce){.tag-span,mjx-container g{transition:none!important}}
+/* Links: the link colour, never underlined; external ones end in a small arrow and show their address. */
+a.md-link{color:var(--link,var(--reading-blue,var(--accent)));text-decoration:none!important;border-radius:3px;transition:color .15s ease}
+a.md-link:hover{color:var(--ink)}
+a.md-link:focus-visible{outline:2px solid var(--accent,var(--green));outline-offset:2px}
+a.md-link .md-ext{display:inline-block;width:.78em;height:.78em;margin-left:.18em;vertical-align:-.05em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.7}
+/* Interactives in a tag's slot colour: api.tagClass('hl-x', 'stroke' | 'fill' | 'text'). */
+.viz-svg .v-slot1{stroke:var(--slot-1)} .viz-svg .v-slot2{stroke:var(--slot-2)} .viz-svg .v-slot3{stroke:var(--slot-3)} .viz-svg .v-slot4{stroke:var(--slot-4)} .viz-svg .v-slot5{stroke:var(--slot-5)}
+.viz-svg .f-slot1{fill:var(--slot-1)} .viz-svg .f-slot2{fill:var(--slot-2)} .viz-svg .f-slot3{fill:var(--slot-3)} .viz-svg .f-slot4{fill:var(--slot-4)} .viz-svg .f-slot5{fill:var(--slot-5)}
+.viz-svg .t-slot1{fill:var(--slot-1)} .viz-svg .t-slot2{fill:var(--slot-2)} .viz-svg .t-slot3{fill:var(--slot-3)} .viz-svg .t-slot4{fill:var(--slot-4)} .viz-svg .t-slot5{fill:var(--slot-5)}
+
+/* ---------- The import note, redesigned: a quiet status line, not a card ----------
+   Labels ("Opened", "Back to") faint; the opened title full ink; the previous title in the link colour;
+   × pinned top right on the first line. Two lines close together. */
+.td-banner{position:relative;display:block;margin:0 0 16px;padding:8px 40px 8px 12px;border-radius:12px;background:color-mix(in srgb,var(--ink) 4%,transparent);font-family:var(--font-ui,'Poppins',system-ui,sans-serif);font-size:13.5px;line-height:1.45;color:var(--ink)}
+.td-banner .tdb-line{display:block}
+.td-banner .tdb-line+.tdb-line{margin-top:2px}
+.td-banner .tdb-label{color:color-mix(in srgb,var(--ink) 50%,transparent);margin-right:.4em}
+.td-banner .tdb-title{color:var(--ink);font-weight:500}
+.td-banner .td-banner-back{font:inherit;padding:0;border:0;background:none;cursor:pointer;color:inherit;text-align:left}
+.td-banner .td-banner-back .tdb-prev{color:var(--link,var(--reading-blue,var(--accent)));transition:color .15s ease}
+.td-banner .td-banner-back:hover .tdb-prev{color:var(--ink)}
+.td-banner .td-banner-back:focus-visible{outline:2px solid var(--accent,var(--green));outline-offset:2px;border-radius:4px}
+.td-banner .td-banner-note{display:block;margin-top:2px;color:color-mix(in srgb,var(--ink) 58%,transparent);flex-basis:auto}
+.td-banner .td-banner-x{position:absolute;top:4px;right:6px;margin:0;width:30px;height:30px;min-width:0;min-height:0;display:grid;place-items:center;font-size:17px;line-height:1;color:color-mix(in srgb,var(--ink) 45%,transparent);background:none;border:0;border-radius:8px;cursor:pointer;transition:color .15s ease}
+.td-banner .td-banner-x:hover{color:var(--ink)}
+.td-banner>span:first-child{color:inherit}
+/* Connected highlights are text colour only by default (Settings → Reading → Connected highlights):
+   "Highlighted" adds the soft background, "Off" leaves the text in ink. */
+html:not(.hl-tint) .tag-span:not(.lit){background:none!important;padding:0}
+/* Tag focus stays visible in every style: the focused spans take a soft tint while the tag is hovered or pinned. */
+html.hl-off .tag-span{color:inherit!important}
+html.hl-off mjx-container g[class^="hl-"],html.hl-off mjx-container g[class*=" hl-"]{color:inherit!important}
+/* Search on narrow screens: the two cards float with air around them instead of touching the window's top and sides. */
+@media (max-width:760px){
+  .spot-scrim{padding:max(36px,calc(env(safe-area-inset-top) + 24px)) 18px max(18px,env(safe-area-inset-bottom))!important;background:var(--bg,#eff2e7)!important;align-items:stretch}
+  .spot,html.dark .spot{height:auto;max-height:100%;min-height:0;padding:0!important;gap:12px}
+  .spot-main{min-height:0;overflow:auto}
+}

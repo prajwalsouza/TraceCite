@@ -14,7 +14,7 @@
 (function (root, factory) {
   const api = factory();
   if (typeof module === 'object' && module.exports) module.exports = api;
-  else root.TraceCiteStyles = api;
+  root.TraceCiteStyles = api;
 })(typeof globalThis === 'object' ? globalThis : this, function () {
   'use strict';
   const STYLES = {

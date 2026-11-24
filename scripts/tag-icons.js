@@ -4,6 +4,7 @@
 (function () {
   'use strict';
   const I = {
+    thread: '<circle cx="6" cy="7" r="2.2"/><circle cx="18" cy="17" r="2.2"/><path d="M8 7.5c5 .5 3 9 8 9.5"/>',
     tag: '<path d="M3.5 12.2V5.5a2 2 0 0 1 2-2h6.7l8.3 8.3a2 2 0 0 1 0 2.8l-5.7 5.7a2 2 0 0 1-2.8 0z"/><circle cx="8" cy="8" r="1.3"/>',
     figure: '<rect x="3.5" y="4.5" width="17" height="15" rx="2.5"/><circle cx="9" cy="10" r="1.6"/><path d="m4 17 5-4.5 4 3.5 3-2.5 4 3.5"/>',
     table: '<rect x="3.5" y="4.5" width="17" height="15" rx="2.5"/><path d="M3.5 9.5h17M3.5 14.5h17M10 9.5v10"/>',
@@ -84,6 +85,8 @@
     if (id === 'math' || id === 'math-types' || /^math-tg-|^math-t-/.test(id)) return 'sigma';
     if (/^math-(v|i|s)-|^math-variables$|^math-indices$|^math-sets$|^math-vg-/.test(id)) return 'variable';
     if (id === 'xref' || /^xref-/.test(id)) return /^xref-(recalls)$/.test(id) ? 'recall' : 'link';
+    if (id === 'links' || /^link-/.test(id)) return 'link';
+    if (id === 'connected' || /^hl-/.test(id)) return 'thread';
     if (id === 'env-proof') return 'proof';
     if (id === 'env-definition') return 'definition';
     if (id === 'env' || /^env-/.test(id)) return 'result';
