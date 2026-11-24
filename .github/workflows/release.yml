@@ -1,0 +1,56 @@
+# Every version tag (v1.2.3) becomes a GitHub Release with the ready-to-use files attached:
+#   trace-reader.html      the single-file reader: open it, drop a .trace.zip on it
+#   outliners.trace.zip    a sample package to try it with
+#   document-structure.trace.zip, sample.trace.zip
+# The files are rebuilt here from the tagged source, so every release ships them, built from exactly that
+# version, and nobody has to remember to attach them.
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Check the examples
+        run: npm run validate
+
+      - name: Build the reader, the example pages and the sample packages
+        run: npm run build
+
+      - name: Release notes from CHANGELOG.md
+        run: |
+          version="${GITHUB_REF_NAME#v}"
+          awk -v v="$version" '
+            $0 ~ "^## " v "( |$)" { on = 1; next }
+            on && /^## / { exit }
+            on { print }
+          ' CHANGELOG.md > notes.md
+          {
+            echo
+            echo "**Read a TraceCite document without installing anything:** download \`trace-reader.html\`, open it in a browser, and drop a \`.trace.zip\` on it. Try it with \`outliners.trace.zip\`."
+          } >> notes.md
+          test -s notes.md
+
+      - name: Create the release, or update its files
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p dist
+          cp references/trace-reader.html samples/outliners.trace.zip samples/document-structure.trace.zip samples/sample.trace.zip dist/
+          if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
+            gh release upload "$GITHUB_REF_NAME" dist/* --clobber
+          else
+            gh release create "$GITHUB_REF_NAME" dist/* --title "TraceCite ${GITHUB_REF_NAME#v}" --notes-file notes.md --verify-tag
+          fi

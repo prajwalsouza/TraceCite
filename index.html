@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>TraceCite</title>
+<meta name="description" content="Evidence-first documents: every sentence opens to the exact words it cites, the passage they sit in, and who checked them.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
+<style>
+/* Design tokens: shared by both colour schemes. */
+:root{
+  --font:'Poppins',system-ui,-apple-system,sans-serif;
+  --step-0:16px;--step-1:18px;--step-2:clamp(30px,6vw,48px);
+  --space:8px;--radius:22px;--pill:999px;--measure:40rem;
+}
+/* Theme tokens: TraceCite's sage paper; a quiet night version in dark mode. */
+:root{
+  --bg:hsla(77,27%,93%,1);--panel:hsla(60,57%,98%,1);--ink:hsla(86,20%,16%,1);--ink2:hsla(87,10%,32%,1);--ink3:hsla(87,8%,45%,1);
+  --line:hsla(74,19%,86%,1);--accent:hsla(85,25%,31%,1);--accent-fill:hsla(81,32%,88%,1);--on-accent:hsla(86,20%,16%,1);--cite:hsla(212,45%,38%,1);
+  --shadow:0 18px 50px -28px hsla(86,30%,20%,.35);
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:hsla(80,8%,9%,1);--panel:hsla(80,7%,13%,1);--ink:hsla(70,20%,90%,1);--ink2:hsla(75,10%,72%,1);--ink3:hsla(75,7%,56%,1);
+  --line:hsla(80,6%,22%,1);--accent:hsla(84,30%,66%,1);--accent-fill:hsla(84,22%,26%,1);--on-accent:hsla(70,25%,92%,1);--cite:hsla(210,55%,72%,1);
+  --shadow:0 18px 50px -28px hsla(0,0%,0%,.7);
+}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink2);font:400 var(--step-0)/1.7 var(--font)}
+a{color:var(--accent);text-decoration:none}
+a:hover{color:var(--ink)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{max-width:68rem;margin:0 auto;padding:max(16px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) 48px max(16px,env(safe-area-inset-left))}
+header{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:56px}
+.mark{display:flex;align-items:center;gap:10px;color:var(--ink);font-weight:600;letter-spacing:-.01em}
+.mark svg{width:22px;height:22px;stroke:var(--accent);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+header nav{display:flex;gap:20px;font-size:15px}
+.hero{display:grid;gap:clamp(24px,5vw,56px);grid-template-columns:1fr;align-items:center;padding:clamp(28px,6vw,72px) 0 clamp(32px,6vw,64px)}
+@media (min-width:960px){.hero{grid-template-columns:minmax(0,5fr) minmax(0,7fr)}}
+.eyebrow{margin:0 0 12px;font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+h1{margin:0 0 16px;color:var(--ink);font-size:var(--step-2);line-height:1.08;font-weight:600;letter-spacing:-.025em}
+.lede{margin:0 0 28px;max-width:var(--measure);font-size:var(--step-1);line-height:1.65}
+.lede .cite{color:var(--cite)}
+.actions{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 22px;border-radius:var(--pill);font-size:16px;font-weight:500;border:1px solid var(--line);color:var(--ink)}
+.btn.primary{background:var(--accent-fill);border-color:transparent;color:var(--on-accent)}
+.btn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.btn:hover{color:var(--ink);border-color:var(--accent)}
+figure{margin:0}
+.demo{border-radius:var(--radius);overflow:hidden;background:var(--panel);box-shadow:var(--shadow)}
+.demo img{display:block;width:100%;height:auto}
+figcaption{margin-top:10px;font-size:13.5px;color:var(--ink3)}
+section{padding:clamp(32px,6vw,56px) 0;border-top:1px solid var(--line)}
+h2{margin:0 0 8px;color:var(--ink);font-size:24px;font-weight:600;letter-spacing:-.015em}
+.sub{margin:0 0 24px;max-width:var(--measure)}
+.cards{display:grid;gap:16px;grid-template-columns:1fr}
+@media (min-width:760px){.cards{grid-template-columns:1fr 1fr}}
+.card{display:flex;flex-direction:column;gap:6px;padding:22px 24px;border-radius:var(--radius);background:var(--panel)}
+.card h3{margin:0;color:var(--ink);font-size:18px;font-weight:500}
+.card p{margin:0 0 10px;font-size:15px}
+.card .links{margin-top:auto;display:flex;flex-wrap:wrap;gap:6px 20px;font-size:15px}
+.steps{margin:0;padding:0;list-style:none;display:grid;gap:14px;max-width:var(--measure);counter-reset:s}
+.steps li{display:grid;grid-template-columns:32px 1fr;gap:12px;counter-increment:s}
+.steps li::before{content:counter(s,decimal-leading-zero);color:var(--ink3);font-size:13px;font-variant-numeric:tabular-nums;padding-top:3px}
+code{font:500 .92em ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink)}
+footer{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;padding-top:24px;border-top:1px solid var(--line);font-size:14px;color:var(--ink3)}
+@media (prefers-reduced-motion:reduce){.demo img{content:url('site/evidence-opened.png')}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="mark" href="./" aria-label="TraceCite home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4v6a3 3 0 0 0 3 3h6"/><path d="M14 9l4 4-4 4"/><circle cx="5" cy="4" r="1.2"/></svg>TraceCite</a>
+    <nav aria-label="Site"><a href="https://github.com/prajwalsouza/TraceCite">GitHub</a><a href="https://github.com/prajwalsouza/TraceCite/blob/main/docs/format.md">Format</a></nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div>
+        <p class="eyebrow">Evidence-first documents</p>
+        <h1>Every sentence opens to the words it cites.</h1>
+        <p class="lede">TraceCite is a format and a reader. Click a sentence and the source’s exact words open in place <span class="cite">(Author, 2026)</span>, with the passage they sit in, notes, tags and who checked them.</p>
+        <div class="actions">
+          <a class="btn primary" href="references/outliners-reading.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H11v16H5.5A1.5 1.5 0 0 1 4 18.5z"/><path d="M20 5.5A1.5 1.5 0 0 0 18.5 4H13v16h5.5a1.5 1.5 0 0 0 1.5-1.5z"/></svg>Read an example</a>
+          <a class="btn" href="references/trace-reader.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5"/><path d="M4 15v3.5A1.5 1.5 0 0 0 5.5 20h13a1.5 1.5 0 0 0 1.5-1.5V15"/></svg>Open your own</a>
+        </div>
+      </div>
+      <figure>
+        <div class="demo"><img src="site/evidence-opening.gif" width="880" height="544" alt="A sentence in a TraceCite page is clicked. Below it open its tags, the source, the exact quote with its location, and the passage the quote sits in, with the quote marked."></div>
+        <figcaption>One click: the claim, its source’s exact words, and where they sit.</figcaption>
+      </figure>
+    </div>
+
+    <section aria-labelledby="examples">
+      <h2 id="examples">Examples</h2>
+      <p class="sub">Each is one HTML file with its document inside. Open one, click any sentence, pin a tag in the margin.</p>
+      <div class="cards">
+        <article class="card">
+          <h3>A sample that uses every part</h3>
+          <p>A short document with connected highlights, maths, links, a comment, a definition and an interactive figure. Its <a href="https://github.com/prajwalsouza/TraceCite/blob/main/docs/sample.md">guide</a> explains each part, and shows the zip’s layout.</p>
+          <div class="links"><a href="references/sample-reading.html">Read it</a><a href="samples/sample.trace.zip" download>Download the .trace.zip</a></div>
+        </article>
+        <article class="card">
+          <h3>Outlines you can read</h3>
+          <p>A short essay on outliners: how a tree of blocks becomes a paper whose claims open into their evidence.</p>
+          <div class="links"><a href="references/outliners-reading.html">Read it</a><a href="samples/outliners.trace.zip" download>Download the .trace.zip</a></div>
+        </article>
+        <article class="card">
+          <h3>From roll to block</h3>
+          <p>A history of document structure, from the scroll to markup, with figures, tables, comments and checked quotes.</p>
+          <div class="links"><a href="references/document-structure-reading.html">Read it</a><a href="samples/document-structure.trace.zip" download>Download the .trace.zip</a></div>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="reader">
+      <h2 id="reader">One file that reads everything</h2>
+      <p class="sub"><code>trace-reader.html</code> is a single file. Download it, open it in a browser, and drop a <code>.trace.zip</code> on it. It does all the work itself: sources, maths, cross-references, citation styles, interactives. Nothing to install, nothing uploaded.</p>
+      <div class="actions">
+        <a class="btn primary" href="https://github.com/prajwalsouza/TraceCite/releases/latest/download/trace-reader.html" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5"/><path d="M4 15v3.5A1.5 1.5 0 0 0 5.5 20h13a1.5 1.5 0 0 0 1.5-1.5V15"/></svg>Download trace-reader.html</a>
+        <a class="btn" href="references/trace-reader.html">Use it here</a>
+        <a class="btn" href="samples/outliners.trace.zip" download>Sample .trace.zip</a>
+      </div>
+    </section>
+
+    <section aria-labelledby="make">
+      <h2 id="make">Make your own</h2>
+      <ol class="steps">
+        <li><span>Write the document as one tree of blocks in a <code>.trace.json</code>: sections, paragraphs, sentences, citations. See the <a href="https://github.com/prajwalsouza/TraceCite/blob/main/docs/format.md">format</a>.</span></li>
+        <li><span>Keep sources in a <code>.bib</code> file with <code>trace-*</code> fields for each exact quote and the passage around it: <a href="https://github.com/prajwalsouza/TraceCite/blob/main/docs/bibtrace.md">BibTrace</a>.</span></li>
+        <li><span>Drop the <code>.json</code> and its <code>.bib</code> on the reader, then Export a <code>.trace.zip</code> to share. Or build a page with <code>node scripts/build-reading.mjs</code>.</span></li>
+        <li><span>Writing with an AI agent? Give it <a href="llms.txt">llms.txt</a> and the <a href="https://github.com/prajwalsouza/TraceCite/blob/main/docs/writing-with-agents.md">writing guide</a>.</span></li>
+      </ol>
+    </section>
+  </main>
+
+  <footer>
+    <span>TraceCite · MIT licence · by Prajwal DSouza</span>
+    <span><a href="https://github.com/prajwalsouza/TraceCite">Source</a> · <a href="https://github.com/prajwalsouza/TraceCite/releases">Releases</a> · <a href="llms.txt">llms.txt</a></span>
+  </footer>
+</div>
+</body>
+</html>
