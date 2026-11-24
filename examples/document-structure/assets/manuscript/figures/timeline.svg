@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" role="img" aria-labelledby="t d">
+  <title id="t">From roll to block: a timeline of structural devices</title>
+  <desc id="d">A horizontal timeline with eight stops: papyrus roll, parchment codex, rubrics and tables of contents, title pages and page numbers, the scientific journal, IMRaD, declared markup, hypertext and outlines, and block editors.</desc>
+  <rect width="960" height="420" rx="24" fill="hsl(60, 50%, 98%)"/>
+  <line x1="60" y1="210" x2="900" y2="210" stroke="hsl(80, 15%, 72%)" stroke-width="3" stroke-linecap="round"/>
+  <polygon points="900,202 916,210 900,218" fill="hsl(80, 15%, 72%)"/>
+  <g font-size="19" fill="hsl(86, 20%, 18%)" text-anchor="middle">
+    <!-- 1 roll -->
+    <circle cx="90" cy="210" r="11" fill="hsl(36, 70%, 80%)"/>
+    <line x1="90" y1="199" x2="90" y2="150" stroke="hsl(36, 40%, 70%)" stroke-width="2"/>
+    <text x="90" y="110" font-weight="600">Roll</text>
+    <text x="90" y="134" font-size="16" fill="hsl(87, 10%, 40%)">antiquity</text>
+    <!-- 2 codex -->
+    <circle cx="200" cy="210" r="11" fill="hsl(36, 70%, 80%)"/>
+    <line x1="200" y1="221" x2="200" y2="270" stroke="hsl(36, 40%, 70%)" stroke-width="2"/>
+    <text x="200" y="296" font-weight="600">Codex</text>
+    <text x="200" y="320" font-size="16" fill="hsl(87, 10%, 40%)">late antiquity</text>
+    <!-- 3 apparatus -->
+    <circle cx="310" cy="210" r="11" fill="hsl(150, 30%, 75%)"/>
+    <line x1="310" y1="199" x2="310" y2="150" stroke="hsl(150, 20%, 65%)" stroke-width="2"/>
+    <text x="310" y="86" font-weight="600">Rubrics,</text>
+    <text x="310" y="110" font-weight="600">tables, index</text>
+    <text x="310" y="134" font-size="16" fill="hsl(87, 10%, 40%)">13th century</text>
+    <!-- 4 print -->
+    <circle cx="420" cy="210" r="11" fill="hsl(150, 30%, 75%)"/>
+    <line x1="420" y1="221" x2="420" y2="270" stroke="hsl(150, 20%, 65%)" stroke-width="2"/>
+    <text x="420" y="296" font-weight="600">Title page,</text>
+    <text x="420" y="320" font-weight="600">page numbers</text>
+    <text x="420" y="344" font-size="16" fill="hsl(87, 10%, 40%)">1470 to 16th c.</text>
+    <!-- 5 journal -->
+    <circle cx="530" cy="210" r="11" fill="hsl(210, 40%, 80%)"/>
+    <line x1="530" y1="199" x2="530" y2="150" stroke="hsl(210, 25%, 70%)" stroke-width="2"/>
+    <text x="530" y="86" font-weight="600">Journal;</text>
+    <text x="530" y="110" font-weight="600">later IMRaD</text>
+    <text x="530" y="134" font-size="16" fill="hsl(87, 10%, 40%)">1665; 1940s to 1980s</text>
+    <!-- 6 markup -->
+    <circle cx="640" cy="210" r="11" fill="hsl(210, 40%, 80%)"/>
+    <line x1="640" y1="221" x2="640" y2="270" stroke="hsl(210, 25%, 70%)" stroke-width="2"/>
+    <text x="640" y="296" font-weight="600">Markup</text>
+    <text x="640" y="320" font-size="16" fill="hsl(87, 10%, 40%)">SGML 1986, TEI,</text>
+    <text x="640" y="342" font-size="16" fill="hsl(87, 10%, 40%)">HTML, XML</text>
+    <!-- 7 hypertext -->
+    <circle cx="750" cy="210" r="11" fill="hsl(260, 30%, 82%)"/>
+    <line x1="750" y1="199" x2="750" y2="150" stroke="hsl(260, 20%, 72%)" stroke-width="2"/>
+    <text x="750" y="86" font-weight="600">Trails, outlines,</text>
+    <text x="750" y="110" font-weight="600">links</text>
+    <text x="750" y="134" font-size="16" fill="hsl(87, 10%, 40%)">1945 to 1989</text>
+    <!-- 8 blocks -->
+    <circle cx="860" cy="210" r="11" fill="hsl(260, 30%, 82%)"/>
+    <line x1="860" y1="221" x2="860" y2="270" stroke="hsl(260, 20%, 72%)" stroke-width="2"/>
+    <text x="860" y="296" font-weight="600">Blocks</text>
+    <text x="860" y="320" font-size="16" fill="hsl(87, 10%, 40%)">today</text>
+  </g>
+  <text x="60" y="396" font-size="15" fill="hsl(87, 8%, 48%)">Spacing is not to scale. Dates are those given by the cited sources.</text>
+</svg>

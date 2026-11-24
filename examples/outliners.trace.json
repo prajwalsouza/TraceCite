@@ -1,0 +1,1580 @@
+{
+  "format": "tracecite/1.0",
+  "version": 2,
+  "eyebrow": "An essay on outliners",
+  "title": "Outlines you can read",
+  "subtitle": "What outliners are, and how a tree of blocks becomes a paper with its evidence attached.",
+  "updatedAt": "2026-11-24T18:30:01.320Z",
+  "tagTree": [
+    {
+      "id": "role",
+      "name": "Sentence role",
+      "children": [
+        {
+          "id": "role-definition",
+          "name": "Definition",
+          "children": []
+        },
+        {
+          "id": "role-history",
+          "name": "History",
+          "children": []
+        },
+        {
+          "id": "role-mechanism",
+          "name": "How it works",
+          "children": []
+        },
+        {
+          "id": "role-interpretation",
+          "name": "Our interpretation",
+          "children": []
+        },
+        {
+          "id": "role-limit",
+          "name": "Limitation",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "support",
+      "name": "Support",
+      "children": [
+        {
+          "id": "support-quoted",
+          "name": "Quoted from a checked file",
+          "children": []
+        },
+        {
+          "id": "support-reference",
+          "name": "Reference only, no quote",
+          "children": []
+        },
+        {
+          "id": "support-none",
+          "name": "No source needed",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "topic",
+      "name": "Topic",
+      "children": [
+        {
+          "id": "topic-structure",
+          "name": "Structure",
+          "children": [
+            {
+              "id": "topic-blocks",
+              "name": "Blocks and nesting",
+              "children": []
+            },
+            {
+              "id": "topic-fields",
+              "name": "Fields and tags",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "topic-reading",
+          "name": "Reading",
+          "children": []
+        },
+        {
+          "id": "topic-evidence",
+          "name": "Evidence",
+          "children": []
+        },
+        {
+          "id": "topic-tools",
+          "name": "Tools and history",
+          "children": []
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "id": "sec-what",
+      "type": "section",
+      "text": "What an outliner is",
+      "tags": [
+        "topic"
+      ],
+      "collapsed": false,
+      "fields": [
+        {
+          "key": "Heading level",
+          "value": "2"
+        }
+      ],
+      "children": [
+        {
+          "id": "p-what-1",
+          "type": "paragraph",
+          "text": "Definition",
+          "tags": [],
+          "collapsed": false,
+          "fields": [
+            {
+              "key": "Source file",
+              "value": "examples/outliners-article.mjs"
+            }
+          ],
+          "children": [
+            {
+              "id": "out-s1",
+              "type": "sentence",
+              "text": "An outliner is a writing tool in which a document is a tree of short blocks rather than one long page.",
+              "tags": [
+                "role-definition",
+                "support-none",
+                "topic-blocks"
+              ],
+              "collapsed": true,
+              "fields": [
+                {
+                  "key": "Sentence review",
+                  "value": "A working definition for this article. It describes the shape of the tool, not a claim from a source."
+                }
+              ],
+              "children": []
+            },
+            {
+              "id": "out-s2",
+              "type": "sentence",
+              "text": "Each block can hold children, and any branch can be folded away or opened again without changing the text inside it.",
+              "tags": [
+                "role-mechanism",
+                "support-none",
+                "topic-blocks"
+              ],
+              "collapsed": true,
+              "fields": [
+                {
+                  "key": "Sentence review",
+                  "value": "Describes the common behaviour of outliners. No single source is needed for it."
+                }
+              ],
+              "children": []
+            },
+            {
+              "id": "out-s3",
+              "type": "sentence",
+              "text": "Because the structure is explicit, a reader can see at a glance which sentence belongs to which idea.",
+              "tags": [
+                "role-interpretation",
+                "support-none",
+                "topic-reading"
+              ],
+              "collapsed": true,
+              "fields": [
+                {
+                  "key": "Sentence review",
+                  "value": "Our interpretation of why explicit structure helps reading. It is not a tested claim."
+                }
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sec-history",
+      "type": "section",
+      "text": "Where outliners come from",
+      "tags": [
+        "topic"
+      ],
+      "collapsed": false,
+      "fields": [
+        {
+          "key": "Heading level",
+          "value": "2"
+        }
+      ],
+      "children": [
+        {
+          "id": "p-history-1",
+          "type": "paragraph",
+          "text": "History",
+          "tags": [],
+          "collapsed": false,
+          "fields": [
+            {
+              "key": "Source file",
+              "value": "examples/outliners-article.mjs"
+            }
+          ],
+          "children": [
+            {
+              "id": "out-s4",
+              "type": "sentence",
+              "text": "The idea of working on text as a structure that can be folded, rearranged and linked is usually traced to Douglas Engelbart’s programme for augmenting human intellect.",
+              "tags": [
+                "role-history",
+                "support-reference",
+                "topic-tools"
+              ],
+              "collapsed": true,
+              "fields": [
+                {
+                  "key": "Sentence review",
+                  "value": "Cited as the usual origin story. No passage from the report was checked for this article, so open the source before quoting it."
+                },
+                {
+                  "key": "Status",
+                  "value": "Reference only · check before relying on it"
+                }
+              ],
+              "children": [
+                {
+                  "id": "out-s4-c0",
+                  "type": "citation",
+                  "text": "Engelbart, 1962",
+                  "tags": [],
+                  "collapsed": true,
+                  "fields": [
+                    {
+                      "key": "Source ID",
+                      "value": "src-engelbart"
+                    }
+                  ],
+                  "children": [
+                    {
+                      "id": "out-s4-c0-r",
+                      "type": "reference",
+                      "text": "Exact reference",
+                      "tags": [],
+                      "collapsed": true,
+                      "fields": [
+                        {
+                          "key": "Source ID",
+                          "value": "src-engelbart"
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "out-s5",
+              "type": "sentence",
+              "text": "His group demonstrated hierarchical, collapsible documents in a live system in 1968.",
+              "tags": [
+                "role-history",
+                "support-reference",
+                "topic-tools"
+              ],
+              "collapsed": true,
+              "fields": [
+                {
+                  "key": "Sentence review",
+                  "value": "The conference paper describes the system. No passage was checked here, so the page shows it as unverified."
+                },
+                {
+                  "key": "Status",
+                  "value": "Reference only · check before relying on it"
+                }
+              ],
+              "children": [
+                {
+                  "id": "out-s5-c0",
+                  "type": "citation",
+                  "text": "Engelbart & English, 1968",
+                  "tags": [],
+                  "collapsed": true,
+                  "fields": [
+                    {
+                      "key": "Source ID",
+                      "value": "src-engelbart-english"
+                    }
+                  ],
+                  "children": [
+                    {
+                      "id": "out-s5-c0-r",
+                      "type": "reference",
+                      "text": "Exact reference",
+                      "tags": [],
+                      "collapsed": true,
+                      "fields": [
+                        {
+                          "key": "Source ID",
+                          "value": "src-engelbart-english"
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "out-s6",
+              "type": "sentence",
+              "text": "Later outliners kept the tree but moved it into ordinary files, and OPML became a common way to exchange an outline between programs.",
+              "tags": [
+                "role-history",
+                "support-reference",
+                "topic-tools",
+                "topic-structure"
+              ],
+              "collapsed": true,
+              "fields": [
+                {
+                  "key": "Sentence review",
+                  "value": "The OPML specification defines the exchange format. The claim that it became common is ours and is not measured here."
+                },
+                {
+                  "key": "Status",
+                  "value": "Reference only · check before relying on it"
+                }
+              ],
+              "children": [
+                {
+                  "id": "out-s6-c0",
+                  "type": "citation",
+                  "text": "Winer, 2006",
+                  "tags": [],
+                  "collapsed": true,
+                  "fields": [
+                    {
+                      "key": "Source ID",
+                      "value": "src-opml"
+                    }
+                  ],
+                  "children": [
+                    {
+                      "id": "out-s6-c0-r",
+                      "type": "reference",
+                      "text": "Exact reference",
+                      "tags": [],
+                      "collapsed": true,
+                      "fields": [
+                        {
+                          "key": "Source ID",
+                          "value": "src-opml"
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sec-blocks",
+      "type": "section",
+      "text": "Blocks, fields and tags",
+      "tags": [
+        "topic"
+      ],
+      "collapsed": false,
+      "fields": [
+        {
+          "key": "Heading level",
+          "value": "2"
+        }
+      ],
+      "children": [
+        {
+          "id": "p-blocks-1",
+          "type": "paragraph",
+          "text": "Blocks",
+          "tags": [],
+          "collapsed": false,
+          "fields": [
+            {
+              "key": "Source file",
+              "value": "examples/outliners-article.mjs"
+            }
+          ],
+          "children": [
+            {
+              "id": "out-s7",
+              "type": "sentence",
+              "text": "In an evidence outliner the tree has a fixed meaning, running from the section down to the exact words a source used.",
+              "tags": [
+                "role-mechanism",
+                "support-quoted",
+                "topic-blocks",
+                "topic-evidence"
+              ],
+              "collapsed": true,
+              "fields": [
+                {
+                  "key": "Sentence review",
+                  "value": "The README gives the five levels verbatim. The sentence restates them without adding a claim."
+                }
+              ],
+              "children": [
+                {
+                  "id": "out-s7-c0",
+                  "type": "citation",
+                  "text": "Trace README, 2026",
+                  "tags": [],
+                  "collapsed": true,
+                  "fields": [
+                    {
+                      "key": "Source ID",
+                      "value": "src-readme"
+                    }
+                  ],
+                  "children": [
+                    {
+                      "id": "out-s7-c0-r",
+                      "type": "reference",
+                      "text": "Exact reference",
+                      "tags": [],
+                      "collapsed": true,
+                      "fields": [
+                        {
+                          "key": "Source ID",
+                          "value": "src-readme"
+                        },
+                        {
+                          "key": "Exact supporting extract",
+                          "value": "Section → paragraph → sentence → citation → exact reference."
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "out-s8",
+              "type": "sentence",
+              "text": "Every block can also carry fields, which open as quiet key and value rows under the block instead of a separate form.",
+              "tags": [
+                "role-mechanism",
+                "support-quoted",
+                "topic-fields"
+              ],
+              "collapsed": true,
+              "fields": [
+                {
+                  "key": "Sentence review",
+                  "value": "The design brief states this directly."
+                }
+              ],
+              "children": [
+                {
+                  "id": "out-s8-c0",
+                  "type": "citation",
+                  "text": "Trace design brief, 2026",
+                  "tags": [],
+                  "collapsed": true,
+                  "fields": [
+                    {
+                      "key": "Source ID",
+                      "value": "src-prompt"
+                    }
+                  ],
+                  "children": [
+                    {
+                      "id": "out-s8-c0-r",
+                      "type": "reference",
+                      "text": "Exact reference",
+                      "tags": [],
+                      "collapsed": true,
+                      "fields": [
+                        {
+                          "key": "Source ID",
+                          "value": "src-prompt"
+                        },
+                        {
+                          "key": "Exact supporting extract",
+                          "value": "Fields reveal inline key:value rows like Tana or Logseq; these are not four separate forms or four boxed cards."
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "out-s9",
+              "type": "sentence",
+              "text": "Tags sit beside the fields, and one sentence can carry several of them, for its role, its support and its topic.",
+              "tags": [
+                "role-mechanism",
+                "support-none",
+                "topic-fields"
+              ],
+              "collapsed": true,
+              "fields": [
+                {
+                  "key": "Sentence review",
+                  "value": "Describes this page itself. Hover any sentence to see its tags."
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "p-blocks-2",
+          "type": "paragraph",
+          "text": "Shared sources",
+          "tags": [],
+          "collapsed": false,
+          "fields": [
+            {
+              "key": "Source file",
+              "value": "examples/outliners-article.mjs"
+            }
+          ],
+          "children": [
+            {
+              "id": "out-s10",
+              "type": "sentence",
+              "text": "A source is stored once and every citation points to it, so correcting a reference corrects it everywhere.",
+              "tags": [
+                "role-mechanism",
+                "support-quoted",
+                "topic-evidence"
+              ],
+              "collapsed": true,
+              "fields": [
+                {
+                  "key": "Sentence review",
+                  "value": "The README states that quotes and metadata live in shared source blocks."
+                }
+              ],
+              "children": [
+                {
+                  "id": "out-s10-c0",
+                  "type": "citation",
+                  "text": "Trace README, 2026",
+                  "tags": [],
+                  "collapsed": true,
+                  "fields": [
+                    {
+                      "key": "Source ID",
+                      "value": "src-readme"
+                    }
+                  ],
+                  "children": [
+                    {
+                      "id": "out-s10-c0-r",
+                      "type": "reference",
+                      "text": "Exact reference",
+                      "tags": [],
+                      "collapsed": true,
+                      "fields": [
+                        {
+                          "key": "Source ID",
+                          "value": "src-readme"
+                        },
+                        {
+                          "key": "Exact supporting extract",
+                          "value": "Quotes and bibliographic metadata are stored in shared source blocks."
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sec-reading",
+      "type": "section",
+      "text": "Reading an outline as a paper",
+      "tags": [
+        "topic"
+      ],
+      "collapsed": false,
+      "fields": [
+        {
+          "key": "Heading level",
+          "value": "2"
+        }
+      ],
+      "children": [
+        {
+          "id": "p-reading-1",
+          "type": "paragraph",
+          "text": "One tree, several views",
+          "tags": [],
+          "collapsed": false,
+          "fields": [
+            {
+              "key": "Source file",
+              "value": "examples/outliners-article.mjs"
+            }
+          ],
+          "children": [
+            {
+              "id": "out-s11",
+              "type": "sentence",
+              "text": "The same tree can be shown as an outline for writing or as plain prose for reading, and switching between them leaves the blocks untouched.",
+              "tags": [
+                "role-mechanism",
+                "support-quoted",
+                "topic-reading"
+              ],
+              "collapsed": true,
+              "fields": [
+                {
+                  "key": "Sentence review",
+                  "value": "The README makes this guarantee for the APA view."
+                }
+              ],
+              "children": [
+                {
+                  "id": "out-s11-c0",
+                  "type": "citation",
+                  "text": "Trace README, 2026",
+                  "tags": [],
+                  "collapsed": true,
+                  "fields": [
+                    {
+                      "key": "Source ID",
+                      "value": "src-readme"
+                    }
+                  ],
+                  "children": [
+                    {
+                      "id": "out-s11-c0-r",
+                      "type": "reference",
+                      "text": "Exact reference",
+                      "tags": [],
+                      "collapsed": true,
+                      "fields": [
+                        {
+                          "key": "Source ID",
+                          "value": "src-readme"
+                        },
+                        {
+                          "key": "Exact supporting extract",
+                          "value": "Switching views does not discard or rewrite blocks."
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "out-s12",
+              "type": "sentence",
+              "text": "This page is the reading view: the outline is still there, but it stays out of the way until you ask for it.",
+              "tags": [
+                "role-interpretation",
+                "support-none",
+                "topic-reading"
+              ],
+              "collapsed": true,
+              "fields": [
+                {
+                  "key": "Sentence review",
+                  "value": "A description of the page you are reading."
+                }
+              ],
+              "children": []
+            },
+            {
+              "id": "out-s13",
+              "type": "sentence",
+              "text": "Hovering a sentence shows its piece of the tree in the margin, and that margin is only a projection of the stored blocks.",
+              "tags": [
+                "role-mechanism",
+                "support-quoted",
+                "topic-reading",
+                "topic-blocks"
+              ],
+              "collapsed": true,
+              "fields": [
+                {
+                  "key": "Sentence review",
+                  "value": "The code comment states that the hover outline is a projection."
+                }
+              ],
+              "children": [
+                {
+                  "id": "out-s13-c0",
+                  "type": "citation",
+                  "text": "Trace source comments, 2026",
+                  "tags": [],
+                  "collapsed": true,
+                  "fields": [
+                    {
+                      "key": "Source ID",
+                      "value": "src-code"
+                    }
+                  ],
+                  "children": [
+                    {
+                      "id": "out-s13-c0-r",
+                      "type": "reference",
+                      "text": "Exact reference",
+                      "tags": [],
+                      "collapsed": true,
+                      "fields": [
+                        {
+                          "key": "Source ID",
+                          "value": "src-code"
+                        },
+                        {
+                          "key": "Exact supporting extract",
+                          "value": "The hover outline is a projection, never a second editable copy."
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "out-c24",
+                  "type": "note",
+                  "text": "Nice: this is what makes the evidence feel close.",
+                  "tags": [],
+                  "collapsed": true,
+                  "fields": [
+                    {
+                      "key": "Comment by",
+                      "value": ""
+                    },
+                    {
+                      "key": "Commented on",
+                      "value": "2026-11-24"
+                    }
+                  ],
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "p-reading-2",
+          "type": "paragraph",
+          "text": "Focus without hiding",
+          "tags": [],
+          "collapsed": false,
+          "fields": [
+            {
+              "key": "Source file",
+              "value": "examples/outliners-article.mjs"
+            }
+          ],
+          "children": [
+            {
+              "id": "out-s14",
+              "type": "sentence",
+              "text": "Choosing a tag in the margin dims every sentence that does not carry it, so you can read one thread of the argument at a time.",
+              "tags": [
+                "role-mechanism",
+                "support-none",
+                "topic-reading",
+                "topic-fields"
+              ],
+              "collapsed": true,
+              "fields": [
+                {
+                  "key": "Sentence review",
+                  "value": "Try it with the Topic tags on the left."
+                }
+              ],
+              "children": []
+            },
+            {
+              "id": "out-s15",
+              "type": "sentence",
+              "text": "Nothing is removed while you do this, and the focus is not saved into the document.",
+              "tags": [
+                "role-mechanism",
+                "support-quoted",
+                "topic-reading"
+              ],
+              "collapsed": true,
+              "fields": [
+                {
+                  "key": "Sentence review",
+                  "value": "Both properties are stated in the project files."
+                }
+              ],
+              "children": [
+                {
+                  "id": "out-s15-c0",
+                  "type": "citation",
+                  "text": "Trace README, 2026",
+                  "tags": [],
+                  "collapsed": true,
+                  "fields": [
+                    {
+                      "key": "Source ID",
+                      "value": "src-readme"
+                    }
+                  ],
+                  "children": [
+                    {
+                      "id": "out-s15-c0-r",
+                      "type": "reference",
+                      "text": "Exact reference",
+                      "tags": [],
+                      "collapsed": true,
+                      "fields": [
+                        {
+                          "key": "Source ID",
+                          "value": "src-readme"
+                        },
+                        {
+                          "key": "Exact supporting extract",
+                          "value": "No text is hidden, reordered, or rewritten."
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "out-s15-c1",
+                  "type": "citation",
+                  "text": "Trace source comments, 2026",
+                  "tags": [],
+                  "collapsed": true,
+                  "fields": [
+                    {
+                      "key": "Source ID",
+                      "value": "src-code"
+                    }
+                  ],
+                  "children": [
+                    {
+                      "id": "out-s15-c1-r",
+                      "type": "reference",
+                      "text": "Exact reference",
+                      "tags": [],
+                      "collapsed": true,
+                      "fields": [
+                        {
+                          "key": "Source ID",
+                          "value": "src-code"
+                        },
+                        {
+                          "key": "Exact supporting extract",
+                          "value": "Reading focus is transient UI state, separate from author text and backups."
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sec-evidence",
+      "type": "section",
+      "text": "Evidence you can open",
+      "tags": [
+        "topic"
+      ],
+      "collapsed": false,
+      "fields": [
+        {
+          "key": "Heading level",
+          "value": "2"
+        }
+      ],
+      "children": [
+        {
+          "id": "p-evidence-1",
+          "type": "paragraph",
+          "text": "From sentence to quote",
+          "tags": [],
+          "collapsed": false,
+          "fields": [
+            {
+              "key": "Source file",
+              "value": "examples/outliners-article.mjs"
+            }
+          ],
+          "children": [
+            {
+              "id": "out-s16",
+              "type": "sentence",
+              "text": "Clicking a sentence opens its branch in place, from the citation down to the quoted passage and where that passage sits in the source.",
+              "tags": [
+                "role-mechanism",
+                "support-none",
+                "topic-evidence"
+              ],
+              "collapsed": true,
+              "fields": [
+                {
+                  "key": "Sentence review",
+                  "value": "Click this sentence to see the behaviour it describes."
+                }
+              ],
+              "children": []
+            },
+            {
+              "id": "out-s17",
+              "type": "sentence",
+              "text": "When a source has no checked quote, the page says so instead of inventing one.",
+              "tags": [
+                "role-mechanism",
+                "support-none",
+                "topic-evidence"
+              ],
+              "collapsed": true,
+              "fields": [
+                {
+                  "key": "Sentence review",
+                  "value": "Open any sentence in the history section to see the unverified state."
+                }
+              ],
+              "children": []
+            },
+            {
+              "id": "out-s18",
+              "type": "sentence",
+              "text": "The tags separate what a sentence claims from how well it is supported, which keeps an interpretation from looking like a finding.",
+              "tags": [
+                "role-interpretation",
+                "support-none",
+                "topic-evidence",
+                "topic-fields"
+              ],
+              "collapsed": true,
+              "fields": [
+                {
+                  "key": "Sentence review",
+                  "value": "Our interpretation of why role and support are separate tag families."
+                }
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sec-limits",
+      "type": "section",
+      "text": "Limits",
+      "tags": [
+        "topic"
+      ],
+      "collapsed": false,
+      "fields": [
+        {
+          "key": "Heading level",
+          "value": "2"
+        }
+      ],
+      "children": [
+        {
+          "id": "p-limits-1",
+          "type": "paragraph",
+          "text": "What an outliner does not do",
+          "tags": [],
+          "collapsed": false,
+          "fields": [
+            {
+              "key": "Source file",
+              "value": "examples/outliners-article.mjs"
+            }
+          ],
+          "children": [
+            {
+              "id": "out-s19",
+              "type": "sentence",
+              "text": "An outliner records where a claim comes from, but it does not check that the source really supports the claim.",
+              "tags": [
+                "role-limit",
+                "support-none",
+                "topic-evidence"
+              ],
+              "collapsed": true,
+              "fields": [
+                {
+                  "key": "Sentence review",
+                  "value": "A limitation of the format. Support decisions are made by people."
+                }
+              ],
+              "children": [
+                {
+                  "id": "out-c22",
+                  "type": "note",
+                  "text": "Could the tool flag a quote whose context no longer contains it?",
+                  "tags": [],
+                  "collapsed": true,
+                  "fields": [
+                    {
+                      "key": "Comment by",
+                      "value": "Example reader"
+                    },
+                    {
+                      "key": "Commented on",
+                      "value": "2026-11-24"
+                    }
+                  ],
+                  "children": [
+                    {
+                      "id": "out-c23",
+                      "type": "note",
+                      "text": "The validator does: a context that does not contain its quote is an error.",
+                      "tags": [],
+                      "collapsed": true,
+                      "fields": [
+                        {
+                          "key": "Comment by",
+                          "value": ""
+                        },
+                        {
+                          "key": "Commented on",
+                          "value": "2026-11-24"
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "out-s20",
+              "type": "sentence",
+              "text": "A tree also favours one way of dividing an argument, so ideas that cross branches have to be linked with tags or repeated citations.",
+              "tags": [
+                "role-limit",
+                "role-interpretation",
+                "support-none",
+                "topic-structure"
+              ],
+              "collapsed": true,
+              "fields": [
+                {
+                  "key": "Sentence review",
+                  "value": "Our interpretation of a known trade-off of hierarchical documents."
+                }
+              ],
+              "children": []
+            },
+            {
+              "id": "out-s21",
+              "type": "sentence",
+              "text": "The reading view works best for documents that are finished enough to read, while the outline view remains the place to write.",
+              "tags": [
+                "role-interpretation",
+                "support-none",
+                "topic-reading"
+              ],
+              "collapsed": true,
+              "fields": [
+                {
+                  "key": "Sentence review",
+                  "value": "A recommendation from building this page."
+                }
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "src-readme",
+      "text": "Trace README, 2026",
+      "fields": [
+        {
+          "key": "APA citation",
+          "value": "Trace README, 2026"
+        },
+        {
+          "key": "First author",
+          "value": "Trace README"
+        },
+        {
+          "key": "Year",
+          "value": "2026"
+        },
+        {
+          "key": "APA reference",
+          "value": "Trace README. (2026). Project documentation for the Trace evidence outliner [Unpublished project file, README.md]."
+        },
+        {
+          "key": "Exact quote",
+          "value": "Section → paragraph → sentence → citation → exact reference."
+        },
+        {
+          "key": "Quote location",
+          "value": "README.md · What is in it · third list item"
+        },
+        {
+          "key": "Exact quote 2",
+          "value": "Switching views does not discard or rewrite blocks."
+        },
+        {
+          "key": "Quote location 2",
+          "value": "README.md · Views and export · APA view paragraph, last sentence"
+        },
+        {
+          "key": "Exact quote 3",
+          "value": "No text is hidden, reordered, or rewritten."
+        },
+        {
+          "key": "Quote location 3",
+          "value": "README.md · Views and export · focus counts paragraph"
+        },
+        {
+          "key": "Exact quote 4",
+          "value": "Quotes and bibliographic metadata are stored in shared source blocks."
+        },
+        {
+          "key": "Quote location 4",
+          "value": "README.md · What is in it · last list item"
+        },
+        {
+          "key": "Record status",
+          "value": "Checked excerpt · verbatim"
+        },
+        {
+          "key": "Quote context",
+          "value": "- Section → paragraph → sentence → citation → exact reference. Blocks retain source-file/line locators, original LaTeX, arbitrary fields and collapse state. Table rows and figure assets are also retained."
+        },
+        {
+          "key": "Quote context 2",
+          "value": "**APA view** preserves the full section/paragraph structure and projects the same sentences with author–year citations and a reference list. Select a sentence to see tags, review and evidence (editable only in editing mode). Audit-only evidence links do not insert citations into manuscript prose. Switching views does not discard or rewrite blocks."
+        },
+        {
+          "key": "Quote context 3",
+          "value": "Focus counts are unique visible reading blocks, including headings and visual blocks, not only sentences. Paragraph tags apply to their text; figure/table tags include their captions. A heading tag highlights the heading, not its whole section. Search narrows focus matches. Linked references stay prominent; evidence controls remain usable. No text is hidden, reordered, or rewritten. Focus and sidebar folds are session-only and do not alter saved document tags or exports. Printing restores full opacity. See [reading-focus verification](READING_FOCUS.md)."
+        },
+        {
+          "key": "Quote context 4",
+          "value": "- Quotes and bibliographic metadata are stored in shared source blocks. Editing a shared record updates every linked reference; it does not create inconsistent copies."
+        },
+        {
+          "key": "Quote note.1",
+          "value": "The five levels are the whole idea: each one is a block you can open."
+        },
+        {
+          "key": "Quote tags",
+          "value": "topic-blocks;topic-evidence"
+        },
+        {
+          "key": "Quote note 2.1",
+          "value": "A guarantee, not a habit: views are projections of one tree."
+        },
+        {
+          "key": "Added by",
+          "value": "AI agent (example author)"
+        },
+        {
+          "key": "Added via",
+          "value": "Trace checkout"
+        },
+        {
+          "key": "Added on",
+          "value": "2026-11-24"
+        },
+        {
+          "key": "Quote added by",
+          "value": "AI agent (example author)"
+        },
+        {
+          "key": "Quote checked by",
+          "value": "script (verbatim check)"
+        },
+        {
+          "key": "Quote checked on",
+          "value": "2026-11-24"
+        },
+        {
+          "key": "Quote added by 2",
+          "value": "AI agent (example author)"
+        },
+        {
+          "key": "Quote checked by 2",
+          "value": "script (verbatim check)"
+        },
+        {
+          "key": "Quote checked on 2",
+          "value": "2026-11-24"
+        },
+        {
+          "key": "Quote added by 3",
+          "value": "AI agent (example author)"
+        },
+        {
+          "key": "Quote checked by 3",
+          "value": "script (verbatim check)"
+        },
+        {
+          "key": "Quote checked on 3",
+          "value": "2026-11-24"
+        },
+        {
+          "key": "Quote added by 4",
+          "value": "AI agent (example author)"
+        },
+        {
+          "key": "Quote checked by 4",
+          "value": "script (verbatim check)"
+        },
+        {
+          "key": "Quote checked on 4",
+          "value": "2026-11-24"
+        }
+      ],
+      "type": "source",
+      "tags": [],
+      "collapsed": true,
+      "children": []
+    },
+    {
+      "id": "src-prompt",
+      "text": "Trace design brief, 2026",
+      "fields": [
+        {
+          "key": "APA citation",
+          "value": "Trace design brief, 2026"
+        },
+        {
+          "key": "First author",
+          "value": "Trace design brief"
+        },
+        {
+          "key": "Year",
+          "value": "2026"
+        },
+        {
+          "key": "APA reference",
+          "value": "Trace design brief. (2026). Interface concept prompt for the Margin outliner [Design note]. Unpublished project file, design/prompt.md."
+        },
+        {
+          "key": "Exact quote",
+          "value": "Fields reveal inline key:value rows like Tana or Logseq; these are not four separate forms or four boxed cards."
+        },
+        {
+          "key": "Quote location",
+          "value": "design/prompt.md · Desktop UI · paragraph after the four hierarchy levels"
+        },
+        {
+          "key": "Record status",
+          "value": "Checked excerpt · verbatim"
+        },
+        {
+          "key": "Quote context",
+          "value": "Make Fields controls available at EVERY hierarchy level. Fields reveal inline key:value rows like Tana or Logseq; these are not four separate forms or four boxed cards. Circular disclosure and add-child buttons demonstrate collapsing and extension of every block. The deepest quote has visual breathing room."
+        },
+        {
+          "key": "Quote note.1",
+          "value": "Tana and Logseq are named only as a feel to aim for, not as sources."
+        },
+        {
+          "key": "Added by",
+          "value": "AI agent (example author)"
+        },
+        {
+          "key": "Added via",
+          "value": "Trace checkout"
+        },
+        {
+          "key": "Added on",
+          "value": "2026-11-24"
+        },
+        {
+          "key": "Quote added by",
+          "value": "AI agent (example author)"
+        },
+        {
+          "key": "Quote checked by",
+          "value": "script (verbatim check)"
+        },
+        {
+          "key": "Quote checked on",
+          "value": "2026-11-24"
+        }
+      ],
+      "type": "source",
+      "tags": [],
+      "collapsed": true,
+      "children": []
+    },
+    {
+      "id": "src-code",
+      "text": "Trace source comments, 2026",
+      "fields": [
+        {
+          "key": "APA citation",
+          "value": "Trace source comments, 2026"
+        },
+        {
+          "key": "First author",
+          "value": "Trace source comments"
+        },
+        {
+          "key": "Year",
+          "value": "2026"
+        },
+        {
+          "key": "APA reference",
+          "value": "Trace source comments. (2026). Comments in reading-peek.js, reading-rails.css and app.js [Source code]. Unpublished project files."
+        },
+        {
+          "key": "Exact quote",
+          "value": "The hover outline is a projection, never a second editable copy."
+        },
+        {
+          "key": "Quote location",
+          "value": "reading-peek.js · line 46"
+        },
+        {
+          "key": "Exact quote 2",
+          "value": "Quiet reading aids. No container chrome; paper remains the primary surface."
+        },
+        {
+          "key": "Quote location 2",
+          "value": "reading-rails.css · line 1"
+        },
+        {
+          "key": "Exact quote 3",
+          "value": "Reading focus is transient UI state, separate from author text and backups."
+        },
+        {
+          "key": "Quote location 3",
+          "value": "app.js · line 34"
+        },
+        {
+          "key": "Record status",
+          "value": "Checked excerpt · verbatim"
+        },
+        {
+          "key": "Quote context",
+          "value": "    }\n    const parts=[];let at=0;\n    for(const {start,end} of merged){if(start>at)parts.push({text:text.slice(at,start),citation:false});parts.push({text:text.slice(start,end),citation:true});at=end;}\n    if(at<text.length)parts.push({text:text.slice(at),citation:false});return parts;\n  }\n  // The hover outline is a projection, never a second editable copy.\n  const detailKeys=/^(Status|Record status|Role|Relation to this sentence|Sentence review|Evidence scope|Evidence role|Claim|Quote|Exact excerpt|Excerpt|Locator|Page|Pages|Section|Context|Context note|Boundary|Limit|Limitations|APA|DOI|URL|Year|Authors|Title|Checked|Result|Finding|Source lines)$/i;\n  function outline(doc,id,C){\n    const tags=new Map(C.tagNodes(doc).map(({tag})=>[tag.id,tag.name]));\n    function project(block,seen=new Set()){\n      if(!block||seen.has(block.id))return null;\n      const visited=new Set(seen).add(block.id);"
+        },
+        {
+          "key": "Quote context 2",
+          "value": "/* Quiet reading aids. No container chrome; paper remains the primary surface. */\n:root{--reading-blue:oklch(47% .08 245);--reading-green:oklch(47% .07 155);--reading-plum:oklch(47% .08 325);--reading-amber:oklch(47% .08 65);--reading-neutral:oklch(47% .015 120)}\n[data-tag-tone=blue]{--tag-ink:var(--reading-blue)}\n[data-tag-tone=green]{--tag-ink:var(--reading-green)}\n[data-tag-tone=plum]{--tag-ink:var(--reading-plum)}\n[data-tag-tone=amber]{--tag-ink:var(--reading-amber)}\n[data-tag-tone=neutral]{--tag-ink:var(--reading-neutral)}"
+        },
+        {
+          "key": "Quote context 3",
+          "value": "  };\n  let doc = C.validate(window.OUTLINE_SEED);\n  const requestedView = new URLSearchParams(location.search).get('view');\n  let view = ['outline','grounding','work','tags','apa','sources'].includes(requestedView) ? requestedView : 'apa', selectedId = 'ms-front', propertiesId = null, apaEvidenceId = null;\n  let editing = false, selectedTag = 'revision';\n  // Reading focus is transient UI state, separate from author text and backups.\n  let readingSidebarMode = 'tags', hoveredReadingTag = null, keyboardReadingTag = null, pinnedReadingTag = null;\n  const readingTagFolds = new Map();\n  const wideReadingMedia = matchMedia('(min-width:1280px)');\n  let peekId = null, peekOpenTimer, peekCloseTimer;\n  let readingFocusMatches = new Map();\n  const evidenceOpen = new Set();"
+        },
+        {
+          "key": "Quote note.1",
+          "value": "Read from the code, not the docs: the margin outline cannot drift from the stored blocks."
+        },
+        {
+          "key": "Quote comment.1",
+          "value": "Worth repeating in the user guide, where readers will actually see it."
+        },
+        {
+          "key": "Quote comment by.1",
+          "value": ""
+        },
+        {
+          "key": "Added by",
+          "value": "AI agent (example author)"
+        },
+        {
+          "key": "Added via",
+          "value": "Trace checkout"
+        },
+        {
+          "key": "Added on",
+          "value": "2026-11-24"
+        },
+        {
+          "key": "Quote added by",
+          "value": "AI agent (example author)"
+        },
+        {
+          "key": "Quote checked by",
+          "value": "script (verbatim check)"
+        },
+        {
+          "key": "Quote checked on",
+          "value": "2026-11-24"
+        },
+        {
+          "key": "Quote added by 2",
+          "value": "AI agent (example author)"
+        },
+        {
+          "key": "Quote checked by 2",
+          "value": "script (verbatim check)"
+        },
+        {
+          "key": "Quote checked on 2",
+          "value": "2026-11-24"
+        },
+        {
+          "key": "Quote added by 3",
+          "value": "AI agent (example author)"
+        },
+        {
+          "key": "Quote checked by 3",
+          "value": "script (verbatim check)"
+        },
+        {
+          "key": "Quote checked on 3",
+          "value": "2026-11-24"
+        }
+      ],
+      "type": "source",
+      "tags": [],
+      "collapsed": true,
+      "children": []
+    },
+    {
+      "id": "src-engelbart",
+      "text": "Engelbart, 1962",
+      "fields": [
+        {
+          "key": "APA citation",
+          "value": "Engelbart, 1962"
+        },
+        {
+          "key": "First author",
+          "value": "Engelbart"
+        },
+        {
+          "key": "Year",
+          "value": "1962"
+        },
+        {
+          "key": "APA reference",
+          "value": "Engelbart, D. C. (1962). Augmenting human intellect: A conceptual framework (Summary Report AFOSR-3223). Stanford Research Institute."
+        },
+        {
+          "key": "Record status",
+          "value": "Reference only · no passage checked for this article"
+        },
+        {
+          "key": "Added by",
+          "value": "AI agent (example author)"
+        },
+        {
+          "key": "Added via",
+          "value": "Trace checkout"
+        },
+        {
+          "key": "Added on",
+          "value": "2026-11-24"
+        }
+      ],
+      "type": "source",
+      "tags": [],
+      "collapsed": true,
+      "children": []
+    },
+    {
+      "id": "src-engelbart-english",
+      "text": "Engelbart & English, 1968",
+      "fields": [
+        {
+          "key": "APA citation",
+          "value": "Engelbart & English, 1968"
+        },
+        {
+          "key": "First author",
+          "value": "Engelbart"
+        },
+        {
+          "key": "Year",
+          "value": "1968"
+        },
+        {
+          "key": "APA reference",
+          "value": "Engelbart, D. C., & English, W. K. (1968). A research center for augmenting human intellect. In Proceedings of the Fall Joint Computer Conference (pp. 395–410). AFIPS."
+        },
+        {
+          "key": "Record status",
+          "value": "Reference only · no passage checked for this article"
+        },
+        {
+          "key": "Added by",
+          "value": "AI agent (example author)"
+        },
+        {
+          "key": "Added via",
+          "value": "Trace checkout"
+        },
+        {
+          "key": "Added on",
+          "value": "2026-11-24"
+        }
+      ],
+      "type": "source",
+      "tags": [],
+      "collapsed": true,
+      "children": []
+    },
+    {
+      "id": "src-opml",
+      "text": "Winer, 2006",
+      "fields": [
+        {
+          "key": "APA citation",
+          "value": "Winer, 2006"
+        },
+        {
+          "key": "First author",
+          "value": "Winer"
+        },
+        {
+          "key": "Year",
+          "value": "2006"
+        },
+        {
+          "key": "APA reference",
+          "value": "Winer, D. (2006). OPML 2.0 specification. http://opml.org/spec2.opml"
+        },
+        {
+          "key": "URL",
+          "value": "http://opml.org/spec2.opml"
+        },
+        {
+          "key": "Record status",
+          "value": "Reference only · no passage checked for this article"
+        },
+        {
+          "key": "Added by",
+          "value": "AI agent (example author)"
+        },
+        {
+          "key": "Added via",
+          "value": "Trace checkout"
+        },
+        {
+          "key": "Added on",
+          "value": "2026-11-24"
+        }
+      ],
+      "type": "source",
+      "tags": [],
+      "collapsed": true,
+      "children": []
+    }
+  ]
+}

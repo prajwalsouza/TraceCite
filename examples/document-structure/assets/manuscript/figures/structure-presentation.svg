@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" role="img" aria-labelledby="t d">
+  <title id="t">One structure, several presentations</title>
+  <desc id="d">On the left, a marked-up source names its parts: title, section, paragraph and note. Arrows lead to three presentations of the same source: a screen page, a printed page and spoken audio.</desc>
+  <rect width="960" height="420" rx="24" fill="hsl(60, 50%, 98%)"/>
+  <!-- source -->
+  <rect x="50" y="70" width="330" height="280" rx="18" fill="hsl(210, 40%, 94%)" stroke="hsl(210, 25%, 75%)" stroke-width="2"/>
+  <text x="215" y="52" font-size="20" font-weight="600" fill="hsl(86, 20%, 18%)" text-anchor="middle">Declared structure</text>
+  <g font-family="ui-monospace, Menlo, Consolas, monospace" font-size="17" fill="hsl(210, 30%, 30%)">
+    <text x="76" y="116">&lt;title&gt;</text>
+    <text x="96" y="152">&lt;section&gt;</text>
+    <text x="116" y="188">&lt;head&gt;</text>
+    <text x="116" y="224">&lt;p&gt; … &lt;/p&gt;</text>
+    <text x="116" y="260">&lt;note&gt; … &lt;/note&gt;</text>
+    <text x="96" y="296">&lt;/section&gt;</text>
+    <text x="76" y="332">&lt;/title&gt;</text>
+  </g>
+  <!-- arrows -->
+  <g stroke="hsl(80, 15%, 66%)" stroke-width="2.5" fill="none" stroke-linecap="round">
+    <path d="M392 150 C 470 150, 500 110, 580 110"/>
+    <path d="M392 210 L580 210"/>
+    <path d="M392 270 C 470 270, 500 310, 580 310"/>
+  </g>
+  <g fill="hsl(80, 15%, 66%)">
+    <polygon points="580,103 594,110 580,117"/>
+    <polygon points="580,203 594,210 580,217"/>
+    <polygon points="580,303 594,310 580,317"/>
+  </g>
+  <text x="486" y="246" font-size="15" fill="hsl(87, 10%, 40%)" text-anchor="middle">style rules</text>
+  <!-- outputs -->
+  <g font-size="19" fill="hsl(86, 20%, 18%)">
+    <rect x="606" y="82" width="300" height="56" rx="14" fill="hsl(150, 30%, 90%)" stroke="hsl(150, 20%, 70%)" stroke-width="2"/>
+    <text x="630" y="117" font-weight="600">Screen</text>
+    <text x="712" y="117" font-size="16" fill="hsl(87, 10%, 40%)">headings, links</text>
+    <rect x="606" y="182" width="300" height="56" rx="14" fill="hsl(36, 70%, 90%)" stroke="hsl(36, 40%, 72%)" stroke-width="2"/>
+    <text x="630" y="217" font-weight="600">Print</text>
+    <text x="712" y="217" font-size="16" fill="hsl(87, 10%, 40%)">pages, footnotes</text>
+    <rect x="606" y="282" width="300" height="56" rx="14" fill="hsl(260, 30%, 92%)" stroke="hsl(260, 20%, 74%)" stroke-width="2"/>
+    <text x="630" y="317" font-weight="600">Speech</text>
+    <text x="712" y="317" font-size="16" fill="hsl(87, 10%, 40%)">read aloud in order</text>
+  </g>
+  <text x="50" y="394" font-size="15" fill="hsl(87, 8%, 48%)">Schematic. Element names follow common HTML and TEI usage.</text>
+</svg>

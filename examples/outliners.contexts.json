@@ -1,0 +1,34 @@
+{
+  "src-readme|1": {
+    "context": "- Section → paragraph → sentence → citation → exact reference. Blocks retain source-file/line locators, original LaTeX, arbitrary fields and collapse state. Table rows and figure assets are also retained.",
+    "file": "README.md"
+  },
+  "src-readme|2": {
+    "context": "**APA view** preserves the full section/paragraph structure and projects the same sentences with author–year citations and a reference list. Select a sentence to see tags, review and evidence (editable only in editing mode). Audit-only evidence links do not insert citations into manuscript prose. Switching views does not discard or rewrite blocks.",
+    "file": "README.md"
+  },
+  "src-readme|3": {
+    "context": "Focus counts are unique visible reading blocks, including headings and visual blocks, not only sentences. Paragraph tags apply to their text; figure/table tags include their captions. A heading tag highlights the heading, not its whole section. Search narrows focus matches. Linked references stay prominent; evidence controls remain usable. No text is hidden, reordered, or rewritten. Focus and sidebar folds are session-only and do not alter saved document tags or exports. Printing restores full opacity. See [reading-focus verification](READING_FOCUS.md).",
+    "file": "README.md"
+  },
+  "src-readme|4": {
+    "context": "- Quotes and bibliographic metadata are stored in shared source blocks. Editing a shared record updates every linked reference; it does not create inconsistent copies.",
+    "file": "README.md"
+  },
+  "src-prompt|1": {
+    "context": "Make Fields controls available at EVERY hierarchy level. Fields reveal inline key:value rows like Tana or Logseq; these are not four separate forms or four boxed cards. Circular disclosure and add-child buttons demonstrate collapsing and extension of every block. The deepest quote has visual breathing room.",
+    "file": "design/prompt.md"
+  },
+  "src-code|1": {
+    "context": "    }\n    const parts=[];let at=0;\n    for(const {start,end} of merged){if(start>at)parts.push({text:text.slice(at,start),citation:false});parts.push({text:text.slice(start,end),citation:true});at=end;}\n    if(at<text.length)parts.push({text:text.slice(at),citation:false});return parts;\n  }\n  // The hover outline is a projection, never a second editable copy.\n  const detailKeys=/^(Status|Record status|Role|Relation to this sentence|Sentence review|Evidence scope|Evidence role|Claim|Quote|Exact excerpt|Excerpt|Locator|Page|Pages|Section|Context|Context note|Boundary|Limit|Limitations|APA|DOI|URL|Year|Authors|Title|Checked|Result|Finding|Source lines)$/i;\n  function outline(doc,id,C){\n    const tags=new Map(C.tagNodes(doc).map(({tag})=>[tag.id,tag.name]));\n    function project(block,seen=new Set()){\n      if(!block||seen.has(block.id))return null;\n      const visited=new Set(seen).add(block.id);",
+    "file": "reading-peek.js"
+  },
+  "src-code|2": {
+    "context": "/* Quiet reading aids. No container chrome; paper remains the primary surface. */\n:root{--reading-blue:oklch(47% .08 245);--reading-green:oklch(47% .07 155);--reading-plum:oklch(47% .08 325);--reading-amber:oklch(47% .08 65);--reading-neutral:oklch(47% .015 120)}\n[data-tag-tone=blue]{--tag-ink:var(--reading-blue)}\n[data-tag-tone=green]{--tag-ink:var(--reading-green)}\n[data-tag-tone=plum]{--tag-ink:var(--reading-plum)}\n[data-tag-tone=amber]{--tag-ink:var(--reading-amber)}\n[data-tag-tone=neutral]{--tag-ink:var(--reading-neutral)}",
+    "file": "reading-rails.css"
+  },
+  "src-code|3": {
+    "context": "  };\n  let doc = C.validate(window.OUTLINE_SEED);\n  const requestedView = new URLSearchParams(location.search).get('view');\n  let view = ['outline','grounding','work','tags','apa','sources'].includes(requestedView) ? requestedView : 'apa', selectedId = 'ms-front', propertiesId = null, apaEvidenceId = null;\n  let editing = false, selectedTag = 'revision';\n  // Reading focus is transient UI state, separate from author text and backups.\n  let readingSidebarMode = 'tags', hoveredReadingTag = null, keyboardReadingTag = null, pinnedReadingTag = null;\n  const readingTagFolds = new Map();\n  const wideReadingMedia = matchMedia('(min-width:1280px)');\n  let peekId = null, peekOpenTimer, peekCloseTimer;\n  let readingFocusMatches = new Map();\n  const evidenceOpen = new Set();",
+    "file": "app.js"
+  }
+}
