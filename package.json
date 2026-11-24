@@ -1,0 +1,15 @@
+{
+  "name": "tracecite",
+  "version": "0.1.0",
+  "description": "A format and dependency-free builder for evidence-first documents with sources that open in place.",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "repository": "github:prajwalsouza/TraceCite",
+  "scripts": {
+    "build:examples": "node scripts/build-reading.mjs --data examples/outliners.trace.json --out references/outliners-reading.html && node scripts/build-reading.mjs --data examples/document-structure/document-structure.trace.json --out references/document-structure-reading.html",
+    "validate": "node scripts/validate-trace.mjs examples/outliners.trace.json && node scripts/validate-trace.mjs examples/document-structure/document-structure.trace.json"
+  }
+}
