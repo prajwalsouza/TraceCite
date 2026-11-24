@@ -1,0 +1,46 @@
+/* Quiet reading aids. No container chrome; paper remains the primary surface. */
+:root{--reading-blue:oklch(47% .08 245);--reading-green:oklch(47% .07 155);--reading-plum:oklch(47% .08 325);--reading-amber:oklch(47% .08 65);--reading-neutral:oklch(47% .015 120)}
+[data-tag-tone=blue]{--tag-ink:var(--reading-blue)}
+[data-tag-tone=green]{--tag-ink:var(--reading-green)}
+[data-tag-tone=plum]{--tag-ink:var(--reading-plum)}
+[data-tag-tone=amber]{--tag-ink:var(--reading-amber)}
+[data-tag-tone=neutral]{--tag-ink:var(--reading-neutral)}
+.reading-citation{color:var(--reading-blue)}
+.apa-sentence.peek-target,.apa-sentence:hover{text-decoration:none}
+#reading-tag-rail,#sentence-hover-rail{display:none}
+.reading-tag-select>span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;overflow-wrap:normal}
+.reading-tag-leaf{color:transparent}
+@media screen and (min-width:1280px){
+  body.reading-rails .shell{max-width:1600px;padding-inline:232px 288px;box-sizing:border-box}
+  body.reading-rails main{padding-inline:clamp(28px,3.5vw,56px)}
+  body.reading-rails #reading-tag-rail,body.reading-rails #sentence-hover-rail{display:block;position:fixed;top:100px;bottom:28px;z-index:20;padding:0;border:0;border-radius:0;background:none;box-shadow:none;overflow:auto;overscroll-behavior:contain;scrollbar-width:none}
+  #reading-tag-rail::-webkit-scrollbar,#sentence-hover-rail::-webkit-scrollbar{display:none}
+  body.reading-rails #reading-tag-rail{left:max(24px,calc((100vw - 1600px)/2));width:208px}
+  body.reading-rails #sentence-hover-rail{right:max(24px,calc((100vw - 1600px)/2));width:264px}
+  #reading-tag-rail .reading-focus-hint,#reading-tag-rail .reading-focus-status{display:none}
+  #reading-tag-rail .reading-tag-branches .reading-tag-branches{border:0;margin-inline-start:10px;padding-inline-start:6px}
+  #reading-tag-rail .reading-tag-row{grid-template-columns:20px minmax(0,1fr);margin:0}
+  #reading-tag-rail .reading-tag-select,#reading-tag-rail .reading-tag-toggle{min-height:32px;margin:0;padding:4px 2px;border:0;border-radius:0;background:none;box-shadow:none;color:var(--tag-ink,var(--reading-neutral));font-size:12px;line-height:1.6;font-weight:400}
+  #reading-tag-rail .reading-tag-select{display:block;width:100%;text-align:left}
+  #reading-tag-rail .reading-tag-select>span{display:block}
+  #reading-tag-rail .reading-tag-toggle svg{width:12px;height:12px}
+  #reading-tag-rail .reading-tag-select:is(.previewing,[aria-pressed=true],:focus-visible),#reading-tag-rail .reading-tag-row:has(.reading-tag-select:is(.previewing,[aria-pressed=true]))>.reading-tag-toggle{color:var(--tag-ink,var(--reading-neutral));font-weight:650;background:none;border:0;box-shadow:none}
+  #reading-tag-rail .reading-tag-select:focus-visible,#reading-tag-rail .reading-tag-toggle:focus-visible{outline:none;text-decoration:underline;text-underline-offset:4px}
+  #reading-tag-rail .reading-tag-toggle:focus-visible{color:var(--tag-ink,var(--reading-neutral))}
+  body.reading-rails .reading-focus-dock{display:none!important}
+  .peek-tree,.peek-tree ul{list-style:none;padding:0;margin:0}
+  .peek-tree ul{margin-inline-start:9px;padding-inline-start:9px}
+  .peek-tree li{margin:0 0 9px}
+  .peek-tree summary,.peek-leaf{display:grid;grid-template-columns:16px minmax(0,1fr);gap:3px;align-items:start;padding:2px 0;color:#676963;font-size:12px;line-height:1.65;list-style:none;overflow-wrap:anywhere}
+  .peek-tree summary{cursor:pointer}
+  .peek-tree summary::-webkit-details-marker{display:none}
+  .peek-tree summary::marker{content:''}
+  .peek-tree summary svg{width:12px;height:12px;margin-top:4px;color:#787b73}
+  .peek-tree details[open]>summary>svg{transform:rotate(90deg)}
+  .peek-tree summary:focus-visible{outline:none;color:#467a4b;text-decoration:underline;text-underline-offset:4px}
+  .peek-tree summary:hover{color:#467a4b}
+  .peek-tags{display:flex;flex-wrap:wrap;gap:0 9px;margin:4px 0 3px;color:#8a8c85;font-size:10px;line-height:1.6}
+  .peek-tags span{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--tag-ink,var(--reading-neutral))}
+  .peek-tree>li>details>summary{color:#3e453d}
+}
+@media print{#reading-tag-rail,#sentence-hover-rail{display:none!important}body.reading-rails .shell{padding:0}.apa-sentence.peek-target{text-decoration:none}.reading-citation{color:inherit}}

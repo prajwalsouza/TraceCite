@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#edf0e3">
+  <title>Trace</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='13' fill='%2356653f'/%3E%3Cpath d='M12 12v16m7-16v11m7-11v6' stroke='%23fffef7' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css?v=context-20260908-1">
+  <script src="structure.js?v=structure-20260908-2" defer></script>
+  <script src="source-passages.js?v=passages-20260908-1" defer></script>
+  <script src="provided-context-data.js?v=provided-20260908-3" defer></script>
+  <script src="provided-context.js?v=provided-20260908-2" defer></script>
+  <script src="online-context-data.js?v=online-20260908-2" defer></script>
+  <script src="online-context.js?v=online-20260908-2" defer></script>
+  <script src="source-context-data.js?v=online-20260908-1" defer></script>
+  <script src="source-context.js?v=online-20260908-1" defer></script>
+  <script src="table-blocks.js?v=20260909-1" defer></script>
+  <script src="core.js?v=cells-20260909-1" defer></script>
+  <script src="seed.js?v=meeting-20260909-1" defer></script>
+  <script src="hypothesis-update.js?v=analysis-20260908-1" defer></script>
+  <script src="measurement-update.js?v=analysis-20260908-1" defer></script>
+  <script src="analysis-update.js?v=analysis-20260908-1" defer></script>
+  <script src="structure-update.js?v=structure-20260908-1" defer></script>
+  <script src="narrative-update.js?v=narrative-20260909-2" defer></script>
+  <script src="meeting-alignment-update.js?v=meeting-20260909-1" defer></script>
+  <link rel="stylesheet" href="paper-typography.css?v=nunito-20260909-2">
+  <script src="reading-focus.js?v=reading-focus-20260908-1" defer></script>
+  <script src="result-traces.js?v=result-trace-20260908-3" defer></script>
+  <script src="result-panel.js?v=result-trace-20260908-3" defer></script>
+  <script src="table-evidence-data.js?v=20260909-1" defer></script>
+  <script src="table-evidence.js?v=20260909-1" defer></script>
+  <script src="table-evidence-panel.js?v=20260909-1" defer></script>
+  <link rel="stylesheet" href="floating-navigation.css?v=20260909-1">
+  <link rel="stylesheet" href="reading-rails.css?v=20260909-2">
+  <script src="reading-peek.js?v=20260909-2" defer></script>
+  <link rel="stylesheet" href="document-actions.css?v=20260909-1">
+  <link rel="stylesheet" href="table-blocks.css?v=20260909-2">
+  <script src="document-actions.js?v=20260909-1" defer></script>
+  <script src="revision-proposal.js?v=20260909-1" defer></script>
+  <script src="app.js?v=table-evidence-20260909-1" defer></script>
+</head>
+<body class="read-mode">
+  <a href="#document" class="skip-link">Skip to outline</a>
+  <aside id="reading-tag-rail" aria-label="Reading tags" hidden></aside>
+  <aside id="sentence-hover-rail" aria-label="Hovered sentence outline" hidden></aside>
+  <div class="shell">
+    <aside id="sidebar" aria-label="Outline navigation" hidden inert>
+      <div class="navigation-heading"><span class="brand">Trace<span class="brand-dot"></span></span><button id="close-navigation" class="icon-button" type="button" aria-label="Collapse navigation">×</button></div>
+      <div class="workspace-label">YOUR RESEARCH SPACE</div>
+      <div class="workspace-name"><span class="small-book" aria-hidden="true">↳</span> Document</div>
+      <div class="toolbar">
+        <div class="view-switch" role="group" aria-label="Document view"><button data-view="apa" aria-pressed="true">Reading</button><button data-view="outline" aria-pressed="false">Outline</button><button data-view="tags" aria-pressed="false">Tags</button><button data-view="sources" aria-pressed="false">Sources</button></div>
+        <div class="outline-tools"><label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" aria-label="Search blocks and fields" placeholder="Find in paper" autocomplete="off"><kbd>/</kbd></label><button id="fold-all" class="text-button">Fold all</button></div>
+      </div>
+      <div id="reading-sidebar-switch" class="reading-sidebar-switch" role="group" aria-label="Reading sidebar" hidden>
+        <button id="reading-show-tags" type="button" aria-pressed="true">Tag tree</button>
+        <button id="reading-show-contents" type="button" aria-pressed="false">Contents</button>
+      </div>
+      <div id="outline-navigation">
+        <div class="nav-heading">IN THIS OUTLINE <span id="section-count">04</span></div>
+        <nav id="contents" aria-label="Paragraphs"></nav>
+      </div>
+      <div id="outline-tag-navigation" hidden></div>
+      <section id="reading-tag-sidebar" aria-label="Reading tag focus" hidden>
+        <p class="reading-focus-hint">Hover to highlight. Click to pin.<br>Parent tags include their children.</p>
+        <p id="reading-focus-status" class="reading-focus-status">All reading blocks visible</p>
+        <nav id="reading-focus-tree" aria-label="Reading tag tree"></nav>
+      </section>
+      <button class="nav-button" id="sources-nav"><span aria-hidden="true">↗</span> Source library <span id="source-count">9</span></button>
+      <button class="nav-button" id="new-paragraph" data-edit-only hidden><span aria-hidden="true">＋</span> Add paragraph</button>
+      <details class="project-notes"><summary>Project notes</summary><button id="revision-proposal-nav" type="button">Revision proposal <span>Separate from the paper</span></button><button data-view="work" aria-pressed="false">Meeting work plan</button><button data-view="grounding" aria-pressed="false">Grounding evidence</button><div id="revision-notice" class="notice" role="status" hidden></div></details>
+      <div class="sidebar-bottom">
+        <details class="help"><summary>Reading this outline <span>?</span></summary><p>Open a block to follow its evidence. Tags describe both the sentence’s role and its support. A checked source does not make every linked sentence supported.</p><p>Tag Tree includes sentences tagged with the selected tag or any of its children. Revision has separate filters for the integrated grounding and outline-only hypothesis changes.</p><p>Reading mode is the default on every visit. The mode switch enables editing. Export JSON to keep a backup; edits remain in this browser.</p><p data-edit-only hidden><kbd>Enter</kbd> sibling · <kbd>⌘/Ctrl Enter</kbd> child<br><kbd>Tab</kbd> indent · <kbd>Shift Tab</kbd> outdent<br><kbd>Alt ↑/↓</kbd> move · <kbd>⌘/Ctrl Z</kbd> undo</p></details>
+        <div class="local-note"><span class="save-dot"></span> Local workspace<span>No account. No uploads.</span></div>
+      </div>
+    </aside>
+    <main id="document">
+      <header class="topbar">
+        <button id="mobile-menu" class="navigation-trigger" aria-label="Open navigation" aria-controls="sidebar" aria-expanded="false"><span aria-hidden="true">☰</span> Trace <span class="navigation-chevron" aria-hidden="true">⌄</span></button>
+        <div class="breadcrumbs"><span>Manuscript</span><span>/</span><span>Document</span></div>
+        <div class="top-actions">
+          <button id="document-actions-toggle" type="button" aria-label="Open document actions" title="Document actions" aria-controls="document-actions-panel" aria-expanded="false"><span id="document-actions-state" hidden></span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m6 8 4 4 4-4"/></svg></button>
+          <span id="document-actions-announcement" class="actions-announcement" role="status" aria-live="polite"></span>
+          <div id="document-actions-panel" role="region" aria-label="Document actions" hidden inert>
+          <span id="save-status" role="status" aria-live="polite">Saved on this device</span>
+          <button id="mode-toggle" class="mode-toggle" aria-pressed="false" aria-label="Switch to edit mode">Edit document</button>
+          <button id="undo" class="icon-button" aria-label="Undo" title="Undo (Ctrl/⌘ Z)" data-edit-only hidden></button>
+          <button id="redo" class="icon-button" aria-label="Redo" title="Redo (Ctrl/⌘ Shift Z)" data-edit-only hidden></button>
+          <details id="export-menu" class="export-menu"><summary>Export <span aria-hidden="true">⌄</span></summary><div class="export-options"><button data-export="json">Outline JSON <small>Editable backup · all blocks & fields</small></button><button data-export="md">Nested Markdown <small>Outline + exact-source blocks + work plan</small></button><button data-export="apa">APA-style Markdown <small>Manuscript only · no planning notes</small></button><button id="export-before-work" hidden>Before work-plan update <small>Preserved browser copy · import to recover</small></button><button id="import-button">Import JSON <small>Open a saved outline</small></button></div></details>
+          </div>
+        </div>
+      </header>
+      <div id="storage-warning" class="notice" role="alert" hidden></div>
+      <div class="document-header"><div class="eyebrow"><span class="tiny-leaf" aria-hidden="true">↳</span> A TRACE OUTLINE</div><h1 id="document-title" spellcheck="false"></h1><p>The argument, its evidence, and what comes next.</p></div>
+      <div class="view-caption" id="view-caption"></div>
+      <div id="outline" aria-label="Document blocks"></div>
+      <div class="document-end"><span class="end-mark" aria-hidden="true">✳</span><span id="document-summary"></span><button id="add-end" class="text-button" data-edit-only hidden>＋ Add paragraph</button></div>
+    </main>
+  </div>
+  <div class="block-dock" aria-label="Selected block actions" data-edit-only hidden><span class="dock-selection" id="dock-selection">Select a block</span><button id="dock-add" aria-label="Add child block">＋ <span>Add child</span></button><button id="dock-fields">≡ <span>Fields</span></button><button id="dock-undo" aria-label="Undo last change">↶ <span>Undo</span></button></div>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <div id="reading-focus-dock" class="reading-focus-dock" aria-label="Pinned reading focus" hidden>
+    <button id="reading-focus-reopen" type="button" aria-label="Show reading tag tree"><span aria-hidden="true">⌖</span> <span id="reading-focus-label" role="status" aria-live="polite"></span></button>
+    <button id="reading-focus-clear" type="button" aria-label="Clear reading tag focus">×</button>
+  </div>
+  <input type="file" id="import-file" accept=".json,application/json" hidden>
+</body>
+</html>

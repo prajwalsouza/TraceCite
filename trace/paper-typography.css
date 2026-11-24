@@ -1,0 +1,25 @@
+/* Paper body: Nunito. Existing Raleway headings and interface stay unchanged.
+   Local variable fonts are distributed under the accompanying OFL license. */
+@font-face {
+  font-family: Nunito;
+  src: url('assets/nunito-variable.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 200 1000;
+  font-display: swap;
+}
+@font-face {
+  font-family: Nunito;
+  src: url('assets/nunito-italic-variable.ttf') format('truetype');
+  font-style: italic;
+  font-weight: 200 1000;
+  font-display: swap;
+}
+:root { --paper-body-font: Nunito, 'Avenir Next', sans-serif; }
+.apa-paragraph > p,
+.reading-list,
+.table-scroll table,
+.apa-reference,
+.type-sentence > .block-row .block-text,
+.evidence-card blockquote {
+  font-family: var(--paper-body-font);
+}
