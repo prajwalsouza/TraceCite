@@ -1,0 +1,29 @@
+# TraceCite
+
+> TraceCite is a format and a reader for evidence-first documents. A document is one tree of blocks (section, paragraph, sentence, citation, exact quote). Every sentence opens, in place, to the exact words its sources used, the passage those words sit in, notes, tags and who checked them. Documents travel as `.trace.zip` packages, and one self-contained `trace-reader.html` opens them in any browser.
+
+When you write a TraceCite document, quote sources verbatim by copying, with the whole passage around each quote. Never invent sources, quotes or comments. Say how far each record is checked, and label interpretation as interpretation. Record agents as agents. Validate the document before you finish.
+
+## Start here
+
+- [Writing with agents](https://github.com/prajwalsouza/TraceCite/blob/main/docs/writing-with-agents.md): heuristics for writing a document that keeps the format's promise
+- [Agent skill (SKILL.md)](https://github.com/prajwalsouza/TraceCite/blob/main/SKILL.md): the full skill, with the builder, the reader and the rules
+- [Sample document](https://github.com/prajwalsouza/TraceCite/blob/main/docs/sample.md): one small document that uses every part, with its .bib and .trace.zip layout
+
+## Format
+
+- [TraceCite 1.0 specification](https://github.com/prajwalsouza/TraceCite/blob/main/docs/format.md): blocks, tags, sources, span tags, connected highlights, links and interactives
+- [JSON Schema](https://github.com/prajwalsouza/TraceCite/blob/main/schema/tracecite-1.0.schema.json): draft 2020-12, `tracecite/1.0`
+- [BibTrace](https://github.com/prajwalsouza/TraceCite/blob/main/docs/bibtrace.md): BibTeX plus trace-* fields for exact quotes, passages and provenance
+- [Packages (.trace.zip)](https://github.com/prajwalsouza/TraceCite/blob/main/docs/package.md): the manifest, the version history and how documents are opened
+
+## Tools
+
+- [trace-reader.html (latest release)](https://github.com/prajwalsouza/TraceCite/releases/latest/download/trace-reader.html): one file that opens any .trace.zip, with no install
+- [Builder](https://github.com/prajwalsouza/TraceCite/blob/main/scripts/build-reading.mjs): `node scripts/build-reading.mjs --data doc.trace.json --out doc.html --zip doc.trace.zip`
+- [Validator](https://github.com/prajwalsouza/TraceCite/blob/main/scripts/validate-trace.mjs): `node scripts/validate-trace.mjs doc.trace.json`
+
+## Optional
+
+- [Full guidance in one file](https://prajwalsouza.github.io/TraceCite/llms-full.txt): this file's documents inlined
+- [Examples](https://prajwalsouza.github.io/TraceCite/): two example papers and the sample, live

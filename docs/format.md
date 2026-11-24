@@ -31,6 +31,8 @@ it is not a general JSON Schema implementation.
 | `blocks` | Required array of blocks, in reading order. |
 | `sources` | Required array of shared source records. It may be empty when a bibliography supplies them. |
 | `bibliography` | Optional BibTrace path, or array of paths, relative to the data file. Entries are loaded before validation. A matching entry id replaces an inline source. |
+| `links` | Optional. `{ "off": true }` leaves out the generated Links tag family (see Links below). |
+| `interactiveScripts` | Optional array of script paths, relative to the data file, that register interactive components (see Interactives below). `vizScripts` is the older name and is still accepted. |
 | `mathTags` | Optional object controlling generated math tags: `groups` maps group names to symbol arrays; `labels` maps symbols to descriptions; `minSentences` defaults to `2`; `exclude` is a symbol array; `off: true` disables generation. |
 | `documentStructure` | Optional structure-import metadata: `version`, `sourceHash`, `documentClass` strings and an `environments` string array. Rendering roles are defined by block tags and fields, not this metadata alone. |
 
@@ -123,6 +125,78 @@ The builder rejects an existing generated root when it needs to add that family.
 Math and cross-reference generation can be switched off with the options above.
 The generated families and indexes are added to the built page; they do not
 rewrite the input JSON.
+
+## Span tags and connected highlights
+
+A span tag marks part of a text with a tag. It uses Pandoc's bracketed-span
+syntax, so it exports cleanly:
+
+```text
+The input is a [list of n numbers]{.hl-x}.
+```
+
+Spans work in block text, headings, captions and notes. They never go inside
+exact quotes or their passages, which stay verbatim. The tag id must be in
+`tagTree`; an unknown id is an error, as for block tags. A block that contains
+a span also carries the span's tag, so every block-level tag feature keeps
+working, and tag focus lights up exactly the spans. In formulas, use MathJax's
+own `\class{hl-x}{x}`.
+
+**Connected highlights** are one use of span tags: threads that a reader can
+follow by colour across words, symbols, headings and figures. By convention
+they sit in a tag family `connected`. A tag has two optional properties:
+
+| Property | Meaning |
+| --- | --- |
+| `slot` | 1 to 5: one of five theme-aware colours. Spans with the tag take it as a soft tint and text colour. |
+| `symbols` | TeX symbols, such as `"q"` or `"\\mu"`, coloured automatically in every formula. Each one becomes `\class{<tag>}{…}` when the page is prepared. The data file is not changed. |
+
+```json
+{ "id": "connected", "name": "Connected highlights", "children": [
+  { "id": "hl-q", "name": "q, the power", "slot": 1, "symbols": ["q"], "children": [] },
+  { "id": "hl-x", "name": "x, the data", "slot": 2, "symbols": ["x"], "children": [] } ] }
+```
+
+Words are never coloured automatically: writers mark them with spans. These
+are the author's judgement, unlike the automatic maths tags, which tag every
+symbol mechanically. A highlight need not be maths: "paracetamol" in the text
+and a tablet drawn in the same colour in an interactive are one thread.
+Interactives get a tag's colour with `api.tagColor(id)` or
+`api.tagClass(id, 'stroke' | 'fill' | 'text')`.
+
+Readers choose how they look under Settings → Reading → Connected highlights: **Text colour** (the default), **Highlighted** (adds a soft tint) or **Off** (ink only). Tag focus tints the focused spans in every style.
+
+Use them sparingly:
+
+- At most five threads; usually two to four.
+- Mark the first mention and the key later ones, especially where a different
+  word refers to the same thing ("the data" for x).
+- Colour is never the only signal: the words still say what they are.
+- A thread keeps its slot in every theme.
+
+## Links
+
+```text
+See [the W3C spec](https://www.w3.org/TR/html401/), or [the definition](#/at/p-def).
+```
+
+`[text](https://…)`, `http://` and `mailto:` links open in a new tab, and
+bare `https://` addresses become links too. `[text](#/at/<block id>)` jumps
+to that block within the document. Nothing else becomes a link: other schemes
+(`javascript:`, `data:` and the rest) stay plain text, and the validator warns
+about them. Links work wherever span tags do, and never inside exact quotes.
+They are never underlined. External ones end in a small arrow and show their
+address on hover. Clicking a link never opens the sentence around it.
+
+Links are also tags. When the page is prepared, a generated **Links** family
+tags every block that links out:
+
+- **External link**, with one child per site (for example `w3.org`);
+- **Internal link**;
+- **Email**.
+
+The tag tree can then light up every line that links somewhere. The data file
+is not changed, and `"links": { "off": true }` leaves the family out.
 
 ## Parameters
 
@@ -229,3 +303,25 @@ Additive changes are minor. Breaking changes require a new major version.
 Clarifications and compatible fixes are patch changes. A document declares the
 format version it was written for. The storage field `version: 2` and the
 software release `0.1.0` are separate version sequences.
+
+## Interactives
+
+An interactive is a live figure. A `figure` block becomes one when it has an
+`Interactive` field naming a component, and optionally an
+`Interactive settings` field holding JSON. The older names `Viz` and
+`Viz settings` are still accepted.
+
+```json
+{ "id": "fig-tug", "type": "figure", "text": "Figure 2. The tug of war",
+  "tags": [], "collapsed": false, "children": [],
+  "fields": [{ "key": "Interactive", "value": "tug-of-war" },
+             { "key": "Interactive settings", "value": "{\"data\":[1,2,4]}" }] }
+```
+
+Components are scripts that call `TraceViz.register(name, draw)`; `api.tagColor(id)` and `api.tagClass(id, kind)` give a connected highlight's colour, so a figure's line for x matches x in the text. A document
+lists its scripts in `interactiveScripts`, and they travel inside its
+`.trace.zip` (see [package.md](package.md)). An interactive figure needs no
+`Assets`. The hook is deliberately small: anything a script can draw, a
+document can bring. Interactives use theme classes rather than fixed colours,
+so they follow the reader's theme.
+

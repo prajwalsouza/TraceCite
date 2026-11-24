@@ -211,6 +211,31 @@
           }
         }
       }
+    },
+    "interactiveScripts": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^(?!/)(?!.*\\.\\.).+\\.js$"
+      },
+      "description": "Scripts that register interactive components (TraceViz.register), relative to the data file. Packed into the .trace.zip."
+    },
+    "vizScripts": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^(?!/)(?!.*\\.\\.).+\\.js$"
+      },
+      "description": "Older name for interactiveScripts; still accepted."
+    },
+    "links": {
+      "type": "object",
+      "properties": {
+        "off": {
+          "type": "boolean"
+        }
+      },
+      "description": "Generated Links tag family; {\"off\": true} leaves it out."
     }
   },
   "$defs": {
@@ -262,6 +287,20 @@
         "collapsed": {
           "type": "boolean",
           "description": "Optional initial disclosure state."
+        },
+        "slot": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5,
+          "description": "Connected highlights: one of five theme-aware colours. Spans with this tag, and its symbols in formulas, take the colour."
+        },
+        "symbols": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": "Connected highlights: TeX symbols (\"x\", \"\\\\mu\") coloured automatically in every formula."
         }
       }
     },

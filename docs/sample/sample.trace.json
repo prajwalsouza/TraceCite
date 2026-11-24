@@ -1,0 +1,444 @@
+{
+  "format": "tracecite/1.0",
+  "version": 2,
+  "id": "tracecite-sample",
+  "eyebrow": "A sample document",
+  "title": "A small document that uses every part",
+  "subtitle": "Front matter, tags, highlights, sources, maths, an environment, an interactive figure, comments and links.",
+  "authors": [
+    {
+      "name": "Ada Example",
+      "affiliations": [
+        "aff-1"
+      ],
+      "email": "ada@example.org",
+      "corresponding": true
+    }
+  ],
+  "affiliations": [
+    {
+      "id": "aff-1",
+      "name": "Example Institute",
+      "country": "Nowhere"
+    }
+  ],
+  "date": "2026-11-25",
+  "revision": "Sample 1",
+  "license": "CC BY 4.0",
+  "keywords": [
+    "sample",
+    "evidence",
+    "structure"
+  ],
+  "updatedAt": "2026-11-25T00:00:00.000Z",
+  "bibliography": "sample.bib",
+  "interactiveScripts": [
+    "sample-interactive.js"
+  ],
+  "tagTree": [
+    {
+      "id": "role",
+      "name": "Sentence role",
+      "children": [
+        {
+          "id": "role-claim",
+          "name": "Claim",
+          "children": []
+        },
+        {
+          "id": "role-definition",
+          "name": "Definition",
+          "children": []
+        },
+        {
+          "id": "role-interpretation",
+          "name": "Our interpretation",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "support",
+      "name": "Support",
+      "children": [
+        {
+          "id": "support-quoted",
+          "name": "Quoted from a checked source",
+          "children": []
+        },
+        {
+          "id": "support-none",
+          "name": "No source needed",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "topic",
+      "name": "Topic",
+      "children": [
+        {
+          "id": "topic-markup",
+          "name": "Markup",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "connected",
+      "name": "Connected highlights",
+      "children": [
+        {
+          "id": "hl-n",
+          "name": "n, the sentences",
+          "slot": 1,
+          "symbols": [
+            "n"
+          ],
+          "children": []
+        },
+        {
+          "id": "hl-q",
+          "name": "q, the checked ones",
+          "slot": 2,
+          "symbols": [
+            "q"
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "caption",
+      "name": "Caption",
+      "children": []
+    }
+  ],
+  "parameters": [
+    {
+      "id": "length",
+      "name": "Length",
+      "children": [
+        {
+          "id": "length-words",
+          "name": "Words",
+          "measure": "words",
+          "plot": "strip"
+        }
+      ]
+    }
+  ],
+  "sources": [],
+  "blocks": [
+    {
+      "id": "sec-structure",
+      "type": "section",
+      "text": "Structure is written down",
+      "tags": [
+        "topic"
+      ],
+      "fields": [
+        {
+          "key": "Heading level",
+          "value": "2"
+        }
+      ],
+      "collapsed": false,
+      "children": [
+        {
+          "id": "p-structure",
+          "type": "paragraph",
+          "text": "Why markup",
+          "tags": [],
+          "fields": [],
+          "collapsed": false,
+          "children": [
+            {
+              "id": "s-1",
+              "type": "sentence",
+              "text": "Markup languages were made to say what each part of a text is, not how it looks.",
+              "tags": [
+                "role-claim",
+                "support-quoted",
+                "topic-markup"
+              ],
+              "fields": [
+                {
+                  "key": "Sentence review",
+                  "value": "The HTML 4.01 passage says SGML is for structural markup."
+                }
+              ],
+              "collapsed": false,
+              "children": [
+                {
+                  "id": "s-1-c",
+                  "type": "citation",
+                  "text": "raggett1999html",
+                  "tags": [],
+                  "fields": [
+                    {
+                      "key": "Source ID",
+                      "value": "raggett1999html"
+                    }
+                  ],
+                  "collapsed": true,
+                  "children": [
+                    {
+                      "id": "s-1-c-r",
+                      "type": "reference",
+                      "text": "Exact reference",
+                      "tags": [],
+                      "fields": [
+                        {
+                          "key": "Source ID",
+                          "value": "raggett1999html"
+                        },
+                        {
+                          "key": "Exact supporting extract",
+                          "value": "HTML has its roots in SGML which has always been a language for the specification of structural markup."
+                        }
+                      ],
+                      "collapsed": true,
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "s-2",
+              "type": "sentence",
+              "text": "Without such marks, a program sees only an undivided run of characters.",
+              "tags": [
+                "role-claim",
+                "support-quoted",
+                "topic-markup"
+              ],
+              "fields": [
+                {
+                  "key": "Sentence review",
+                  "value": "Paraphrases the TEI passage; the quote is exact."
+                }
+              ],
+              "collapsed": false,
+              "children": [
+                {
+                  "id": "s-2-c",
+                  "type": "citation",
+                  "text": "tei2026guidelines",
+                  "tags": [],
+                  "fields": [
+                    {
+                      "key": "Source ID",
+                      "value": "tei2026guidelines"
+                    }
+                  ],
+                  "collapsed": true,
+                  "children": [
+                    {
+                      "id": "s-2-c-r",
+                      "type": "reference",
+                      "text": "Exact reference",
+                      "tags": [],
+                      "fields": [
+                        {
+                          "key": "Source ID",
+                          "value": "tei2026guidelines"
+                        },
+                        {
+                          "key": "Exact supporting extract",
+                          "value": "without them a digitized text appears to be nothing but a sequence of undifferentiated bits"
+                        }
+                      ],
+                      "collapsed": true,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "s-2-n",
+                  "type": "note",
+                  "text": "Could we quote the next sentence too, about the Web?",
+                  "tags": [],
+                  "fields": [
+                    {
+                      "key": "Comment by",
+                      "value": "Ada Example"
+                    },
+                    {
+                      "key": "Commented on",
+                      "value": "2026-11-25"
+                    }
+                  ],
+                  "collapsed": false,
+                  "children": [
+                    {
+                      "id": "s-2-n-r",
+                      "type": "note",
+                      "text": "Not needed here; one passage is enough for the claim.",
+                      "tags": [],
+                      "fields": [
+                        {
+                          "key": "Comment by",
+                          "value": "AI agent (review)"
+                        },
+                        {
+                          "key": "Commented on",
+                          "value": "2026-11-25"
+                        }
+                      ],
+                      "collapsed": false,
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "s-3",
+              "type": "sentence",
+              "text": "TraceCite takes the same view of evidence: each claim is a block whose sources sit inside it (more in [the W3C spec](https://www.w3.org/TR/html401/intro/intro.html), and below in [the share of checked sentences](#/at/sec-share)).",
+              "tags": [
+                "role-interpretation",
+                "support-none"
+              ],
+              "fields": [
+                {
+                  "key": "Sentence review",
+                  "value": "Our reading of the two sources, labelled as interpretation."
+                }
+              ],
+              "collapsed": false,
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sec-share",
+      "type": "section",
+      "text": "The share of [checked sentences]{.hl-q}",
+      "tags": [
+        "topic"
+      ],
+      "fields": [
+        {
+          "key": "Heading level",
+          "value": "2"
+        }
+      ],
+      "collapsed": false,
+      "children": [
+        {
+          "id": "p-def",
+          "type": "paragraph",
+          "text": "Definition",
+          "tags": [
+            "env-definition"
+          ],
+          "fields": [
+            {
+              "key": "Label",
+              "value": "1"
+            },
+            {
+              "key": "Name",
+              "value": "checked share"
+            }
+          ],
+          "collapsed": false,
+          "children": [
+            {
+              "id": "s-4",
+              "type": "sentence",
+              "text": "For a document with \\(n\\) [sentences]{.hl-n}, of which \\(q\\) carry a [checked quote]{.hl-q}, the checked share is \\(p = q / n\\).",
+              "tags": [
+                "role-definition",
+                "support-none"
+              ],
+              "fields": [
+                {
+                  "key": "Sentence review",
+                  "value": "A definition of our own; nothing to cite."
+                }
+              ],
+              "collapsed": false,
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "p-share",
+          "type": "paragraph",
+          "text": "Reading the share",
+          "tags": [],
+          "fields": [],
+          "collapsed": false,
+          "children": [
+            {
+              "id": "s-5",
+              "type": "sentence",
+              "text": "Raising \\(q\\) while \\(n\\) stays fixed moves \\(p\\) towards one; Figure 1 lets you try it.",
+              "tags": [
+                "role-interpretation",
+                "support-none"
+              ],
+              "fields": [
+                {
+                  "key": "Sentence review",
+                  "value": "Follows from Definition 1."
+                }
+              ],
+              "collapsed": false,
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "fig-share",
+          "type": "figure",
+          "text": "Figure 1. The checked share",
+          "tags": [],
+          "fields": [
+            {
+              "key": "Interactive",
+              "value": "checked-share"
+            },
+            {
+              "key": "Interactive settings",
+              "value": "{\"n\": 10, \"q\": 6}"
+            }
+          ],
+          "collapsed": false,
+          "children": [
+            {
+              "id": "fig-share-cap",
+              "type": "paragraph",
+              "text": "Caption",
+              "tags": [
+                "caption"
+              ],
+              "fields": [],
+              "collapsed": false,
+              "children": [
+                {
+                  "id": "s-6",
+                  "type": "sentence",
+                  "text": "Move the slider: the [checked sentences]{.hl-q} fill the bar out of all [n sentences]{.hl-n}.",
+                  "tags": [
+                    "caption",
+                    "support-none"
+                  ],
+                  "fields": [],
+                  "collapsed": false,
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
