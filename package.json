@@ -1,6 +1,6 @@
 {
   "name": "tracecite",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A format and dependency-free builder for evidence-first documents with sources that open in place.",
   "license": "MIT",
   "type": "module",
@@ -9,7 +9,11 @@
   },
   "repository": "github:prajwalsouza/TraceCite",
   "scripts": {
-    "build:examples": "node scripts/build-reading.mjs --data examples/outliners.trace.json --out references/outliners-reading.html && node scripts/build-reading.mjs --data examples/document-structure/document-structure.trace.json --out references/document-structure-reading.html",
-    "validate": "node scripts/validate-trace.mjs examples/outliners.trace.json && node scripts/validate-trace.mjs examples/document-structure/document-structure.trace.json"
+    "build:examples": "node scripts/build-reading.mjs --data examples/outliners.trace.json --out references/outliners-reading.html --zip samples/outliners.trace.zip && node scripts/build-reading.mjs --data examples/document-structure/document-structure.trace.json --out references/document-structure-reading.html --zip samples/document-structure.trace.zip && node scripts/build-reading.mjs --data docs/sample/sample.trace.json --out references/sample-reading.html --zip samples/sample.trace.zip",
+    "build:reader": "node scripts/build-reading.mjs --reader --out references/trace-reader.html",
+    "build": "npm run build:examples && npm run build:reader && npm run build:llms",
+    "validate": "node scripts/validate-trace.mjs examples/outliners.trace.json && node scripts/validate-trace.mjs examples/document-structure/document-structure.trace.json && node scripts/validate-trace.mjs docs/sample/sample.trace.json",
+    "check": "npm run validate && npm run build && git diff --exit-code -- references samples",
+    "build:llms": "node scripts/make-llms-full.mjs"
   }
 }

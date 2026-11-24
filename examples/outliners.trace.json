@@ -4,7 +4,7 @@
   "eyebrow": "An essay on outliners",
   "title": "Outlines you can read",
   "subtitle": "What outliners are, and how a tree of blocks becomes a paper with its evidence attached.",
-  "updatedAt": "2026-11-24T18:30:01.320Z",
+  "updatedAt": "2026-11-24T22:55:55.951Z",
   "tagTree": [
     {
       "id": "role",
@@ -94,6 +94,24 @@
           "children": []
         }
       ]
+    },
+    {
+      "id": "connected",
+      "name": "Connected highlights",
+      "children": [
+        {
+          "id": "hl-tree",
+          "name": "The tree of blocks",
+          "slot": 1,
+          "children": []
+        },
+        {
+          "id": "hl-words",
+          "name": "The exact words",
+          "slot": 2,
+          "children": []
+        }
+      ]
     }
   ],
   "blocks": [
@@ -128,7 +146,7 @@
             {
               "id": "out-s1",
               "type": "sentence",
-              "text": "An outliner is a writing tool in which a document is a tree of short blocks rather than one long page.",
+              "text": "An outliner is a writing tool in which a document is a [tree of short blocks]{.hl-tree} rather than one long page.",
               "tags": [
                 "role-definition",
                 "support-none",
@@ -318,7 +336,7 @@
             {
               "id": "out-s6",
               "type": "sentence",
-              "text": "Later outliners kept the tree but moved it into ordinary files, and OPML became a common way to exchange an outline between programs.",
+              "text": "Later outliners kept the tree but moved it into ordinary files, and [OPML](http://opml.org/spec2.opml) became a common way to exchange an outline between programs.",
               "tags": [
                 "role-history",
                 "support-reference",
@@ -403,7 +421,7 @@
             {
               "id": "out-s7",
               "type": "sentence",
-              "text": "In an evidence outliner the tree has a fixed meaning, running from the section down to the exact words a source used.",
+              "text": "In an evidence outliner [the tree]{.hl-tree} has a fixed meaning, running from the section down to [the exact words a source used]{.hl-words}.",
               "tags": [
                 "role-mechanism",
                 "support-quoted",
@@ -625,7 +643,7 @@
             {
               "id": "out-s11",
               "type": "sentence",
-              "text": "The same tree can be shown as an outline for writing or as plain prose for reading, and switching between them leaves the blocks untouched.",
+              "text": "[The same tree]{.hl-tree} can be shown as an outline for writing or as plain prose for reading, and switching between them leaves the blocks untouched.",
               "tags": [
                 "role-mechanism",
                 "support-quoted",
@@ -917,7 +935,7 @@
             {
               "id": "out-s16",
               "type": "sentence",
-              "text": "Clicking a sentence opens its branch in place, from the citation down to the quoted passage and where that passage sits in the source.",
+              "text": "Clicking a sentence opens its branch in place, from the citation down to [the quoted passage]{.hl-words} and where that passage sits in the source.",
               "tags": [
                 "role-mechanism",
                 "support-none",
@@ -935,7 +953,7 @@
             {
               "id": "out-s17",
               "type": "sentence",
-              "text": "When a source has no checked quote, the page says so instead of inventing one.",
+              "text": "When a source has no checked quote, the page says so instead of inventing one (see [Limits](#/at/sec-limits)).",
               "tags": [
                 "role-mechanism",
                 "support-none",

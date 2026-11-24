@@ -35,6 +35,11 @@ const tagTree = [
     { id: 'topic-evidence', name: 'Evidence', children: [] },
     { id: 'topic-tools', name: 'Tools and history', children: [] },
   ] },
+  // Connected highlights: two threads the reader can follow by colour across sentences ([text]{.hl-tree}).
+  { id: 'connected', name: 'Connected highlights', children: [
+    { id: 'hl-tree', name: 'The tree of blocks', slot: 1, children: [] },
+    { id: 'hl-words', name: 'The exact words', slot: 2, children: [] },
+  ] },
 ];
 
 // Sources. Local files carry checked verbatim quotes; classics carry references only.
@@ -104,7 +109,7 @@ const quote = (id, k = '') => sources.find((s) => s.id === id).fields.find((x) =
 const blocks = [
   section('sec-what', 'What an outliner is', [
     paragraph('p-what-1', 'Definition', [
-      sentence('An outliner is a writing tool in which a document is a tree of short blocks rather than one long page.', ['role-definition', 'support-none', 'topic-blocks'], 'A working definition for this article. It describes the shape of the tool, not a claim from a source.'),
+      sentence('An outliner is a writing tool in which a document is a [tree of short blocks]{.hl-tree} rather than one long page.', ['role-definition', 'support-none', 'topic-blocks'], 'A working definition for this article. It describes the shape of the tool, not a claim from a source.'),
       sentence('Each block can hold children, and any branch can be folded away or opened again without changing the text inside it.', ['role-mechanism', 'support-none', 'topic-blocks'], 'Describes the common behaviour of outliners. No single source is needed for it.'),
       sentence('Because the structure is explicit, a reader can see at a glance which sentence belongs to which idea.', ['role-interpretation', 'support-none', 'topic-reading'], 'Our interpretation of why explicit structure helps reading. It is not a tested claim.'),
     ]),
@@ -113,12 +118,12 @@ const blocks = [
     paragraph('p-history-1', 'History', [
       sentence('The idea of working on text as a structure that can be folded, rearranged and linked is usually traced to Douglas Engelbart’s programme for augmenting human intellect.', ['role-history', 'support-reference', 'topic-tools'], 'Cited as the usual origin story. No passage from the report was checked for this article, so open the source before quoting it.', [['src-engelbart']]),
       sentence('His group demonstrated hierarchical, collapsible documents in a live system in 1968.', ['role-history', 'support-reference', 'topic-tools'], 'The conference paper describes the system. No passage was checked here, so the page shows it as unverified.', [['src-engelbart-english']]),
-      sentence('Later outliners kept the tree but moved it into ordinary files, and OPML became a common way to exchange an outline between programs.', ['role-history', 'support-reference', 'topic-tools', 'topic-structure'], 'The OPML specification defines the exchange format. The claim that it became common is ours and is not measured here.', [['src-opml']]),
+      sentence('Later outliners kept the tree but moved it into ordinary files, and [OPML](http://opml.org/spec2.opml) became a common way to exchange an outline between programs.', ['role-history', 'support-reference', 'topic-tools', 'topic-structure'], 'The OPML specification defines the exchange format. The claim that it became common is ours and is not measured here.', [['src-opml']]),
     ]),
   ]),
   section('sec-blocks', 'Blocks, fields and tags', [
     paragraph('p-blocks-1', 'Blocks', [
-      sentence('In an evidence outliner the tree has a fixed meaning, running from the section down to the exact words a source used.', ['role-mechanism', 'support-quoted', 'topic-blocks', 'topic-evidence'], 'The README gives the five levels verbatim. The sentence restates them without adding a claim.', [['src-readme', q(0)]]),
+      sentence('In an evidence outliner [the tree]{.hl-tree} has a fixed meaning, running from the section down to [the exact words a source used]{.hl-words}.', ['role-mechanism', 'support-quoted', 'topic-blocks', 'topic-evidence'], 'The README gives the five levels verbatim. The sentence restates them without adding a claim.', [['src-readme', q(0)]]),
       sentence('Every block can also carry fields, which open as quiet key and value rows under the block instead of a separate form.', ['role-mechanism', 'support-quoted', 'topic-fields'], 'The design brief states this directly.', [['src-prompt', quote('src-prompt')]]),
       sentence('Tags sit beside the fields, and one sentence can carry several of them, for its role, its support and its topic.', ['role-mechanism', 'support-none', 'topic-fields'], 'Describes this page itself. Hover any sentence to see its tags.'),
     ]),
@@ -128,7 +133,7 @@ const blocks = [
   ]),
   section('sec-reading', 'Reading an outline as a paper', [
     paragraph('p-reading-1', 'One tree, several views', [
-      sentence('The same tree can be shown as an outline for writing or as plain prose for reading, and switching between them leaves the blocks untouched.', ['role-mechanism', 'support-quoted', 'topic-reading'], 'The README makes this guarantee for the APA view.', [['src-readme', q(2)]]),
+      sentence('[The same tree]{.hl-tree} can be shown as an outline for writing or as plain prose for reading, and switching between them leaves the blocks untouched.', ['role-mechanism', 'support-quoted', 'topic-reading'], 'The README makes this guarantee for the APA view.', [['src-readme', q(2)]]),
       sentence('This page is the reading view: the outline is still there, but it stays out of the way until you ask for it.', ['role-interpretation', 'support-none', 'topic-reading'], 'A description of the page you are reading.'),
       sentence('Hovering a sentence shows its piece of the tree in the margin, and that margin is only a projection of the stored blocks.', ['role-mechanism', 'support-quoted', 'topic-reading', 'topic-blocks'], 'The code comment states that the hover outline is a projection.', [['src-code', quote('src-code')]]),
     ]),
@@ -139,8 +144,8 @@ const blocks = [
   ]),
   section('sec-evidence', 'Evidence you can open', [
     paragraph('p-evidence-1', 'From sentence to quote', [
-      sentence('Clicking a sentence opens its branch in place, from the citation down to the quoted passage and where that passage sits in the source.', ['role-mechanism', 'support-none', 'topic-evidence'], 'Click this sentence to see the behaviour it describes.'),
-      sentence('When a source has no checked quote, the page says so instead of inventing one.', ['role-mechanism', 'support-none', 'topic-evidence'], 'Open any sentence in the history section to see the unverified state.'),
+      sentence('Clicking a sentence opens its branch in place, from the citation down to [the quoted passage]{.hl-words} and where that passage sits in the source.', ['role-mechanism', 'support-none', 'topic-evidence'], 'Click this sentence to see the behaviour it describes.'),
+      sentence('When a source has no checked quote, the page says so instead of inventing one (see [Limits](#/at/sec-limits)).', ['role-mechanism', 'support-none', 'topic-evidence'], 'Open any sentence in the history section to see the unverified state.'),
       sentence('The tags separate what a sentence claims from how well it is supported, which keeps an interpretation from looking like a finding.', ['role-interpretation', 'support-none', 'topic-evidence', 'topic-fields'], 'Our interpretation of why role and support are separate tag families.'),
     ]),
   ]),

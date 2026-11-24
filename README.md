@@ -1,6 +1,17 @@
 # TraceCite
 
-TraceCite is a format for documents whose sentences open to the evidence behind them. Its builder turns a JSON data file into one self-contained, reading-only HTML page.
+TraceCite is a format for documents whose sentences open to the evidence behind them. Click a sentence and the source's exact words open in place, with the passage they sit in, notes, tags and who checked them.
+
+## Try it
+
+- **See it:** [prajwalsouza.github.io/TraceCite](https://prajwalsouza.github.io/TraceCite/), with two live example papers.
+- **One file, nothing to install:** download [`trace-reader.html`](https://github.com/prajwalsouza/TraceCite/releases/latest/download/trace-reader.html) from the latest release, open it in a browser, and drop a `.trace.zip` on it. Try it with [`outliners.trace.zip`](https://github.com/prajwalsouza/TraceCite/releases/latest/download/outliners.trace.zip). Or use the [hosted reader](https://prajwalsouza.github.io/TraceCite/references/trace-reader.html).
+
+Every release attaches both files automatically.
+
+**See what a document looks like inside:** [a sample that uses every part](docs/sample.md). It covers the [`.trace.json`](docs/sample/sample.trace.json), its BibTrace [`.bib`](docs/sample/sample.bib), and the layout of a `.trace.zip`.
+
+**Writing with an AI agent?** Point it at [`llms.txt`](llms.txt) and the [writing guide](docs/writing-with-agents.md).
 
 ## The reading page
 
@@ -8,21 +19,44 @@ Read the document as normal prose. Click a sentence to open its evidence just be
 
 A sidebar holds search, contents, a tag tree and settings. Hover over a tag to highlight related sentences, or pin it to keep them in focus. Readers can change fonts, colours and citation styles. Long documents can load in parts. These reading choices stay in the browser; they do not edit the document.
 
-## Quick start
+**Import and export.** Drop a document anywhere on any reading page to open it: a `.trace.zip`, or a `.trace.json` with its `.bib`, scripts and images. The page shows each stage as it reads, unzips and prepares the file, then replaces the current document, with a way back. **Export**, just above Settings, downloads the document as a `.trace.zip`. Settings → Document holds Import, Export and the version history.
 
-Use Node 20 or newer. There are no dependencies to install.
+## Packages and the reader
+
+A TraceCite package is a plain zip: a `manifest.json`, the trace data, its BibTrace `.bib` files, figure images and any interactive scripts. The manifest keeps a version history: each version's date, author, note and a content hash, with the previous hash. Every reading page carries its package and prepares it in the browser.
+
+`trace-reader.html` is one standalone file that opens any package and does all the preparation itself: sources, maths, cross-references, citation styles and interactives. Drop a `.trace.zip` on it, choose one, or link to one with `trace-reader.html?src=paper.trace.zip`. Nothing is uploaded and nothing is installed. See the [package format](docs/package.md).
+
+## Highlights, spans and links
+
+Mark part of a sentence with a tag: `[list of n numbers]{.hl-x}`. **Connected highlights** are threads a reader follows by colour, across words, maths symbols and figures. A tag in the `connected` family gets a `slot` (one of five theme-aware colours) and, optionally, the `symbols` to colour in every formula. Use two to four. Links are `[text](https://…)` or `[text](#/at/block-id)`. They open in a new tab, or jump within the document, and the tag tree gets a Links family. See [span tags and connected highlights](docs/format.md#span-tags-and-connected-highlights) and [links](docs/format.md#links).
+
+## Interactives
+
+A figure can be an interactive: a live drawing from a small script that the document brings in its package. Give the figure an `Interactive` field naming a component, list the script in `interactiveScripts`, and register the component with `TraceViz.register`. See [Interactives](docs/format.md#interactives). `api.tagColor(id)` draws in a highlight's colour, so a graph's line for x matches x in the text.
+
+## Build pages yourself
+
+Readers need nothing but `trace-reader.html`. Authors who want to build pages use Node 20 or newer. There are no dependencies to install.
 
 ```sh
 node scripts/build-reading.mjs --data examples/outliners.trace.json --out out.html
 ```
 
-Open `out.html` in a browser. The document data, reader, bundled fonts and supported figure images are embedded. Some themes and font choices use Google Fonts at runtime. Math uses MathJax from a CDN; offline, its TeX remains plain text.
+Open `out.html` in a browser. The document's package, the reader and bundled fonts are embedded. Some themes and font choices use Google Fonts at runtime. Math uses MathJax from a CDN; offline, its TeX remains plain text.
 
-To check data and rebuild the supplied pages:
+To write the package as well, or to build the standalone reader:
+
+```sh
+node scripts/build-reading.mjs --data examples/outliners.trace.json --out out.html --zip outliners.trace.zip
+node scripts/build-reading.mjs --reader --out trace-reader.html
+```
+
+To check data and rebuild the supplied pages, sample packages and the reader:
 
 ```sh
 npm run validate
-npm run build:examples
+npm run build
 ```
 
 These commands run local scripts. The package metadata is not an npm publication workflow.
