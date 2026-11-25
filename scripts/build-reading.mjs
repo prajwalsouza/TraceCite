@@ -211,7 +211,7 @@ for (const name of SCRIPTS) {
   if (name === 'app.js' && !(code.includes('__traceWindow.tree') && code.includes("n.kind==='placeholder'") && code.includes('__traceRender'))) throw new Error('Trace app.js changed: the long-document hooks did not apply');
   add(name, code);
 }
-for (const [label, file] of [['reading-only', 'reading-only.js'], ['params', 'params.js'], ['flow', 'flow.js'], ['tag icons', 'tag-icons.js'], ['settings', 'settings.js'], ['media', 'media.js'], ['search', 'search.js'], ['rich text', 'rich-text.js'], ['environments', 'environments.js'], ['cross-references', 'crossref.js'], ['trace part', 'trace-part.js'], ['contents', 'trace-toc.js'], ['front matter', 'front-matter.js'], ['tour', 'tour.js']]) add(label, await own(file));
+for (const [label, file] of [['reading-only', 'reading-only.js'], ['params', 'params.js'], ['flow', 'flow.js'], ['tag icons', 'tag-icons.js'], ['settings', 'settings.js'], ['media', 'media.js'], ['search', 'search.js'], ['rich text', 'rich-text.js'], ['environments', 'environments.js'], ['cross-references', 'crossref.js'], ['trace part', 'trace-part.js'], ['contents', 'trace-toc.js'], ['front matter', 'front-matter.js'], ['tour', 'tour.js'], ['edits', 'edits.js']]) add(label, await own(file));
 // Interactives: run only when the document has an interactive figure; its own components follow (boot.js).
 add('interactives', await own('viz.js'), 'viz');
 // The in-app tour film (Settings → About → Watch the tour), started by tour.js with the open document's data.
