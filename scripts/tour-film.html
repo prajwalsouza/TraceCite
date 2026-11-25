@@ -58,7 +58,9 @@ body.nocc .cap{display:none}
 .band{flex:0 0 var(--band);display:flex;align-items:center;gap:10px;padding:0 10px;transition:opacity .5s;position:relative;z-index:10}
 body.playing.idle .band{opacity:.3}
 .band:hover,.band:focus-within{opacity:1!important}
-.band>button{height:32px;min-width:32px;display:grid;place-items:center;border-radius:16px;color:var(--ink2)}
+.band>button{width:36px;height:36px;display:grid;place-items:center;border-radius:50%;color:var(--ink2);transition:background-color .15s ease,color .15s ease}
+#more svg{width:20px;height:20px}
+#play svg{width:17px;height:17px}
 .band>button:hover,.band>button[aria-expanded=true]{color:var(--ink);background:color-mix(in srgb,var(--ink) 5%,transparent)}
 .band svg{width:16px;height:16px;fill:currentColor}
 #play{color:var(--ink)}
@@ -144,16 +146,16 @@ body{color-scheme:var(--scheme,light)}
     <svg id="stage" viewBox="0 0 1600 900" role="img" aria-label="Animated explainer stage"></svg>
     <div class="tip" id="tip" hidden></div>
     <div class="pin" id="pin" hidden><h3 id="pinT"></h3><p id="pinB"></p><button type="button" id="pinX" aria-label="Close">×</button></div>
-    <button class="bigplay" id="bigplay" type="button"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 1.5v13l11-6.5z"/></svg><span id="bigplayT">Play</span></button>
+    <button class="bigplay" id="bigplay" type="button"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.2 2.3c0-.9 1-1.5 1.8-1l8 5.2c.7.5.7 1.5 0 2l-8 5.2c-.8.5-1.8-.1-1.8-1z"/></svg><span id="bigplayT">Play</span></button>
   </div>
   <p class="cap" id="cap" aria-live="polite"></p>
 </main>
 
 <nav class="band" aria-label="Playback">
-  <button type="button" id="play" aria-label="Play (Space)"><svg viewBox="0 0 16 16" id="playicon" aria-hidden="true"><path d="M3 1.5v13l11-6.5z"/></svg></button>
+  <button type="button" id="play" aria-label="Play (Space)"><svg viewBox="0 0 16 16" id="playicon" aria-hidden="true"><path d="M4.2 2.3c0-.9 1-1.5 1.8-1l8 5.2c.7.5.7 1.5 0 2l-8 5.2c-.8.5-1.8-.1-1.8-1z"/></svg></button>
   <div class="bar" id="bar" tabindex="0" role="slider" aria-label="Seek" aria-valuemin="0"><div class="bartip" id="bartip" hidden></div></div>
   <span class="time" id="time">0:00 / 0:00</span>
-  <button type="button" id="more" aria-label="More options" aria-haspopup="true" aria-expanded="false" aria-controls="menu"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="3" cy="8" r="1.5"/><circle cx="8" cy="8" r="1.5"/><circle cx="13" cy="8" r="1.5"/></svg></button>
+  <button type="button" id="more" aria-label="More options" aria-haspopup="true" aria-expanded="false" aria-controls="menu"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="4" cy="10" r="1.9"/><circle cx="10" cy="10" r="1.9"/><circle cx="16" cy="10" r="1.9"/></svg></button>
 </nav>
 
 <div class="menu" id="menu" role="menu" hidden>
@@ -332,72 +334,59 @@ function litRows(rs, on, sym) {
 }
 const litBars = (bars, on) => bars.forEach((r) => { const hit = !on || r.tags.some((x) => on.includes(x)); r.style.opacity = hit ? 1 : .18; r.style.fill = on && hit ? C.acc : C.dim; });
 
-/* ---------- 0. the pitch (as the README opens) ---------- */
-chapter('TraceCite');
-scene({ title: 'Sentences that open | to their evidence.', beats: [
-  'TraceCite is a format for documents whose sentences open to the evidence behind them.',
-  'Click a sentence, and the source’s exact words open right there, in place.',
-  'With the passage they sit in, notes, tags, and who checked them.'],
-build(g, A) {
-  const wm = Gp(g); const wt = S('text', { x: 0, y: 0, 'font-size': 150, 'font-weight': 600, 'text-anchor': 'middle', cls: 't-d mid' }, wm);
-  S('tspan', { text: 'Trace', fill: C.ink }, wt); S('tspan', { text: 'Cite', fill: C.acc }, wt);
-  A.show(wm, 0, Infinity, { rise: 0 }); A.pose(wm, [[0, 800, 330, 1], [1, 800, 120, .42]]); A.dim(wm, [[0, 1], [1, .5]]);
-  const ww = tw(wt) || 640; penUnder(g, A, 800 - ww / 2, 800 + ww / 2, 420, 0, { delay: 1, to: 1 });
-  const X = 300, W = 1000;
-  const sentG = Gp(g); A.show(sentG, 1, Infinity, { delay: .2 });
-  const bg = S('rect', { x: X - 18, y: 0, width: W + 36, height: 0, rx: 12, fill: C.soft }, sentG);
-  const sent = rich(sentG, X, 290, EV.segs || [{ t: EV.sentence || '' }], { size: 30, w: W, f: 'd', wt: 500 });
-  fitBg(bg, 290, 30, sent);
-  const top = 290 + (sent.n - 1) * 45 + 30 + 46;
-  const card = Gp(g); A.show(card, 1, Infinity, { delay: 1.3 });
-  const box = R(card, X, top, W, 10, { rx: 16 });
-  const qr = rich(card, X + 40, top + 50, [{ t: '“' + cut(EV.quote || '', 130) + '”' }], { size: 25, w: W - 80, f: 'd', wt: 500 });
-  S('line', { x1: X + 22, y1: top + 26, x2: X + 22, y2: top + 26 + qr.h, stroke: C.acc, 'stroke-width': 3 }, card);
-  let y = top + 50 + qr.h + 14;
-  const extra = Gp(card); A.show(extra, 2, Infinity, { delay: .2 });
-  const pas = T(extra, X + 40, y, cut(EV.context || '', 110), { size: 18, fill: C.dim }); const pasY = y; y += 40;
-  const nt = EV.note ? T(extra, X + 40, y, 'Note · ' + cut(EV.note, 90), { size: 18, fill: C.mut }) : null; const ntY = y; if (nt) y += 44;
-  let px = X + 40; const pillY = y;
-  (EV.tags || []).slice(0, 3).forEach((tg) => { const pg = Gp(extra), lt = T(pg, px + 14, y, tg, { size: 16, fill: C.mut }), wv = tw(lt) + 28; pg.insertBefore(R(pg, px, y - 21, wv, 30, { rx: 15, fill: 'color-mix(in srgb,var(--ink) 6%,transparent)', stroke: 'none' }), lt); px += wv + 10; });
-  const ck = T(extra, X + W - 40, y, '✓ checked against the source' + (EV.checkedBy ? ' by ' + EV.checkedBy : '') + (EV.checkedOn ? ' · ' + EV.checkedOn : ''), { size: 17, fill: C.green, anchor: 'end' });
-  box.setAttribute('height', y - top + 30);
-  hot(card, 'The evidence, in place', 'Nothing opens in a new tab. The sentence and its proof stay together.');
-  note(g, A, X - 30, pasY + 4, 'the passage', 2, { delay: .6, anchor: 'end', size: 26 }); penArrow(g, A, X - 26, pasY - 6, X + 30, pasY - 8, 2, { delay: .9, head: 14, bend: .2 });
-  if (nt) { note(g, A, X - 30, ntY + 4, 'a note', 2, { delay: 1.3, anchor: 'end', size: 26 }); penArrow(g, A, X - 26, ntY - 6, X + 30, ntY - 8, 2, { delay: 1.6, head: 14, bend: -.2 }); }
-  note(g, A, X - 30, pillY + 40, 'tags', 2, { delay: 2, anchor: 'end', size: 26 }); penArrow(g, A, X - 26, pillY + 30, X + 34, pillY + 2, 2, { delay: 2.3, head: 14, bend: .2 });
-  note(g, A, X + W + 76, pillY + 6, 'who checked it', 2, { delay: 2.7, size: 26 }); penArrow(g, A, X + W + 70, pillY - 4, X + W + 10, pillY - 6, 2, { delay: 3, head: 14, bend: -.2 });
-  if (EV.sample) { const n = LBL(g, 800, 868, 'Example from the TraceCite sample document', { size: 16, fill: C.dim }); A.show(n, 1, Infinity, { delay: 1 }); }
-} });
 
-/* ---------- 1. the problem ---------- */
-chapter('Why');
-scene({ title: 'A claim | and its proof.', beats: [
-  'A paper makes a claim, then points somewhere else for its proof.',
-  'To check it, you go hunting: the reference, the paper, the page, the paragraph.',
-  'Most readers never make that trip. They trust it, or they doubt it.'],
-build(g, A) {
-  const s = Gp(g); A.show(s, 0); A.dim(s, [[0, 1], [2, .3]]);
-  const sent = rich(s, 800, 330, EV.segs || [{ t: EV.sentence || '' }], { size: 36, w: 1100, anchor: 'middle', f: 'd', wt: 500 });
-  const chipY = 330 + sent.h + 4, label = EV.cite || 'Source';
-  const chip = Gp(s); const lt = LBL(chip, 800, chipY + 30, label, { size: 21, fill: C.acc, w: 600 }); const cw = Math.max(120, tw(lt) + 48);
-  chip.insertBefore(R(chip, 800 - cw / 2, chipY, cw, 44, { rx: 22, fill: C.soft, stroke: 'none' }), lt);
-  A.show(chip, 0, Infinity, { delay: .8 }); hot(chip, 'A citation', 'It names a source. It does not show what the source actually says.');
-  penRing(g, A, 800, chipY + 22, cw / 2 + 30, 40, 0, { delay: 2.2, to: 2 });
-  const trip = Gp(g); A.show(trip, 1, 2.4); const steps = ['reference', 'paper', 'page', 'paragraph'];
-  steps.forEach((st, i) => { const x = 380 + i * 280, y = 730; const c = Gp(trip); R(c, x - 105, y - 30, 210, 60, { rx: 30 }); LBL(c, x, y + 8, st, { size: 22, fill: C.mut }); A.show(c, 1, 2.4, { delay: .3 + i * .35 }); if (i) penArrow(trip, A, x - 172, y, x - 118, y, 1, { delay: .3 + i * .35, bend: .25, head: 12, w: 2.6, to: 2.4, col: C.mut }); });
-  penArrow(g, A, 800 - cw / 2 - 40, chipY + 40, 330, 690, 1, { delay: .2, bend: .2, to: 2.4 });
-  const q = Gp(g); BIG(q, 800, 460, '?', { size: 170, fill: C.acc }); A.show(q, 2, Infinity, { delay: .5, rise: 0 });
-} });
-
-/* ---------- 2. a sentence opens ---------- */
+/* ================= the story =================
+   A model writes; the reader wants to know where it came from, to question it and to change it.
+   TraceCite answers each in turn: the sentence opens to its evidence, edits stream in as suggestions,
+   tags map the argument, and the whole thing travels as one file. Under two minutes. */
+const AGENT = ((D.prov || []).find((p) => p.agent) || {}).name || 'A model';
 const around = (ctx, q, n) => { ctx = String(ctx || ''); if (ctx.length <= n) return ctx; const i = Math.max(0, ctx.indexOf(q)); let a = Math.max(0, i - (n - q.length) / 2); a = ctx.lastIndexOf(' ', a) + 1; let s = ctx.slice(a, a + n); s = s.slice(0, s.lastIndexOf(' ')); return (a > 0 ? '… ' : '') + s + ' …'; };
-chapter('Open a sentence');
-scene({ title: 'Open | a sentence.', beats: [
-  'Here it is, step by step. You click a sentence.',
-  'It opens right where it is. First, the source it rests on.',
-  'Then the exact words, copied verbatim, never paraphrased.',
-  'And the passage around them, so nothing is quoted out of context.',
-  'Pause the film and click the sentence yourself.'],
+// The edit shown in the film is illustrative, made on the sample sentence, and the film says so.
+const EDIT = {
+  before: 'Without such marks, a program sees only an undivided run of characters.',
+  ask: 'Add an everyday example after this.',
+  after: 'A web page without its tags would be one long line of text: no headings, no lists, no links.',
+};
+const robot = (p, x, y, col) => { const i = Gp(p); R(i, x - 13, y - 10, 26, 21, { rx: 7, fill: 'none', stroke: col, sw: 2 }); S('circle', { cx: x - 5, cy: y, r: 2.2, fill: col }, i); S('circle', { cx: x + 5, cy: y, r: 2.2, fill: col }, i); S('line', { x1: x, y1: y - 10, x2: x, y2: y - 17, stroke: col, 'stroke-width': 2 }, i); return i; };
+// Words of a rich block appear one by one between two times, with a caret after the last one.
+function typeOn(A, r, t0, t1, caret) {
+  const n = r.words.length;
+  A.tick((t) => {
+    const k = Math.floor(clamp((t - A.bt(t0)) / Math.max(.1, A.bt(t1) - A.bt(t0))) * n + (t >= A.bt(t1) ? n : 0));
+    r.words.forEach((w, i) => { w.el.style.opacity = i < k ? 1 : 0; });
+    if (caret) { const last = r.words[Math.min(n, Math.max(1, k)) - 1]; const on = k > 0 && k < n; caret.style.opacity = on && (Math.floor(t * 2) % 2 === 0) ? 1 : 0; if (last) { caret.setAttribute('x', last.x + last.w + 4); caret.setAttribute('y', last.y - 26); } }
+  });
+}
+
+/* ---------- 1. a model is writing ---------- */
+chapter('Written by a model');
+scene({ title: 'Written | by a model.', noTitle: true, beats: [
+  '',
+  'It sounds sure of itself. But where did this come from?',
+  'You want to understand it, question it, and change it.'],
+build(g, A) {
+  const X = 300, W = 1000;
+  const who = Gp(g); robot(who, X + 12, 236, C.mut); T(who, X + 38, 243, 'A model is writing…', { size: 20, fill: C.mut }); A.show(who, 0, 2, { delay: .2 });
+  const s = Gp(g); A.show(s, 0); A.dim(s, [[0, 1], [2, .4]]);
+  const sent = rich(s, X, 320, EV.segs || [{ t: EV.sentence || '' }], { size: 40, w: W, f: 'd', wt: 500, lh: 1.4 });
+  const caret = S('rect', { x: X, y: 300, width: 3, height: 34, rx: 1.5, fill: C.acc }, s);
+  typeOn(A, sent, 0.1, 0.85, caret);
+  const end = sent.words[sent.words.length - 1];
+  penUnder(g, A, X - 4, X + Math.min(W, sent.lineEnd(0) - X) + 4, 320 + 14, 1, { delay: .4, to: 2 });
+  const q = note(g, A, end ? Math.min(1480, end.x + end.w + 40) : 1300, 320 + (sent.n - 1) * 56 + 6, '?', 1, { delay: 1, size: 64, to: 2 });
+  note(g, A, 800, 320 + sent.h + 90, 'where did this come from?', 1, { delay: 1.6, anchor: 'middle', size: 36, to: 2 });
+  const verbs = Gp(g); A.show(verbs, 2, Infinity, { delay: .3 });
+  ['understand', 'question', 'change'].forEach((v, i) => { const x = 520 + i * 280; const n = T(verbs, x, 640, v, { size: 40, anchor: 'middle', cls: 'hand', fill: C.acc }); A.show(n, 2, Infinity, { delay: .3 + i * .45, rise: 10 }); });
+  if (EV.sample) { const n = LBL(g, 800, 868, 'Example sentence from the TraceCite sample document', { size: 16, fill: C.dim }); A.show(n, 0, Infinity, { delay: 2 }); }
+} });
+
+/* ---------- 2. every sentence opens ---------- */
+chapter('Every sentence opens');
+scene({ title: 'Every sentence | opens.', beats: [
+  'TraceCite makes every sentence open to the evidence behind it.',
+  'First, the source’s exact words, copied, never paraphrased.',
+  'Then the passage around them, so nothing is out of context.',
+  'And whether anyone checked the quote against the source.'],
 build(g, A) {
   const st = A.st, X = 190, W = 960, NX = 1240;
   const sentG = Gp(g); A.show(sentG, 0); A.pose(sentG, [[0, 0, 90, 1], [1, 0, 0, 1]]);
@@ -406,72 +395,118 @@ build(g, A) {
   fitBg(bg, 170, 32, sent);
   hot(sentG, 'The sentence', 'Click it to fold and unfold its evidence.');
   sentG.addEventListener('click', (e) => { e.stopPropagation(); explore(null); st.closed = !st.closed; st.at = performance.now() / 1000; });
-  pulse(g, A, sent.lineEnd(sent.n - 1) + 26, 170 + (sent.n - 1) * 48 - 10, 0, 1, { r0: 10, r1: 34 });
   const ev = Gp(g); A.show(ev, 1); const ann = Gp(g);
   let y = 170 + sent.h + 44;
   const src = Gp(ev); T(src, X, y, 'SOURCE', { size: 15, fill: C.dim, ls: 3, w: 600 });
-  const ref = T(src, X, y + 38, cut(EV.ref || EV.cite || '', 72), { size: 24, w: 600 });
-  if (EV.where) T(src, X, y + 70, cut(EV.where, 90), { size: 18, fill: C.dim });
-  A.show(src, 1, Infinity, { delay: .3 });
-  note(ann, A, NX, y + 44, 'where it comes from', 1, { delay: 1.1, to: 2 });
-  penArrow(ann, A, NX - 14, y + 34, Math.min(X + tw(ref) + 24, NX - 70), y + 30, 1, { delay: 1.4, to: 2, bend: -.2 });
-  y += 132;
+  T(src, X, y + 36, cut(EV.ref || EV.cite || '', 72), { size: 23, w: 600 });
+  A.show(src, 1, Infinity, { delay: .2 });
+  y += 92;
   const qG = Gp(ev); const qRule = S('line', { x1: X, y1: y - 30, x2: X, y2: y + 10, stroke: C.acc, 'stroke-width': 3 }, qG);
   const quote = rich(qG, X + 26, y, [{ t: '“' + cut(EV.quote || '', 170) + '”' }], { size: 28, w: W - 26, f: 'd', wt: 500 });
   qRule.setAttribute('y2', y + quote.h - 30);
-  A.show(qG, 2, Infinity, { delay: .2 }); hot(qG, 'The exact words', 'Copied from the source by a program and checked against it, never retyped.');
-  note(ann, A, NX, y + 6, 'its exact words', 2, { delay: 1, to: 3 });
-  penArrow(ann, A, NX - 14, y - 4, Math.min(quote.lineEnd(0) + 22, NX - 70), y - 12, 2, { delay: 1.3, to: 3, bend: .2 });
-  y += quote.h + 40;
+  A.show(qG, 1, Infinity, { delay: .5 }); hot(qG, 'The exact words', 'Copied from the source by a program and checked against it, never retyped.');
+  note(ann, A, NX, y + 6, 'its exact words', 1, { delay: 1.4, to: 2 });
+  penArrow(ann, A, NX - 14, y - 4, Math.min(quote.lineEnd(0) + 22, NX - 70), y - 12, 1, { delay: 1.7, to: 2, bend: .2 });
+  y += quote.h + 36;
   const cG = Gp(ev); T(cG, X, y, 'WHERE IT SITS', { size: 15, fill: C.dim, ls: 3, w: 600 });
-  const ctx = around(EV.context || '', EV.quote || '', 380), qi = EV.quote ? ctx.indexOf(EV.quote.slice(0, 60)) : -1;
+  const ctx = around(EV.context || '', EV.quote || '', 300), qi = EV.quote ? ctx.indexOf(EV.quote.slice(0, 60)) : -1;
   const cs = qi < 0 ? [{ t: ctx }] : (() => { const end = Math.min(ctx.length, qi + EV.quote.length); return [{ t: ctx.slice(0, qi) }, { t: ctx.slice(qi, end), fill: C.acc, wt: 500, mark: true }, { t: ctx.slice(end) }]; })();
-  const cx = rich(cG, X, y + 36, cs, { size: 20, w: W, fill: C.mut, lh: 1.55 });
-  A.show(cG, 3, Infinity, { delay: .2 }); hot(cG, 'The passage', 'The whole paragraph the quote sits in, with the quote marked.');
+  const cx = rich(cG, X, y + 34, cs, { size: 20, w: W, fill: C.mut, lh: 1.55 });
+  A.show(cG, 2, Infinity, { delay: .2 }); hot(cG, 'The passage', 'The whole paragraph the quote sits in, with the quote marked.');
   const mw = cx.words.find((w) => w.mark) || cx.words[0];
-  if (mw) { note(ann, A, NX, y + 70, 'the whole passage', 3, { delay: 1, to: 4 }); penArrow(ann, A, NX - 14, y + 60, Math.min(cx.lineEnd(mw.line) + 18, NX - 70), mw.y - 8, 3, { delay: 1.3, to: 4, bend: .2 }); }
-  if (EV.sample) { const n = LBL(g, 800, 868, 'Example from the TraceCite sample document, since this one has no recorded quotes yet', { size: 16, fill: C.dim }); A.show(n, 1, Infinity, { delay: 1 }); }
+  if (mw) { note(ann, A, NX, y + 64, 'the whole passage', 2, { delay: 1, to: 3 }); penArrow(ann, A, NX - 14, y + 54, Math.min(cx.lineEnd(mw.line) + 18, NX - 70), mw.y - 8, 2, { delay: 1.3, to: 3, bend: .2 }); }
+  y += 34 + cx.h + 20;
+  const pv = Gp(ev); A.show(pv, 3, Infinity, { delay: .2 });
+  // Only what the record says: who added the sentence (if recorded), and whether the quote was checked.
+  let px = X;
+  if (EV.addedBy) { if (EV.agent) robot(pv, X + 12, y - 6, C.mut); const at = T(pv, X + (EV.agent ? 36 : 0), y, 'Added by ' + EV.addedBy + (EV.addedVia ? ' · via ' + EV.addedVia : ''), { size: 19, fill: C.mut }); px = X + (EV.agent ? 36 : 0) + tw(at) + 40; }
+  if (EV.checkedOn || EV.checkedBy) T(pv, px, y, '✓ quote checked against the source' + (EV.checkedBy ? ' by ' + EV.checkedBy : '') + (EV.checkedOn ? ' · ' + EV.checkedOn : ''), { size: 19, fill: C.green });
+  else T(pv, px, y, 'Quote not yet checked', { size: 19, fill: C.dim });
+  if (EV.sample) { const n = LBL(g, 800, 868, 'Evidence from the TraceCite sample document', { size: 16, fill: C.dim }); A.show(n, 1, Infinity, { delay: 1 }); }
   A.tick(() => { if (st.closed == null) return; const p = eo((performance.now() / 1000 - (st.at || 0)) / .45); const o = st.closed ? 1 - p : p; ev.style.opacity = (parseFloat(ev.style.opacity || '1') * o).toFixed(3); ann.style.opacity = o.toFixed(3); ev.style.pointerEvents = o < .2 ? 'none' : ''; });
 } });
 
-/* ---------- 3. tags ---------- */
+/* ---------- 3. ask for a change: edits stream in as suggestions ---------- */
+chapter('Ask for a change');
+scene({ title: 'Ask | for a change.', beats: [
+  'Select a few words, press Enter, and say what should change.',
+  'The model writes its edit right there, word by word.',
+  'You review each one: accept it, reject it, or comment.'],
+build(g, A) {
+  const X = 260, W = 1080, Y = 250;
+  const base = rich(g, X, Y, [{ t: EDIT.before }], { size: 34, w: W, f: 'd', wt: 500 }); A.show(base, 0);
+  const selW = base.lineEnd(base.n - 1) - X + 8;
+  const sel = S('rect', { x: X - 4, y: Y - 30, width: 0, height: 44, rx: 6, fill: C.soft }, g); g.insertBefore(sel, base);
+  A.tick((t) => { const p = eio((t - A.bt(0) - .4) / 1.1); sel.setAttribute('width', (selW * p).toFixed(1)); sel.style.opacity = t < A.bt(1) + .3 ? 1 : Math.max(0, 1 - (t - A.bt(1) - .3) / .4); });
+  // the ask box
+  const ask = Gp(g); A.show(ask, 0, 1.2, { delay: 1.6 });
+  const AY = Y + base.h + 4;
+  R(ask, X, AY, 640, 120, { rx: 16 });
+  const at = T(ask, X + 24, AY + 52, '', { size: 24, fill: C.ink });
+  const key = Gp(ask); R(key, X + 520, AY + 80, 96, 30, { rx: 8, fill: C.soft, stroke: 'none' }); LBL(key, X + 568, AY + 101, 'Enter ↵', { size: 16, fill: C.acc, w: 600 });
+  A.tick((t) => { const k = Math.floor(clamp((t - A.bt(0) - 2.1) / 2) * EDIT.ask.length); at.textContent = EDIT.ask.slice(0, k); });
+  // the streamed edit, under the sentence, with the ruler ticking at the right
+  const nw = rich(g, X, Y + base.h + 26, [{ t: EDIT.after }], { size: 34, w: W, f: 'd', wt: 500 }); nw.words.forEach((w) => { w.el.style.fill = C.blue; });
+  const caret = S('rect', { x: X, y: 0, width: 3, height: 32, rx: 1.5, fill: C.acc }, g);
+  A.show(nw, 1, Infinity, { delay: .1, rise: 0 }); typeOn(A, nw, 1.15, 1.85, caret);
+  const ruler = Gp(g); A.show(ruler, 1, Infinity, { delay: .2 });
+  for (let i = 0; i < 40; i++) S('line', { x1: 1538 - (i % 5 ? 0 : 6), y1: 150 + i * 15, x2: 1550, y2: 150 + i * 15, stroke: C.dim, 'stroke-width': 1.2, opacity: .6 }, ruler);
+  const tick = S('line', { x1: 1532, y1: 285, x2: 1550, y2: 285, stroke: C.acc, 'stroke-width': 3 }, ruler);
+  A.tick((t) => { const writing = t > A.bt(1.15) && t < A.bt(1.85); tick.style.opacity = writing ? (Math.floor(t * 2) % 2 ? .25 : 1) : 1; tick.style.stroke = writing ? C.acc : C.ink; });
+  hot(ruler, 'The ruler', 'Faint ticks at the edge of the page: a darker one wherever an edit is, blinking while it is written.');
+  // review bar
+  const bar = Gp(g); A.show(bar, 2, Infinity, { delay: .2 }); const by = 700;
+  R(bar, 360, by - 38, 880, 76, { rx: 38 });
+  [['‹', 410], ['›', 458]].forEach(([c, x]) => { S('circle', { cx: x, cy: by, r: 20, fill: 'none', stroke: C.line, 'stroke-width': 1.4 }, bar); LBL(bar, x, by + 8, c, { size: 26, fill: C.mut }); });
+  T(bar, 496, by + 7, '1 of 1 · new sentence', { size: 20, fill: C.mut });
+  const acc = Gp(bar); R(acc, 760, by - 22, 124, 44, { rx: 22, fill: C.soft, stroke: 'none' }); LBL(acc, 822, by + 7, 'Accept', { size: 20, fill: C.acc, w: 600 });
+  [['Reject', 960, 112], ['Comment', 1100, 132]].forEach(([l, x, w]) => { R(bar, x - w / 2, by - 22, w, 44, { rx: 22, fill: 'none' }); LBL(bar, x, by + 7, l, { size: 20, fill: C.mut }); });
+  LBL(bar, 1200, by + 8, '×', { size: 24, fill: C.dim });
+  penRing(g, A, 822, by, 84, 38, 2, { delay: 1 });
+  A.tick((t) => { const done = t > A.bt(2) + 2.2; nw.words.forEach((w) => { w.el.style.fill = done ? C.ink : C.blue; }); });
+  note(g, A, 822, by - 66, 'accepted: now part of the document', 2, { delay: 2.4, anchor: 'middle', size: 28 });
+  hot(bar, 'Review', 'One by one: Accept, Reject, or Comment. A comment goes back to the model as a request; every decision is logged for it to read.');
+  const n = LBL(g, 800, 868, 'Illustrative edit on the sample sentence', { size: 16, fill: C.dim }); A.show(n, 0, Infinity, { delay: 1 });
+} });
+
+/* ---------- 4. a map of the argument ---------- */
 if ((D.families || []).length) {
   chapter('A map of the argument');
   scene({ title: 'A map | of the argument.', beats: [
-    'Every sentence also carries tags: what it does, and how it is supported.',
-    'Hover a tag, and only the sentences that carry it stay in view.',
-    'Tags nest, so a whole family lights up at once.',
-    'Pause and hover the tags yourself.'],
+    'Tags say what each sentence does, and how it is supported.',
+    'Pick one, and its sentences stand out: in the text and on the ruler.'],
   build(g, A) {
     const st = A.st, fams = D.families.slice(0, 2), lines = (D.lines || []).slice(0, 9);
     const list = Gp(g); A.show(list, 0); const items = [];
     let y = 200;
     fams.forEach((f) => {
-      const fi = Gp(list), ft = T(fi, 150, y, f.name, { size: 25, w: 600, fill: TONE[f.tone] || C.ink }); fi.ids = [f.id, ...f.children.map((c) => c.id)]; fi.box = [150, y, tw(ft)]; items.push(fi); const top = y; y += 44;
-      f.children.slice(0, 4).forEach((c) => { const ci = Gp(list), ct = T(ci, 184, y, c.name, { size: 21, fill: TONE[f.tone] || C.mut }); ci.ids = [c.id]; ci.box = [184, y, tw(ct)]; items.push(ci); y += 36; });
-      fi.span = [top, y - 36]; y += 24;
+      const fi = Gp(list); T(fi, 150, y, f.name, { size: 25, w: 600, fill: TONE[f.tone] || C.ink }); fi.ids = [f.id, ...f.children.map((c) => c.id)]; fi.tone = f.tone; items.push(fi); y += 44;
+      f.children.slice(0, 4).forEach((c) => { const ci = Gp(list), ct = T(ci, 184, y, c.name, { size: 21, fill: TONE[f.tone] || C.mut }); ci.ids = [c.id]; ci.tone = f.tone; ci.box = [184, y, tw(ct)]; items.push(ci); y += 36; });
+      y += 24;
     });
-    items.forEach((it) => { hot(it, 'A tag', 'Hover to keep only the sentences that carry it.'); it.addEventListener('pointerenter', () => { st.user = it.ids; }); it.addEventListener('pointerleave', () => { st.user = null; }); });
-    const paper = rows(g, 640, 205, lines, { w: 800, gap: 52 }); A.show(paper, 0, Infinity, { delay: .3 });
-    const pick = items.find((it) => it.ids.length === 1 && lines.filter((l) => l.tags.includes(it.ids[0])).length >= 2) || items.find((it) => it.ids.length === 1 && lines.some((l) => l.tags.includes(it.ids[0])));
-    if (pick) { const [bx, by, bw] = pick.box; penRing(g, A, bx + bw / 2, by - 8, bw / 2 + 22, 22, 1, { delay: .5, to: 2 }); penArrow(g, A, bx + bw + 30, by - 8, 612, by - 8 + (by < 400 ? 20 : -20), 1, { delay: 1.2, to: 2, bend: -.15 }); }
-    const fam = items[0]; if (fam) pencil(g, A, `M126,${fam.span[0] - 22} Q114,${(fam.span[0] + fam.span[1]) / 2} 126,${fam.span[1] + 8}`, 2, { delay: .5, to: 3 });
+    items.forEach((it) => { hot(it, 'A tag', 'Hover to keep only the sentences that carry it.'); it.addEventListener('pointerenter', () => { st.user = it; }); it.addEventListener('pointerleave', () => { st.user = null; }); });
+    const paper = rows(g, 640, 205, lines, { w: 780, gap: 52 }); A.show(paper, 0, Infinity, { delay: .3 });
+    // the ruler: one tick per row, lit in the tag's colour where its sentences are
+    const ruler = Gp(g); A.show(ruler, 0, Infinity, { delay: .5 }); const marks = [];
+    lines.forEach((l, i) => { const yy = 199 + i * 52; marks.push(S('line', { x1: 1538, y1: yy, x2: 1550, y2: yy, stroke: C.dim, 'stroke-width': 1.4 }, ruler)); });
+    for (let i = 0; i < 34; i++) S('line', { x1: 1544, y1: 180 + i * 15, x2: 1550, y2: 180 + i * 15, stroke: C.dim, 'stroke-width': 1, opacity: .45 }, ruler);
+    const pick = items.find((it) => it.ids.length === 1 && lines.filter((l) => l.tags.includes(it.ids[0])).length >= 2) || items.find((it) => it.ids.length === 1);
+    if (pick?.box) { const [bx, by, bw] = pick.box; penRing(g, A, bx + bw / 2, by - 8, bw / 2 + 22, 22, 1, { delay: .4 }); }
     A.tick((t) => {
-      const b = A.bi(t), on = st.user || (b === 1 && pick ? pick.ids : b === 2 && fam ? fam.ids : null);
+      const it = st.user || (A.bi(t) >= 1 ? pick : null), on = it ? it.ids : null, col = it ? TONE[it.tone] || C.acc : C.dim;
       litRows(paper.rows, on);
-      items.forEach((it) => { const act = on && on.includes(it.ids[0]); it.style.opacity = !on || act ? 1 : .4; });
+      lines.forEach((l, i) => { const hit = on && l.tags.some((x) => on.includes(x)); marks[i].style.stroke = hit ? col : C.dim; marks[i].setAttribute('x1', hit ? 1530 : 1538); marks[i].style.strokeWidth = hit ? '3px' : '1.4px'; });
+      items.forEach((x) => { x.style.opacity = !on || on.includes(x.ids[0]) ? 1 : .4; });
     });
   } });
 }
 
-/* ---------- 4. connected highlights ---------- */
+/* ---------- 5. connected highlights ---------- */
 if ((D.hl || []).length && (D.hlSents || []).length) {
   chapter('Connected highlights');
   scene({ title: 'One idea, | one colour.', beats: [
-    'A few ideas run through the whole document.',
-    'Each keeps one colour, in the words and in the formulas.',
-    'So when the text says one thing and the formula another, you can see they are the same idea.',
-    'Pause and hover a colour to find it.'],
+    'The few ideas a document follows keep one colour, in words and in formulas.',
+    'So a word and its symbol look the same. Hover a colour to follow it.'],
   build(g, A) {
     const st = A.st, hl = D.hl.slice(0, 5);
     const leg = Gp(g); A.show(leg, 0); const chips = [];
@@ -479,140 +514,61 @@ if ((D.hl || []).length && (D.hlSents || []).length) {
     const gap = 56, total = chips.reduce((a, c) => a + c.w, 0) + gap * (chips.length - 1); let lx = 800 - total / 2;
     chips.forEach((c) => { c.t.setAttribute('x', lx.toFixed(1)); lx += c.w + gap; hot(c, 'A connected highlight', 'One idea, one colour, wherever it appears.'); c.addEventListener('pointerenter', () => { st.user = c.slot; }); c.addEventListener('pointerleave', () => { st.user = null; }); });
     let y = 330; const words = [];
-    D.hlSents.slice(0, 3).forEach((segs, i) => { const r = rich(g, 220, y, segs, { size: 30, w: 1160 }); A.show(r, 1, Infinity, { delay: i * .35 }); words.push(...r.words); y += r.h + 40; });
-    // One word phrase and one symbol that share a colour: underline both, then say so in the margin below.
+    D.hlSents.slice(0, 3).forEach((segs, i) => { const r = rich(g, 220, y, segs, { size: 30, w: 1160 }); A.show(r, 0, Infinity, { delay: .6 + i * .35 }); words.push(...r.words); y += r.h + 40; });
     const sw = words.find((w) => w.slot && !w.math && words.some((m) => m.math && m.slot === w.slot));
     if (sw) {
       const col = `var(--slot-${sw.slot})`, k0 = words.indexOf(sw); let k1 = k0;
       while (words[k1 + 1] && words[k1 + 1].slot === sw.slot && !words[k1 + 1].math && words[k1 + 1].line === sw.line && words[k1 + 1].el.parentNode === sw.el.parentNode) k1++;
       const phrase = words.slice(k0, k1 + 1).map((w) => w.el.textContent).join(' ').replace(/[.,:;]+$/, '');
       const mw = words.find((w) => w.math && w.slot === sw.slot);
-      penUnder(g, A, sw.x - 2, words[k1].x + words[k1].w + 2, sw.y + 12, 2, { delay: .3, to: 3, col });
-      penUnder(g, A, mw.x - 4, mw.x + mw.w + 4, mw.y + 12, 2, { delay: .9, to: 3, col });
-      const n = note(g, A, 800, y + 40, `“${phrase}” and ${mw.el.textContent[0]} are one idea, so one colour`, 2, { delay: 1.6, to: 3, anchor: 'middle', fill: col, size: 30 });
+      penUnder(g, A, sw.x - 2, words[k1].x + words[k1].w + 2, sw.y + 12, 1, { delay: .2, col });
+      penUnder(g, A, mw.x - 4, mw.x + mw.w + 4, mw.y + 12, 1, { delay: .8, col });
+      note(g, A, 800, y + 40, `“${phrase}” and ${mw.el.textContent[0]} are one idea, so one colour`, 1, { delay: 1.4, anchor: 'middle', fill: col, size: 30 });
     }
     A.tick((t) => {
-      const b = A.bi(t), on = st.user || (b >= 3 ? hl[Math.floor((t - A.bt(3)) / 1.6) % hl.length].slot : 0);
+      const on = st.user || (t > A.bt(1) + 4.2 ? hl[Math.floor((t - A.bt(1) - 4.2) / 1.4) % hl.length].slot : 0);
       words.forEach((w) => { w.el.style.opacity = !on || w.slot === on ? 1 : .28; });
       chips.forEach((c) => { c.style.opacity = !on || c.slot === on ? 1 : .35; });
     });
   } });
 }
 
-/* ---------- 5. provenance ---------- */
-const PV = D.provEx || null;
-chapter('Where it came from');
-scene({ title: 'Who added it, | who checked it.', beats: [
-  'Every part of a trace says where it came from.',
-  PV && PV.agent ? 'This sentence was written by ' + PV.by + ', an AI agent, and it says so. An agent is always named as an agent.' : 'A person, a reference manager or an AI agent: each is named, and an agent is always named as an agent.',
-  'A quote says whether someone checked it against the source, and when.',
-  'A source nobody has checked stays visibly unchecked.'],
-build(g, A) {
-  const X = 260, W = 1080;
-  const a = Gp(g); A.show(a, 0); A.dim(a, [[0, 1], [2, .35]]);
-  const r1 = rich(a, X, 230, PV ? PV.segs : [{ t: 'A sentence in your document.' }], { size: 30, w: W, f: 'd', wt: 500 });
-  let y = 230 + r1.h + 6;
-  const meta = Gp(a); A.show(meta, 0, Infinity, { delay: 1 });
-  const ic = Gp(meta); R(ic, X, y - 22, 30, 26, { rx: 8, fill: 'none', stroke: C.mut, sw: 2 }); S('circle', { cx: X + 10, cy: y - 9, r: 2.5, fill: C.mut }, ic); S('circle', { cx: X + 20, cy: y - 9, r: 2.5, fill: C.mut }, ic);
-  const by = T(meta, X + 44, y, PV ? 'Added by ' + PV.by + (PV.via ? ' · via ' + PV.via : '') + (PV.on ? ' · ' + PV.on : '') : 'Added by …', { size: 20, fill: C.mut });
-  if (PV && PV.agent) penUnder(g, A, X + 44, X + 44 + tw(by), y + 10, 1, { delay: .6, to: 2 });
-  y += 110;
-  const b = Gp(g); A.show(b, 2); A.dim(b, [[2, 1], [3, .35]]);
-  S('line', { x1: X, y1: y - 26, x2: X, y2: y + 40, stroke: C.acc, 'stroke-width': 3 }, b);
-  const q = rich(b, X + 24, y, [{ t: '“' + cut(EV.quote || '', 120) + '”' }], { size: 24, w: W - 24, f: 'd', wt: 500 });
-  const cy = y + q.h + 10;
-  pencil(b, A, `M${X + 24} ${cy - 8}l9 9l18-20`, 2, { delay: .6, col: C.green, w: 4, dur: .45 });
-  T(b, X + 64, cy, 'Checked against the source' + (EV.checkedBy ? ' by ' + EV.checkedBy : '') + (EV.checkedOn ? ' · ' + EV.checkedOn : ''), { size: 20, fill: C.green });
-  y = cy + 100;
-  const c = Gp(g); A.show(c, 3);
-  T(c, X, y, D.unchecked ? D.unchecked : 'A source cited, but never opened', { size: 24, fill: C.mut });
-  S('circle', { cx: X + 12, cy: y + 34, r: 10, fill: 'none', stroke: C.dim, 'stroke-width': 2.5, 'stroke-dasharray': '3 4' }, c);
-  T(c, X + 34, y + 41, 'Reference only · not checked', { size: 20, fill: C.dim });
-  if (EV.sample) { const n = LBL(g, 800, 868, 'The quote is from the TraceCite sample document', { size: 16, fill: C.dim }); A.show(n, 2, Infinity, { delay: .6 }); }
-} });
-
-/* ---------- 6. mathematics ---------- */
-if ((D.symbols || []).length) {
-  chapter('Mathematics');
-  scene({ title: 'Symbols | that light up.', beats: [
-    'Mathematics is part of the outline too.',
-    'Every symbol becomes a tag, with what it stands for.',
-    'Hover one, and the sentences that use it stay in view.',
-    'Pause and try it on any symbol.'],
-  build(g, A) {
-    const st = A.st, syms = D.symbols.slice(0, 5), lines = (D.symLines || []).slice(0, 7);
-    const chips = syms.map((s, i) => { const x = 800 + (i - (syms.length - 1) / 2) * 220, c = Gp(g);
-      const t = S('text', { x, y: 230, text: s.sym, 'font-size': 76, 'text-anchor': 'middle', 'font-style': 'italic', fill: C.ink, cls: 't-d' }, c); LBL(c, x, 278, cut(s.label || '', 22), { size: 18, fill: C.mut });
-      A.show(c, 1, Infinity, { delay: i * .14 }); hot(c, s.sym + (s.label ? ' · ' + s.label : ''), 'Used in ' + s.count + ' sentence' + (s.count === 1 ? '' : 's') + ' of this document.');
-      c.addEventListener('pointerenter', () => { st.user = i; }); c.addEventListener('pointerleave', () => { st.user = null; }); c.t = t; c.x = x; return c; });
-    if (chips[0]) penRing(g, A, chips[0].x, 206, 56, 58, 2, { delay: .3, to: 3 });
-    const paper = rows(g, 330, 380, lines, { w: 960, gap: 50 }); A.show(paper, 0, Infinity, { delay: .3 });
-    A.tick((t) => { const b = A.bi(t), k = st.user ?? (b === 2 ? 0 : b >= 3 ? Math.floor((t - A.bt(3)) / 1.6) % syms.length : -1), s = syms[k];
-      chips.forEach((c, i) => { c.t.style.fill = i === k ? C.acc : C.ink; });
-      litRows(paper.rows, s ? [s.id] : null, s ? s.sym : ''); });
-  } });
-}
-
-/* ---------- 7. one file ---------- */
+/* ---------- 6. one file, any theme ---------- */
 const PK = D.pkg || {};
-chapter('One file');
-scene({ title: 'One file, | anywhere.', beats: [
-  'Export packs the whole document into one file: ' + (PK.name || 'a .trace.zip') + '. The outline, its sources, its figures and its history.',
-  'Drop that file onto any TraceCite page, and it opens. Nothing is uploaded.'],
+chapter('One file, any theme');
+scene({ title: 'One file, | any theme.', beats: [
+  'It all travels as one file. Drop it on any TraceCite page; nothing is uploaded.',
+  'And it reads in whichever theme you like.'],
 build(g, A) {
-  const names = (PK.files && PK.files.length ? PK.files : ['document.trace.json', 'sources.bib', 'manifest.json']).slice(0, 3);
-  names.forEach((n, i) => { const f = Gp(g), l = LBL(f, 0, 8, cut(n, 24), { size: 20, fill: C.mut, f: 'm' }), w = Math.max(160, tw(l) + 40); f.insertBefore(R(f, -w / 2, -36, w, 72, { rx: 12 }), l);
-    A.show(f, 0, .75, { delay: i * .2 }); A.pose(f, [[0, 400 + i * 400, 290, 1], [.6, 800, 540, .5]]); });
-  [0, 1, 2].slice(0, names.length).forEach((i) => penArrow(g, A, 400 + i * 400 + (1 - i) * 50, 340, 800 + (i - 1) * 70, 455, 0, { delay: 1 + i * .25, to: .55, bend: (1 - i) * .12 }));
+  const st = A.st, TH = D.themes || [];
   const zip = Gp(g); const zl = LBL(zip, 0, 8, PK.name || '.trace.zip', { size: 21, fill: C.acc, w: 600, f: 'm' }), zw = Math.max(200, tw(zl) + 48);
   zip.insertBefore(R(zip, -zw / 2, -60, zw, 120, { rx: 18, fill: C.soft, stroke: C.acc, sw: 2 }), zl);
-  A.show(zip, 0, Infinity, { delay: .6 }); A.pose(zip, [[0, 800, 540, 1], [1, 400, 470, .8]]); hot(zip, 'A package', 'The outline, its BibTrace sources, any figures and interactive scripts, and a version history.');
-  const win = Gp(g); A.show(win, 1, Infinity, { delay: .4 });
-  R(win, 760, 250, 640, 420, { rx: 22 }); const lines = [];
-  const tt = T(win, 810, 312, cut(D.title || 'Your document', 36), { size: 26, w: 600, f: 'd' }); tt.style.opacity = 0;
-  for (let i = 0; i < 6; i++) lines.push(S('rect', { x: 810, y: 350 + i * 42, width: 520 - (i % 3) * 90, height: 14, rx: 7, fill: C.dim }, win));
-  penArrow(g, A, 545, 420, 740, 430, 1, { delay: .9, bend: -.25 }); note(g, A, 645, 378, 'drop it', 1, { delay: 1.2, anchor: 'middle' });
-  A.tick((t) => { const lt = t - A.bt(1) - .9; tt.style.opacity = lt >= 1.6 ? 1 : 0; lines.forEach((l, i) => { l.style.opacity = lt > 0 && lt < 1.6 ? (.35 + .3 * Math.sin(t * 6 - i)).toFixed(2) : lt >= 1.6 ? .5 : 1; l.style.fill = lt >= 1.6 ? C.mut : C.dim; }); });
+  A.show(zip, 0, 1, { delay: .2 }); A.pose(zip, [[0, 330, 420, 1], [.55, 520, 420, .85]]); hot(zip, 'A package', 'The outline, its BibTrace sources, figures, interactive scripts and a version history.');
+  penArrow(g, A, 470, 360, 640, 360, 0, { delay: 1.6, to: 1, bend: -.25 }); note(g, A, 555, 320, 'drop it', 0, { delay: 1.9, anchor: 'middle', to: 1 });
+  const X = 680, Y = 200, W = 720, H = 420;
+  const win = Gp(g); A.show(win, 0, Infinity, { delay: 2.2 }); A.pose(win, [[0, 0, 0, 1], [1, -260, 0, 1]]);
+  const frame = R(win, X, Y, W, H, { rx: 22, stroke: 'none' });
+  const side = R(win, X + 18, Y + 18, 140, H - 36, { rx: 14, stroke: 'none' });
+  const title = T(win, X + 190, Y + 72, cut(D.title || 'Your document', 30), { size: 28, w: 600 });
+  const bars = [0, 1, 2, 3].map((i) => S('rect', { x: X + 190, y: Y + 106 + i * 28, width: 470 - (i % 2) * 110, height: 11, rx: 5.5 }, win));
+  const lit = S('rect', { x: X + 186, y: Y + 212, width: 440, height: 20, rx: 6 }, win);
+  const card = R(win, X + 190, Y + 248, 490, 116, { rx: 14, stroke: 'none' });
+  const rule = S('rect', { x: X + 208, y: Y + 270, width: 4, height: 72, rx: 2 }, win);
+  const name = T(g, 800 - 260 + X - 680 + W / 2 + 260 - 0, Y + H + 64, '', { size: 34, anchor: 'middle', cls: 'hand', fill: C.acc }); A.show(name, 1, Infinity, { delay: .4 });
+  win.addEventListener('click', (e) => { e.stopPropagation(); explore(null); st.user = ((st.user ?? st.k ?? 0) + 1) % Math.max(1, TH.length); });
+  hot(win, 'A theme', 'Settings → Appearance. Click to try the next one.');
+  A.tick((t) => {
+    const cur = { bg: C.card, panel: C.soft, surface: C.paper, ink: C.ink, ink2: C.mut, accent: C.acc, fill: C.soft, display: '' };
+    const k = TH.length && (st.user ?? (t > A.bt(1) ? Math.floor((t - A.bt(1)) / 1.2) % TH.length : -1)); const th = k >= 0 && TH[k] ? TH[k] : cur; st.k = k;
+    frame.style.fill = th.bg; side.style.fill = th.panel || th.surface; card.style.fill = th.surface; lit.style.fill = th.fill; rule.style.fill = th.accent;
+    title.style.fill = th.ink; title.style.fontFamily = th.display || 'inherit'; bars.forEach((r) => { r.style.fill = th.ink2; r.style.opacity = .45; });
+    name.textContent = th.name || ''; name.setAttribute('x', X - 260 + W / 2);
+  });
 } });
 
-/* ---------- 8. themes ---------- */
-if ((D.themes || []).length > 1) {
-  chapter('Any theme');
-  scene({ title: 'Any theme | you like.', beats: [
-    'The same document reads in any of ' + D.themes.length + ' themes.',
-    'Paper or ink, serif or marker: the words and their evidence stay exactly the same.',
-    'Pause and pick one.'],
-  build(g, A) {
-    const st = A.st, TH = D.themes, X = 420, Y = 170, W = 760, H = 440;
-    const win = Gp(g); A.show(win, 0);
-    const frame = R(win, X, Y, W, H, { rx: 22, stroke: 'none' });
-    const side = R(win, X + 18, Y + 18, 150, H - 36, { rx: 14, stroke: 'none' });
-    const sideL = [0, 1, 2, 3].map((i) => S('rect', { x: X + 36, y: Y + 50 + i * 30, width: 100 - i * 14, height: 9, rx: 4.5 }, win));
-    const title = T(win, X + 200, Y + 72, cut(D.title || 'Your document', 34), { size: 30, w: 600 });
-    const bars = [0, 1, 2, 3].map((i) => S('rect', { x: X + 200, y: Y + 108 + i * 28, width: 500 - (i % 2) * 120, height: 11, rx: 5.5 }, win));
-    const lit = S('rect', { x: X + 196, y: Y + 214, width: 470, height: 20, rx: 6 }, win);
-    const card = R(win, X + 200, Y + 250, 520, 120, { rx: 14, stroke: 'none' });
-    const rule = S('rect', { x: X + 220, y: Y + 272, width: 4, height: 76, rx: 2 }, win);
-    const qt = [0, 1, 2].map((i) => S('rect', { x: X + 240, y: Y + 278 + i * 24, width: 420 - i * 90, height: 10, rx: 5 }, win));
-    const name = T(g, 800, Y + H + 70, '', { size: 34, anchor: 'middle', cls: 'hand', fill: C.acc }); A.show(name, 0, Infinity, { delay: .6 });
-    hot(win, 'A theme', 'Settings → Appearance. Every theme has its own palettes, and Text lets you choose the font.');
-    win.addEventListener('click', (e) => { e.stopPropagation(); explore(null); st.user = ((st.user ?? st.k ?? 0) + 1) % TH.length; });
-    const dg = Gp(g); A.show(dg, 2, Infinity, { delay: .2 });
-    const dots = TH.map((th, i) => { const x = 800 + (i - (TH.length - 1) / 2) * 44, d = S('circle', { cx: x, cy: Y + H + 124, r: 11 }, dg); d.style.fill = th.bg; d.style.stroke = th.accent; d.style.strokeWidth = '3px'; d.style.cursor = 'pointer'; d.addEventListener('click', (e) => { e.stopPropagation(); explore(null); st.user = i; }); return d; });
-    A.tick((t) => {
-      const k = st.user ?? (Math.max(0, Math.floor((t - A.bt(0)) / 1.8)) % TH.length); st.k = k; const th = TH[k];
-      frame.style.fill = th.bg; side.style.fill = th.panel || th.surface; card.style.fill = th.surface; lit.style.fill = th.fill; rule.style.fill = th.accent;
-      title.style.fill = th.ink; title.style.fontFamily = th.display || 'inherit';
-      sideL.forEach((r) => { r.style.fill = th.ink2; r.style.opacity = .55; }); bars.forEach((r) => { r.style.fill = th.ink2; r.style.opacity = .45; }); qt.forEach((r) => { r.style.fill = th.ink; r.style.opacity = .5; });
-      name.textContent = th.name; dots.forEach((d, i) => { d.setAttribute('r', i === k ? 16 : 11); });
-    });
-  } });
-}
-
-/* ---------- 9. end ---------- */
+/* ---------- 7. begin ---------- */
 chapter('Begin');
 scene({ title: 'Every sentence, | one click from its evidence.', beats: [
-  'That is the whole idea.',
   'Close this, and click any sentence to begin.'],
 build(g, A) {
   const n = LBL(g, 800, 580, D.title ? cut(D.title, 70) : 'TraceCite', { size: 24, fill: C.dim }); A.show(n, 0, Infinity, { delay: .4 });
@@ -621,7 +577,7 @@ build(g, A) {
 /* ================= SCENES END ================= */
 
 /* ================= player ================= */
-let TOTAL=0;scenes.forEach(s=>{s.plain=s.title.replace(' | ',' ');s.bd=s.beats.map(b=>Math.max(4,b.length/15+1.3));s.bd[s.bd.length-1]+=1;s.bs=[];let a=TITLE;s.bd.forEach(d=>{s.bs.push(a);a+=d;});s.dur=a;s.t0=TOTAL;TOTAL+=a;});
+let TOTAL=0;scenes.forEach(s=>{s.plain=s.title.replace(' | ',' ');s.bd=s.beats.map(b=>Math.max(4,b.length/15+1.3));s.bd[s.bd.length-1]+=1;s.bs=[];let a=s.noTitle?.2:TITLE;s.bd.forEach(d=>{s.bs.push(a);a+=d;});s.dur=a;s.t0=TOTAL;TOTAL+=a;});
 const $=id=>document.getElementById(id);
 const stage=$('stage'),wrapEl=$('wrap'),tip=$('tip'),pin=$('pin'),capEl=$('cap'),timeEl=$('time'),bar=$('bar'),bartip=$('bartip');
 const playBtn=$('play'),bigplay=$('bigplay'),moreBtn=$('more'),menu=$('menu'),sheet=$('sheet'),sheetBody=$('sheetBody'),voiceBtn=$('voice'),ccBtn=$('cc');
@@ -635,8 +591,8 @@ function sceneAt(t){for(let i=scenes.length-1;i>=0;i--)if(t>=scenes[i].t0)return
 function buildScene(i){if(root){const old=root;old.classList.add('leaving');requestAnimationFrame(()=>{old.style.opacity='0';});setTimeout(()=>old.remove(),560);}
   const s=scenes[i];root=Gp(stage);A=makeA(s);
   // title card is the title alone; chapter names live in the Chapters sheet
-  const tc=Gp(root);const[a,b]=s.title.split(' | ');const ht=S('text',{x:800,y:450,'text-anchor':'middle','font-size':84,'font-weight':600,cls:'t-d mid'},tc);S('tspan',{text:a+(b?' ':''),fill:C.ink},ht);if(b)S('tspan',{text:b,fill:C.acc},ht);
-  A.show(tc,{s:.05},{s:TITLE-.55},{d:.9,rise:14,out:.5});
+  if(!s.noTitle){const tc=Gp(root);const[a,b]=s.title.split(' | ');const ht=S('text',{x:800,y:450,'text-anchor':'middle','font-size':84,'font-weight':600,cls:'t-d mid'},tc);S('tspan',{text:a+(b?' ':''),fill:C.ink},ht);if(b)S('tspan',{text:b,fill:C.acc},ht);
+  A.show(tc,{s:.05},{s:TITLE-.55},{d:.9,rise:14,out:.5});}
   try{s.build(Gp(root),A);}catch(e){console.error('scene',i,e);}cur=i;
   try{history.replaceState(null,'','#'+(i+1));}catch(_){}
   segs.forEach((sg,j)=>{sg.b.style.width=j<i?'100%':'0';});if(sheetMode==='chapters')markSheet();}
@@ -649,7 +605,7 @@ function boundary(){const i=sceneAt(Tm),s=scenes[i],lt=Tm-s.t0;let b=-1;while(b+
 function frame(now){const dt=Math.min(.1,(now-lastNow)/1000);lastNow=now;if(scrubTo!=null){Tm+=(scrubTo-Tm)*Math.min(1,dt*9);if(Math.abs(scrubTo-Tm)<.01){Tm=scrubTo;if(now-scrubAt>250)scrubTo=null;}}if(playing){let nt=Tm+dt*speed;if(voice&&synth&&synth.speaking){const bd=boundary();if(nt>bd-.05)nt=Math.max(Tm,bd-.05);}Tm=nt;if(Tm>=TOTAL){Tm=TOTAL-.001;setPlaying(false);}}render();requestAnimationFrame(frame);}
 function speak(text){if(!synth)return;try{synth.cancel();const u=new SpeechSynthesisUtterance(text);u.rate=Math.min(1.6,.98*speed);synth.speak(u);}catch(_){}}
 function begin(){if(!started){started=true;bigplay.hidden=true;document.body.classList.remove('nostart');}}
-function setPlaying(p){playing=p;begin();document.body.classList.toggle('playing',p);playBtn.setAttribute('aria-label',(p?'Pause':'Play')+' (Space)');$('playicon').innerHTML=p?'<path d="M3 2h3.5v12H3zM9.5 2H13v12H9.5z"/>':'<path d="M3 1.5v13l11-6.5z"/>';if(!p&&synth)synth.cancel();if(p){capKey='';pin.hidden=true;}idle();}
+function setPlaying(p){playing=p;begin();document.body.classList.toggle('playing',p);playBtn.setAttribute('aria-label',(p?'Pause':'Play')+' (Space)');$('playicon').innerHTML=p?'<rect x="3" y="2" width="3.6" height="12" rx="1.3"/><rect x="9.4" y="2" width="3.6" height="12" rx="1.3"/>':'<path d="M4.2 2.3c0-.9 1-1.5 1.8-1l8 5.2c.7.5.7 1.5 0 2l-8 5.2c-.8.5-1.8-.1-1.8-1z"/>';if(!p&&synth)synth.cancel();if(p){capKey='';pin.hidden=true;}idle();}
 function setT(t){scrubTo=null;Tm=clamp(t,0,TOTAL-.001);capKey='';if(synth)synth.cancel();begin();}
 function explore(info){setPlaying(false);if(info){$('pinT').textContent=info.title;$('pinB').textContent=info.body||'';pin.hidden=false;tip.hidden=true;}}
 function prevScene(){const i=sceneAt(Tm);setT(Tm-scenes[i].t0>2?scenes[i].t0:scenes[Math.max(0,i-1)].t0);}

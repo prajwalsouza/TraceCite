@@ -109,7 +109,7 @@
       for (const c of s.children || []) {
         const r = src.get(fv(c, 'Source ID')); if (!r || !fv(r, 'Exact quote')) continue;
         const cand = { segs: segsOf(s.text, symSlot), cite: fv(r, 'APA citation'), ref: fv(r, 'APA reference'), quote: fv(r, 'Exact quote'), where: fv(r, 'Quote location'), context: fv(r, 'Quote context'), note: fv(r, 'Quote note.1'), checked: fv(r, 'Quote checked by'), checkedBy: fv(r, 'Quote checked by'), checkedOn: when(fv(r, 'Quote checked on')), tags: fv(r, 'Quote tags').split(/[;,]\s*/).filter(Boolean).map(tagName) };
-        cand.sentence = plain(cand.segs);
+        cand.sentence = plain(cand.segs); cand.addedBy = fv(s, 'Added by'); cand.addedVia = fv(s, 'Added via'); cand.agent = /agent/i.test(cand.addedVia);
         if (!ev || (cand.context && !ev.context) || (!!cand.context === !!ev.context && cand.sentence.length < 170 && ev.sentence.length >= 170)) ev = cand;
       }
       if (ev?.context && ev.sentence.length < 170) break;
