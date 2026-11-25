@@ -2,9 +2,11 @@
 
 TraceCite is a format for documents whose sentences open to the evidence behind them. Click a sentence and the source's exact words open in place, with the passage they sit in, notes, tags and who checked them.
 
+<p align="center"><a href="https://prajwalsouza.github.io/TraceCite/"><img src="site/evidence-opening.gif" width="760" alt="A sentence in a TraceCite page is clicked; below it open its tags, the source, the exact quote with its location, and the passage the quote sits in."></a></p>
+
 ## Try it
 
-- **See it:** [prajwalsouza.github.io/TraceCite](https://prajwalsouza.github.io/TraceCite/), with two live example papers.
+- **See it:** [prajwalsouza.github.io/TraceCite](https://prajwalsouza.github.io/TraceCite/) is itself a TraceCite document about TraceCite: click any sentence. More examples are linked from it.
 - **One file, nothing to install:** download [`trace-reader.html`](https://github.com/prajwalsouza/TraceCite/releases/latest/download/trace-reader.html) from the latest release, open it in a browser, and drop a `.trace.zip` on it. Try it with [`outliners.trace.zip`](https://github.com/prajwalsouza/TraceCite/releases/latest/download/outliners.trace.zip). Or use the [hosted reader](https://prajwalsouza.github.io/TraceCite/references/trace-reader.html).
 
 Every release attaches both files automatically.
@@ -30,6 +32,10 @@ A TraceCite package is a plain zip: a `manifest.json`, the trace data, its BibTr
 ## Highlights, spans and links
 
 Mark part of a sentence with a tag: `[list of n numbers]{.hl-x}`. **Connected highlights** are threads a reader follows by colour, across words, maths symbols and figures. A tag in the `connected` family gets a `slot` (one of five theme-aware colours) and, optionally, the `symbols` to colour in every formula. Use two to four. Links are `[text](https://…)` or `[text](#/at/block-id)`. They open in a new tab, or jump within the document, and the tag tree gets a Links family. See [span tags and connected highlights](docs/format.md#span-tags-and-connected-highlights) and [links](docs/format.md#links).
+
+## Edits
+
+A model can stream suggested edits into an open page, word by word, through `window.TraceLive`. Select words in a sentence and press Enter to ask for one. Review each suggestion in the Edits view, or from the bar at the bottom: Accept, Reject or Comment. Every decision goes into a log that models read before writing again. Only sentences can be edited, and nothing leaves the page unless you connect a relay. See [the Edits protocol](docs/edits.md).
 
 ## Interactives
 

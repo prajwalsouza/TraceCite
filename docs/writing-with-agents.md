@@ -67,6 +67,10 @@ reader able to check the claim.
   `[text](#/at/block-id)` to point within the document. Every link becomes a
   tag, so add one only where a reader would want to follow it.
 
+## Editing an open page
+
+- **Read what already happened first.** On every run, first read `TraceLive.decisions` (what was accepted, rejected or commented), then the open requests in `TraceLive.inbox`, before writing anything. Only sentences are editable. Name yourself as an agent. Every edit is a suggestion the reader accepts or rejects. See [edits.md](edits.md).
+
 ## Interactives
 
 - **Compute what you draw.** Derive every shape from the settings and the

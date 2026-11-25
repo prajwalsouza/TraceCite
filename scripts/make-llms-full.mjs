@@ -5,7 +5,7 @@ import { readFile, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
-const parts = ['llms.txt', 'docs/writing-with-agents.md', 'docs/format.md', 'docs/bibtrace.md', 'docs/package.md', 'docs/sample.md'];
+const parts = ['llms.txt', 'docs/writing-with-agents.md', 'docs/format.md', 'docs/bibtrace.md', 'docs/package.md', 'docs/edits.md', 'docs/sample.md'];
 let out = '';
 for (const p of parts) out += (out ? `\n\n---\n\n<!-- ${p} -->\n\n` : '') + (await readFile(join(root, p), 'utf8')).trim() + '\n';
 await writeFile(join(root, 'llms-full.txt'), out);

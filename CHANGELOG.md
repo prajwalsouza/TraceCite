@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.3.0 — 2026-11-25
+
+- **Edits.** A model streams suggested edits into the open page through `window.TraceLive`, word by word. Readers ask by selecting words and pressing Enter. They review each suggestion in the new Edits view, or from the bar at the bottom (Accept, Reject, Comment). A decision log, which models read first, records every outcome. Only sentences can be edited, and every edit is a suggestion. Accepted edits come back after a reload. The page makes no network requests unless a relay is set with `?edits-server=`. See `docs/edits.md`.
+- **The ruler.** Faint ticks at the right edge mark edits, darker while one is being written, and the sentences of the focused tag in that tag's colour. Click or drag the ruler to scroll.
+- **The tour film**, rebuilt: under two minutes, opening on a model writing a sentence. Click for the next beat, use ↑ and ↓, or scroll to scrub.
+- The demo site opens on a TraceCite document about TraceCite (`examples/tracecite/`), also at `/demo`. It quotes TraceCite's own docs as published at v0.2.0, with each passage cut from the file, and four earlier works. Its interactive counts the page's own checked sentences, and it links to every download. It replaces the separate landing page.
+- The README opens with the GIF of a sentence opening into its evidence.
+- The release workflow fetches tags, which the showcase needs.
+
 ## 0.2.0 — 2026-11-25
 
 Read, share and open TraceCite documents without building anything.

@@ -17,6 +17,10 @@ When you write a TraceCite document, quote sources verbatim by copying, with the
 - [BibTrace](https://github.com/prajwalsouza/TraceCite/blob/main/docs/bibtrace.md): BibTeX plus trace-* fields for exact quotes, passages and provenance
 - [Packages (.trace.zip)](https://github.com/prajwalsouza/TraceCite/blob/main/docs/package.md): the manifest, the version history and how documents are opened
 
+## Edits
+
+- [Edits protocol](https://github.com/prajwalsouza/TraceCite/blob/main/docs/edits.md): models stream suggested edits into an open page through `window.TraceLive`; readers accept, reject or comment. On every run, first read `TraceLive.decisions` (what was accepted, rejected or commented), then the open requests in `TraceLive.inbox`, before writing anything. Only sentences are editable. Name yourself as an agent. Every edit is a suggestion the reader accepts or rejects.
+
 ## Tools
 
 - [trace-reader.html (latest release)](https://github.com/prajwalsouza/TraceCite/releases/latest/download/trace-reader.html): one file that opens any .trace.zip, with no install

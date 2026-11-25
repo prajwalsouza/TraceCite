@@ -427,6 +427,14 @@ Front matter (`scripts/front-matter.js`) sits under the title; any part with no 
   - **How to use them:** at most five, usually two to four; mark the first mention and key later ones, especially when a different word names the same thing ("the data" for x); colour is never the only signal; a thread keeps its slot in every theme. Not enforced: it is the writer's (or agent's) choice.
 - **Links:** `[text](https://…)` (new tab, small arrow, address on hover, never underlined), bare `https://` addresses, `mailto:`, and `[text](#/at/<block id>)` to jump within the document. Anything else stays plain text and the validator warns. Clicking a link never opens its sentence. Links are tags too: a generated **Links** family (External link with one child per site, Internal link, Email) tags every block that links out; `"links": {"off": true}` leaves it out. Flow ignores it.
 
+## Edits: models stream suggestions, readers review them (`scripts/edits.js`, `docs/edits.md`)
+
+- **The page is the endpoint.** A model (or anything that can run script in the page) streams an edit into the open document word by word through `window.TraceLive` (`stream({op, target, text, by})`, or `push()` events). No server needed; `?edits-server=` adds an optional relay. The page announces the protocol in `<script type="application/json" id="trace-live-manifest">`.
+- **Models read what already happened first**, on every run: `TraceLive.decisions` (accepted text is now the document; rejected edits are not proposed again; a comment asks for a revision), then the open requests in `TraceLive.inbox`.
+- **Readers ask** by selecting words in a sentence and pressing Enter. Edits arrive as suggestions in place (old text struck through, new text beside it). **Edits** in the sidebar (under Tag tree) opens the edits view: pending edits tinted, a bottom review bar (‹ › first, then Accept, Reject, Comment). A comment is a suggestion comment on the sentence (`Comment kind: suggestion`).
+- **The ruler**: faint tick lines at the right edge, only when there is something to show. A darker tick where an edit is, blinking in the accent while it is written; ticks in the focused tag's colour where its sentences are (like find-in-page marks). Click or drag it to scroll. No dots, no panel on desktop.
+- **Only sentences are editable**, never citations, references, exact quotes or passages. Models name themselves as agents; accepted edits record `Edited by` / `Added by` with `via agent`.
+
 ## Interactives (`scripts/viz.js`)
 
 An **interactive** is a live figure: a **figure block** with an `Interactive` field naming a component, and optionally `Interactive settings` (JSON). The older names `Viz` and `Viz settings` (and `vizScripts`) still work.
