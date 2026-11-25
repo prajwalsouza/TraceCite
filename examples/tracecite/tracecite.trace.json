@@ -1,0 +1,1928 @@
+{
+  "format": "tracecite/1.0",
+  "version": 2,
+  "id": "tracecite-showcase",
+  "eyebrow": "TraceCite",
+  "title": "Every sentence opens",
+  "subtitle": "A document about TraceCite, written in TraceCite. Click any sentence to see what it rests on.",
+  "authors": [
+    {
+      "name": "Prajwal DSouza"
+    }
+  ],
+  "date": "2026-11-25",
+  "license": "MIT (software) · quoted passages keep their own licences",
+  "keywords": [
+    "evidence",
+    "citation",
+    "outliner",
+    "reading"
+  ],
+  "updatedAt": "2026-11-25T00:00:00.000Z",
+  "interactiveScripts": [
+    "checked-share.js"
+  ],
+  "tagTree": [
+    {
+      "id": "role",
+      "name": "Sentence role",
+      "children": [
+        {
+          "id": "role-guide",
+          "name": "Guide to this page",
+          "children": []
+        },
+        {
+          "id": "role-mechanism",
+          "name": "How it works",
+          "children": []
+        },
+        {
+          "id": "role-history",
+          "name": "History",
+          "children": []
+        },
+        {
+          "id": "role-definition",
+          "name": "Definition",
+          "children": []
+        },
+        {
+          "id": "role-interpretation",
+          "name": "Our interpretation",
+          "children": []
+        },
+        {
+          "id": "role-limit",
+          "name": "Limit",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "support",
+      "name": "Support",
+      "children": [
+        {
+          "id": "support-quoted",
+          "name": "Quoted from a checked source",
+          "children": []
+        },
+        {
+          "id": "support-none",
+          "name": "No source needed",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "topic",
+      "name": "Topic",
+      "children": [
+        {
+          "id": "topic-evidence",
+          "name": "Evidence",
+          "children": []
+        },
+        {
+          "id": "topic-history",
+          "name": "History",
+          "children": []
+        },
+        {
+          "id": "topic-structure",
+          "name": "Structure",
+          "children": []
+        },
+        {
+          "id": "topic-tools",
+          "name": "Tools",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "connected",
+      "name": "Connected highlights",
+      "children": [
+        {
+          "id": "hl-claim",
+          "name": "the claim",
+          "slot": 1,
+          "children": []
+        },
+        {
+          "id": "hl-words",
+          "name": "the exact words",
+          "slot": 2,
+          "children": []
+        },
+        {
+          "id": "hl-passage",
+          "name": "the passage",
+          "slot": 3,
+          "children": []
+        },
+        {
+          "id": "hl-n",
+          "name": "n, the sentences",
+          "slot": 4,
+          "symbols": [
+            "n"
+          ],
+          "children": []
+        },
+        {
+          "id": "hl-q",
+          "name": "q, the checked ones",
+          "slot": 5,
+          "symbols": [
+            "q"
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "caption",
+      "name": "Caption",
+      "children": []
+    }
+  ],
+  "blocks": [
+    {
+      "id": "tc-open",
+      "type": "section",
+      "text": "Click a sentence",
+      "tags": [],
+      "collapsed": false,
+      "fields": [
+        {
+          "key": "Heading level",
+          "value": "2"
+        }
+      ],
+      "children": [
+        {
+          "id": "tc-p-open",
+          "type": "paragraph",
+          "text": "Opening",
+          "tags": [],
+          "collapsed": false,
+          "fields": [],
+          "children": [
+            {
+              "id": "tc-s1",
+              "type": "sentence",
+              "text": "This page is a TraceCite document, so every sentence on it can be opened: click one and see what it rests on.",
+              "tags": [
+                "role-guide",
+                "support-none"
+              ],
+              "collapsed": true,
+              "fields": [
+                {
+                  "key": "Sentence review",
+                  "value": "An instruction to the reader; nothing to cite."
+                }
+              ],
+              "children": []
+            },
+            {
+              "id": "tc-s2",
+              "type": "sentence",
+              "text": "A citation usually points at a whole work, and the reader is left to find [the words]{.hl-words} that support [the claim]{.hl-claim}.",
+              "tags": [
+                "role-interpretation",
+                "support-none",
+                "topic-evidence"
+              ],
+              "collapsed": true,
+              "fields": [
+                {
+                  "key": "Sentence review",
+                  "value": "Our framing of the problem; it is an interpretation, not a finding."
+                }
+              ],
+              "children": []
+            },
+            {
+              "id": "tc-s3",
+              "type": "sentence",
+              "text": "Here [a claim]{.hl-claim} opens in place to [the exact words]{.hl-words} a source used, [the passage they sit in]{.hl-passage}, and who checked them.",
+              "tags": [
+                "role-mechanism",
+                "support-quoted",
+                "topic-evidence"
+              ],
+              "collapsed": true,
+              "fields": [
+                {
+                  "key": "Sentence review",
+                  "value": "The README states this verbatim."
+                }
+              ],
+              "children": [
+                {
+                  "id": "tc-s3-c0",
+                  "type": "citation",
+                  "text": "TraceCite README, 2026",
+                  "tags": [],
+                  "collapsed": true,
+                  "fields": [
+                    {
+                      "key": "Source ID",
+                      "value": "src-readme"
+                    }
+                  ],
+                  "children": [
+                    {
+                      "id": "tc-s3-c0-r",
+                      "type": "reference",
+                      "text": "Exact reference",
+                      "tags": [],
+                      "collapsed": true,
+                      "fields": [
+                        {
+                          "key": "Source ID",
+                          "value": "src-readme"
+                        },
+                        {
+                          "key": "Exact supporting extract",
+                          "value": "Click a sentence and the source's exact words open in place, with the passage they sit in, notes, tags and who checked them."
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tc-history",
+      "type": "section",
+      "text": "An old wish, made checkable",
+      "tags": [],
+      "collapsed": false,
+      "fields": [
+        {
+          "key": "Heading level",
+          "value": "2"
+        }
+      ],
+      "children": [
+        {
+          "id": "tc-p-history",
+          "type": "paragraph",
+          "text": "Trails and trees",
+          "tags": [],
+          "collapsed": false,
+          "fields": [],
+          "children": [
+            {
+              "id": "tc-s4",
+              "type": "sentence",
+              "text": "In 1945 Vannevar Bush blamed our trouble with the record on artificial systems of indexing.",
+              "tags": [
+                "role-history",
+                "support-quoted",
+                "topic-history"
+              ],
+              "collapsed": true,
+              "fields": [
+                {
+                  "key": "Sentence review",
+                  "value": "A close paraphrase of the quoted sentence."
+                }
+              ],
+              "children": [
+                {
+                  "id": "tc-s4-c0",
+                  "type": "citation",
+                  "text": "Bush, 1945",
+                  "tags": [],
+                  "collapsed": true,
+                  "fields": [
+                    {
+                      "key": "Source ID",
+                      "value": "src-bush"
+                    }
+                  ],
+                  "children": [
+                    {
+                      "id": "tc-s4-c0-r",
+                      "type": "reference",
+                      "text": "Exact reference",
+                      "tags": [],
+                      "collapsed": true,
+                      "fields": [
+                        {
+                          "key": "Source ID",
+                          "value": "src-bush"
+                        },
+                        {
+                          "key": "Exact supporting extract",
+                          "value": "Our ineptitude in getting at the record is largely caused by the artificiality of systems of indexing."
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "tc-s5",
+              "type": "sentence",
+              "text": "He imagined encyclopedias that came with trails of association already running through them.",
+              "tags": [
+                "role-history",
+                "support-quoted",
+                "topic-history"
+              ],
+              "collapsed": true,
+              "fields": [
+                {
+                  "key": "Sentence review",
+                  "value": "Paraphrases the second quote."
+                }
+              ],
+              "children": [
+                {
+                  "id": "tc-s5-c0",
+                  "type": "citation",
+                  "text": "Bush, 1945",
+                  "tags": [],
+                  "collapsed": true,
+                  "fields": [
+                    {
+                      "key": "Source ID",
+                      "value": "src-bush"
+                    }
+                  ],
+                  "children": [
+                    {
+                      "id": "tc-s5-c0-r",
+                      "type": "reference",
+                      "text": "Exact reference",
+                      "tags": [],
+                      "collapsed": true,
+                      "fields": [
+                        {
+                          "key": "Source ID",
+                          "value": "src-bush"
+                        },
+                        {
+                          "key": "Exact supporting extract",
+                          "value": "Wholly new forms of encyclopedias will appear, ready-made with a mesh of associative trails running through them"
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "tc-s6",
+              "type": "sentence",
+              "text": "Engelbart's group broke text into small named statements arranged in a hierarchy, the ancestor of every outliner.",
+              "tags": [
+                "role-history",
+                "support-quoted",
+                "topic-history"
+              ],
+              "collapsed": true,
+              "fields": [
+                {
+                  "key": "Sentence review",
+                  "value": "The first quote describes the hierarchy of statements; \"ancestor of every outliner\" is our gloss."
+                }
+              ],
+              "children": [
+                {
+                  "id": "tc-s6-c0",
+                  "type": "citation",
+                  "text": "Engelbart & English, 1968",
+                  "tags": [],
+                  "collapsed": true,
+                  "fields": [
+                    {
+                      "key": "Source ID",
+                      "value": "src-engelbart68"
+                    }
+                  ],
+                  "children": [
+                    {
+                      "id": "tc-s6-c0-r",
+                      "type": "reference",
+                      "text": "Exact reference",
+                      "tags": [],
+                      "collapsed": true,
+                      "fields": [
+                        {
+                          "key": "Source ID",
+                          "value": "src-engelbart68"
+                        },
+                        {
+                          "key": "Exact supporting extract",
+                          "value": "The principal manifestation of this hierarchical structure is the breaking up of text into arbitrary segments called \"statements,\""
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "tc-s7",
+              "type": "sentence",
+              "text": "Berners-Lee answered that a web of linked notes models the world better than a fixed tree.",
+              "tags": [
+                "role-history",
+                "support-quoted",
+                "topic-history"
+              ],
+              "collapsed": true,
+              "fields": [
+                {
+                  "key": "Sentence review",
+                  "value": "Paraphrases the quote."
+                }
+              ],
+              "children": [
+                {
+                  "id": "tc-s7-c0",
+                  "type": "citation",
+                  "text": "Berners-Lee, 1989",
+                  "tags": [],
+                  "collapsed": true,
+                  "fields": [
+                    {
+                      "key": "Source ID",
+                      "value": "src-bernerslee"
+                    }
+                  ],
+                  "children": [
+                    {
+                      "id": "tc-s7-c0-r",
+                      "type": "reference",
+                      "text": "Exact reference",
+                      "tags": [],
+                      "collapsed": true,
+                      "fields": [
+                        {
+                          "key": "Source ID",
+                          "value": "src-bernerslee"
+                        },
+                        {
+                          "key": "Exact supporting extract",
+                          "value": "This is why a \"web\" of notes with links (like references) between them is far more useful than a fixed hierarchical system."
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "tc-s8",
+              "type": "sentence",
+              "text": "TraceCite keeps both: [one tree]{.hl-claim} for the argument, and links and tags that cross it.",
+              "tags": [
+                "role-interpretation",
+                "support-quoted",
+                "topic-structure"
+              ],
+              "collapsed": true,
+              "fields": [
+                {
+                  "key": "Sentence review",
+                  "value": "The format document states the one-tree rule; the synthesis with the history is ours."
+                }
+              ],
+              "children": [
+                {
+                  "id": "tc-s8-c0",
+                  "type": "citation",
+                  "text": "TraceCite format, 2026",
+                  "tags": [],
+                  "collapsed": true,
+                  "fields": [
+                    {
+                      "key": "Source ID",
+                      "value": "src-format"
+                    }
+                  ],
+                  "children": [
+                    {
+                      "id": "tc-s8-c0-r",
+                      "type": "reference",
+                      "text": "Exact reference",
+                      "tags": [],
+                      "collapsed": true,
+                      "fields": [
+                        {
+                          "key": "Source ID",
+                          "value": "src-format"
+                        },
+                        {
+                          "key": "Exact supporting extract",
+                          "value": "A TraceCite document is one tree."
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tc-tree",
+      "type": "section",
+      "text": "One tree, all the way down",
+      "tags": [],
+      "collapsed": false,
+      "fields": [
+        {
+          "key": "Heading level",
+          "value": "2"
+        }
+      ],
+      "children": [
+        {
+          "id": "tc-p-tree",
+          "type": "paragraph",
+          "text": "The levels",
+          "tags": [],
+          "collapsed": false,
+          "fields": [],
+          "children": [
+            {
+              "id": "tc-s9",
+              "type": "sentence",
+              "text": "Each sentence holds its citations, each citation holds [the exact words]{.hl-words}, and each quote holds [the passage it came from]{.hl-passage}.",
+              "tags": [
+                "role-mechanism",
+                "support-none",
+                "topic-structure"
+              ],
+              "collapsed": true,
+              "fields": [
+                {
+                  "key": "Sentence review",
+                  "value": "Describes this page's own structure, which the reader can open."
+                }
+              ],
+              "children": []
+            },
+            {
+              "id": "tc-s10",
+              "type": "sentence",
+              "text": "Markup exists so that this structure is written down: without explicit marks a program sees only a sequence of undifferentiated bits.",
+              "tags": [
+                "role-mechanism",
+                "support-quoted",
+                "topic-structure"
+              ],
+              "collapsed": true,
+              "fields": [
+                {
+                  "key": "Sentence review",
+                  "value": "The TEI quote, used for its own point."
+                }
+              ],
+              "children": [
+                {
+                  "id": "tc-s10-c0",
+                  "type": "citation",
+                  "text": "TEI Consortium, 2026",
+                  "tags": [],
+                  "collapsed": true,
+                  "fields": [
+                    {
+                      "key": "Source ID",
+                      "value": "src-tei"
+                    }
+                  ],
+                  "children": [
+                    {
+                      "id": "tc-s10-c0-r",
+                      "type": "reference",
+                      "text": "Exact reference",
+                      "tags": [],
+                      "collapsed": true,
+                      "fields": [
+                        {
+                          "key": "Source ID",
+                          "value": "src-tei"
+                        },
+                        {
+                          "key": "Exact supporting extract",
+                          "value": "without them a digitized text appears to be nothing but a sequence of undifferentiated bits"
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "tc-s11",
+              "type": "sentence",
+              "text": "The tags in the margin are this document's own schema; hover one, or pin it, and the rest of the page steps back.",
+              "tags": [
+                "role-guide",
+                "support-none",
+                "topic-structure"
+              ],
+              "collapsed": true,
+              "fields": [
+                {
+                  "key": "Sentence review",
+                  "value": "An instruction; try it in the tag tree."
+                }
+              ],
+              "children": []
+            },
+            {
+              "id": "tc-s12",
+              "type": "sentence",
+              "text": "The coloured threads you have been reading, [claim]{.hl-claim}, [words]{.hl-words} and [passage]{.hl-passage}, are connected highlights: the same idea keeps one colour wherever it appears.",
+              "tags": [
+                "role-guide",
+                "support-none",
+                "topic-structure"
+              ],
+              "collapsed": true,
+              "fields": [
+                {
+                  "key": "Sentence review",
+                  "value": "Describes the highlights on this page."
+                }
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tc-count",
+      "type": "section",
+      "text": "Count what is checked",
+      "tags": [],
+      "collapsed": false,
+      "fields": [
+        {
+          "key": "Heading level",
+          "value": "2"
+        }
+      ],
+      "children": [
+        {
+          "id": "tc-p-def",
+          "type": "paragraph",
+          "text": "Definition",
+          "tags": [
+            "env-definition"
+          ],
+          "collapsed": false,
+          "fields": [
+            {
+              "key": "Label",
+              "value": "1"
+            },
+            {
+              "key": "Name",
+              "value": "checked share"
+            }
+          ],
+          "children": [
+            {
+              "id": "tc-s13",
+              "type": "sentence",
+              "text": "For a document with \\(n\\) [sentences]{.hl-n}, of which \\(q\\) open to a [checked quote]{.hl-q}, call \\(p = q / n\\) its checked share.",
+              "tags": [
+                "role-definition",
+                "support-none",
+                "topic-evidence"
+              ],
+              "collapsed": true,
+              "fields": [
+                {
+                  "key": "Sentence review",
+                  "value": "Our definition."
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "tc-p-count",
+          "type": "paragraph",
+          "text": "This page",
+          "tags": [],
+          "collapsed": false,
+          "fields": [],
+          "children": [
+            {
+              "id": "tc-s14",
+              "type": "sentence",
+              "text": "The figure below counts this very page, and the slider lets you see how the share moves.",
+              "tags": [
+                "role-guide",
+                "support-none",
+                "topic-evidence"
+              ],
+              "collapsed": true,
+              "fields": [
+                {
+                  "key": "Sentence review",
+                  "value": "The counts are computed from this document by its generator."
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "tc-fig",
+          "type": "figure",
+          "text": "Figure 1. How much of this page is checked",
+          "tags": [],
+          "collapsed": false,
+          "fields": [
+            {
+              "key": "Interactive",
+              "value": "checked-share"
+            },
+            {
+              "key": "Interactive settings",
+              "value": "{\"n\":24,\"q\":10}"
+            }
+          ],
+          "children": [
+            {
+              "id": "tc-fig-cap",
+              "type": "paragraph",
+              "text": "Caption",
+              "tags": [
+                "caption"
+              ],
+              "collapsed": false,
+              "fields": [],
+              "children": [
+                {
+                  "id": "tc-s15",
+                  "type": "sentence",
+                  "text": "Each square is a sentence of this page; filled ones open to a [checked quote]{.hl-q}, out of all [n sentences]{.hl-n}.",
+                  "tags": [
+                    "caption",
+                    "support-none"
+                  ],
+                  "collapsed": true,
+                  "fields": [
+                    {
+                      "key": "Sentence review",
+                      "value": "Describes the figure."
+                    }
+                  ],
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tc-take",
+      "type": "section",
+      "text": "Take it with you",
+      "tags": [],
+      "collapsed": false,
+      "fields": [
+        {
+          "key": "Heading level",
+          "value": "2"
+        }
+      ],
+      "children": [
+        {
+          "id": "tc-p-take",
+          "type": "paragraph",
+          "text": "Packages and the reader",
+          "tags": [],
+          "collapsed": false,
+          "fields": [],
+          "children": [
+            {
+              "id": "tc-s16",
+              "type": "sentence",
+              "text": "A document travels as one file: a .trace.zip holding its data, its sources, its figures and its version history.",
+              "tags": [
+                "role-mechanism",
+                "support-quoted",
+                "topic-tools"
+              ],
+              "collapsed": true,
+              "fields": [
+                {
+                  "key": "Sentence review",
+                  "value": "The package document states this."
+                }
+              ],
+              "children": [
+                {
+                  "id": "tc-s16-c0",
+                  "type": "citation",
+                  "text": "TraceCite packages, 2026",
+                  "tags": [],
+                  "collapsed": true,
+                  "fields": [
+                    {
+                      "key": "Source ID",
+                      "value": "src-package"
+                    }
+                  ],
+                  "children": [
+                    {
+                      "id": "tc-s16-c0-r",
+                      "type": "reference",
+                      "text": "Exact reference",
+                      "tags": [],
+                      "collapsed": true,
+                      "fields": [
+                        {
+                          "key": "Source ID",
+                          "value": "src-package"
+                        },
+                        {
+                          "key": "Exact supporting extract",
+                          "value": "A package holds one TraceCite document and everything it needs, in one file."
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "tc-s17",
+              "type": "sentence",
+              "text": "Drop any .trace.zip on this page to read it right here, for example [the sample](https://prajwalsouza.github.io/TraceCite/samples/sample.trace.zip) or [the essay on outliners](https://prajwalsouza.github.io/TraceCite/samples/outliners.trace.zip); nothing is uploaded.",
+              "tags": [
+                "role-guide",
+                "support-none",
+                "topic-tools"
+              ],
+              "collapsed": true,
+              "fields": [
+                {
+                  "key": "Sentence review",
+                  "value": "An instruction; the files are on this site."
+                }
+              ],
+              "children": []
+            },
+            {
+              "id": "tc-s18",
+              "type": "sentence",
+              "text": "To read packages anywhere, download [trace-reader.html](https://github.com/prajwalsouza/TraceCite/releases/latest/download/trace-reader.html), one file that does all the work in the browser.",
+              "tags": [
+                "role-guide",
+                "support-none",
+                "topic-tools"
+              ],
+              "collapsed": true,
+              "fields": [
+                {
+                  "key": "Sentence review",
+                  "value": "A pointer to the release download."
+                }
+              ],
+              "children": []
+            },
+            {
+              "id": "tc-s19",
+              "type": "sentence",
+              "text": "Settings, under Document, holds Import, Export and this page's version history.",
+              "tags": [
+                "role-guide",
+                "support-none",
+                "topic-tools"
+              ],
+              "collapsed": true,
+              "fields": [
+                {
+                  "key": "Sentence review",
+                  "value": "A pointer to the Settings page."
+                }
+              ],
+              "children": []
+            },
+            {
+              "id": "tc-s20",
+              "type": "sentence",
+              "text": "More to read: [a sample that uses every part](https://prajwalsouza.github.io/TraceCite/references/sample-reading.html), [a history of document structure](https://prajwalsouza.github.io/TraceCite/references/document-structure-reading.html), and [an essay on outliners](https://prajwalsouza.github.io/TraceCite/references/outliners-reading.html).",
+              "tags": [
+                "role-guide",
+                "support-none",
+                "topic-tools"
+              ],
+              "collapsed": true,
+              "fields": [
+                {
+                  "key": "Sentence review",
+                  "value": "Links to the other examples on this site."
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "tc-p-agents",
+          "type": "paragraph",
+          "text": "Writing with agents",
+          "tags": [],
+          "collapsed": false,
+          "fields": [],
+          "children": [
+            {
+              "id": "tc-s21",
+              "type": "sentence",
+              "text": "An AI agent can write these documents too, if it copies every quote rather than recalling it.",
+              "tags": [
+                "role-interpretation",
+                "support-quoted",
+                "topic-tools"
+              ],
+              "collapsed": true,
+              "fields": [
+                {
+                  "key": "Sentence review",
+                  "value": "The guide states the rule; the condition is our summary."
+                }
+              ],
+              "children": [
+                {
+                  "id": "tc-s21-c0",
+                  "type": "citation",
+                  "text": "Writing with agents, 2026",
+                  "tags": [],
+                  "collapsed": true,
+                  "fields": [
+                    {
+                      "key": "Source ID",
+                      "value": "src-agents"
+                    }
+                  ],
+                  "children": [
+                    {
+                      "id": "tc-s21-c0-r",
+                      "type": "reference",
+                      "text": "Exact reference",
+                      "tags": [],
+                      "collapsed": true,
+                      "fields": [
+                        {
+                          "key": "Source ID",
+                          "value": "src-agents"
+                        },
+                        {
+                          "key": "Exact supporting extract",
+                          "value": "Never retype a quote or rebuild it from memory."
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "tc-s22",
+              "type": "sentence",
+              "text": "Point it at [llms.txt](https://prajwalsouza.github.io/TraceCite/llms.txt) and the [source on GitHub](https://github.com/prajwalsouza/TraceCite).",
+              "tags": [
+                "role-guide",
+                "support-none",
+                "topic-tools"
+              ],
+              "collapsed": true,
+              "fields": [
+                {
+                  "key": "Sentence review",
+                  "value": "Pointers."
+                }
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tc-limits",
+      "type": "section",
+      "text": "What it does not do",
+      "tags": [],
+      "collapsed": false,
+      "fields": [
+        {
+          "key": "Heading level",
+          "value": "2"
+        }
+      ],
+      "children": [
+        {
+          "id": "tc-p-limits",
+          "type": "paragraph",
+          "text": "Limits",
+          "tags": [],
+          "collapsed": false,
+          "fields": [],
+          "children": [
+            {
+              "id": "tc-s23",
+              "type": "sentence",
+              "text": "Opening a sentence shows where it came from; it cannot tell you that the source is right.",
+              "tags": [
+                "role-limit",
+                "support-quoted",
+                "topic-evidence"
+              ],
+              "collapsed": true,
+              "fields": [
+                {
+                  "key": "Sentence review",
+                  "value": "The README says exactly this."
+                }
+              ],
+              "children": [
+                {
+                  "id": "tc-s23-c0",
+                  "type": "citation",
+                  "text": "TraceCite README, 2026",
+                  "tags": [],
+                  "collapsed": true,
+                  "fields": [
+                    {
+                      "key": "Source ID",
+                      "value": "src-readme"
+                    }
+                  ],
+                  "children": [
+                    {
+                      "id": "tc-s23-c0-r",
+                      "type": "reference",
+                      "text": "Exact reference",
+                      "tags": [],
+                      "collapsed": true,
+                      "fields": [
+                        {
+                          "key": "Source ID",
+                          "value": "src-readme"
+                        },
+                        {
+                          "key": "Exact supporting extract",
+                          "value": "A trace shows where a claim came from; it does not prove the claim is true."
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "tc-s24",
+              "type": "sentence",
+              "text": "A quote is only as good as the check behind it, so every record says how far it was checked, and an unchecked one says so.",
+              "tags": [
+                "role-limit",
+                "support-none",
+                "topic-evidence"
+              ],
+              "collapsed": true,
+              "fields": [
+                {
+                  "key": "Sentence review",
+                  "value": "Describes the format's record status; open any source above."
+                }
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "src-readme",
+      "type": "source",
+      "text": "TraceCite README, 2026",
+      "tags": [],
+      "collapsed": true,
+      "children": [],
+      "fields": [
+        {
+          "key": "APA citation",
+          "value": "TraceCite README, 2026"
+        },
+        {
+          "key": "First author",
+          "value": "DSouza"
+        },
+        {
+          "key": "Year",
+          "value": "2026"
+        },
+        {
+          "key": "APA reference",
+          "value": "DSouza, P. (2026). TraceCite README (Version 0.2.0) [Software documentation]. GitHub."
+        },
+        {
+          "key": "URL",
+          "value": "https://github.com/prajwalsouza/TraceCite/blob/v0.2.0/README.md"
+        },
+        {
+          "key": "Record status",
+          "value": "Checked excerpt · read from README.md at v0.2.0; passage cut from the file by script"
+        },
+        {
+          "key": "Exact quote",
+          "value": "Click a sentence and the source's exact words open in place, with the passage they sit in, notes, tags and who checked them."
+        },
+        {
+          "key": "Quote location",
+          "value": "README.md · opening paragraph"
+        },
+        {
+          "key": "Quote context",
+          "value": "TraceCite is a format for documents whose sentences open to the evidence behind them. Click a sentence and the source's exact words open in place, with the passage they sit in, notes, tags and who checked them."
+        },
+        {
+          "key": "Quote added by",
+          "value": "AI agent (example author)"
+        },
+        {
+          "key": "Quote checked by",
+          "value": "script (verbatim check)"
+        },
+        {
+          "key": "Quote checked on",
+          "value": "2026-11-25"
+        },
+        {
+          "key": "Exact quote 2",
+          "value": "A trace shows where a claim came from; it does not prove the claim is true."
+        },
+        {
+          "key": "Quote location 2",
+          "value": "README.md · One evidence tree · last paragraph, last sentence"
+        },
+        {
+          "key": "Quote context 2",
+          "value": "Quotes and passages must preserve the source's words. If a passage cannot be reproduced, record why it was withheld. A source that was not read stays reference only. A trace shows where a claim came from; it does not prove the claim is true."
+        },
+        {
+          "key": "Quote added by 2",
+          "value": "AI agent (example author)"
+        },
+        {
+          "key": "Quote checked by 2",
+          "value": "script (verbatim check)"
+        },
+        {
+          "key": "Quote checked on 2",
+          "value": "2026-11-25"
+        },
+        {
+          "key": "Added by",
+          "value": "AI agent (example author)"
+        },
+        {
+          "key": "Added via",
+          "value": "repository file"
+        },
+        {
+          "key": "Added on",
+          "value": "2026-11-25"
+        }
+      ]
+    },
+    {
+      "id": "src-format",
+      "type": "source",
+      "text": "TraceCite format, 2026",
+      "tags": [],
+      "collapsed": true,
+      "children": [],
+      "fields": [
+        {
+          "key": "APA citation",
+          "value": "TraceCite format, 2026"
+        },
+        {
+          "key": "First author",
+          "value": "DSouza"
+        },
+        {
+          "key": "Year",
+          "value": "2026"
+        },
+        {
+          "key": "APA reference",
+          "value": "DSouza, P. (2026). TraceCite 1.0 specification (Version 0.2.0) [Software documentation]. GitHub."
+        },
+        {
+          "key": "URL",
+          "value": "https://github.com/prajwalsouza/TraceCite/blob/v0.2.0/docs/format.md"
+        },
+        {
+          "key": "Record status",
+          "value": "Checked excerpt · read from docs/format.md at v0.2.0; passage cut from the file by script"
+        },
+        {
+          "key": "Exact quote",
+          "value": "A TraceCite document is one tree."
+        },
+        {
+          "key": "Quote location",
+          "value": "docs/format.md · opening paragraph, first sentence"
+        },
+        {
+          "key": "Quote context",
+          "value": "A TraceCite document is one tree. Open a sentence to see the evidence under it. The public format identifier is `tracecite/1.0`. The schema is [schema/tracecite-1.0.schema.json](../schema/tracecite-1.0.schema.json), using JSON Schema draft 2020-12."
+        },
+        {
+          "key": "Quote added by",
+          "value": "AI agent (example author)"
+        },
+        {
+          "key": "Quote checked by",
+          "value": "script (verbatim check)"
+        },
+        {
+          "key": "Quote checked on",
+          "value": "2026-11-25"
+        },
+        {
+          "key": "Added by",
+          "value": "AI agent (example author)"
+        },
+        {
+          "key": "Added via",
+          "value": "repository file"
+        },
+        {
+          "key": "Added on",
+          "value": "2026-11-25"
+        }
+      ]
+    },
+    {
+      "id": "src-package",
+      "type": "source",
+      "text": "TraceCite packages, 2026",
+      "tags": [],
+      "collapsed": true,
+      "children": [],
+      "fields": [
+        {
+          "key": "APA citation",
+          "value": "TraceCite packages, 2026"
+        },
+        {
+          "key": "First author",
+          "value": "DSouza"
+        },
+        {
+          "key": "Year",
+          "value": "2026"
+        },
+        {
+          "key": "APA reference",
+          "value": "DSouza, P. (2026). TraceCite packages (.trace.zip) (Version 0.2.0) [Software documentation]. GitHub."
+        },
+        {
+          "key": "URL",
+          "value": "https://github.com/prajwalsouza/TraceCite/blob/v0.2.0/docs/package.md"
+        },
+        {
+          "key": "Record status",
+          "value": "Checked excerpt · read from docs/package.md at v0.2.0; passage cut from the file by script"
+        },
+        {
+          "key": "Exact quote",
+          "value": "A package holds one TraceCite document and everything it needs, in one file."
+        },
+        {
+          "key": "Quote location",
+          "value": "docs/package.md · opening paragraph, first sentence"
+        },
+        {
+          "key": "Quote context",
+          "value": "A package holds one TraceCite document and everything it needs, in one file. It is a plain zip, so any zip tool can open it. Reading pages carry their package, `trace-reader.html` opens any package, and Export hands one back."
+        },
+        {
+          "key": "Quote added by",
+          "value": "AI agent (example author)"
+        },
+        {
+          "key": "Quote checked by",
+          "value": "script (verbatim check)"
+        },
+        {
+          "key": "Quote checked on",
+          "value": "2026-11-25"
+        },
+        {
+          "key": "Added by",
+          "value": "AI agent (example author)"
+        },
+        {
+          "key": "Added via",
+          "value": "repository file"
+        },
+        {
+          "key": "Added on",
+          "value": "2026-11-25"
+        }
+      ]
+    },
+    {
+      "id": "src-agents",
+      "type": "source",
+      "text": "Writing with agents, 2026",
+      "tags": [],
+      "collapsed": true,
+      "children": [],
+      "fields": [
+        {
+          "key": "APA citation",
+          "value": "Writing with agents, 2026"
+        },
+        {
+          "key": "First author",
+          "value": "DSouza"
+        },
+        {
+          "key": "Year",
+          "value": "2026"
+        },
+        {
+          "key": "APA reference",
+          "value": "DSouza, P. (2026). Writing TraceCite documents with an agent (Version 0.2.0) [Software documentation]. GitHub."
+        },
+        {
+          "key": "URL",
+          "value": "https://github.com/prajwalsouza/TraceCite/blob/v0.2.0/docs/writing-with-agents.md"
+        },
+        {
+          "key": "Record status",
+          "value": "Checked excerpt · read from docs/writing-with-agents.md at v0.2.0; passage cut from the file by script"
+        },
+        {
+          "key": "Exact quote",
+          "value": "Never retype a quote or rebuild it from memory."
+        },
+        {
+          "key": "Quote location",
+          "value": "docs/writing-with-agents.md · Evidence · first point"
+        },
+        {
+          "key": "Quote context",
+          "value": "- **Quote exactly, by copying.** Copy each quote programmatically from the source, with the whole passage it sits in (`trace-quote` and `trace-quote-context`). Never retype a quote or rebuild it from memory. A passage must contain its quote word for word. The validator rejects a quote with no passage unless a reason is given (`-context-withheld`). - **Never invent.** No made-up sources, quotes, page numbers, comments or reviewers. A source you could not open keeps no quote: it stays \"Reference only\" and shows as unchecked. - **Say how far each record is checked.** Use `trace-status`, `trace-checked` and `trace-url-read`. Unchecked stays visibly unchecked. - **Locate quotes honestly.** Use sections and paragraph positions for web pages. Use page numbers only when you read the page."
+        },
+        {
+          "key": "Quote added by",
+          "value": "AI agent (example author)"
+        },
+        {
+          "key": "Quote checked by",
+          "value": "script (verbatim check)"
+        },
+        {
+          "key": "Quote checked on",
+          "value": "2026-11-25"
+        },
+        {
+          "key": "Added by",
+          "value": "AI agent (example author)"
+        },
+        {
+          "key": "Added via",
+          "value": "repository file"
+        },
+        {
+          "key": "Added on",
+          "value": "2026-11-25"
+        }
+      ]
+    },
+    {
+      "id": "src-bush",
+      "text": "Bush, 1945",
+      "fields": [
+        {
+          "key": "APA citation",
+          "value": "Bush, 1945"
+        },
+        {
+          "key": "First author",
+          "value": "Bush"
+        },
+        {
+          "key": "Year",
+          "value": "1945"
+        },
+        {
+          "key": "APA reference",
+          "value": "Bush, V. (1945, July). As we may think. The Atlantic Monthly, 176(1), 101–108."
+        },
+        {
+          "key": "URL",
+          "value": "https://www.w3.org/History/1945/vbush/vbush-all.shtml"
+        },
+        {
+          "key": "Exact quote",
+          "value": "Our ineptitude in getting at the record is largely caused by the artificiality of systems of indexing."
+        },
+        {
+          "key": "Quote location",
+          "value": "Part 6 · first paragraph (W3C-hosted HTML reproduction; The Atlantic page refused automated access)"
+        },
+        {
+          "key": "Exact quote 2",
+          "value": "Wholly new forms of encyclopedias will appear, ready-made with a mesh of associative trails running through them"
+        },
+        {
+          "key": "Quote location 2",
+          "value": "Part 8 · first sentence (W3C-hosted HTML reproduction)"
+        },
+        {
+          "key": "Record status",
+          "value": "Fetched 2026-11-24 · quotes checked verbatim against the page text · from a reproduction hosted by W3C"
+        },
+        {
+          "key": "Quote context withheld",
+          "value": "the page is under copyright; open the source to read the quote in its passage."
+        },
+        {
+          "key": "Quote context withheld 2",
+          "value": "the page is under copyright; open the source to read the quote in its passage."
+        },
+        {
+          "key": "Added by",
+          "value": "AI agent (example author)"
+        },
+        {
+          "key": "Added via",
+          "value": "web page"
+        },
+        {
+          "key": "Added on",
+          "value": "2026-11-24"
+        },
+        {
+          "key": "Quote added by",
+          "value": "AI agent (example author)"
+        },
+        {
+          "key": "Quote checked by",
+          "value": "script (verbatim check)"
+        },
+        {
+          "key": "Quote checked on",
+          "value": "2026-11-24"
+        },
+        {
+          "key": "Quote added by 2",
+          "value": "AI agent (example author)"
+        },
+        {
+          "key": "Quote checked by 2",
+          "value": "script (verbatim check)"
+        },
+        {
+          "key": "Quote checked on 2",
+          "value": "2026-11-24"
+        }
+      ],
+      "type": "source",
+      "tags": [],
+      "collapsed": true,
+      "children": []
+    },
+    {
+      "id": "src-engelbart68",
+      "text": "Engelbart & English, 1968",
+      "fields": [
+        {
+          "key": "APA citation",
+          "value": "Engelbart & English, 1968"
+        },
+        {
+          "key": "First author",
+          "value": "Engelbart"
+        },
+        {
+          "key": "Year",
+          "value": "1968"
+        },
+        {
+          "key": "APA reference",
+          "value": "Engelbart, D. C., & English, W. K. (1968). A research center for augmenting human intellect. In AFIPS Conference Proceedings, Vol. 33: 1968 Fall Joint Computer Conference (pp. 395–410). Thompson Book Company."
+        },
+        {
+          "key": "URL",
+          "value": "https://www.dougengelbart.org/content/view/140/"
+        },
+        {
+          "key": "Exact quote",
+          "value": "The principal manifestation of this hierarchical structure is the breaking up of text into arbitrary segments called \"statements,\""
+        },
+        {
+          "key": "Quote location",
+          "value": "Structure of Files · paragraph 3c2b1"
+        },
+        {
+          "key": "Exact quote 2",
+          "value": "the number is vulnerable to subsequent structural change, whereas the name stays with the statement through changes in the structure around it"
+        },
+        {
+          "key": "Quote location 2",
+          "value": "Structure of Files · paragraph 3c2c"
+        },
+        {
+          "key": "Record status",
+          "value": "Fetched 2026-11-24 · quotes checked verbatim against the page text · from the Doug Engelbart Institute web edition"
+        },
+        {
+          "key": "Quote context withheld",
+          "value": "the page is under copyright; open the source to read the quote in its passage."
+        },
+        {
+          "key": "Quote context withheld 2",
+          "value": "the page is under copyright; open the source to read the quote in its passage."
+        },
+        {
+          "key": "Added by",
+          "value": "AI agent (example author)"
+        },
+        {
+          "key": "Added via",
+          "value": "web page"
+        },
+        {
+          "key": "Added on",
+          "value": "2026-11-24"
+        },
+        {
+          "key": "Quote added by",
+          "value": "AI agent (example author)"
+        },
+        {
+          "key": "Quote checked by",
+          "value": "script (verbatim check)"
+        },
+        {
+          "key": "Quote checked on",
+          "value": "2026-11-24"
+        },
+        {
+          "key": "Quote added by 2",
+          "value": "AI agent (example author)"
+        },
+        {
+          "key": "Quote checked by 2",
+          "value": "script (verbatim check)"
+        },
+        {
+          "key": "Quote checked on 2",
+          "value": "2026-11-24"
+        }
+      ],
+      "type": "source",
+      "tags": [],
+      "collapsed": true,
+      "children": []
+    },
+    {
+      "id": "src-bernerslee",
+      "text": "Berners-Lee, 1989",
+      "fields": [
+        {
+          "key": "APA citation",
+          "value": "Berners-Lee, 1989"
+        },
+        {
+          "key": "First author",
+          "value": "Berners-Lee"
+        },
+        {
+          "key": "Year",
+          "value": "1989"
+        },
+        {
+          "key": "APA reference",
+          "value": "Berners-Lee, T. (1989). Information management: A proposal. CERN."
+        },
+        {
+          "key": "URL",
+          "value": "https://www.w3.org/History/1989/proposal.html"
+        },
+        {
+          "key": "Exact quote",
+          "value": "This is why a \"web\" of notes with links (like references) between them is far more useful than a fixed hierarchical system."
+        },
+        {
+          "key": "Quote location",
+          "value": "Linked information systems · first paragraph"
+        },
+        {
+          "key": "Exact quote 2",
+          "value": "A tree has the practical advantage of giving every node a unique name. However, it does not allow the system to model the real world."
+        },
+        {
+          "key": "Quote location 2",
+          "value": "The problem with trees · first paragraph"
+        },
+        {
+          "key": "Record status",
+          "value": "Fetched 2026-11-24 · quotes checked verbatim against the page text"
+        },
+        {
+          "key": "Quote context withheld",
+          "value": "the page is under copyright; open the source to read the quote in its passage."
+        },
+        {
+          "key": "Quote context withheld 2",
+          "value": "the page is under copyright; open the source to read the quote in its passage."
+        },
+        {
+          "key": "Added by",
+          "value": "AI agent (example author)"
+        },
+        {
+          "key": "Added via",
+          "value": "web page"
+        },
+        {
+          "key": "Added on",
+          "value": "2026-11-24"
+        },
+        {
+          "key": "Quote added by",
+          "value": "AI agent (example author)"
+        },
+        {
+          "key": "Quote checked by",
+          "value": "script (verbatim check)"
+        },
+        {
+          "key": "Quote checked on",
+          "value": "2026-11-24"
+        },
+        {
+          "key": "Quote added by 2",
+          "value": "AI agent (example author)"
+        },
+        {
+          "key": "Quote checked by 2",
+          "value": "script (verbatim check)"
+        },
+        {
+          "key": "Quote checked on 2",
+          "value": "2026-11-24"
+        }
+      ],
+      "type": "source",
+      "tags": [],
+      "collapsed": true,
+      "children": []
+    },
+    {
+      "id": "src-tei",
+      "text": "TEI Consortium, 2026",
+      "fields": [
+        {
+          "key": "APA citation",
+          "value": "TEI Consortium, 2026"
+        },
+        {
+          "key": "First author",
+          "value": "TEI"
+        },
+        {
+          "key": "Year",
+          "value": "2026"
+        },
+        {
+          "key": "APA reference",
+          "value": "TEI Consortium. (2026). About these Guidelines. In TEI P5: Guidelines for electronic text encoding and interchange (Version 4.12.0). Text Encoding Initiative Consortium."
+        },
+        {
+          "key": "URL",
+          "value": "https://tei-c.org/release/doc/tei-p5-doc/en/html/AB.html"
+        },
+        {
+          "key": "Exact quote",
+          "value": "without them a digitized text appears to be nothing but a sequence of undifferentiated bits"
+        },
+        {
+          "key": "Quote location",
+          "value": "iv. About These Guidelines · paragraph beginning “They make recommendations”"
+        },
+        {
+          "key": "Exact quote 2",
+          "value": "which was held at Vassar College in November 1987"
+        },
+        {
+          "key": "Quote location 2",
+          "value": "iv.2 Historical Background · first sentence"
+        },
+        {
+          "key": "Record status",
+          "value": "Fetched 2026-11-24 · quotes checked verbatim against the page text"
+        },
+        {
+          "key": "Quote context",
+          "value": "They make recommendations about suitable ways of representing those features of textual resources which need to be identified explicitly in order to facilitate processing by computer programs. In particular, they specify a set of markers (or tags) which may be inserted in the electronic representation of the text, in order to mark the text structure and other features of interest. Many, or most, computer programs depend on the presence of such explicit markers for their functionality, since without them a digitized text appears to be nothing but a sequence of undifferentiated bits. The success of the World Wide Web, for example, is partly a consequence of its use of such markup to indicate such features as headings and lists on individual pages, and to indicate links between pages. The process of inserting such explicit markers for implicit textual features is often called ‘markup’, or equivalently within this work ‘encoding’; the term ‘tagging’ is also used informally. We use the term encoding scheme or markup language to denote the complete set of rules associated with the use of markup in a given context; we use the term markup vocabulary for the specific set of markers or named distinctions employed by a given encoding scheme. Thus, this work both describes the TEI encoding scheme, and documents the TEI markup vocabulary."
+        },
+        {
+          "key": "Quote note.1",
+          "value": "Passage reproduced under the TEI Guidelines’ Creative Commons Attribution licence."
+        },
+        {
+          "key": "Quote context 2",
+          "value": "The Text Encoding Initiative grew out of a planning conference sponsored by the Association for Computers and the Humanities (ACH) and funded by the U.S. National Endowment for the Humanities (NEH), which was held at Vassar College in November 1987. At this conference some thirty representatives of text archives, scholarly societies, and research projects met to discuss the feasibility of a standard encoding scheme and to make recommendations for its scope, structure, content, and drafting. During the conference, the Association for Computational Linguistics and the Association for Literary and Linguistic Computing agreed to join ACH as sponsors of a project to develop these Guidelines. The outcome of the conference was a set of principles (the ‘Poughkeepsie Principles’, Burnard (1988)), which determined the further course of the project."
+        },
+        {
+          "key": "Quote note 2.1",
+          "value": "Passage reproduced under the TEI Guidelines’ Creative Commons Attribution licence."
+        },
+        {
+          "key": "Added by",
+          "value": "AI agent (example author)"
+        },
+        {
+          "key": "Added via",
+          "value": "web page"
+        },
+        {
+          "key": "Added on",
+          "value": "2026-11-24"
+        },
+        {
+          "key": "Quote added by",
+          "value": "AI agent (example author)"
+        },
+        {
+          "key": "Quote checked by",
+          "value": "script (verbatim check)"
+        },
+        {
+          "key": "Quote checked on",
+          "value": "2026-11-24"
+        },
+        {
+          "key": "Quote added by 2",
+          "value": "AI agent (example author)"
+        },
+        {
+          "key": "Quote checked by 2",
+          "value": "script (verbatim check)"
+        },
+        {
+          "key": "Quote checked on 2",
+          "value": "2026-11-24"
+        }
+      ],
+      "type": "source",
+      "tags": [],
+      "collapsed": true,
+      "children": []
+    },
+    {
+      "id": "src-html401",
+      "text": "Raggett et al., 1999",
+      "fields": [
+        {
+          "key": "APA citation",
+          "value": "Raggett et al., 1999"
+        },
+        {
+          "key": "First author",
+          "value": "Raggett"
+        },
+        {
+          "key": "Year",
+          "value": "1999"
+        },
+        {
+          "key": "APA reference",
+          "value": "Raggett, D., Le Hors, A., & Jacobs, I. (Eds.). (1999). HTML 4.01 specification (W3C Recommendation). World Wide Web Consortium."
+        },
+        {
+          "key": "URL",
+          "value": "https://www.w3.org/TR/html401/intro/intro.html"
+        },
+        {
+          "key": "Exact quote",
+          "value": "HTML has its roots in SGML which has always been a language for the specification of structural markup."
+        },
+        {
+          "key": "Quote location",
+          "value": "2.4.1 Separate structure and presentation · first sentence"
+        },
+        {
+          "key": "Exact quote 2",
+          "value": "Experience has shown that separating the structure of a document from its presentational aspects reduces the cost of serving a wide range of platforms"
+        },
+        {
+          "key": "Quote location 2",
+          "value": "2.4.1 Separate structure and presentation · third sentence"
+        },
+        {
+          "key": "Record status",
+          "value": "Fetched 2026-11-24 · quotes checked verbatim against the page text"
+        },
+        {
+          "key": "Quote context",
+          "value": "HTML has its roots in SGML which has always been a language for the specification of structural markup. As HTML matures, more and more of its presentational elements and attributes are being replaced by other mechanisms, in particular style sheets. Experience has shown that separating the structure of a document from its presentational aspects reduces the cost of serving a wide range of platforms, media, etc., and facilitates document revisions."
+        },
+        {
+          "key": "Quote note.1",
+          "value": "Passage reproduced under the W3C Document License."
+        },
+        {
+          "key": "Quote context 2",
+          "value": "HTML has its roots in SGML which has always been a language for the specification of structural markup. As HTML matures, more and more of its presentational elements and attributes are being replaced by other mechanisms, in particular style sheets. Experience has shown that separating the structure of a document from its presentational aspects reduces the cost of serving a wide range of platforms, media, etc., and facilitates document revisions."
+        },
+        {
+          "key": "Quote note 2.1",
+          "value": "Passage reproduced under the W3C Document License."
+        },
+        {
+          "key": "Added by",
+          "value": "AI agent (example author)"
+        },
+        {
+          "key": "Added via",
+          "value": "web page"
+        },
+        {
+          "key": "Added on",
+          "value": "2026-11-24"
+        },
+        {
+          "key": "Quote added by",
+          "value": "AI agent (example author)"
+        },
+        {
+          "key": "Quote checked by",
+          "value": "script (verbatim check)"
+        },
+        {
+          "key": "Quote checked on",
+          "value": "2026-11-24"
+        },
+        {
+          "key": "Quote added by 2",
+          "value": "AI agent (example author)"
+        },
+        {
+          "key": "Quote checked by 2",
+          "value": "script (verbatim check)"
+        },
+        {
+          "key": "Quote checked on 2",
+          "value": "2026-11-24"
+        }
+      ],
+      "type": "source",
+      "tags": [],
+      "collapsed": true,
+      "children": []
+    }
+  ]
+}
