@@ -8,14 +8,11 @@
 #outline :is(.ev-src,.ev-comments).ev-show>:is(.ev-where,.ev-prov,.ev-quote-tags,.ev-kids,.ev-note,.ev-comment-list),
 #outline .ev.ev-show-line>:is(.ev-prov,.ev-flag),
 #outline .ev.ev-show-line>.ev-pane>:is(.ev-review,.ev-prov,.ev-flag){animation:ev-in .18s cubic-bezier(.2,.7,.1,1) both}
-/* The tabs (Sources, Tags, …) wait with the line's details; they stay once another tab is chosen. */
-@media (hover:hover){
-  #outline .ev-tabs .ev-tab{opacity:0;transition:opacity .16s ease}
-  #outline .ev.ev-show-line .ev-tabs .ev-tab,#outline .ev-tabs .ev-tab:focus-visible,
-  #outline .ev-tabs:has(.ev-tab:not(:first-child)[aria-selected=true]) .ev-tab{opacity:1}
-  #outline .ev:not(.ev-show-line) .ev-tabs:not(:has(.ev-tab:not(:first-child)[aria-selected=true])){margin-bottom:0}
-}
-@media (prefers-reduced-motion:reduce){#outline .ev *{animation:none!important}#outline .ev-tabs .ev-tab{transition:none}}
+/* The tabs (Sources, Tags, …) are the evidence's header: always shown, never waiting for a hover. */
+/* Closing: a short fade instead of a snap (quiet-evidence.js removes .ev-show when it ends). */
+@keyframes ev-out{from{opacity:1;transform:none}to{opacity:0;transform:translateY(-3px)}}
+#outline :is(.ev-src,.ev-comments).ev-show.ev-hiding>:is(.ev-where,.ev-prov,.ev-quote-tags,.ev-kids,.ev-note,.ev-comment-list){animation:ev-out .22s ease both}
+@media (prefers-reduced-motion:reduce){#outline .ev *{animation:none!important}}
 /* The reference line: the link in the line's own size, and one "open the source" icon, centred on the text. */
 #outline .ev-ref .ref-link,#outline .ev-ref .md-link{font-size:inherit;line-height:inherit;margin-left:0}
 #outline .ev-ref .md-link .md-ext{display:none}
