@@ -2,7 +2,7 @@
 
 ## Unreleased (0.4.0)
 
-- **Seven new themes.** Field Guide and Field Guide Night (white paper, Jost, stone-olive titles, wide-spaced capitals), Rubric (EB Garamond in two inks; palettes Vermilion, Illuminated, Lapis, Vellum, Candlelight), Terminal, Blueprint, Lab Notebook and Case File, each with its own palettes. Neumorphism gains a Dark palette, and its preview no longer glows on dark themes. Themes restyle a document but never add words to it.
+- **Seven new themes.** Field Guide and Field Guide Night (white paper, Jost, stone-olive titles, wide-spaced capitals), Rubric (EB Garamond in two inks; palettes Vermilion, Illuminated, Lapis, Vellum, Candlelight), Terminal, Blueprint, Lab Notebook and Case File, each with its own palettes. Sage gains a White palette (a pure white page with Sage's green as the one accent). Neumorphism gains a Dark palette, and its preview no longer glows on dark themes. Themes restyle a document but never add words to it.
 - **Home from the sidebar.** The sidebar's title goes back to the start of the paper from any view; with the sidebar collapsed, a T icon under the arrow does the same.
 - Settings: a choice with many options (Citation style) gets its own line, so its label no longer squeezes to one word per line.
 - Layered paper textures (grids, ruled lines) now draw; light palettes of dark themes (Printout, Whiteprint) switch the page to light.

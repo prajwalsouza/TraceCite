@@ -52,7 +52,7 @@
   // Curated colour palettes per theme (the first is the theme's own). Drawn as circles under the themes;
   // the colours live in themes.css as [data-palette] rules. Amber and red stay reserved for problems.
   const PALETTES = {
-    sage: [['', 'Sage'], ['mist', 'Mist'], ['clay', 'Clay'], ['lavender', 'Lavender'], ['rose', 'Rose']],
+    sage: [['', 'Sage'], ['white', 'White'], ['mist', 'Mist'], ['clay', 'Clay'], ['lavender', 'Lavender'], ['rose', 'Rose']],
     matte: [['', 'Lavender'], ['sage', 'Sage'], ['sky', 'Sky'], ['rose', 'Rose'], ['copper', 'Copper']],
     pitch: [['', 'Lavender'], ['sage', 'Sage'], ['sky', 'Sky'], ['rose', 'Rose'], ['copper', 'Copper']],
     minimal: [['', 'Lavender'], ['sage', 'Sage'], ['sky', 'Sky'], ['rose', 'Rose']],

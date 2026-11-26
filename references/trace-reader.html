@@ -1638,6 +1638,8 @@ html.house .read-head{background:linear-gradient(to bottom,var(--bg) 0,var(--bg)
 [data-theme="sage"][data-palette="clay"]{--canvas:#f4eee8;--paper:#fffdfa;--green:#8a5a44;--green-wash:#f1e3d8;--line:#ece1d6;--ink:#33281f;--muted:#6d5d50;--faint:#8a7a6c;--bg:#f4eee8;--panel:#ede3d9;--surface:#fffdfa;--ink2:#6d5d50;--ink3:#8a7a6c;--accent:#8a5a44;--accent-fill:#f1e3d8;--on-accent:#4b2f22;--link:#3f6a73;--sk-a:#ede3d9;--sk-b:#f8f3ee}
 [data-theme="sage"][data-palette="lavender"]{--canvas:#f0eef6;--paper:#fdfcff;--green:#5e5490;--green-wash:#e6e2f3;--line:#e4e0ef;--ink:#2b2838;--muted:#66617a;--faint:#827d95;--bg:#f0eef6;--panel:#e7e3f1;--surface:#fdfcff;--ink2:#66617a;--ink3:#827d95;--accent:#5e5490;--accent-fill:#e6e2f3;--on-accent:#352d5e;--link:#4c7a6c;--sk-a:#e7e3f1;--sk-b:#f5f3fa}
 [data-theme="sage"][data-palette="rose"]{--canvas:#f6eef0;--paper:#fffcfc;--green:#8a4d61;--green-wash:#f2e1e6;--line:#eddfe3;--ink:#33252a;--muted:#725d64;--faint:#8e7a81;--bg:#f6eef0;--panel:#efe2e6;--surface:#fffcfc;--ink2:#725d64;--ink3:#8e7a81;--accent:#8a4d61;--accent-fill:#f2e1e6;--on-accent:#552c3a;--link:#4f6a8a;--sk-a:#efe2e6;--sk-b:#faf4f5}
+/* White: Sage at its cleanest. Pure white page, a barely-there sidebar, Sage's green kept as the one accent. */
+[data-theme="sage"][data-palette="white"]{--canvas:#ffffff;--paper:#ffffff;--side-bg:#f7f8f5;--green:#52633b;--green-wash:#eef2e6;--line:#ecede8;--ink:#22271d;--muted:#5f665a;--faint:#868c80;--bg:#ffffff;--panel:#f5f6f2;--surface:#ffffff;--ink2:#5f665a;--ink3:#868c80;--accent:#52633b;--accent-fill:#eef2e6;--on-accent:#2f4720;--link:#3f5f8a;--sk-a:#f1f2ee;--sk-b:#f9faf7}
 [data-theme="sage"]:not([data-palette]){--link:#3f5f8a}
 /* Textbook Light: papers. */
 [data-theme="textbook-light"][data-palette="parchment"]{--bg:#f8f1e3;--panel:#efe3cc;--surface:#fffaf0;--ink:#3a2e22;--ink2:#6c5b48;--ink3:#a08c76;--line:#e7d8bd;--accent:#8a5a3c;--link:#4e6a8c;--sk-a:#efe3cc;--sk-b:#faf4e8}
@@ -8837,7 +8839,7 @@ globalThis.TABLE_EVIDENCE_DATA = { version: 1, paper: '', bindings: {} };
   // Curated colour palettes per theme (the first is the theme's own). Drawn as circles under the themes;
   // the colours live in themes.css as [data-palette] rules. Amber and red stay reserved for problems.
   const PALETTES = {
-    sage: [['', 'Sage'], ['mist', 'Mist'], ['clay', 'Clay'], ['lavender', 'Lavender'], ['rose', 'Rose']],
+    sage: [['', 'Sage'], ['white', 'White'], ['mist', 'Mist'], ['clay', 'Clay'], ['lavender', 'Lavender'], ['rose', 'Rose']],
     matte: [['', 'Lavender'], ['sage', 'Sage'], ['sky', 'Sky'], ['rose', 'Rose'], ['copper', 'Copper']],
     pitch: [['', 'Lavender'], ['sage', 'Sage'], ['sky', 'Sky'], ['rose', 'Rose'], ['copper', 'Copper']],
     minimal: [['', 'Lavender'], ['sage', 'Sage'], ['sky', 'Sky'], ['rose', 'Rose']],
