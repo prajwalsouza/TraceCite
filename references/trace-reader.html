@@ -1890,12 +1890,199 @@ html[data-theme="magazine"] :is(#outline .apa-paragraph p){font-family:var(--fon
 html[data-theme="magazine"] :is(h3,h4).reading-section{font-size:clamp(21px,2.3vw,26px);border-top:1px solid var(--ink);padding-top:10px;margin-top:36px}
 html[data-theme="magazine"] #outline .reading-group > .reading-section + section.apa-paragraph > p:first-of-type::first-letter{float:left;font-family:var(--font-display);font-size:4.1em;line-height:.82;padding:6px 10px 0 0;color:var(--accent)}
 
+/* ---------- Field Guide: a quiet nature book. White paper, a Futura-like geometric sans (Jost),
+   thin oversized titles in stone-olive, small headings in wide-spaced capitals, generous air ---------- */
+[data-theme="field-guide"]{color-scheme:light;--font-field:'Jost',Futura,'Century Gothic','Avenir Next',sans-serif;--font-ui:var(--font-field);--font-display:var(--font-field);--bg:#fdfdfb;--panel:#f1f2ef;--surface:#ffffff;--ink:#2b2c29;--ink2:#61635d;--ink3:#9c9e97;--line:#e7e8e3;--accent:#8c896b;--ok:#7a9877;--bad:#b4584a;--accent-fill:color-mix(in srgb,var(--accent) 20%,#fff);--on-accent:#3a3826;--warn:#b08a42;--link:#687a8a;--sk-a:#eceee9;--sk-b:#f7f8f5;--panel-border:none;--panel-shadow:none;--raised-shadow:none;--pressed-shadow:none;--control-border:1px solid #e3e4de;--radius-panel:10px;--page-texture:none}
+[data-theme="field-guide"][data-palette="lichen"]{--bg:#fbfcf8;--panel:#edf0e6;--accent:#7e8a5e;--on-accent:#2f3720;--link:#5f7a6c;--line:#e3e7da;--sk-a:#e9ede1;--sk-b:#f5f7f0}
+[data-theme="field-guide"][data-palette="twig"]{--accent:#a5695a;--on-accent:#4a2a22;--link:#6f7f90;--accent-fill:color-mix(in srgb,var(--accent) 16%,#fff)}
+[data-theme="field-guide"][data-palette="mist"]{--bg:#f7f8f9;--panel:#eaecef;--surface:#fdfdfe;--line:#e1e4e8;--accent:#8b8f7c;--link:#6a7c93;--sk-a:#e6e9ec;--sk-b:#f3f5f7}
+[data-theme="field-guide-night"]{color-scheme:dark;--font-field:'Jost',Futura,'Century Gothic','Avenir Next',sans-serif;--font-ui:var(--font-field);--font-display:var(--font-field);--bg:#1a1b19;--panel:#21221f;--surface:#262724;--ink:#ecebe3;--ink2:#b3b2a8;--ink3:#7a7a72;--line:#30312d;--accent:#c5c2a0;--ok:#9dbb98;--bad:#e08a7a;--accent-fill:color-mix(in srgb,var(--accent) 22%,var(--bg));--on-accent:var(--ink);--warn:#d9b06a;--link:#a9b9c7;--sk-a:#232421;--sk-b:#2d2e2a;--panel-border:none;--panel-shadow:none;--raised-shadow:none;--pressed-shadow:none;--control-border:1px solid #383934;--radius-panel:10px;--page-texture:none}
+[data-theme="field-guide-night"][data-palette="moss"]{--bg:#171b17;--panel:#1e231e;--surface:#232923;--line:#2d342d;--accent:#b4c39c;--link:#b9c4d0;--sk-a:#1f241f;--sk-b:#293029}
+[data-theme="field-guide-night"][data-palette="dusk"]{--bg:#1a1c21;--panel:#21242a;--surface:#262a30;--line:#30343b;--accent:#d2b3a2;--link:#a9b9cf;--sk-a:#22252b;--sk-b:#2c3037}
+html.house[data-theme="field-guide-night"] #mobile-menu{border:1px solid var(--line)}
+html[data-theme^="field-guide"] :is(body,#outline,#outline .apa-paragraph p,.document-header h1,.reading-section,.apa-paragraph > h3,#sidebar,#sidebar *,.read-head,.settings-view,.settings-view *,.spot,.spot *,.ev,.ev *,.fm,.fm *):not(svg):not(svg *):not(mjx-container):not(mjx-container *):not(code):not(kbd):not(.font-trigger):not(.font-trigger *){font-family:var(--font-field)!important}
+html[data-theme^="field-guide"] #outline .apa-paragraph p{font-size:1.04em;font-weight:400;line-height:1.9;letter-spacing:.025em}
+html[data-theme^="field-guide"] .document-header h1{font-weight:300;font-size:clamp(38px,6vw,72px);line-height:1.02;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+html[data-theme^="field-guide"] .eyebrow{font-weight:500;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--ink2)}
+html[data-theme^="field-guide"] .eyebrow .tiny-leaf{display:none}
+html[data-theme^="field-guide"] .reading-section{font-weight:500;font-size:clamp(15px,1.6vw,18px)!important;letter-spacing:.26em;text-transform:uppercase;line-height:1.5;margin-top:64px}
+html[data-theme^="field-guide"] :is(h3,h4).reading-section{font-size:13px!important;letter-spacing:.22em;color:var(--ink2);margin-top:40px}
+html[data-theme^="field-guide"] .apa-paragraph > h3{font-weight:500;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink2)}
+html[data-theme^="field-guide"] .fm-authors{font-weight:400;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink2)}
+html[data-theme^="field-guide"] #sidebar .nav-heading{letter-spacing:.26em!important;font-weight:500}
+html[data-theme^="field-guide"] #trace-toc .toc-item[data-depth="0"] .toc-label{text-transform:uppercase;letter-spacing:.14em;font-size:11.5px}
+html[data-theme^="field-guide"] #outline .apa-sentence[aria-expanded="true"]{background:none;box-shadow:inset 0 -.42em 0 color-mix(in srgb,var(--accent) 20%,transparent)}
+
+/* ---------- Rubric: an early printed book in two inks. EB Garamond throughout, black text on ivory,
+   red ("rubric") for titles, headings, initials and what the reader opens ---------- */
+[data-theme="rubric"]{color-scheme:light;--font-rubric:'EB Garamond',Garamond,'Adobe Garamond Pro',Georgia,serif;--font-ui:var(--font-rubric);--font-display:var(--font-rubric);--rubric:#a3302a;--bg:#f7f1e4;--panel:#efe7d6;--surface:#fbf7ee;--ink:#221d18;--ink2:#564d43;--ink3:#978b7b;--line:#e2d7c2;--accent:var(--rubric);--ok:#5b7d58;--bad:#c2410c;--accent-fill:color-mix(in srgb,var(--rubric) 13%,#fff);--on-accent:#5a1712;--warn:#a87a26;--link:#8a3a30;--sk-a:#ece3d1;--sk-b:#f6f0e4;--panel-border:none;--panel-shadow:none;--raised-shadow:none;--pressed-shadow:none;--control-border:1px solid #ddd1ba;--radius-panel:8px;--page-texture:none}
+[data-theme="rubric"][data-palette="lapis"]{--rubric:#2f4f8f;--on-accent:#162746;--link:#2f4f8f;--accent-fill:color-mix(in srgb,var(--rubric) 12%,#fff)}
+[data-theme="rubric"][data-palette="vellum"]{--bg:#f1e6cf;--panel:#e8dbbf;--surface:#f6eedc;--line:#dccdae;--ink:#2a2118;--sk-a:#e6d9bd;--sk-b:#f2e8d3}
+[data-theme="rubric"][data-palette="candle"]{color-scheme:dark;--rubric:#d9786a;--bg:#1d1813;--panel:#241e18;--surface:#29221b;--ink:#ece2d0;--ink2:#b9ab95;--ink3:#7f7363;--line:#362d24;--link:#e09a86;--accent-fill:color-mix(in srgb,var(--rubric) 22%,var(--bg));--on-accent:var(--ink);--control-border:1px solid #3d3329;--sk-a:#272019;--sk-b:#322a21}
+/* Illuminated: near-white paper and a scribe's full set of inks. Each section takes the next ink (vermilion,
+   lapis, verdigris, gold) for its heading, initial and underline; the ornament above it is already in the next. */
+[data-theme="rubric"][data-palette="illuminated"]{--ill-red:#d23c27;--ill-blue:#2457c5;--ill-green:#14856a;--ill-gold:#b8860f;--rubric:var(--ill-red);--orn:var(--ill-gold);--bg:#fefdfb;--panel:#f6f3ee;--surface:#ffffff;--ink:#1d1a17;--ink2:#544d45;--ink3:#9a9289;--line:#ece7df;--link:var(--ill-blue);--accent-fill:color-mix(in srgb,var(--ill-red) 11%,#fff);--sk-a:#f1ede6;--sk-b:#faf8f4}
+html[data-theme="rubric"][data-palette="illuminated"] #outline > .reading-group:nth-child(4n+1){--rubric:var(--ill-red);--orn:var(--ill-blue)}
+html[data-theme="rubric"][data-palette="illuminated"] #outline > .reading-group:nth-child(4n+2){--rubric:var(--ill-blue);--orn:var(--ill-green)}
+html[data-theme="rubric"][data-palette="illuminated"] #outline > .reading-group:nth-child(4n+3){--rubric:var(--ill-green);--orn:var(--ill-gold)}
+html[data-theme="rubric"][data-palette="illuminated"] #outline > .reading-group:nth-child(4n+4){--rubric:var(--ill-gold);--orn:var(--ill-red)}
+html[data-theme="rubric"][data-palette="illuminated"] h2.reading-section::before{color:var(--orn);opacity:1}
+html[data-theme="rubric"][data-palette="illuminated"] .document-header h1::first-letter{color:var(--ill-blue)}
+html[data-theme="rubric"][data-palette="illuminated"] #sidebar .nav-heading{color:var(--ill-blue)!important}
+html[data-theme="rubric"] :is(body,#outline,#outline .apa-paragraph p,.document-header h1,.reading-section,.apa-paragraph > h3,#sidebar,#sidebar *,.read-head,.settings-view,.settings-view *,.spot,.spot *,.ev,.ev *,.fm,.fm *):not(svg):not(svg *):not(mjx-container):not(mjx-container *):not(code):not(kbd):not(.font-trigger):not(.font-trigger *){font-family:var(--font-rubric)!important}
+html[data-theme="rubric"] #outline .apa-paragraph p{font-size:1.16em;line-height:1.62;text-align:justify;hyphens:auto;-webkit-hyphens:auto;font-variant-numeric:oldstyle-nums}
+html[data-theme="rubric"] .document-header{text-align:center}
+html[data-theme="rubric"] .document-header h1{margin-left:auto;margin-right:auto;padding-left:.01em;text-wrap:balance;font-weight:500;font-size:clamp(38px,5.6vw,64px);line-height:1.08;letter-spacing:.01em;color:var(--rubric)}
+html[data-theme="rubric"] .eyebrow{justify-content:center;padding-left:.16em;font-weight:500;font-size:14px;letter-spacing:.16em;text-transform:lowercase;font-variant-caps:small-caps;color:var(--ink2)}
+html[data-theme="rubric"] .eyebrow .tiny-leaf{display:none}
+html[data-theme="rubric"] .fm-authors{padding-left:.1em;font-size:17px;letter-spacing:.1em;text-transform:lowercase;font-variant-caps:small-caps;color:var(--ink)}
+html[data-theme="rubric"] .document-header .fm{align-items:center}
+html[data-theme="rubric"] .reading-section{text-align:center;text-wrap:balance;padding-left:.12em;font-weight:500;font-size:clamp(20px,2.2vw,25px)!important;letter-spacing:.12em;text-transform:lowercase;font-variant-caps:small-caps;color:var(--rubric);margin-top:60px}
+html[data-theme="rubric"] h2.reading-section::before{content:"❧";display:block;margin-left:-.133em;font-size:.9em;letter-spacing:0;margin-bottom:6px;opacity:.85}
+html[data-theme="rubric"] :is(h3,h4).reading-section{font-size:18px!important;letter-spacing:.1em;padding-left:.1em;margin-top:36px}
+html[data-theme="rubric"] .apa-paragraph > h3{font-weight:500;font-style:italic;font-size:1.12em;letter-spacing:.01em;color:var(--rubric)}
+html[data-theme="rubric"] #outline .reading-group > .reading-section + section.apa-paragraph > p:first-of-type::first-letter,html[data-theme="rubric"] #outline .reading-group > .reading-section + section.apa-paragraph > h3 + p::first-letter{float:left;font-size:3.5em;line-height:.8;padding:6px 8px 0 0;color:var(--rubric);font-weight:500}
+html[data-theme="rubric"] #outline .apa-sentence[aria-expanded="true"]{background:none;box-shadow:inset 0 -1.5px 0 var(--rubric)}
+html[data-theme="rubric"] #sidebar .nav-heading{text-transform:lowercase;font-variant-caps:small-caps;font-size:13px!important;letter-spacing:.14em!important;color:var(--rubric)!important}
+html[data-theme="rubric"] #trace-toc .toc-item .toc-num,html[data-theme="rubric"] #trace-toc .toc-item [class*="num"]{color:var(--rubric)}
+html[data-theme="rubric"] #trace-toc .toc-item[data-depth="0"] .toc-label{font-size:15px}
+
+/* Themes change how a document looks, never what it says: no theme adds words, numbers or labels the
+   document does not contain (no stamps, exhibit letters, sheet numbers or bylines). Only wordless marks
+   (❧, #, >, ◇, a cursor) may be drawn. */
+
+/* ---------- Terminal: a phosphor screen. JetBrains Mono throughout, markdown-style marks (#, ##, >),
+   a blinking cursor after the title and an inverse-video line for the opened sentence ---------- */
+[data-theme="terminal"]{color-scheme:dark;--font-term:'JetBrains Mono','SF Mono',Menlo,Consolas,monospace;--font-ui:var(--font-term);--font-display:var(--font-term);--term:#7ef08a;--bg:#0b0f0b;--panel:#0f150f;--surface:#121a12;--ink:#c9f5c4;--ink2:#86b882;--ink3:#4f7a4c;--line:#1d2a1c;--accent:var(--term);--ok:#7ef08a;--bad:#ff6b5e;--accent-fill:color-mix(in srgb,var(--term) 20%,var(--bg));--on-accent:var(--ink);--warn:#f2c14e;--link:#8fd3ff;--sk-a:#121a12;--sk-b:#1a251a;--panel-border:1px solid #1d2a1c;--panel-shadow:none;--raised-shadow:none;--pressed-shadow:none;--control-border:1px solid #2a3b29;--radius-panel:4px;--page-texture:repeating-linear-gradient(transparent 0 2px,rgba(0,0,0,.16) 2px 3px)}
+[data-theme="terminal"][data-palette="amber"]{--term:#ffb340;--bg:#0f0b06;--panel:#140f08;--surface:#19130a;--ink:#ffd9a0;--ink2:#c99a5c;--ink3:#7d6037;--line:#2a2012;--link:#ffe08a;--ok:#c8e07a;--sk-a:#19130a;--sk-b:#241b0f;--panel-border:1px solid #2a2012;--control-border:1px solid #3a2c18}
+[data-theme="terminal"][data-palette="mono"]{--term:#e8e8e8;--bg:#0c0c0c;--panel:#111;--surface:#151515;--ink:#d8d8d8;--ink2:#9a9a9a;--ink3:#5e5e5e;--line:#222;--link:#9ecbff;--sk-a:#151515;--sk-b:#1f1f1f;--panel-border:1px solid #222;--control-border:1px solid #333}
+[data-theme="terminal"][data-palette="printout"]{color-scheme:light;--term:#1d6b2a;--bg:#f7f9f4;--panel:#eef2ea;--surface:#fbfcf9;--ink:#1c241b;--ink2:#4f5d4c;--ink3:#8a9686;--line:#dfe6da;--link:#1f5fa8;--accent-fill:color-mix(in srgb,var(--term) 14%,#fff);--on-accent:#0f3a16;--sk-a:#e9eee5;--sk-b:#f4f7f1;--panel-border:1px solid #dfe6da;--control-border:1px solid #d3dccd;--page-texture:repeating-linear-gradient(#f7f9f4 0 22px,#e8f1e4 22px 44px)}
+html.house[data-theme="terminal"] #mobile-menu{border:1px solid var(--line)}
+html[data-theme="terminal"] :is(body,#outline,#outline .apa-paragraph p,.document-header h1,.reading-section,.apa-paragraph > h3,#sidebar,#sidebar *,.read-head,.settings-view,.settings-view *,.spot,.spot *,.ev,.ev *,.fm,.fm *):not(svg):not(svg *):not(mjx-container):not(mjx-container *):not(.font-trigger):not(.font-trigger *){font-family:var(--font-term)!important}
+html[data-theme="terminal"] #outline .apa-paragraph p{font-size:.96em;line-height:1.75;letter-spacing:0}
+html[data-theme="terminal"] .document-header h1{font-weight:700;font-size:clamp(28px,4vw,44px);line-height:1.15;letter-spacing:-.01em;color:var(--term);text-shadow:0 0 14px color-mix(in srgb,var(--term) 35%,transparent)}
+html[data-theme="terminal"] .document-header h1::before{content:"# ";color:var(--ink3)}
+html[data-theme="terminal"] .document-header h1::after{content:"▋";margin-left:.2em;color:var(--term);animation:term-blink 1.05s steps(1) infinite}
+@keyframes term-blink{50%{opacity:0}}
+html[data-theme="terminal"] .eyebrow{font-weight:500;font-size:12px;letter-spacing:.04em;text-transform:lowercase;color:var(--ink2)}
+html[data-theme="terminal"] .eyebrow .tiny-leaf{display:none}
+html[data-theme="terminal"] .fm-authors{font-size:13px;color:var(--ink2)}
+html[data-theme="terminal"] .reading-section{font-weight:700;font-size:clamp(18px,2vw,22px)!important;letter-spacing:0;color:var(--term);margin-top:52px}
+html[data-theme="terminal"] h2.reading-section::before{content:"## ";color:var(--ink3)}
+html[data-theme="terminal"] :is(h3,h4).reading-section::before{content:"### ";color:var(--ink3)}
+html[data-theme="terminal"] .apa-paragraph > h3{font-weight:600;font-size:.95em;color:var(--ink2)}
+html[data-theme="terminal"] .apa-paragraph > h3::before{content:"// ";color:var(--ink3)}
+html[data-theme="terminal"] #outline .apa-sentence[aria-expanded="true"]{background:var(--term);color:var(--bg);box-shadow:none;border-radius:0}
+html[data-theme="terminal"] #outline .apa-sentence[aria-expanded="true"] *{color:var(--bg)!important}
+html[data-theme="terminal"] #outline .ev-quote::before{content:"> ";color:var(--term)}
+html[data-theme="terminal"] #sidebar .nav-heading{text-transform:lowercase;letter-spacing:.02em!important}
+html[data-theme="terminal"] #sidebar .nav-heading::before{content:"$ ";color:var(--term)}
+@media (prefers-reduced-motion:reduce){html[data-theme="terminal"] .document-header h1::after{animation:none}}
+
+/* ---------- Blueprint: a technical drawing. White lines on a blue grid, IBM Plex,
+   a ruled title block and a dashed outline for the opened sentence ---------- */
+[data-theme="blueprint"]{color-scheme:dark;--font-bp:'IBM Plex Sans','Helvetica Neue',Arial,sans-serif;--font-bp-mono:'IBM Plex Mono',Menlo,monospace;--font-ui:var(--font-bp);--font-display:var(--font-bp-mono);--bp-line:rgba(255,255,255,.04);--bp-major:rgba(255,255,255,.085);--bg:#1b4f8f;--panel:#174478;--surface:#1d5598;--ink:#eef5ff;--ink2:#b9cfee;--ink3:#86a6d0;--line:rgba(238,245,255,.28);--accent:#ffffff;--ok:#9fe6c0;--bad:#ffb4a8;--accent-fill:rgba(255,255,255,.14);--on-accent:#fff;--warn:#ffd98a;--link:#ffe9a8;--sk-a:#1e5596;--sk-b:#2662a8;--panel-border:1px solid rgba(238,245,255,.35);--panel-shadow:none;--raised-shadow:none;--pressed-shadow:none;--control-border:1px solid rgba(238,245,255,.4);--radius-panel:2px;--page-texture:linear-gradient(var(--bp-major) 1px,transparent 1px) 0 0/100px 100px,linear-gradient(90deg,var(--bp-major) 1px,transparent 1px) 0 0/100px 100px,linear-gradient(var(--bp-line) 1px,transparent 1px) 0 0/20px 20px,linear-gradient(90deg,var(--bp-line) 1px,transparent 1px) 0 0/20px 20px}
+[data-theme="blueprint"][data-palette="cyanotype"]{--bg:#123e73;--panel:#0f3563;--surface:#15467f;--sk-a:#15467f;--sk-b:#1b528f}
+[data-theme="blueprint"][data-palette="night"]{--bg:#0d1b2e;--panel:#0b1727;--surface:#112238;--ink3:#7590b5;--accent:#8fd0ff;--accent-fill:rgba(143,208,255,.16);--link:#8fd0ff;--bp-line:rgba(143,208,255,.035);--bp-major:rgba(143,208,255,.07);--sk-a:#112238;--sk-b:#172c47}
+[data-theme="blueprint"][data-palette="whiteprint"]{color-scheme:light;--bg:#f6f8fc;--panel:#ecf1f9;--surface:#fbfcfe;--ink:#173a6e;--ink2:#3f5f8f;--ink3:#7d94b8;--line:rgba(23,58,110,.28);--accent:#1d4f9a;--accent-fill:rgba(29,79,154,.1);--on-accent:#0f2a52;--link:#b0461f;--ok:#2d8a5f;--bad:#c0392b;--warn:#a87212;--bp-line:rgba(23,58,110,.035);--bp-major:rgba(23,58,110,.075);--panel-border:1px solid rgba(23,58,110,.3);--control-border:1px solid rgba(23,58,110,.35);--sk-a:#e7edf7;--sk-b:#f2f5fb}
+html.house[data-theme="blueprint"] #mobile-menu{border:1px solid var(--line)}
+html[data-theme="blueprint"] :is(body,#outline,#outline .apa-paragraph p,#sidebar,#sidebar *,.read-head,.settings-view,.settings-view *,.spot,.spot *,.ev,.ev *,.fm,.fm *):not(svg):not(svg *):not(mjx-container):not(mjx-container *):not(code):not(kbd):not(.font-trigger):not(.font-trigger *){font-family:var(--font-bp)!important}
+html[data-theme="blueprint"] :is(.document-header h1,.reading-section,.apa-paragraph > h3,.eyebrow,.fm-authors,#sidebar .nav-heading,#trace-toc .toc-label){font-family:var(--font-bp-mono)!important}
+html[data-theme="blueprint"] #outline .apa-paragraph p{font-size:1em;line-height:1.75;font-weight:400}
+html[data-theme="blueprint"] .document-header{border:1.5px solid var(--line);outline:1px solid var(--line);outline-offset:4px;padding:22px 24px 18px!important;margin-top:8px}
+html[data-theme="blueprint"] .document-header h1{font-weight:500;font-size:clamp(28px,4.2vw,46px);line-height:1.1;letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
+html[data-theme="blueprint"] .eyebrow{font-weight:500;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink2)}
+html[data-theme="blueprint"] .eyebrow .tiny-leaf{display:none}
+html[data-theme="blueprint"] .fm-authors{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink2)}
+html[data-theme="blueprint"] .reading-section{font-weight:500;font-size:clamp(16px,1.8vw,20px)!important;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);border-bottom:1px solid var(--line);padding-bottom:8px;margin-top:60px}
+html[data-theme="blueprint"] .apa-paragraph > h3{font-weight:500;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink2)}
+html[data-theme="blueprint"] .apa-paragraph > h3::before{content:"◇ ";color:var(--ink3)}
+html[data-theme="blueprint"] #outline .apa-sentence[aria-expanded="true"]{background:none;box-shadow:none;outline:1.5px dashed var(--accent);outline-offset:3px;border-radius:2px}
+html[data-theme="blueprint"] #outline .apa-evidence{border-left:1.5px solid var(--line);padding-left:14px}
+html[data-theme="blueprint"] #sidebar .nav-heading{letter-spacing:.22em!important}
+
+/* ---------- Lab Notebook: squared paper with a red margin rule, handwritten headings in blue ink,
+   typed quotes, and a highlighter for the opened sentence ---------- */
+[data-theme="lab-notebook"]{color-scheme:light;--font-hand:'Caveat','Segoe Print','Bradley Hand',cursive;--font-lab:'IBM Plex Sans','Helvetica Neue',Arial,sans-serif;--font-typed:'Courier Prime','Courier New',monospace;--font-ui:var(--font-lab);--font-display:var(--font-hand);--lab-grid:rgba(66,135,160,.16);--lab-margin:rgba(214,72,72,.5);--lab-ink:#1f3d8f;--hl:#fff27a;--bg:#fbfbf5;--panel:#f1f1e8;--surface:#fdfdf8;--ink:#23272e;--ink2:#565c66;--ink3:#959aa3;--line:#e1e3d8;--accent:var(--lab-ink);--ok:#2f8a55;--bad:#d64848;--accent-fill:color-mix(in srgb,var(--lab-ink) 12%,#fff);--on-accent:#14275c;--warn:#b5831c;--link:#1f6fa8;--sk-a:#ecece2;--sk-b:#f7f7f0;--panel-border:none;--panel-shadow:none;--raised-shadow:none;--pressed-shadow:none;--control-border:1px solid #dcdfd2;--radius-panel:6px;--page-texture:linear-gradient(var(--lab-grid) 1px,transparent 1px) 0 0/22px 22px,linear-gradient(90deg,var(--lab-grid) 1px,transparent 1px) 0 0/22px 22px}
+[data-theme="lab-notebook"][data-palette="ruled"]{--page-texture:linear-gradient(transparent 27px,rgba(66,135,160,.22) 27px) 0 0/100% 28px}
+[data-theme="lab-notebook"][data-palette="dot"]{--page-texture:radial-gradient(circle,rgba(66,100,140,.28) 1px,transparent 1.4px) 0 0/20px 20px}
+[data-theme="lab-notebook"][data-palette="carbon"]{--bg:#f3f6fb;--panel:#e8edf5;--surface:#f8fafd;--lab-grid:rgba(60,90,150,.14);--lab-ink:#3a2f8f;--hl:#bfe9ff;--sk-a:#e4e9f2;--sk-b:#f0f3f9}
+html[data-theme="lab-notebook"] :is(body,#outline,#outline .apa-paragraph p,#sidebar,#sidebar *,.read-head,.settings-view,.settings-view *,.spot,.spot *,.ev,.ev *,.fm,.fm *):not(svg):not(svg *):not(mjx-container):not(mjx-container *):not(code):not(kbd):not(.font-trigger):not(.font-trigger *){font-family:var(--font-lab)!important}
+html[data-theme="lab-notebook"] :is(.document-header h1,.reading-section,.apa-paragraph > h3){font-family:var(--font-hand)!important}
+html[data-theme="lab-notebook"] #outline .ev-quote{font-family:var(--font-typed)!important;font-size:15px;font-weight:400}
+html[data-theme="lab-notebook"] #outline .apa-paragraph p{font-size:1em;line-height:1.75}
+html[data-theme="lab-notebook"] .document-header h1{font-weight:700;font-size:clamp(40px,6vw,64px);line-height:1;color:var(--lab-ink);transform:rotate(-1deg);transform-origin:left}
+html[data-theme="lab-notebook"] .eyebrow{font-family:var(--font-typed)!important;font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2)}
+html[data-theme="lab-notebook"] .eyebrow .tiny-leaf{display:none}
+html[data-theme="lab-notebook"] .reading-section{font-weight:700;font-size:clamp(28px,3vw,34px)!important;line-height:1.1;letter-spacing:0;color:var(--lab-ink);margin-top:52px}
+html[data-theme="lab-notebook"] :is(h3,h4).reading-section{font-size:26px!important}
+html[data-theme="lab-notebook"] .reading-section > *,html[data-theme="lab-notebook"] .reading-section{text-decoration:underline;text-decoration-color:color-mix(in srgb,var(--lab-ink) 45%,transparent);text-decoration-thickness:2px;text-underline-offset:5px}
+html[data-theme="lab-notebook"] .apa-paragraph > h3{font-weight:700;font-size:24px;line-height:1.1;color:var(--lab-ink)}
+html[data-theme="lab-notebook"] #outline .apa-sentence[aria-expanded="true"]{background:linear-gradient(104deg,transparent .4em,color-mix(in srgb,var(--hl) 85%,transparent) .5em,color-mix(in srgb,var(--hl) 70%,transparent) 96%,transparent);box-shadow:none;border-radius:3px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+html[data-theme="lab-notebook"] #outline .apa-evidence .ev{border-left:2px solid var(--lab-margin);padding-left:14px}
+html[data-theme="lab-notebook"] #sidebar .nav-heading{font-family:var(--font-typed)!important;letter-spacing:.12em!important}
+
+/* ---------- Case File: a typed report in a manila folder. Special Elite headings, Courier Prime text,
+   sources as paper-clipped index cards ---------- */
+[data-theme="case-file"]{color-scheme:light;--font-type:'Courier Prime','Courier New',Courier,monospace;--font-stamp:'Special Elite','Courier Prime','Courier New',monospace;--font-ui:var(--font-type);--font-display:var(--font-stamp);--stamp:#b8322a;--sheet:#fdfbf4;--card:#ffffff;--card-rule:#e46b63;--card-line:#cfe0ef;--bg:#e6d6ab;--panel:#dcc994;--surface:#fdfbf4;--ink:#24211c;--ink2:#575046;--ink3:#8f8574;--line:#d9ccaa;--accent:var(--stamp);--ok:#3f7d4f;--bad:#b8322a;--accent-fill:color-mix(in srgb,var(--stamp) 12%,#fff);--on-accent:#5c1611;--warn:#9a6d12;--link:#28508a;--sk-a:#d8c79a;--sk-b:#e8dbb6;--panel-border:none;--panel-shadow:none;--raised-shadow:none;--pressed-shadow:none;--control-border:1px solid #cdbb8a;--radius-panel:4px;--page-texture:radial-gradient(rgba(90,70,30,.06) 1px,transparent 1.2px) 0 0/5px 5px}
+[data-theme="case-file"][data-palette="kraft"]{--bg:#c9a77a;--panel:#bd9866;--line:#d6c3a2;--sk-a:#c09c6c;--sk-b:#d3b68e;--control-border:1px solid #a98756}
+[data-theme="case-file"][data-palette="bluefolder"]{--bg:#a9bfd6;--panel:#97b0ca;--line:#cfd8e2;--stamp:#a32b2b;--sk-a:#9fb6ce;--sk-b:#bccde0;--control-border:1px solid #8aa4c0}
+[data-theme="case-file"][data-palette="noir"]{color-scheme:dark;--sheet:#23211d;--card:#2b2924;--card-rule:#a8433c;--card-line:#38352f;--bg:#121110;--panel:#181715;--surface:#23211d;--ink:#e9e2d3;--ink2:#b3aa98;--ink3:#7c7466;--line:#37332c;--stamp:#e0574c;--link:#9cb8e0;--accent-fill:color-mix(in srgb,var(--stamp) 20%,var(--bg));--on-accent:var(--ink);--sk-a:#1c1b18;--sk-b:#26241f;--control-border:1px solid #3a362e;--page-texture:none}
+html[data-theme="case-file"] body{background:var(--page-texture),var(--bg)}
+html[data-theme="case-file"] :is(body,#outline,#outline .apa-paragraph p,#sidebar,#sidebar *,.read-head,.settings-view,.settings-view *,.spot,.spot *,.ev,.ev *,.fm,.fm *):not(svg):not(svg *):not(mjx-container):not(mjx-container *):not(code):not(kbd):not(.font-trigger):not(.font-trigger *){font-family:var(--font-type)!important}
+html[data-theme="case-file"] :is(.document-header h1,.reading-section,.apa-paragraph > h3,.eyebrow,#sidebar .nav-heading){font-family:var(--font-stamp)!important}
+/* the typed sheet on the folder */
+html[data-theme="case-file"] #document{background:var(--sheet)!important;box-shadow:0 1px 2px rgba(60,40,10,.18),0 12px 30px -14px rgba(60,40,10,.35)!important;border-radius:2px!important}
+html[data-theme="case-file"] #outline .apa-paragraph p{font-size:.97em;line-height:1.72}
+html[data-theme="case-file"] .document-header{position:relative}
+html[data-theme="case-file"] .document-header h1{font-weight:400;font-size:clamp(30px,4.4vw,48px);line-height:1.1;letter-spacing:.02em;text-transform:uppercase;color:var(--ink)}
+html[data-theme="case-file"] .eyebrow{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink2)}
+html[data-theme="case-file"] .eyebrow .tiny-leaf{display:none}
+html[data-theme="case-file"] .fm-authors{font-size:13px;text-transform:uppercase;letter-spacing:.08em}
+html[data-theme="case-file"] .reading-section{font-weight:400;font-size:clamp(19px,2.2vw,24px)!important;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);border-bottom:1.5px solid var(--ink);padding-bottom:6px;margin-top:56px}
+html[data-theme="case-file"] .apa-paragraph > h3{font-weight:400;font-size:15px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2)}
+html[data-theme="case-file"] #outline .apa-sentence[aria-expanded="true"]{background:none;box-shadow:none;text-decoration:underline wavy var(--stamp);text-decoration-thickness:1.5px;text-underline-offset:4px}
+/* sources: index cards, paper-clipped to the claim */
+html[data-theme="case-file"] #outline .ev-src{position:relative;margin:18px 4px 14px;padding:30px 18px 14px;background:linear-gradient(var(--card) 0 22px,var(--card-rule) 22px 24px,transparent 24px),repeating-linear-gradient(transparent 0 23px,var(--card-line) 23px 24px) 0 24px,var(--card);box-shadow:0 1px 2px rgba(40,30,10,.2),0 6px 14px -8px rgba(40,30,10,.35);border-radius:2px;transform:rotate(-.35deg)}
+html[data-theme="case-file"] #outline .ev-src:nth-of-type(even){transform:rotate(.4deg)}
+html[data-theme="case-file"] #outline .ev-src::before{content:"";position:absolute;top:-12px;left:26px;width:13px;height:34px;border:2.5px solid #9aa0a6;border-bottom-color:transparent;border-radius:8px 8px 0 0;box-shadow:inset 0 0 0 2px transparent;transform:rotate(8deg);pointer-events:none}
+html[data-theme="case-file"] #outline .ev-src::after{content:"";position:absolute;top:-4px;left:30px;width:5px;height:22px;border:2.5px solid #9aa0a6;border-top:0;border-radius:0 0 6px 6px;transform:rotate(8deg);pointer-events:none}
+html[data-theme="case-file"] #outline .ev-src .ev-quote{font-family:var(--font-type)!important;font-size:15px;line-height:24px}
+html[data-theme="case-file"] #sidebar .nav-heading{letter-spacing:.16em!important}
+
+/* Layered paper textures (Terminal, Blueprint, Lab Notebook): the colour goes last, after every layer.
+   The shared "background:var(--bg) var(--page-texture)" is only valid for a single-layer texture. */
+html:is([data-theme="terminal"],[data-theme="blueprint"],[data-theme="lab-notebook"]) body{background:var(--page-texture),var(--bg)}
+.settings-view .prev:is([data-theme="terminal"],[data-theme="blueprint"],[data-theme="lab-notebook"]){background:var(--page-texture),var(--bg)}
+/* main has "background:transparent!important" in reading mode, so the margin rule sets the image with !important too. */
+html[data-theme="lab-notebook"] #document{background-image:linear-gradient(var(--lab-margin),var(--lab-margin))!important;background-position:-20px 0!important;background-size:2px 100%!important;background-repeat:no-repeat!important;background-origin:content-box!important}
+html[data-theme="lab-notebook"][data-palette="dot"] #document{background-image:none!important}
+
+/* ---------- Home: the sidebar title, and a "T" under the arrow when the sidebar is collapsed ---------- */
+#sidebar .navigation-heading .brand[role=link]{cursor:pointer;transition:color .15s ease}
+#sidebar .navigation-heading .brand[role=link]:is(:hover,:focus-visible){color:var(--accent)!important;outline:none}
+#sidebar .home-item{display:none!important}
+@media(min-width:761px){html.side-shut #sidebar .home-item{display:flex!important;margin-bottom:4px!important}}
+
+/* ---------- Neumorphism: Dark palette, and previews that don't glow on other themes ---------- */
+[data-theme="neumorphism"][data-palette="dark"]{color-scheme:dark;--bg:#2b2e34;--panel:#2b2e34;--surface:#2b2e34;--ink:#e3e6ec;--ink2:#a9afba;--ink3:#737a86;--line:rgba(227,230,236,.07);--accent:#b6a8ec;--link:#9fb0ea;--accent-fill:color-mix(in srgb,var(--accent) 24%,var(--bg));--on-accent:var(--ink);--sk-a:#30343b;--sk-b:#383c44;--panel-shadow:9px 9px 18px #202227,-9px -9px 18px #363a41;--raised-shadow:4px 4px 9px #202227,-4px -4px 9px #363a41;--pressed-shadow:inset 3px 3px 7px #202227,inset -3px -3px 7px #363a41}
+/* A Neumorphism preview card sits on whatever theme is active. Its outer shadows (a white highlight in
+   the light palette) would spill onto a dark page as a glow, so the card keeps only its inner depth. */
+.settings-view .prev[data-theme="neumorphism"]{box-shadow:none}
+
 /* ---------- Font override (Settings → Reading → Font): the reader's face over any theme's ---------- */
 html[data-font] :is(body,#outline,#outline .apa-paragraph p,.document-header h1,.reading-section,.apa-paragraph > h3,#sidebar,#sidebar *,.read-head,.read-head *,.settings-view,.settings-view *,.spot,.spot *,.ev,.ev *,.fm,.fm *):not(svg):not(svg *):not(mjx-container):not(mjx-container *):not(code):not(kbd):not(.font-trigger):not(.font-trigger *):not(.font-opt){font-family:var(--font-user)!important}
 .font-pick{display:flex;flex-wrap:wrap;gap:6px 18px}
 .font-opt{all:unset;cursor:pointer;font-size:15px;line-height:1.4;padding:4px 0;color:color-mix(in srgb,var(--ink) 62%,transparent);transition:color .12s}
 .font-opt:hover,.font-opt:focus-visible{color:var(--ink)}
 .font-opt.on{color:var(--accent,var(--link))}
+/* A choice with many options (Citation style: six) gets its own line under the label, and wraps if the
+   pane is narrow, so the label and its explanation keep a readable width. */
+.settings-view .row:has(> .seg > button:nth-child(4)){grid-template-columns:minmax(0,1fr)}
+.settings-view .row:has(> .seg > button:nth-child(4)) > *{grid-column:1;grid-row:auto}
+.settings-view .row:has(> .seg > button:nth-child(4)) > .seg{order:3;justify-self:start;margin-top:4px}
+.settings-view .seg{flex-wrap:wrap;max-width:100%}
+.settings-view .seg button{white-space:nowrap}
 .settings-view .row:has(> .font-pick){display:grid!important;grid-template-columns:1fr!important;grid-template-areas:none!important}
 .settings-view .row:has(> .font-pick) > *{grid-column:1!important;grid-row:auto!important}
 .settings-view .row:has(> .font-pick) > .font-pick{order:3;margin-top:10px}
@@ -2162,6 +2349,39 @@ html.hl-off mjx-container g[class^="hl-"],html.hl-off mjx-container g[class*=" h
   .spot,html.dark .spot{height:auto;max-height:100%;min-height:0;padding:0!important;gap:12px}
   .spot-main{min-height:0;overflow:auto}
 }
+/* Opened sentence: tabs. Sources first (the default), then Tags, then Mathematics. Selection by colour only. */
+#outline .ev-tabs{display:flex;align-items:center;gap:20px;margin:0 0 10px}
+#outline .ev-tabs-single{justify-content:flex-end;margin-bottom:0}
+#outline .ev-tab{padding:4px 0;border:0;background:none;color:var(--ink3,var(--faint));font:600 11px/1.2 var(--font-ui,var(--font,system-ui));letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
+#outline .ev-tab:hover,#outline .ev-tab:focus-visible{color:var(--ink2,var(--muted))}
+#outline .ev-tab[aria-selected=true]{color:var(--accent)}
+#outline .ev-tab-n{margin-left:6px;font-weight:500;letter-spacing:0;opacity:.75}
+#outline .ev-tabs .ev-close{margin-left:auto}
+#outline .ev-pane[hidden]{display:none}
+#outline .ev-pane-mathematics .ev-math{margin-top:0}
+
+/* quiet-evidence.css */
+/* Quiet evidence (quiet-evidence.js): an opened line shows the source, its exact words and the reference.
+   The rest of each node appears when the pointer rests on it, or when something in it has focus.
+   Hidden with display:none (no cost at rest); shown with one layout and a fade on opacity/transform only. */
+@keyframes ev-in{from{opacity:0;transform:translateY(-3px)}to{opacity:1;transform:none}}
+#outline :is(.ev-src,.ev-comments):not(.ev-show)>:is(.ev-where,.ev-prov,.ev-quote-tags,.ev-kids,.ev-note,.ev-comment-list),
+#outline .ev:not(.ev-show-line)>:is(.ev-prov,.ev-flag),
+#outline .ev:not(.ev-show-line)>.ev-pane>:is(.ev-review,.ev-prov,.ev-flag){display:none}
+#outline :is(.ev-src,.ev-comments).ev-show>:is(.ev-where,.ev-prov,.ev-quote-tags,.ev-kids,.ev-note,.ev-comment-list),
+#outline .ev.ev-show-line>:is(.ev-prov,.ev-flag),
+#outline .ev.ev-show-line>.ev-pane>:is(.ev-review,.ev-prov,.ev-flag){animation:ev-in .18s cubic-bezier(.2,.7,.1,1) both}
+/* The tabs (Sources, Tags, …) are the evidence's header: always shown, never waiting for a hover. */
+/* Closing: a short fade instead of a snap (quiet-evidence.js removes .ev-show when it ends). */
+@keyframes ev-out{from{opacity:1;transform:none}to{opacity:0;transform:translateY(-3px)}}
+#outline :is(.ev-src,.ev-comments).ev-show.ev-hiding>:is(.ev-where,.ev-prov,.ev-quote-tags,.ev-kids,.ev-note,.ev-comment-list){animation:ev-out .22s ease both}
+@media (prefers-reduced-motion:reduce){#outline .ev *{animation:none!important}}
+/* The reference line: the link in the line's own size, and one "open the source" icon, centred on the text. */
+#outline .ev-ref .ref-link,#outline .ev-ref .md-link{font-size:inherit;line-height:inherit;margin-left:0}
+#outline .ev-ref .md-link .md-ext{display:none}
+#outline .ev-ref .ev-open{display:inline-grid;place-items:center;width:1.6em;height:1.6em;margin:0 0 0 1px;padding:0;vertical-align:middle;border-radius:4px;color:var(--faint,var(--ink3));transform:translateY(-.08em)}
+#outline .ev-ref .ev-open svg{display:block;width:12px!important;height:12px!important;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+#outline .ev-ref .ev-open:hover,#outline .ev-ref .ev-open:focus-visible{color:var(--accent);outline:none}
 </style>
 <script type="text/x-outline-math" data-src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-svg.js">/* math */
 // LaTeX in trace data, rendered with MathJax (TeX → SVG).
@@ -4068,7 +4288,7 @@ async function loadBibliography(doc, baseDir, extraPath) {
   root.TracePackage = api;
 })(typeof globalThis === 'object' ? globalThis : this, function (root) {
   'use strict';
-  const KEEP = ['version', 'format', 'id', 'title', 'subtitle', 'authors', 'affiliations', 'date', 'revision', 'keywords', 'doi', 'license', 'note', 'updatedAt', 'tagTree', 'parameters', 'flow', 'blocks', 'sources', 'documentStructure', 'appliedOutlineRevisions', 'manuscript', 'eyebrow'];
+  const KEEP = ['version', 'format', 'id', 'title', 'subtitle', 'authors', 'affiliations', 'date', 'revision', 'keywords', 'doi', 'license', 'note', 'updatedAt', 'tagTree', 'parameters', 'flow', 'blocks', 'sources', 'documentStructure', 'appliedOutlineRevisions', 'manuscript', 'eyebrow', 'changes'];
   const MIME = { png: 'image/png', jpg: 'image/jpeg', jpeg: 'image/jpeg', webp: 'image/webp', svg: 'image/svg+xml', gif: 'image/gif' };
   const MATH = /\\\(|\\\[|\$\$|(?<!\\)\$[^$\s][^$\n]*\$/;
   const enc = new TextEncoder();
@@ -4129,7 +4349,7 @@ async function loadBibliography(doc, baseDir, extraPath) {
     const refs = references(doc, dataPath);
     const last = history[history.length - 1];
     return {
-      format: 'tracecite/1.0', package: 1, version: last ? last.version : 1, title: doc.title || '', data: dataPath,
+      format: /^tracecite\/1\.\d+$/.test(doc.format || '') ? doc.format : 'tracecite/1.0', package: 1, version: last ? last.version : 1, title: doc.title || '', data: dataPath,
       bibliography: refs.bibliography.filter((p) => files.has(p)),
       assets: refs.assets.filter((p) => files.has(p)),
       interactiveScripts: refs.interactiveScripts.filter((p) => files.has(p)),
@@ -4153,6 +4373,50 @@ async function loadBibliography(doc, baseDir, extraPath) {
     if (by) entry.by = by; if (note) entry.note = note;
     history.push(entry);
     return { history, changed: true, hash };
+  }
+
+  // ---------- edits (format 1.1) ----------
+  // A change is one edit: { id, at, by, op: 'text' | 'insert' | 'remove', block, before, after, parent, previous,
+  // value }. applyChange makes it on a block tree and throws if the tree no longer matches what it was made on.
+  // invert gives the change that undoes it.
+  function findBlock(list, id, parent = null) { for (const b of list || []) { if (b.id === id) return { b, list, parent }; const r = findBlock(b.children, id, b); if (r) return r; } return null; }
+  function applyChange(blocks, c) {
+    if (c.op === 'text') {
+      const hit = findBlock(blocks, c.block); if (!hit) throw new Error(`Block ${c.block} is not in the document.`);
+      if (hit.b.text !== c.before) throw new Error(`Block ${c.block} changed since this edit was made.`);
+      hit.b.text = c.after; return;
+    }
+    if (c.op === 'insert') {
+      if (findBlock(blocks, c.block)) throw new Error(`Block ${c.block} is already in the document.`);
+      const list = c.parent ? findBlock(blocks, c.parent)?.b.children : blocks; if (!list) throw new Error(`Block ${c.parent} is not in the document.`);
+      const at = c.previous ? list.findIndex((b) => b.id === c.previous) + 1 : 0; if (c.previous && !at) throw new Error(`Block ${c.previous} is not where this edit expects it.`);
+      list.splice(at, 0, JSON.parse(JSON.stringify(c.value))); return;
+    }
+    if (c.op === 'remove') {
+      const hit = findBlock(blocks, c.block); if (!hit) throw new Error(`Block ${c.block} is not in the document.`);
+      hit.list.splice(hit.list.indexOf(hit.b), 1); return;
+    }
+    throw new Error(`Unknown edit ${c.op}.`);
+  }
+  const invert = (c) => c.op === 'text' ? { ...c, before: c.after, after: c.before } : { ...c, op: c.op === 'insert' ? 'remove' : 'insert' };
+  // Make the edits on the stored document, record them in its "changes" (declaring tracecite/1.1) and return
+  // the package as its next version, with a history entry. The original package object is not changed.
+  async function withEdits(pkg, changes, { by = '', note = '' } = {}) {
+    if (!changes.length) return pkg;
+    const doc = parseDoc(pkg.files.get(pkg.dataPath), pkg.dataPath);
+    for (const c of changes) applyChange(doc.blocks, c);
+    const version = ((pkg.manifest?.history || []).at(-1)?.version || 0) + 1;
+    doc.changes = [...(doc.changes || []), ...changes.map((c) => ({ ...c, version }))];
+    if (!/^tracecite\/1\.[1-9]\d*$/.test(doc.format || '')) doc.format = 'tracecite/1.1';
+    doc.updatedAt = new Date().toISOString();
+    const files = new Map(pkg.files);
+    files.set(pkg.dataPath, enc.encode(JSON.stringify(doc, null, 2) + '\n'));
+    const next = { ...pkg, files, doc };
+    const { history } = await withHistory(next, { by, note });
+    next.manifest = { ...(pkg.manifest || {}), ...makeManifest(doc, pkg.dataPath, files, history) };
+    files.set('manifest.json', enc.encode(JSON.stringify(next.manifest, null, 2)));
+    next.bytes = await zipFiles(next.manifest, files);
+    return next;
   }
 
   // One or several files → a package. items: [{ name, bytes }].
@@ -4303,7 +4567,7 @@ async function loadBibliography(doc, baseDir, extraPath) {
     const t = (pkg.manifest?.title || pkg.doc?.title || 'document').toLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 60);
     return (t || 'document') + '.trace.zip';
   };
-  return { open, prepare, exportBytes, withHistory, contentHash, makeManifest, zipFiles, references, fileName, join, dirOf, interactiveOf, scriptsOf };
+  return { open, prepare, exportBytes, withHistory, withEdits, applyChange, invert, findBlock, contentHash, makeManifest, zipFiles, references, fileName, join, dirOf, interactiveOf, scriptsOf };
 });
 
 </script>
@@ -7131,11 +7395,139 @@ globalThis.TABLE_EVIDENCE_DATA = { version: 1, paper: '', bindings: {} };
       for (const c of note.children || []) n.append(el('p', 'ev-note', c.text));
       ev.append(n);
     }
+    // Tabs: Sources first, because tracing is the point; then Tags; then Mathematics. The sentence's own
+    // provenance line stays visible under whichever tab is open. Empty tabs are left out; one tab needs no bar.
+    {
+      const prov = [...ev.children].find((n) => n.classList.contains('ev-prov') && /^Sentence added/.test(n.textContent));
+      const srcNodes = [...ev.children].filter((n) => n !== top && n !== mathRow && n !== prov);
+      mathRow.querySelector('.ev-math-label')?.remove();
+      const panes = [];
+      if (srcNodes.length) panes.push(['Sources', items.length, srcNodes]);
+      if (tagRow.childNodes.length) panes.push(['Tags', tagRow.childNodes.length, [tagRow]]);
+      if (mathRow.childNodes.length) panes.push(['Mathematics', symbols.length + kinds.length, [mathRow]]);
+      const bar = el('div', 'ev-tabs'); bar.setAttribute('role', 'tablist'); bar.setAttribute('aria-label', 'Evidence');
+      const tabs = [], divs = [];
+      panes.forEach(([name, count, nodes], i) => {
+        const t = el('button', 'ev-tab', name); t.type = 'button'; t.setAttribute('role', 'tab'); t.setAttribute('aria-selected', String(i === 0)); t.tabIndex = i === 0 ? 0 : -1;
+        if (count) t.append(el('span', 'ev-tab-n', String(count)));
+        const d = el('div', 'ev-pane ev-pane-' + name.toLowerCase()); d.setAttribute('role', 'tabpanel'); d.hidden = i !== 0; d.append(...nodes);
+        tabs.push(t); divs.push(d); bar.append(t);
+      });
+      const pick = (i) => tabs.forEach((t, k) => { t.setAttribute('aria-selected', String(k === i)); t.tabIndex = k === i ? 0 : -1; divs[k].hidden = k !== i; });
+      tabs.forEach((t, i) => {
+        t.addEventListener('click', (e) => { e.stopPropagation(); pick(i); });
+        t.addEventListener('keydown', (e) => { if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return; e.preventDefault(); e.stopPropagation(); const k = (i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length; pick(k); tabs[k].focus(); });
+      });
+      // With one tab there is nothing to switch: keep only the close button in the bar.
+      if (tabs.length <= 1) { bar.replaceChildren(); bar.classList.add('ev-tabs-single'); }
+      bar.append(close);
+      ev.replaceChildren(bar, ...divs, ...(prov ? [prov] : []));
+    }
     panel.append(ev);
   }
   const scan = (root) => root.querySelectorAll?.('.apa-evidence').forEach(build);
   scan(document);
   new MutationObserver((records) => records.forEach((r) => r.addedNodes.forEach((n) => { if (n.nodeType !== 1) return; if (n.matches?.('.apa-evidence')) build(n); else scan(n); }))).observe(document.getElementById('outline'), { childList: true, subtree: true });
+})();
+
+</script>
+<script type="text/x-outline-deferred">/* quiet evidence */
+// Quiet evidence: an opened line shows only where its words come from (the source, its exact words, the
+// reference). The rest waits inside each node and opens when the pointer rests on that node:
+//   a source:  where the words are, who added and checked them, their tags, the passage, notes, the relation
+//   comments:  the thread under "n comments"
+//   the line:  its review and "Sentence added by …" (rest on the opened sentence); the Sources / Tags tabs always show
+// Keyboard focus inside a node opens it too. Where there is no hover (touch), a tap opens or closes a node.
+//
+// Kept open: a click inside a node (expanding its passage, opening a note, following a link, or the node
+// itself) means the reader wants to read it, so the node stays open when the pointer leaves. Nothing extra is
+// drawn. A second click on the node's own text (not a link or toggle) lets it close again. Kept nodes are remembered per document in this browser (localStorage,
+// "trace-kept-evidence"), never written into the trace data: they are reading state, not evidence.
+// Nodes opened by hover alone close after a short grace period, with a fade rather than a snap.
+//
+// Cost: nothing when a line opens (quiet-evidence.css hides the details), one set of delegated listeners for
+// the whole page, and one childList observer that only restores kept nodes when evidence is drawn.
+(() => {
+  const NODE = '.ev-src, .ev-comments';
+  const LINE = '.apa-sentence.active, .ev-tabs';
+  const OPEN_AFTER = 200, CLOSE_AFTER = 700, FADE = 220;
+  const STORE = 'trace-kept-evidence', MAX_KEPT = 400;
+  const fine = matchMedia('(hover: hover)');
+  const timers = new Map();
+  const line = {}; // timer key for the line's details
+  const later = (key, fn, ms) => { clearTimeout(timers.get(key)); timers.set(key, setTimeout(() => { timers.delete(key); fn(); }, ms)); };
+  const panel = () => document.querySelector('#outline .apa-evidence > .ev');
+  const within = (t) => t instanceof Element && t.closest('#outline') ? t : null;
+  const entered = (el, e) => el && !el.contains(e.relatedTarget);
+
+  // ---------- which nodes are kept, per document ----------
+  const docKey = () => location.pathname.replace(/index\.html$/, '') + '|' + (document.querySelector('#document-title')?.textContent || document.title).trim();
+  const readAll = () => { try { return JSON.parse(localStorage.getItem(STORE) || '{}'); } catch { return {}; } };
+  const kept = () => new Set(readAll()[docKey()] || []);
+  const writeKept = (set) => { try { const all = readAll(); const list = [...set].slice(-MAX_KEPT); if (list.length) all[docKey()] = list; else delete all[docKey()]; localStorage.setItem(STORE, JSON.stringify(all)); } catch {} };
+  function nodeId(n) {
+    const ev = n.closest('.ev'); if (!ev) return null;
+    const s = document.querySelector('#outline .apa-sentence[aria-expanded="true"], #outline .apa-sentence.active');
+    const sid = s?.dataset.readingBlock || s?.dataset.readSentence; if (!sid) return null;
+    if (n.matches('.ev-comments')) return sid + '|comments';
+    const i = [...ev.querySelectorAll('.ev-src')].indexOf(n);
+    return sid + '|' + (n.querySelector('.ev-ref')?.dataset.source || '') + '|' + i;
+  }
+
+  // ---------- showing and hiding a node ----------
+  function show(n) { clearTimeout(timers.get(n)); timers.delete(n); n.classList.remove('ev-hiding'); n.classList.add('ev-show'); }
+  function hide(n) {
+    if (n.classList.contains('ev-keep') || !n.classList.contains('ev-show')) return;
+    n.classList.add('ev-hiding');
+    later(n, () => n.classList.remove('ev-show', 'ev-hiding'), FADE);
+  }
+  function keep(n, on, remember = true) {
+    n.classList.toggle('ev-keep', on);
+    if (on) show(n);
+    if (!remember) return;
+    const id = nodeId(n); if (!id) return;
+    const set = kept(); set.delete(id); if (on) set.add(id); writeKept(set);
+  }
+  // Evidence is drawn afresh each time a line opens: put back what this reader kept.
+  function restore() {
+    const ev = panel(); if (!ev) return;
+    const set = kept(); if (!set.size) return;
+    ev.querySelectorAll(NODE).forEach((n) => { if (!n.classList.contains('ev-keep') && set.has(nodeId(n))) keep(n, true, false); });
+  }
+  let queued = false;
+  new MutationObserver((records) => {
+    if (queued || !records.some((r) => [...r.addedNodes].some((a) => a.nodeType === 1 && (a.matches?.('.ev, .apa-evidence, .ev-src, .ev-comments') || a.querySelector?.('.ev-src, .ev-comments'))))) return;
+    queued = true; requestAnimationFrame(() => { queued = false; restore(); });
+  }).observe(document.documentElement, { childList: true, subtree: true });
+
+  // ---------- pointer, keyboard, touch ----------
+  function hoverIntent(e, open) {
+    if (!fine.matches) return;
+    const t = within(e.target); if (!t) return;
+    const n = t.closest(NODE);
+    if (entered(n, e)) { if (open) later(n, () => show(n), OPEN_AFTER); else if (!n.classList.contains('ev-keep')) later(n, () => hide(n), CLOSE_AFTER); }
+    const l = t.closest(LINE);
+    if (entered(l, e)) later(line, () => panel()?.classList.toggle('ev-show-line', open), open ? OPEN_AFTER : CLOSE_AFTER);
+  }
+  document.addEventListener('mouseover', (e) => hoverIntent(e, true), { passive: true });
+  document.addEventListener('mouseout', (e) => hoverIntent(e, false), { passive: true });
+
+  document.addEventListener('focusin', (e) => { const n = within(e.target)?.closest(NODE); if (n) show(n); });
+  document.addEventListener('focusout', (e) => { const n = within(e.target)?.closest(NODE); if (n && !n.contains(e.relatedTarget) && !n.matches(':hover')) hide(n); });
+
+  document.addEventListener('click', (e) => {
+    const t = within(e.target); if (!t) return;
+    const n = t.closest(NODE);
+    if (n) {
+      // A click on a link or toggle inside a node means "I'm reading this": keep it. A click on the node's own
+      // text toggles keeping, so a second click lets it close (on touch, it closes at once).
+      if (t.closest('a, button, summary, input, [role=button]')) { keep(n, true); return; }
+      const on = !n.classList.contains('ev-keep'); keep(n, on);
+      if (!on && !fine.matches) hide(n);
+      return;
+    }
+    if (!fine.matches && !t.closest('a, button, summary, input') && t.closest('.apa-sentence.active')) panel()?.classList.toggle('ev-show-line');
+  }, true);
 })();
 
 </script>
@@ -8432,6 +8824,13 @@ globalThis.TABLE_EVIDENCE_DATA = { version: 1, paper: '', bindings: {} };
     { id: 'book', name: 'Book', mode: 'light', about: 'Calm, warm paper and a bookish serif, like a reading app at its quietest.' },
     { id: 'whiteboard', name: 'Whiteboard', mode: 'light', about: 'Blackboard’s bright sibling: marker lines on a white board.' },
     { id: 'magazine', name: 'Magazine', mode: 'light', about: 'Opinionated editorial: huge headlines, heavy rules, drop caps.' },
+    { id: 'field-guide', name: 'Field Guide', mode: 'light', about: 'A quiet nature book: white paper, a Futura-like sans, stone-olive titles and wide-spaced capitals.' },
+    { id: 'field-guide-night', name: 'Field Guide Night', mode: 'dark', about: 'The same field guide, read by a campfire.' },
+    { id: 'rubric', name: 'Rubric', mode: 'light', about: 'An early printed book in two inks: EB Garamond on ivory, red for headings and initials.' },
+    { id: 'terminal', name: 'Terminal', mode: 'dark', about: 'A phosphor screen: monospace, markdown marks and a blinking cursor.' },
+    { id: 'blueprint', name: 'Blueprint', mode: 'dark', about: 'A technical drawing: white lines on a blue grid, a ruled title block, dashed outlines.' },
+    { id: 'lab-notebook', name: 'Lab Notebook', mode: 'light', about: 'Squared paper, handwritten headings in blue ink, typed quotes and a highlighter.' },
+    { id: 'case-file', name: 'Case File', mode: 'light', about: 'A typed report in a manila folder, with sources clipped on as index cards.' },
   ];
   const KEY = 'trace-reading-prefs';
   const DEFAULTS = { flow: false, side: 'open', theme: 'sage', size: 'm', lh: 'comfortable', peek: true, tagRail: true, citations: true, paper: false, cite: 'apa', eqHover: true, traceAnim: true, hlStyle: 'text', windowing: 'auto', font: '', palettes: {} };
@@ -8443,15 +8842,23 @@ globalThis.TABLE_EVIDENCE_DATA = { version: 1, paper: '', bindings: {} };
     pitch: [['', 'Lavender'], ['sage', 'Sage'], ['sky', 'Sky'], ['rose', 'Rose'], ['copper', 'Copper']],
     minimal: [['', 'Lavender'], ['sage', 'Sage'], ['sky', 'Sky'], ['rose', 'Rose']],
     blackboard: [['', 'Dotted'], ['graph', 'Graph'], ['manila', 'Manila'], ['eraser', 'Eraser'], ['slate', 'Slate']],
-    neumorphism: [['', 'Lavender'], ['sage', 'Sage'], ['sky', 'Sky'], ['rose', 'Rose']],
+    neumorphism: [['', 'Lavender'], ['sage', 'Sage'], ['sky', 'Sky'], ['rose', 'Rose'], ['dark', 'Dark']],
     'textbook-light': [['', 'Apricot'], ['parchment', 'Parchment'], ['kraft', 'Kraft'], ['sepia', 'Sepia'], ['celadon', 'Celadon']],
     'textbook-dark': [['', 'Lamplight'], ['walnut', 'Walnut'], ['ink', 'Ink'], ['forest', 'Forest']],
     book: [['', 'Calm'], ['paper', 'Paper'], ['quiet', 'Quiet'], ['night', 'Night']],
     whiteboard: [['', 'Marker'], ['grid', 'Grid'], ['sticky', 'Sticky note'], ['glass', 'Glass board']],
     magazine: [['', 'Violet'], ['newsprint', 'Newsprint'], ['ochre', 'Ochre'], ['noir', 'Noir']],
+    'field-guide': [['', 'Stone'], ['lichen', 'Lichen'], ['twig', 'Twig'], ['mist', 'Mist']],
+    terminal: [['', 'Phosphor'], ['amber', 'Amber'], ['mono', 'Mono'], ['printout', 'Printout']],
+    blueprint: [['', 'Blueprint'], ['cyanotype', 'Cyanotype'], ['night', 'Night'], ['whiteprint', 'Whiteprint']],
+    'case-file': [['', 'Manila'], ['kraft', 'Kraft'], ['bluefolder', 'Blue folder'], ['noir', 'Noir']],
+    'lab-notebook': [['', 'Grid'], ['ruled', 'Ruled'], ['dot', 'Dot grid'], ['carbon', 'Carbon copy']],
+    rubric: [['', 'Vermilion'], ['illuminated', 'Illuminated'], ['lapis', 'Lapis'], ['vellum', 'Vellum'], ['candle', 'Candlelight']],
+    'field-guide-night': [['', 'Night'], ['moss', 'Moss'], ['dusk', 'Dusk']],
   };
   // Palettes that turn a light theme dark (Slate is a real chalkboard).
-  const DARK_PALETTES = new Set(['blackboard:slate', 'book:night', 'whiteboard:glass', 'magazine:noir']);
+  const LIGHT_PALETTES = new Set(['terminal:printout', 'blueprint:whiteprint']);
+  const DARK_PALETTES = new Set(['neumorphism:dark', 'case-file:noir', 'rubric:candle', 'blackboard:slate', 'book:night', 'whiteboard:glass', 'magazine:noir']);
   const paletteOf = (theme) => { const v = (prefs.palettes || {})[theme] || ''; return (PALETTES[theme] || []).some(([id]) => id === v) ? v : ''; };
   const prefs = (() => { try { return { ...DEFAULTS, ...JSON.parse(localStorage.getItem(KEY) || '{}') }; } catch { return { ...DEFAULTS }; } })();
   const save = () => { try { localStorage.setItem(KEY, JSON.stringify(prefs)); } catch {} };
@@ -8461,6 +8868,13 @@ globalThis.TABLE_EVIDENCE_DATA = { version: 1, paper: '', bindings: {} };
   const THEME_FONTS = {
     book: 'family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400',
     whiteboard: 'family=Kalam:wght@400;700',
+    'field-guide': 'family=Jost:ital,wght@0,300..600;1,300..600',
+    'field-guide-night': 'family=Jost:ital,wght@0,300..600;1,300..600',
+    terminal: 'family=JetBrains+Mono:ital,wght@0,400..700;1,400..700',
+    blueprint: 'family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400',
+    'case-file': 'family=Special+Elite&family=Courier+Prime:ital,wght@0,400;0,700;1,400',
+    'lab-notebook': 'family=Caveat:wght@500;700&family=Courier+Prime:wght@400;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400',
+    rubric: 'family=EB+Garamond:ital,wght@0,400..700;1,400..700',
     magazine: 'family=DM+Serif+Display:ital@0;1&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400',
   };
   // Font (Settings → Reading → Font): the reader's own choice, laid over whatever the theme uses, for the
@@ -8491,7 +8905,7 @@ globalThis.TABLE_EVIDENCE_DATA = { version: 1, paper: '', bindings: {} };
     root.classList.toggle('no-trace-anim', !prefs.traceAnim);
     root.classList.toggle('hl-tint', prefs.hlStyle === 'tint'); root.classList.toggle('hl-off', prefs.hlStyle === 'off');
     root.classList.toggle('house', theme.id !== 'sage');
-    root.classList.toggle('dark', theme.mode === 'dark' || DARK_PALETTES.has(theme.id + ':' + paletteOf(theme.id)));
+    root.classList.toggle('dark', (theme.mode === 'dark' && !LIGHT_PALETTES.has(theme.id + ':' + paletteOf(theme.id))) || DARK_PALETTES.has(theme.id + ':' + paletteOf(theme.id)));
     for (const s of ['s', 'l', 'xl']) root.classList.toggle('size-' + s, prefs.size === s);
     root.classList.toggle('lh-compact', prefs.lh === 'compact');
     root.classList.toggle('lh-airy', prefs.lh === 'airy');
@@ -8520,7 +8934,7 @@ globalThis.TABLE_EVIDENCE_DATA = { version: 1, paper: '', bindings: {} };
   function appearance() {
     return [
       el('h2', { html: svg('palette') }, 'Appearance'),
-      el('p', { class: 'lede' }, `${THEMES.length} themes, one reading page. Sage is Trace’s own look; the other seven are the house themes. Each preview is drawn in its own theme.`),
+      el('p', { class: 'lede' }, `${THEMES.length} themes, one reading page. Sage is Trace’s own look; the others are the house themes. Each preview is drawn in its own theme.`),
       el('div', { class: 'themes', role: 'radiogroup', 'aria-label': 'Theme' }, THEMES.map((t) =>
         el('button', { class: 'th' + (t.id === prefs.theme ? ' on' : ''), type: 'button', role: 'radio', 'aria-checked': String(t.id === prefs.theme), onclick: () => set('theme', t.id) },
           el('div', { class: 'prev', 'data-theme': t.id, 'aria-hidden': 'true' },
@@ -8835,6 +9249,24 @@ globalThis.TABLE_EVIDENCE_DATA = { version: 1, paper: '', bindings: {} };
   if (menu) menu.innerHTML = svg('bars');
   const brand = document.querySelector('.navigation-heading .brand');
   if (brand) brand.textContent = window.OUTLINE_SEED?.title || '';
+  // Home: the sidebar's title (and, when the sidebar is collapsed, the "T" under the arrow) goes back to the
+  // paper's start, from any view.
+  const goHome = () => {
+    const top = () => scrollTo({ top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    // Leaving a view restores the paper's last position; make that position the start.
+    if (route() !== '/') { readingScroll = 0; location.hash = '/'; } else top();
+    if (matchMedia('(max-width: 760px)').matches) document.getElementById('close-navigation')?.click();
+  };
+  if (brand) {
+    brand.setAttribute('role', 'link'); brand.tabIndex = 0; brand.title = 'Go to the start of the paper';
+    brand.addEventListener('click', goHome);
+    brand.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goHome(); } });
+  }
+  const homeItem = el('button', { class: 'nav-button side-item home-item', type: 'button', title: (window.OUTLINE_SEED?.title || 'The paper') + ': go to the start', 'aria-label': 'Go to the start of the paper' },
+    el('span', {}, 'Start'));
+  // A solid "T" drawn like the other sidebar icons (same weight, size and colour), not a typed letter.
+  homeItem.insertAdjacentHTML('afterbegin', '<svg viewBox="-32 0 512 512" aria-hidden="true"><path d="M64 32C46.3 32 32 46.3 32 64v48c0 17.7 14.3 32 32 32s32-14.3 32-32V96H192V416H160c-17.7 0-32 14.3-32 32s14.3 32 32 32H288c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V96H352v16c0 17.7 14.3 32 32 32s32-14.3 32-32V64c0-17.7-14.3-32-32-32H64z"/></svg>');
+  homeItem.addEventListener('click', goHome);
   // Settings lives at the foot of the sidebar.
   const sideButton = el('button', { class: 'nav-button', id: 'settings-nav', type: 'button', html: svg('gear') }, el('span', {}, 'Settings'));
   sideButton.addEventListener('click', () => { location.hash = '/settings/appearance'; document.getElementById('close-navigation')?.click(); });
@@ -8853,6 +9285,8 @@ globalThis.TABLE_EVIDENCE_DATA = { version: 1, paper: '', bindings: {} };
     menuNav.append(b); return b;
   });
   document.querySelector('#sidebar .navigation-heading')?.after(menuNav);
+  // Not inside .side-menu: other scripts prepend their items there (Search goes first).
+  menuNav.before(homeItem);
   // The sidebar always lists the contents under the menu; the tag tree has its own view.
   document.getElementById('reading-show-contents')?.click();
   // Anything that navigates the paper leaves Settings first.
@@ -10657,6 +11091,399 @@ html.le-editing .le-side,html.le-editing .le-side svg{color:var(--accent)}
   })();
   window.TraceLive = { push, stream, accept, reject, comment, request, get inbox() { return inbox; }, get decisions() { return decisions; }, decisionsSince: (t) => decisions.filter((d) => d.at > t), edits, review: startReview, panel: togglePanel };
   refresh();
+})();
+
+</script>
+<script type="text/x-outline-deferred">/* edit mode */
+// Edit mode (format 1.1): the reading page becomes the editor, in place, without changing how it looks.
+//
+// Turn it on with "Edit mode" in the sidebar (or E). Then:
+//   click a sentence      edit its text (the text as stored, with its markup; citations stay as they are)
+//   Enter                 keep the edit and start a new sentence after it
+//   Backspace when empty  take the sentence out
+//   Tab, Shift+Tab        the next or previous sentence
+//   Escape                drop the edit in progress (Done, or E, leaves edit mode)
+//   ⌘Z, ⇧⌘Z (not typing)  undo and redo whole edits
+//   Comment, Reply        while reading (not in edit mode): an opened sentence ends with "Add a comment"
+//   Save version          make the edits on the stored document, record each in its "changes" (format 1.1) and
+//                         save the package as its next version (manifest history). In the BibTrace extension
+//                         it goes back into the library; elsewhere it downloads as a .trace.zip.
+// Edits not yet saved are kept in this browser (localStorage) and come back after a reload.
+// Edits are made on the stored document (the package's .trace.json); the page shows them on the prepared copy
+// it draws from. Needs TracePackage (package.js) and the page's window.__tracePackage.
+(() => {
+  const P = () => window.TracePackage;
+  const PKG = () => window.__tracePackage;
+  const DOC = () => window.__traceDocForCitations;
+  const docKey = () => { const d = PKG()?.pkg?.doc; return 'trace-edits-pending:' + (d?.id || d?.title || document.title); };
+  const NAME = 'trace-editor-name';
+  const clone = (x) => JSON.parse(JSON.stringify(x));
+  const rid = (p) => p + '-' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+  const store = { get(k, d) { try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch { return d; } }, set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} } };
+
+  let on = false, work = null, pending = [], redo = [], editing = null, saving = false;
+
+  // ---------- the two trees: the stored document (work) and the drawn copy ----------
+  function ensureWork() {
+    const pkg = PKG()?.pkg; if (!pkg?.doc) return false;
+    if (!work || work.pkg !== pkg) { work = { pkg, blocks: clone(pkg.doc.blocks) }; }
+    return true;
+  }
+  // The drawn copy is prepared from the stored document (sources merged, tags added), so edits are made on it
+  // loosely: by id, without comparing the text it had.
+  // The page draws from two copies: the outline's (app.js) and the opened-line panel's (reading-only.js, from
+  // window.OUTLINE_SEED). Each edit reaches both.
+  function applyDrawn(c) {
+    const copies = [...new Set([DOC(), window.OUTLINE_SEED].filter((d) => d?.blocks))];
+    for (const doc of copies) applyTo(doc, c);
+  }
+  function applyTo(doc, c) {
+    const F = P().findBlock;
+    if (c.op === 'text') { const hit = F(doc.blocks, c.block); if (hit) hit.b.text = c.after; }
+    else if (c.op === 'insert') { if (F(doc.blocks, c.block)) return; const list = c.parent ? F(doc.blocks, c.parent)?.b.children : doc.blocks; if (!list) return; const i = c.previous ? list.findIndex((b) => b.id === c.previous) : -1; list.splice(c.previous ? (i < 0 ? list.length : i + 1) : 0, 0, clone(c.value)); }
+    else if (c.op === 'remove') { const hit = F(doc.blocks, c.block); if (hit) hit.list.splice(hit.list.indexOf(hit.b), 1); }
+  }
+  function make(c, { record = true } = {}) {
+    P().applyChange(work.blocks, c);
+    applyDrawn(c);
+    if (record) { pending.push(c); redo = []; }
+    persist();
+  }
+  const persist = () => { store.set(docKey(), pending); document.documentElement.classList.toggle('trace-pending', pending.length > 0); };
+  const render = () => { window.__traceRender?.(); requestAnimationFrame(mark); opened(); };
+
+  // ---------- making edits ----------
+  const who = () => (store.get(NAME, '') || '').trim();
+  const now = () => new Date().toISOString();
+  function textEdit(id, after) {
+    const hit = P().findBlock(work.blocks, id); if (!hit) return;
+    const before = hit.b.text;
+    if (after === before) return;
+    if (!after) return removeBlock(id);
+    make({ id: rid('ch'), at: now(), by: who(), op: 'text', block: id, before, after });
+  }
+  function removeBlock(id) {
+    const hit = P().findBlock(work.blocks, id); if (!hit) return;
+    const i = hit.list.indexOf(hit.b);
+    make({ id: rid('ch'), at: now(), by: who(), op: 'remove', block: id, parent: hit.parent?.id || null, previous: i > 0 ? hit.list[i - 1].id : null, value: clone(hit.b) });
+  }
+  function insertAfter(prevId, text) {
+    const hit = P().findBlock(work.blocks, prevId); if (!hit || !text) return null;
+    const id = rid('s');
+    const fields = [{ key: 'Added on', value: now().slice(0, 10) }, ...(who() ? [{ key: 'Added by', value: who() }] : [])];
+    make({ id: rid('ch'), at: now(), by: who(), op: 'insert', block: id, parent: hit.parent?.id || null, previous: prevId, value: { id, type: 'sentence', text, tags: [], fields, collapsed: false, children: [] } });
+    return id;
+  }
+  function undo() { const c = pending.pop(); if (!c) return; make(P().invert(c), { record: false }); redo.push(c); persist(); render(); bar(); }
+  function again() { const c = redo.pop(); if (!c) return; make(c, { record: false }); pending.push(c); persist(); render(); bar(); }
+
+  // ---------- editing a sentence in place ----------
+  const sentenceEl = (id) => document.querySelector(`#outline .apa-sentence[data-read-sentence="${CSS.escape(id)}"]`);
+  const sentences = () => [...document.querySelectorAll('#outline .apa-sentence[data-read-sentence], #outline .te-new')];
+  function caretAt(el, x, y, atEnd) {
+    const sel = getSelection(); let r = null;
+    if (!atEnd && x != null) { r = document.caretRangeFromPoint?.(x, y); if (r && !el.contains(r.startContainer)) r = null; }
+    if (!r) { r = document.createRange(); r.selectNodeContents(el); r.collapse(atEnd !== false ? false : true); }
+    sel.removeAllRanges(); sel.addRange(r);
+  }
+  function start(el, { x, y, atEnd } = {}) {
+    if (editing?.el === el) return;
+    const want = el.dataset.readSentence;
+    finish();
+    // Keeping the previous edit redraws the page; find the sentence again.
+    if (!el.isConnected) { el = want && sentenceEl(want); if (!el) return; }
+    const id = el.dataset.readSentence;
+    const hit = id && P().findBlock(work.blocks, id);
+    if (id && !hit) return;
+    editing = { el, id: id || null, after: el.dataset.teAfter || null, html: el.innerHTML, raw: hit ? hit.b.text : '' };
+    el.textContent = editing.raw;
+    el.contentEditable = 'true'; el.spellcheck = true; el.classList.add('te-field');
+    el.setAttribute('role', 'textbox'); el.setAttribute('aria-label', 'Sentence text');
+    el.focus({ preventScroll: true });
+    caretAt(el, x, y, atEnd);
+    bar();
+  }
+  const valueOf = (el) => el.innerText.replace(/\s*\n\s*/g, ' ').replace(/ /g, ' ').trim();
+  // Keep (or drop) the edit in progress. Returns the id of the sentence that now stands there, if any.
+  function finish(cancel = false) {
+    const e = editing; if (!e) return null; editing = null;
+    const text = valueOf(e.el);
+    e.el.contentEditable = 'false'; e.el.removeAttribute('contenteditable'); e.el.classList.remove('te-field'); e.el.removeAttribute('role'); e.el.removeAttribute('aria-label');
+    let id = e.id;
+    if (cancel) { if (e.id) e.el.innerHTML = e.html; else e.el.remove(); bar(); return id; }
+    if (e.id) { if (text !== e.raw) { textEdit(e.id, text); if (!text) id = null; render(); } else e.el.innerHTML = e.html; }
+    else { e.el.remove(); if (text) { id = insertAfter(e.after, text); render(); } else id = null; }
+    bar();
+    return id;
+  }
+  function newAfter(id) {
+    const prev = sentenceEl(id); if (!prev) return;
+    const el = document.createElement('span'); el.className = 'apa-sentence te-new'; el.dataset.teAfter = id;
+    prev.after(document.createTextNode(' '), el);
+    start(el, { atEnd: true });
+  }
+  function move(by) {
+    const list = sentences(), i = list.indexOf(editing?.el);
+    const target = list[i + by]?.dataset.readSentence;
+    finish();
+    const next = target && sentenceEl(target); if (next) start(next, { atEnd: by < 0 });
+  }
+
+  addEventListener('click', (ev) => {
+    if (!on) return;
+    const el = ev.target.closest?.('#outline .apa-sentence[data-read-sentence], #outline .te-new'); if (!el) { if (editing && !ev.target.closest?.('.te-bar')) finish(); return; }
+    ev.preventDefault(); ev.stopPropagation();
+    if (ev.target.closest('a') && !el.isContentEditable) return;
+    start(el, { x: ev.clientX, y: ev.clientY });
+  }, true);
+  // Keys inside the field are this field's alone (the page's own shortcuts, and Edits' Enter-to-ask, never see them).
+  addEventListener('keydown', (ev) => {
+    if (!on) return;
+    const k = ev.key, mod = ev.metaKey || ev.ctrlKey;
+    if (editing && ev.target === editing.el) {
+      ev.stopPropagation();
+      if (k === 'Escape') { ev.preventDefault(); finish(true); }
+      else if (k === 'Enter' && !ev.shiftKey) { ev.preventDefault(); const id = finish(); if (id) newAfter(id); }
+      else if (k === 'Enter') ev.preventDefault();
+      else if (k === 'Tab') { ev.preventDefault(); move(ev.shiftKey ? -1 : 1); }
+      else if (k === 'Backspace' && !valueOf(editing.el)) {
+        ev.preventDefault();
+        const list = sentences(), i = list.indexOf(editing.el), prevId = list[i - 1]?.dataset.readSentence;
+        editing.el.textContent = ''; finish();
+        const p = prevId && sentenceEl(prevId); if (p) start(p, { atEnd: true });
+      }
+      return;
+    }
+    const typing = ev.target.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(ev.target.tagName);
+    if (typing) return;
+    if (mod && k.toLowerCase() === 'z') { ev.preventDefault(); ev.stopPropagation(); ev.shiftKey ? again() : undo(); }
+  }, true);
+  addEventListener('keydown', (ev) => {
+    const typing = ev.target.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(ev.target.tagName);
+    if (!typing && !ev.metaKey && !ev.ctrlKey && !ev.altKey && (ev.key === 'e' || ev.key === 'E') && document.getElementById('outline')) { ev.preventDefault(); toggle(); }
+  });
+  // Paste as plain text: the field holds stored text, never formatting.
+  addEventListener('paste', (ev) => {
+    if (!editing || ev.target !== editing.el && !editing.el.contains(ev.target)) return;
+    ev.preventDefault(); document.execCommand('insertText', false, (ev.clipboardData?.getData('text/plain') || '').replace(/\s*\n\s*/g, ' '));
+  }, true);
+
+  // ---------- marks: what changed since the last save ----------
+  function mark() {
+    document.querySelectorAll('#outline .te-changed').forEach((n) => n.classList.remove('te-changed'));
+    if (!on) return;
+    const ids = new Set(pending.filter((c) => c.op !== 'remove').map((c) => c.block));
+    for (const id of ids) sentenceEl(id)?.classList.add('te-changed');
+  }
+
+  // ---------- saving a version ----------
+  async function save() {
+    if (saving) return;
+    finish();
+    if (!pending.length) return;
+    const p = PKG(); if (!p?.pkg) return say('This page has no package to save to.');
+    saving = true; bar();
+    try {
+      const n = pending.length;
+      // Edits made before a name was given are signed by the person saving them.
+      const next = await P().withEdits(p.pkg, pending.map((c) => (c.by ? c : { ...c, by: who() })), { by: who(), note: n === 1 ? '1 edit' : n + ' edits' });
+      const name = P().fileName ? P().fileName(next) : p.fileName;
+      p.pkg = next; p.bytes = next.bytes; p.manifest = next.manifest;
+      pending = []; redo = []; persist(); work = null; ensureWork();
+      let where = '';
+      if (window.TraceHost?.save) { const r = await window.TraceHost.save(next.bytes, name, { version: next.manifest.version }); where = r?.where || 'Saved'; }
+      else { const url = URL.createObjectURL(new Blob([next.bytes], { type: 'application/zip' })); const a = document.createElement('a'); a.href = url; a.download = name || 'document.trace.zip'; document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 4000); where = 'Downloaded'; }
+      say(`${where} as version ${next.manifest.version}.`);
+      mark();
+    } catch (e) { say('Not saved: ' + (e?.message || e)); }
+    saving = false; bar();
+  }
+
+  // ---------- comments and replies ----------
+  // A comment is a note block with a "Comment by" field, under the sentence it is about; a reply is a comment
+  // under a comment (docs/format.md). An opened sentence ends with one quiet line, "Add a comment"; a comment
+  // offers "Reply" only while the pointer is on it. Posting records an insert change like any edit: it is
+  // saved with the next version, and Undo takes it back. Comments are made while reading (not in edit mode,
+  // where a click edits the sentence instead).
+  const isComment = (b) => b?.type === 'note' && (b.fields || []).some((f) => f.key === 'Comment by');
+  function addComment(parentId, text) {
+    if (!ensureWork() || !text) return null;
+    const hit = P().findBlock(work.blocks, parentId); if (!hit) return null;
+    const kids = hit.b.children || [];
+    const id = rid('c');
+    const value = { id, type: 'note', text, tags: [], fields: [{ key: 'Comment by', value: who() }, { key: 'Commented on', value: now().slice(0, 10) }], collapsed: false, children: [] };
+    make({ id: rid('ch'), at: now(), by: who(), op: 'insert', block: id, parent: parentId, previous: kids.length ? kids[kids.length - 1].id : null, value });
+    return id;
+  }
+  // The comment ids in the order reading-only.js draws them (each thread, then its replies, depth first).
+  function threadIds(sentence) {
+    const out = [];
+    const replies = (c) => { for (const r of (c.children || []).filter(isComment)) { out.push(r.id); replies(r); } };
+    (function collect(list) { for (const b of list || []) { if (isComment(b)) { out.push(b.id); replies(b); } else if (b.type !== 'sentence') collect(b.children); } })(sentence.children);
+    return out;
+  }
+  function augment() {
+    if (on) return;
+    const ev = document.querySelector('#outline .apa-evidence > .ev'); if (!ev || ev.dataset.cm) return;
+    const sid = ev.parentElement.querySelector('li.block')?.dataset.block;
+    const sentence = sid && DOC()?.blocks && P()?.findBlock(DOC().blocks, sid)?.b;
+    if (!sentence || !ensureWork() || !P().findBlock(work.blocks, sid)) return;
+    ev.dataset.cm = '1';
+    const ids = threadIds(sentence), unsaved = new Set(pending.filter((c) => c.op === 'insert').map((c) => c.block));
+    ev.querySelectorAll('li.ev-comment').forEach((li, i) => {
+      const id = ids[i]; if (!id) return;
+      li.dataset.comment = id; li.classList.toggle('cm-unsaved', unsaved.has(id));
+      const by = li.querySelector(':scope > .ev-comment-head .ev-comment-by')?.textContent || '';
+      const r = document.createElement('button'); r.type = 'button'; r.className = 'cm-reply'; r.textContent = 'Reply';
+      r.addEventListener('click', (e) => { e.stopPropagation(); compose(li, id, by && by !== 'Unsigned' ? 'Reply to ' + by : 'Reply'); });
+      li.querySelector(':scope > .ev-comment-head')?.append(r);
+    });
+    const add = document.createElement('button'); add.type = 'button'; add.className = 'cm-add'; add.textContent = 'Add a comment';
+    add.addEventListener('click', (e) => { e.stopPropagation(); compose(add, sid, 'Add a comment'); });
+    const host = ev.querySelector(':scope > .ev-pane-sources') || ev;
+    const prov = host === ev ? ev.querySelector(':scope > .ev-prov') : null;
+    prov ? prov.before(add) : host.append(add);
+  }
+  function compose(anchor, parentId, label) {
+    document.querySelectorAll('.cm-form').forEach((f) => f.remove());
+    document.querySelectorAll('.cm-add[hidden]').forEach((b) => { b.hidden = false; });
+    const f = document.createElement('form'); f.className = 'cm-form';
+    const ta = document.createElement('textarea'); ta.rows = 1; ta.placeholder = label; ta.setAttribute('aria-label', label);
+    const row = document.createElement('div'); row.className = 'cm-row';
+    const name = document.createElement('input'); name.className = 'cm-name'; name.placeholder = 'Your name'; name.setAttribute('aria-label', 'Your name'); name.autocomplete = 'name'; name.hidden = !!who();
+    const post = document.createElement('button'); post.type = 'submit'; post.className = 'cm-post'; post.textContent = 'Post';
+    row.append(name, post); f.append(ta, row);
+    const close = () => { f.remove(); if (anchor.classList.contains('cm-add')) anchor.hidden = false; };
+    const fit = () => { ta.style.height = 'auto'; ta.style.height = ta.scrollHeight + 'px'; f.classList.toggle('cm-has', !!ta.value.trim()); };
+    ta.addEventListener('input', fit);
+    f.addEventListener('keydown', (e) => { e.stopPropagation(); if (e.key === 'Escape') { e.preventDefault(); close(); } else if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) { e.preventDefault(); f.requestSubmit(); } });
+    f.addEventListener('click', (e) => e.stopPropagation());
+    f.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const text = ta.value.replace(/\s+/g, ' ').trim(); if (!text) return;
+      if (!name.hidden && name.value.trim()) { store.set(NAME, name.value.trim()); nameIn.value = name.value.trim(); }
+      const id = addComment(parentId, text); if (!id) return;
+      render();
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        const li = document.querySelector(`#outline li.ev-comment[data-comment="${CSS.escape(id)}"]`);
+        li?.closest('.ev-comments')?.classList.add('ev-show');
+        li?.classList.add('cm-flash');
+      }));
+      bar();
+    });
+    if (anchor.classList.contains('cm-add')) { anchor.hidden = true; anchor.after(f); } else anchor.append(f);
+    ta.focus();
+  }
+  // The reader draws the opened panel a frame or two after the click: look for it over the next few frames.
+  const opened = (n = 0) => requestAnimationFrame(() => { if (document.querySelector('#outline .apa-evidence > .ev:not([data-cm])')) augment(); else if (n < 12) opened(n + 1); });
+  // Capture phase: the reader redraws the outline inside its own handler, taking the clicked node out of the page.
+  document.addEventListener('click', (e) => { if (!on && e.target.closest?.('#outline')) opened(); }, true);
+  document.addEventListener('keydown', (e) => { if (!on && (e.key === 'Enter' || e.key === ' ') && e.target.closest?.('#outline')) opened(); }, true);
+
+  // ---------- the bar ----------
+  const css = document.createElement('style');
+  css.textContent = `
+html.trace-editing #outline .apa-sentence{cursor:text;border-radius:4px;transition:background-color .15s ease}
+html.trace-editing #outline .apa-sentence:hover{background:color-mix(in srgb,var(--accent-fill) 40%,transparent)}
+html.trace-editing #outline .te-changed{background:color-mix(in srgb,var(--accent-fill) 55%,transparent)}
+html.trace-editing #outline .te-field{background:color-mix(in srgb,var(--accent-fill) 70%,transparent);outline:none;box-decoration-break:clone;-webkit-box-decoration-break:clone;caret-color:var(--accent);padding:1px 2px;margin:-1px -2px}
+html.trace-editing #outline .te-new:empty::before{content:'New sentence';color:var(--faint,var(--ink3))}
+html.trace-editing #sentence-hover-rail,html.trace-editing .apa-evidence{display:none!important}
+.te-bar{position:fixed;left:50%;bottom:16px;z-index:590;display:flex;align-items:center;gap:6px;max-width:calc(100vw - 24px);padding:6px 6px 6px 14px;border-radius:999px;background:var(--panel,var(--surface));color:var(--ink);box-shadow:0 12px 40px rgba(0,0,0,.14);font:500 12.5px/1.2 var(--font-ui,var(--font,system-ui));transform:translate(-50%,140%);opacity:0;transition:transform .26s cubic-bezier(.2,.7,.1,1),opacity .2s ease;pointer-events:none}
+html:is(.trace-editing,.trace-pending) .te-bar{transform:translate(-50%,0);opacity:1;pointer-events:auto}
+html:not(.trace-editing) .te-bar :is(.te-name,.te-redo,.te-done){display:none}
+.te-bar .te-state{display:flex;align-items:center;gap:8px;white-space:nowrap;color:var(--ink2,var(--muted))}
+.te-bar .te-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);flex:none}
+.te-bar input{width:112px;min-width:0;height:30px;padding:0 10px;border:0;border-radius:15px;background:var(--surface,transparent);color:var(--ink);font:inherit}
+.te-bar input::placeholder{color:var(--faint,var(--ink3))}
+.te-bar button{height:30px;padding:0 12px;border:0;border-radius:15px;background:none;color:var(--ink2,var(--muted));font:inherit;cursor:pointer;white-space:nowrap;transition:background-color .15s,color .15s}
+.te-bar button:hover:not(:disabled),.te-bar button:focus-visible{background:var(--surface);color:var(--ink);outline:none}
+.te-bar button:disabled{opacity:.4;cursor:default}
+.te-bar button.te-save{background:var(--accent);color:var(--bg)}
+.te-bar button.te-save:hover:not(:disabled){background:var(--accent);color:var(--bg);filter:brightness(1.06)}
+.te-say{position:fixed;left:50%;bottom:64px;z-index:590;transform:translateX(-50%);padding:7px 14px;border-radius:999px;background:var(--ink);color:var(--bg);font:500 12px/1.3 var(--font-ui,system-ui);opacity:0;transition:opacity .2s;pointer-events:none}
+.te-say.on{opacity:.92}
+.te-side[aria-pressed=true],.te-side[aria-pressed=true] svg{color:var(--accent)}
+#outline .cm-add{display:block;margin:12px 0 0;padding:4px 0;border:0;background:none;color:var(--faint,var(--ink3));font:500 12.5px/1.4 var(--font-ui,var(--font,system-ui));cursor:text;transition:color .15s}
+#outline .cm-add:hover,#outline .cm-add:focus-visible{color:var(--ink2,var(--muted));outline:none}
+#outline .cm-form{margin:10px 0 4px}
+#outline li.ev-comment .cm-form{margin:8px 0 2px}
+#outline .cm-form textarea{display:block;width:100%;box-sizing:border-box;min-height:36px;max-height:240px;padding:8px 12px;border:0;border-radius:12px;background:color-mix(in srgb,var(--ink) 4%,transparent);color:var(--ink);font:400 13.5px/1.6 var(--font-ui,var(--font,system-ui));resize:none;outline:none;transition:box-shadow .15s}
+#outline .cm-form textarea:focus{box-shadow:0 0 0 1px color-mix(in srgb,var(--accent) 45%,transparent)}
+#outline .cm-form textarea::placeholder{color:var(--faint,var(--ink3))}
+#outline .cm-row{display:none;justify-content:flex-end;align-items:center;gap:6px;margin-top:6px}
+#outline .cm-form.cm-has .cm-row{display:flex}
+#outline .cm-name{width:130px;height:28px;padding:0 10px;border:0;border-radius:14px;background:color-mix(in srgb,var(--ink) 4%,transparent);color:var(--ink);font:400 12px var(--font-ui,system-ui);outline:none}
+#outline .cm-name[hidden]{display:none}
+#outline .cm-post{height:28px;padding:0 14px;border:0;border-radius:14px;background:var(--accent);color:var(--bg);font:500 12px var(--font-ui,system-ui);cursor:pointer}
+#outline .cm-reply{margin-left:auto;padding:0;border:0;background:none;color:var(--faint,var(--ink3));font:500 11.5px var(--font-ui,system-ui);cursor:pointer;opacity:0;transition:opacity .15s,color .15s}
+#outline .ev-comment-head:hover>.cm-reply,#outline .ev-comment-head:has(+.ev-comment-text:hover)>.cm-reply,#outline .cm-reply:focus-visible{opacity:1;outline:none}
+#outline .cm-reply:hover{color:var(--ink2,var(--muted))}
+@media (hover:none){#outline .cm-reply{opacity:1}}
+#outline li.cm-unsaved>.ev-comment-head>.ev-comment-by::before{content:'';display:inline-block;width:6px;height:6px;margin:0 6px 1px 0;border-radius:50%;background:var(--accent);vertical-align:middle}
+#outline li.cm-flash>.ev-comment-text{animation:cm-flash 1.6s ease}
+@keyframes cm-flash{from{background:color-mix(in srgb,var(--accent-fill) 80%,transparent)}to{background:transparent}}
+@media(max-width:620px){.te-bar{left:12px;right:12px;transform:translateY(140%);border-radius:18px;flex-wrap:wrap}html:is(.trace-editing,.trace-pending) .te-bar{transform:none}.te-bar input{flex:1}}
+@media(prefers-reduced-motion:reduce){.te-bar,.te-say{transition:none}}`;
+  document.head.append(css);
+  const el = document.createElement('div'); el.className = 'te-bar'; el.setAttribute('role', 'toolbar'); el.setAttribute('aria-label', 'Edit mode');
+  el.innerHTML = '<span class="te-state"><span class="te-dot" aria-hidden="true"></span><span class="te-count"></span></span>'
+    + '<input class="te-name" type="text" placeholder="Your name" aria-label="Your name, for the history" autocomplete="name" spellcheck="false">'
+    + '<button type="button" class="te-undo" title="Undo (⌘Z)">Undo</button><button type="button" class="te-redo" title="Redo (⇧⌘Z)">Redo</button>'
+    + '<button type="button" class="te-save">Save version</button><button type="button" class="te-done" title="Leave edit mode (E)">Done</button>';
+  document.body.append(el);
+  const sayEl = document.createElement('div'); sayEl.className = 'te-say'; sayEl.setAttribute('role', 'status'); document.body.append(sayEl);
+  function say(t) { sayEl.textContent = t; sayEl.classList.add('on'); clearTimeout(say.t); say.t = setTimeout(() => sayEl.classList.remove('on'), 3200); }
+  const nameIn = el.querySelector('.te-name');
+  nameIn.value = store.get(NAME, '');
+  nameIn.addEventListener('input', () => store.set(NAME, nameIn.value));
+  nameIn.addEventListener('keydown', (e) => { e.stopPropagation(); if (e.key === 'Enter') nameIn.blur(); });
+  el.addEventListener('mousedown', (e) => { if (e.target.closest('button')) e.preventDefault(); });
+  el.querySelector('.te-undo').addEventListener('click', undo);
+  el.querySelector('.te-redo').addEventListener('click', again);
+  el.querySelector('.te-save').addEventListener('click', save);
+  el.querySelector('.te-done').addEventListener('click', () => toggle(false));
+  function bar() {
+    const n = pending.length;
+    el.querySelector('.te-count').textContent = saving ? 'Saving…' : editing ? 'Editing a sentence' : n ? (n === 1 ? '1 change not saved' : n + ' changes not saved') : 'Editing · click a sentence';
+    el.querySelector('.te-undo').disabled = !n; el.querySelector('.te-redo').disabled = !redo.length;
+    el.querySelector('.te-save').disabled = (!n && !editing) || saving;
+    const c = document.querySelector('.te-side .te-n'); if (c) c.textContent = n || '';
+  }
+
+  // ---------- on and off ----------
+  function toggle(want = !on) {
+    if (want && !ensureWork()) { say('Open a TraceCite document to edit it.'); return; }
+    if (!want) finish();
+    on = want;
+    document.documentElement.classList.toggle('trace-editing', on);
+    document.querySelector('.te-side')?.setAttribute('aria-pressed', String(on));
+    if (on && !nameIn.value) setTimeout(() => say('Click a sentence to change it. Enter adds one after it.'), 200);
+    mark(); bar();
+  }
+  const ICON = '<svg viewBox="0 0 512 512" aria-hidden="true"><path d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z"/></svg>';
+  function addSideItem() {
+    if (document.querySelector('.te-side')) return true;
+    const after = document.querySelector('.side-menu .le-side') || document.querySelector('.side-menu [data-side-view="tags"]'); if (!after) return false;
+    const b = document.createElement('button'); b.type = 'button'; b.className = 'nav-button side-item te-side'; b.title = 'Edit mode (E)'; b.setAttribute('aria-pressed', 'false');
+    b.innerHTML = ICON + '<span>Edit mode</span><span class="le-count te-n"></span>';
+    b.addEventListener('click', (ev) => { ev.preventDefault(); ev.stopPropagation(); toggle(); });
+    after.after(b); bar(); return true;
+  }
+
+  // ---------- start: the side item, and edits kept from before a reload ----------
+  (function boot(tries = 0) {
+    const ready = DOC()?.blocks && PKG()?.pkg?.doc && addSideItem();
+    if (!ready) { if (tries < 80) setTimeout(() => boot(tries + 1), 250); return; }
+    ensureWork();
+    const kept = store.get(docKey(), []);
+    let n = 0;
+    for (const c of Array.isArray(kept) ? kept : []) { try { make(c, { record: false }); pending.push(c); n++; } catch { /* no longer applies */ } }
+    persist();
+    if (n) { render(); say(n === 1 ? '1 change from before is not saved yet.' : n + ' changes from before are not saved yet.'); }
+    bar();
+  })();
+  window.TraceEditMode = { toggle, undo, redo: again, save, comments: augment, get pending() { return pending.slice(); }, get on() { return on; } };
 })();
 
 </script>

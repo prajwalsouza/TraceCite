@@ -39,6 +39,13 @@
     { id: 'book', name: 'Book', mode: 'light', about: 'Calm, warm paper and a bookish serif, like a reading app at its quietest.' },
     { id: 'whiteboard', name: 'Whiteboard', mode: 'light', about: 'Blackboard’s bright sibling: marker lines on a white board.' },
     { id: 'magazine', name: 'Magazine', mode: 'light', about: 'Opinionated editorial: huge headlines, heavy rules, drop caps.' },
+    { id: 'field-guide', name: 'Field Guide', mode: 'light', about: 'A quiet nature book: white paper, a Futura-like sans, stone-olive titles and wide-spaced capitals.' },
+    { id: 'field-guide-night', name: 'Field Guide Night', mode: 'dark', about: 'The same field guide, read by a campfire.' },
+    { id: 'rubric', name: 'Rubric', mode: 'light', about: 'An early printed book in two inks: EB Garamond on ivory, red for headings and initials.' },
+    { id: 'terminal', name: 'Terminal', mode: 'dark', about: 'A phosphor screen: monospace, markdown marks and a blinking cursor.' },
+    { id: 'blueprint', name: 'Blueprint', mode: 'dark', about: 'A technical drawing: white lines on a blue grid, a ruled title block, dashed outlines.' },
+    { id: 'lab-notebook', name: 'Lab Notebook', mode: 'light', about: 'Squared paper, handwritten headings in blue ink, typed quotes and a highlighter.' },
+    { id: 'case-file', name: 'Case File', mode: 'light', about: 'A typed report in a manila folder, with sources clipped on as index cards.' },
   ];
   const KEY = 'trace-reading-prefs';
   const DEFAULTS = { flow: false, side: 'open', theme: 'sage', size: 'm', lh: 'comfortable', peek: true, tagRail: true, citations: true, paper: false, cite: 'apa', eqHover: true, traceAnim: true, hlStyle: 'text', windowing: 'auto', font: '', palettes: {} };
@@ -50,15 +57,23 @@
     pitch: [['', 'Lavender'], ['sage', 'Sage'], ['sky', 'Sky'], ['rose', 'Rose'], ['copper', 'Copper']],
     minimal: [['', 'Lavender'], ['sage', 'Sage'], ['sky', 'Sky'], ['rose', 'Rose']],
     blackboard: [['', 'Dotted'], ['graph', 'Graph'], ['manila', 'Manila'], ['eraser', 'Eraser'], ['slate', 'Slate']],
-    neumorphism: [['', 'Lavender'], ['sage', 'Sage'], ['sky', 'Sky'], ['rose', 'Rose']],
+    neumorphism: [['', 'Lavender'], ['sage', 'Sage'], ['sky', 'Sky'], ['rose', 'Rose'], ['dark', 'Dark']],
     'textbook-light': [['', 'Apricot'], ['parchment', 'Parchment'], ['kraft', 'Kraft'], ['sepia', 'Sepia'], ['celadon', 'Celadon']],
     'textbook-dark': [['', 'Lamplight'], ['walnut', 'Walnut'], ['ink', 'Ink'], ['forest', 'Forest']],
     book: [['', 'Calm'], ['paper', 'Paper'], ['quiet', 'Quiet'], ['night', 'Night']],
     whiteboard: [['', 'Marker'], ['grid', 'Grid'], ['sticky', 'Sticky note'], ['glass', 'Glass board']],
     magazine: [['', 'Violet'], ['newsprint', 'Newsprint'], ['ochre', 'Ochre'], ['noir', 'Noir']],
+    'field-guide': [['', 'Stone'], ['lichen', 'Lichen'], ['twig', 'Twig'], ['mist', 'Mist']],
+    terminal: [['', 'Phosphor'], ['amber', 'Amber'], ['mono', 'Mono'], ['printout', 'Printout']],
+    blueprint: [['', 'Blueprint'], ['cyanotype', 'Cyanotype'], ['night', 'Night'], ['whiteprint', 'Whiteprint']],
+    'case-file': [['', 'Manila'], ['kraft', 'Kraft'], ['bluefolder', 'Blue folder'], ['noir', 'Noir']],
+    'lab-notebook': [['', 'Grid'], ['ruled', 'Ruled'], ['dot', 'Dot grid'], ['carbon', 'Carbon copy']],
+    rubric: [['', 'Vermilion'], ['illuminated', 'Illuminated'], ['lapis', 'Lapis'], ['vellum', 'Vellum'], ['candle', 'Candlelight']],
+    'field-guide-night': [['', 'Night'], ['moss', 'Moss'], ['dusk', 'Dusk']],
   };
   // Palettes that turn a light theme dark (Slate is a real chalkboard).
-  const DARK_PALETTES = new Set(['blackboard:slate', 'book:night', 'whiteboard:glass', 'magazine:noir']);
+  const LIGHT_PALETTES = new Set(['terminal:printout', 'blueprint:whiteprint']);
+  const DARK_PALETTES = new Set(['neumorphism:dark', 'case-file:noir', 'rubric:candle', 'blackboard:slate', 'book:night', 'whiteboard:glass', 'magazine:noir']);
   const paletteOf = (theme) => { const v = (prefs.palettes || {})[theme] || ''; return (PALETTES[theme] || []).some(([id]) => id === v) ? v : ''; };
   const prefs = (() => { try { return { ...DEFAULTS, ...JSON.parse(localStorage.getItem(KEY) || '{}') }; } catch { return { ...DEFAULTS }; } })();
   const save = () => { try { localStorage.setItem(KEY, JSON.stringify(prefs)); } catch {} };
@@ -68,6 +83,13 @@
   const THEME_FONTS = {
     book: 'family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400',
     whiteboard: 'family=Kalam:wght@400;700',
+    'field-guide': 'family=Jost:ital,wght@0,300..600;1,300..600',
+    'field-guide-night': 'family=Jost:ital,wght@0,300..600;1,300..600',
+    terminal: 'family=JetBrains+Mono:ital,wght@0,400..700;1,400..700',
+    blueprint: 'family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400',
+    'case-file': 'family=Special+Elite&family=Courier+Prime:ital,wght@0,400;0,700;1,400',
+    'lab-notebook': 'family=Caveat:wght@500;700&family=Courier+Prime:wght@400;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400',
+    rubric: 'family=EB+Garamond:ital,wght@0,400..700;1,400..700',
     magazine: 'family=DM+Serif+Display:ital@0;1&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400',
   };
   // Font (Settings → Reading → Font): the reader's own choice, laid over whatever the theme uses, for the
@@ -98,7 +120,7 @@
     root.classList.toggle('no-trace-anim', !prefs.traceAnim);
     root.classList.toggle('hl-tint', prefs.hlStyle === 'tint'); root.classList.toggle('hl-off', prefs.hlStyle === 'off');
     root.classList.toggle('house', theme.id !== 'sage');
-    root.classList.toggle('dark', theme.mode === 'dark' || DARK_PALETTES.has(theme.id + ':' + paletteOf(theme.id)));
+    root.classList.toggle('dark', (theme.mode === 'dark' && !LIGHT_PALETTES.has(theme.id + ':' + paletteOf(theme.id))) || DARK_PALETTES.has(theme.id + ':' + paletteOf(theme.id)));
     for (const s of ['s', 'l', 'xl']) root.classList.toggle('size-' + s, prefs.size === s);
     root.classList.toggle('lh-compact', prefs.lh === 'compact');
     root.classList.toggle('lh-airy', prefs.lh === 'airy');
@@ -127,7 +149,7 @@
   function appearance() {
     return [
       el('h2', { html: svg('palette') }, 'Appearance'),
-      el('p', { class: 'lede' }, `${THEMES.length} themes, one reading page. Sage is Trace’s own look; the other seven are the house themes. Each preview is drawn in its own theme.`),
+      el('p', { class: 'lede' }, `${THEMES.length} themes, one reading page. Sage is Trace’s own look; the others are the house themes. Each preview is drawn in its own theme.`),
       el('div', { class: 'themes', role: 'radiogroup', 'aria-label': 'Theme' }, THEMES.map((t) =>
         el('button', { class: 'th' + (t.id === prefs.theme ? ' on' : ''), type: 'button', role: 'radio', 'aria-checked': String(t.id === prefs.theme), onclick: () => set('theme', t.id) },
           el('div', { class: 'prev', 'data-theme': t.id, 'aria-hidden': 'true' },
@@ -442,6 +464,24 @@
   if (menu) menu.innerHTML = svg('bars');
   const brand = document.querySelector('.navigation-heading .brand');
   if (brand) brand.textContent = window.OUTLINE_SEED?.title || '';
+  // Home: the sidebar's title (and, when the sidebar is collapsed, the "T" under the arrow) goes back to the
+  // paper's start, from any view.
+  const goHome = () => {
+    const top = () => scrollTo({ top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    // Leaving a view restores the paper's last position; make that position the start.
+    if (route() !== '/') { readingScroll = 0; location.hash = '/'; } else top();
+    if (matchMedia('(max-width: 760px)').matches) document.getElementById('close-navigation')?.click();
+  };
+  if (brand) {
+    brand.setAttribute('role', 'link'); brand.tabIndex = 0; brand.title = 'Go to the start of the paper';
+    brand.addEventListener('click', goHome);
+    brand.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goHome(); } });
+  }
+  const homeItem = el('button', { class: 'nav-button side-item home-item', type: 'button', title: (window.OUTLINE_SEED?.title || 'The paper') + ': go to the start', 'aria-label': 'Go to the start of the paper' },
+    el('span', {}, 'Start'));
+  // A solid "T" drawn like the other sidebar icons (same weight, size and colour), not a typed letter.
+  homeItem.insertAdjacentHTML('afterbegin', '<svg viewBox="-32 0 512 512" aria-hidden="true"><path d="M64 32C46.3 32 32 46.3 32 64v48c0 17.7 14.3 32 32 32s32-14.3 32-32V96H192V416H160c-17.7 0-32 14.3-32 32s14.3 32 32 32H288c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V96H352v16c0 17.7 14.3 32 32 32s32-14.3 32-32V64c0-17.7-14.3-32-32-32H64z"/></svg>');
+  homeItem.addEventListener('click', goHome);
   // Settings lives at the foot of the sidebar.
   const sideButton = el('button', { class: 'nav-button', id: 'settings-nav', type: 'button', html: svg('gear') }, el('span', {}, 'Settings'));
   sideButton.addEventListener('click', () => { location.hash = '/settings/appearance'; document.getElementById('close-navigation')?.click(); });
@@ -460,6 +500,8 @@
     menuNav.append(b); return b;
   });
   document.querySelector('#sidebar .navigation-heading')?.after(menuNav);
+  // Not inside .side-menu: other scripts prepend their items there (Search goes first).
+  menuNav.before(homeItem);
   // The sidebar always lists the contents under the menu; the tag tree has its own view.
   document.getElementById('reading-show-contents')?.click();
   // Anything that navigates the paper leaves Settings first.
