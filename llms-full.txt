@@ -444,6 +444,52 @@ Clarifications and compatible fixes are patch changes. A document declares the
 format version it was written for. The storage field `version: 2` and the
 software release `0.1.0` are separate version sequences.
 
+A released format version is frozen: its schema file never changes again, and
+`npm run validate` fails if it does (`scripts/check-format-lock.mjs`). New
+features go into the next version, with its own schema file.
+
+| Format | Schema | Status | Adds |
+| --- | --- | --- | --- |
+| `tracecite/1.0` | `schema/tracecite-1.0.schema.json` | Frozen with release 0.3.0 | Everything above |
+| `tracecite/1.1` | `schema/tracecite-1.1.schema.json` | In progress, frozen with release 0.4.0 | `changes`, the edit history |
+
+A reader for 1.0 can open a 1.1 document: the edits are already made in its
+blocks, and `changes` is an extra field it may ignore. A document with
+`changes` MUST declare `tracecite/1.1` or later.
+
+## Edit history (1.1)
+
+Edit mode in the reader records every edit in `changes`, oldest first. The
+blocks always hold the edited document; `changes` says how it got there, so it
+can be read as a history, shown as a diff or undone.
+
+```json
+"changes": [
+  { "id": "ch-1", "at": "2026-11-25T12:00:00.000Z", "by": "Ada Example", "version": 2,
+    "op": "text", "block": "s-1", "before": "Markup languages…", "after": "Markup says…" },
+  { "id": "ch-2", "at": "2026-11-25T12:01:00.000Z", "by": "Ada Example", "version": 2,
+    "op": "insert", "block": "s-9", "parent": "p-structure", "previous": "s-1",
+    "value": { "id": "s-9", "type": "sentence", "text": "A new sentence.", "tags": [], "fields": [], "children": [] } }
+]
+```
+
+| Field | Meaning |
+| --- | --- |
+| `id` | Required. Unique among changes. |
+| `at` | Required. When, as an ISO date-time. |
+| `by` | Who: a person, or a model named as an agent. Empty when unsigned. |
+| `op` | Required. `text` (a block's text changed), `insert` (a block was added) or `remove` (a block was taken out). |
+| `block` | Required. The block's id. |
+| `before`, `after` | `text`: the text before and after. |
+| `parent`, `previous` | `insert` and `remove`: the parent block (or `null` at the top) and the sibling just before it (or `null` when first). |
+| `value` | `insert` and `remove`: the whole block, so the edit can be undone. |
+| `version` | The package version (manifest `history`) the edit was saved in. |
+| `note` | Why, if the editor said. |
+
+Saving in edit mode makes the edits on the stored `.trace.json`, appends them
+to `changes`, declares `tracecite/1.1` and adds an entry to the package's
+version history (see package.md). Edits not yet saved stay in the browser.
+
 ## Interactives
 
 An interactive is a live figure. A `figure` block becomes one when it has an

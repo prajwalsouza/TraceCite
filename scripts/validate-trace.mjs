@@ -12,6 +12,26 @@ export async function validate(doc, baseDir = '.') {
   if (doc?.format === undefined) warn('format is missing; declare "format": "tracecite/1.0"');
   else if (typeof doc.format !== 'string' || !/^tracecite\/1\.\d+(?:\.\d+)?$/.test(doc.format)) err('format must name TraceCite major version 1 (for example tracecite/1.0)');
   if (doc?.version !== 2) err('version must be 2');
+  // 1.1: "changes", the edit history. A document that records edits declares 1.1 (or a later 1.x).
+  if (doc?.changes !== undefined) {
+    const minor = +((/^tracecite\/1\.(\d+)/.exec(doc.format || '') || [])[1] ?? -1);
+    if (minor < 1) err('changes (the edit history) needs "format": "tracecite/1.1"');
+    if (!Array.isArray(doc.changes)) err('changes must be an array');
+    else {
+      const seen = new Set(), ID = /^[A-Za-z0-9_.:-]{1,160}$/;
+      doc.changes.forEach((c, i) => {
+        const at = `changes[${i}]`;
+        if (!c || typeof c !== 'object') return err(`${at} must be an object`);
+        if (!ID.test(c.id || '')) err(`${at}: id is not valid`); else if (seen.has(c.id)) err(`${at}: duplicate change id ${c.id}`); else seen.add(c.id);
+        if (typeof c.at !== 'string' || isNaN(Date.parse(c.at))) err(`${at}: at must be an ISO date-time`);
+        if (!['text', 'insert', 'remove'].includes(c.op)) err(`${at}: op must be text, insert or remove`);
+        if (!ID.test(c.block || '')) err(`${at}: block must be a block id`);
+        if (c.op === 'text' && (typeof c.before !== 'string' || typeof c.after !== 'string')) err(`${at}: a text change needs before and after`);
+        if ((c.op === 'insert' || c.op === 'remove') && (!c.value || c.value.id !== c.block)) err(`${at}: an ${c.op} change needs the block as value`);
+        if (c.version !== undefined && !(Number.isInteger(c.version) && c.version >= 1)) err(`${at}: version must be a whole number from 1`);
+      });
+    }
+  }
   if (typeof doc?.title !== 'string' || !doc.title.trim()) err('title is required');
   for (const k of ['tagTree', 'blocks', 'sources']) if (!Array.isArray(doc?.[k])) err(`${k} must be an array`);
   if (errors.length) return { errors, warnings };

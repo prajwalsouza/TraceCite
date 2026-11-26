@@ -23,7 +23,7 @@
   root.TracePackage = api;
 })(typeof globalThis === 'object' ? globalThis : this, function (root) {
   'use strict';
-  const KEEP = ['version', 'format', 'id', 'title', 'subtitle', 'authors', 'affiliations', 'date', 'revision', 'keywords', 'doi', 'license', 'note', 'updatedAt', 'tagTree', 'parameters', 'flow', 'blocks', 'sources', 'documentStructure', 'appliedOutlineRevisions', 'manuscript', 'eyebrow'];
+  const KEEP = ['version', 'format', 'id', 'title', 'subtitle', 'authors', 'affiliations', 'date', 'revision', 'keywords', 'doi', 'license', 'note', 'updatedAt', 'tagTree', 'parameters', 'flow', 'blocks', 'sources', 'documentStructure', 'appliedOutlineRevisions', 'manuscript', 'eyebrow', 'changes'];
   const MIME = { png: 'image/png', jpg: 'image/jpeg', jpeg: 'image/jpeg', webp: 'image/webp', svg: 'image/svg+xml', gif: 'image/gif' };
   const MATH = /\\\(|\\\[|\$\$|(?<!\\)\$[^$\s][^$\n]*\$/;
   const enc = new TextEncoder();
@@ -84,7 +84,7 @@
     const refs = references(doc, dataPath);
     const last = history[history.length - 1];
     return {
-      format: 'tracecite/1.0', package: 1, version: last ? last.version : 1, title: doc.title || '', data: dataPath,
+      format: /^tracecite\/1\.\d+$/.test(doc.format || '') ? doc.format : 'tracecite/1.0', package: 1, version: last ? last.version : 1, title: doc.title || '', data: dataPath,
       bibliography: refs.bibliography.filter((p) => files.has(p)),
       assets: refs.assets.filter((p) => files.has(p)),
       interactiveScripts: refs.interactiveScripts.filter((p) => files.has(p)),
@@ -108,6 +108,50 @@
     if (by) entry.by = by; if (note) entry.note = note;
     history.push(entry);
     return { history, changed: true, hash };
+  }
+
+  // ---------- edits (format 1.1) ----------
+  // A change is one edit: { id, at, by, op: 'text' | 'insert' | 'remove', block, before, after, parent, previous,
+  // value }. applyChange makes it on a block tree and throws if the tree no longer matches what it was made on.
+  // invert gives the change that undoes it.
+  function findBlock(list, id, parent = null) { for (const b of list || []) { if (b.id === id) return { b, list, parent }; const r = findBlock(b.children, id, b); if (r) return r; } return null; }
+  function applyChange(blocks, c) {
+    if (c.op === 'text') {
+      const hit = findBlock(blocks, c.block); if (!hit) throw new Error(`Block ${c.block} is not in the document.`);
+      if (hit.b.text !== c.before) throw new Error(`Block ${c.block} changed since this edit was made.`);
+      hit.b.text = c.after; return;
+    }
+    if (c.op === 'insert') {
+      if (findBlock(blocks, c.block)) throw new Error(`Block ${c.block} is already in the document.`);
+      const list = c.parent ? findBlock(blocks, c.parent)?.b.children : blocks; if (!list) throw new Error(`Block ${c.parent} is not in the document.`);
+      const at = c.previous ? list.findIndex((b) => b.id === c.previous) + 1 : 0; if (c.previous && !at) throw new Error(`Block ${c.previous} is not where this edit expects it.`);
+      list.splice(at, 0, JSON.parse(JSON.stringify(c.value))); return;
+    }
+    if (c.op === 'remove') {
+      const hit = findBlock(blocks, c.block); if (!hit) throw new Error(`Block ${c.block} is not in the document.`);
+      hit.list.splice(hit.list.indexOf(hit.b), 1); return;
+    }
+    throw new Error(`Unknown edit ${c.op}.`);
+  }
+  const invert = (c) => c.op === 'text' ? { ...c, before: c.after, after: c.before } : { ...c, op: c.op === 'insert' ? 'remove' : 'insert' };
+  // Make the edits on the stored document, record them in its "changes" (declaring tracecite/1.1) and return
+  // the package as its next version, with a history entry. The original package object is not changed.
+  async function withEdits(pkg, changes, { by = '', note = '' } = {}) {
+    if (!changes.length) return pkg;
+    const doc = parseDoc(pkg.files.get(pkg.dataPath), pkg.dataPath);
+    for (const c of changes) applyChange(doc.blocks, c);
+    const version = ((pkg.manifest?.history || []).at(-1)?.version || 0) + 1;
+    doc.changes = [...(doc.changes || []), ...changes.map((c) => ({ ...c, version }))];
+    if (!/^tracecite\/1\.[1-9]\d*$/.test(doc.format || '')) doc.format = 'tracecite/1.1';
+    doc.updatedAt = new Date().toISOString();
+    const files = new Map(pkg.files);
+    files.set(pkg.dataPath, enc.encode(JSON.stringify(doc, null, 2) + '\n'));
+    const next = { ...pkg, files, doc };
+    const { history } = await withHistory(next, { by, note });
+    next.manifest = { ...(pkg.manifest || {}), ...makeManifest(doc, pkg.dataPath, files, history) };
+    files.set('manifest.json', enc.encode(JSON.stringify(next.manifest, null, 2)));
+    next.bytes = await zipFiles(next.manifest, files);
+    return next;
   }
 
   // One or several files → a package. items: [{ name, bytes }].
@@ -258,5 +302,5 @@
     const t = (pkg.manifest?.title || pkg.doc?.title || 'document').toLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 60);
     return (t || 'document') + '.trace.zip';
   };
-  return { open, prepare, exportBytes, withHistory, contentHash, makeManifest, zipFiles, references, fileName, join, dirOf, interactiveOf, scriptsOf };
+  return { open, prepare, exportBytes, withHistory, withEdits, applyChange, invert, findBlock, contentHash, makeManifest, zipFiles, references, fileName, join, dirOf, interactiveOf, scriptsOf };
 });

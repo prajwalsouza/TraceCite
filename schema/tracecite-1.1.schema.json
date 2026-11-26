@@ -1,0 +1,555 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/prajwalsouza/TraceCite/schema/tracecite-1.1.schema.json",
+  "title": "TraceCite 1.1",
+  "description": "TraceCite 1.0 (tracecite/1.0): one evidence tree, with storage revision 2. Use validate-trace.mjs for cross-record rules such as tag membership, source links and quote/context matching. Version 1.1 adds \"changes\": the document's edit history. Everything else is as in 1.0.",
+  "type": "object",
+  "required": [
+    "format",
+    "version",
+    "title",
+    "tagTree",
+    "blocks",
+    "sources"
+  ],
+  "properties": {
+    "format": {
+      "const": "tracecite/1.1",
+      "description": "Public format identifier, distinct from the storage revision. 1.1 is 1.0 plus \"changes\"."
+    },
+    "version": {
+      "const": 2,
+      "description": "Internal storage revision expected by the Trace reader. Not the format version."
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "eyebrow": {
+      "type": "string",
+      "description": "Small label above the title, for example 'An essay on outliners'."
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "tagTree": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/tag"
+      },
+      "description": "The tag schema, kept apart from the outline. Root ids name the families; 'role', 'support' and 'topic' get their own colours."
+    },
+    "parameters": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/parameter"
+      },
+      "description": "Parametric tags: a value for every sentence, shown as charts. Without this list, Length and Evidence are computed."
+    },
+    "flow": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Optional settings for the automatic flow analysis. Flow runs without them.",
+      "properties": {
+        "families": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Tag family ids to analyse (default: all)."
+        },
+        "minTransitions": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "How many moves out of one tag before the transition chart appears (default 3)."
+        }
+      }
+    },
+    "blocks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/block"
+      },
+      "description": "The outline, in reading order."
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/source"
+      },
+      "description": "Shared source records; citations point to them by id."
+    },
+    "bibliography": {
+      "description": "A BibTrace file (BibTeX plus trace-* evidence fields), or a list of them, relative to this data file. Its entries become the sources; sentences cite them by key.",
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "mathTags": {
+      "type": "object",
+      "description": "Options for the automatic Mathematics tag family: groups, labels, minSentences, exclude, off."
+    },
+    "crossRefs": {
+      "type": "object",
+      "description": "Options for cross-references: off."
+    },
+    "id": {
+      "$ref": "#/$defs/id",
+      "description": "Stable document id used for local reading state."
+    },
+    "authors": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "object",
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "affiliations": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "email": {
+                "type": "string"
+              },
+              "orcid": {
+                "type": "string"
+              },
+              "corresponding": {
+                "type": "boolean"
+              },
+              "note": {
+                "type": "string"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "affiliations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "date": {
+      "type": "string"
+    },
+    "revision": {
+      "type": "string"
+    },
+    "doi": {
+      "type": "string"
+    },
+    "license": {
+      "type": "string"
+    },
+    "note": {
+      "type": "string"
+    },
+    "keywords": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "documentStructure": {
+      "type": "object",
+      "description": "Optional structure import metadata. Rendering roles live in block tags and fields.",
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "sourceHash": {
+          "type": "string"
+        },
+        "documentClass": {
+          "type": "string"
+        },
+        "environments": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "interactiveScripts": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^(?!/)(?!.*\\.\\.).+\\.js$"
+      },
+      "description": "Scripts that register interactive components (TraceViz.register), relative to the data file. Packed into the .trace.zip."
+    },
+    "vizScripts": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^(?!/)(?!.*\\.\\.).+\\.js$"
+      },
+      "description": "Older name for interactiveScripts; still accepted."
+    },
+    "links": {
+      "type": "object",
+      "properties": {
+        "off": {
+          "type": "boolean"
+        }
+      },
+      "description": "Generated Links tag family; {\"off\": true} leaves it out."
+    },
+    "changes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/change"
+      },
+      "description": "The edit history, oldest first. New in 1.1."
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_.:-]{1,160}$"
+    },
+    "field": {
+      "type": "object",
+      "required": [
+        "key",
+        "value"
+      ],
+      "properties": {
+        "key": {
+          "type": "string",
+          "minLength": 1
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "tag": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "children"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_-]{1,128}$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/tag"
+          }
+        },
+        "collapsed": {
+          "type": "boolean",
+          "description": "Optional initial disclosure state."
+        },
+        "slot": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5,
+          "description": "Connected highlights: one of five theme-aware colours. Spans with this tag, and its symbols in formulas, take the colour."
+        },
+        "symbols": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": "Connected highlights: TeX symbols (\"x\", \"\\\\mu\") coloured automatically in every formula."
+        }
+      }
+    },
+    "parameter": {
+      "type": "object",
+      "required": [
+        "id",
+        "name"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "measure": {
+          "oneOf": [
+            {
+              "enum": [
+                "characters",
+                "words",
+                "citations",
+                "quotes"
+              ]
+            },
+            {
+              "type": "object",
+              "required": [
+                "field"
+              ],
+              "properties": {
+                "field": {
+                  "type": "string"
+                },
+                "type": {
+                  "enum": [
+                    "number",
+                    "category"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
+        "plot": {
+          "enum": [
+            "histogram",
+            "strip",
+            "counts",
+            "categories"
+          ]
+        },
+        "unit": {
+          "type": "string"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/parameter"
+          }
+        }
+      }
+    },
+    "block": {
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "text",
+        "tags",
+        "fields",
+        "children"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "type": {
+          "enum": [
+            "section",
+            "paragraph",
+            "sentence",
+            "citation",
+            "reference",
+            "note",
+            "figure",
+            "table",
+            "table-row",
+            "table-cell"
+          ]
+        },
+        "text": {
+          "type": "string"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Tag ids from tagTree. Structural roles: 'caption' marks a figure or table caption paragraph."
+        },
+        "fields": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/field"
+          },
+          "description": "Known keys by block type: sentence (Sentence review, Status); citation and reference (Source ID; reference: Exact supporting extract, Relation to this sentence); figure (Assets: a JSON array string of paths such as 'figures/a.svg' under assets/manuscript/, Video asset, Video poster, Figure layout); table-row (Table header: 'yes'); section (Heading level)."
+        },
+        "collapsed": {
+          "type": "boolean"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/block"
+          }
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "text",
+        "fields"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "type": {
+          "const": "source"
+        },
+        "text": {
+          "type": "string"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "fields": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/field"
+          },
+          "description": "String key/value evidence fields. Exact quote [n] requires Quote context [n] containing it verbatim, or a non-empty Quote context withheld [n] reason. First quote omits the suffix. Notes, tags and provenance use the same quote number."
+        },
+        "collapsed": {
+          "type": "boolean"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/block"
+          }
+        }
+      }
+    },
+    "change": {
+      "type": "object",
+      "required": [
+        "id",
+        "at",
+        "op",
+        "block"
+      ],
+      "additionalProperties": true,
+      "description": "One edit, in the order it was made. Edits are applied to the blocks as stored; \"changes\" only records them, so a 1.0 reader shows the edited document and ignores the history.",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id",
+          "description": "Unique among changes."
+        },
+        "at": {
+          "type": "string",
+          "description": "When, as an ISO date-time."
+        },
+        "by": {
+          "type": "string",
+          "description": "Who made the edit (a person, or a model named as an agent). Empty when unsigned."
+        },
+        "op": {
+          "enum": [
+            "text",
+            "insert",
+            "remove"
+          ],
+          "description": "text: a block's text changed. insert: a block was added. remove: a block was taken out."
+        },
+        "block": {
+          "$ref": "#/$defs/id",
+          "description": "The block edited, added or removed."
+        },
+        "before": {
+          "type": "string",
+          "description": "text: the text before the edit."
+        },
+        "after": {
+          "type": "string",
+          "description": "text: the text after the edit."
+        },
+        "parent": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/id"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "insert and remove: the parent block, or null at the top level."
+        },
+        "previous": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/id"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "insert and remove: the sibling just before the block, or null when it is first."
+        },
+        "value": {
+          "$ref": "#/$defs/block",
+          "description": "insert and remove: the whole block, so the edit can be undone."
+        },
+        "version": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "The package version (manifest history) this edit was saved in."
+        },
+        "note": {
+          "type": "string",
+          "description": "Why, if the editor said."
+        }
+      }
+    }
+  }
+}

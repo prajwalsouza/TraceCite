@@ -1,0 +1,24 @@
+/* Quiet evidence (quiet-evidence.js): an opened line shows the source, its exact words and the reference.
+   The rest of each node appears when the pointer rests on it, or when something in it has focus.
+   Hidden with display:none (no cost at rest); shown with one layout and a fade on opacity/transform only. */
+@keyframes ev-in{from{opacity:0;transform:translateY(-3px)}to{opacity:1;transform:none}}
+#outline :is(.ev-src,.ev-comments):not(.ev-show)>:is(.ev-where,.ev-prov,.ev-quote-tags,.ev-kids,.ev-note,.ev-comment-list),
+#outline .ev:not(.ev-show-line)>:is(.ev-prov,.ev-flag),
+#outline .ev:not(.ev-show-line)>.ev-pane>:is(.ev-review,.ev-prov,.ev-flag){display:none}
+#outline :is(.ev-src,.ev-comments).ev-show>:is(.ev-where,.ev-prov,.ev-quote-tags,.ev-kids,.ev-note,.ev-comment-list),
+#outline .ev.ev-show-line>:is(.ev-prov,.ev-flag),
+#outline .ev.ev-show-line>.ev-pane>:is(.ev-review,.ev-prov,.ev-flag){animation:ev-in .18s cubic-bezier(.2,.7,.1,1) both}
+/* The tabs (Sources, Tags, …) wait with the line's details; they stay once another tab is chosen. */
+@media (hover:hover){
+  #outline .ev-tabs .ev-tab{opacity:0;transition:opacity .16s ease}
+  #outline .ev.ev-show-line .ev-tabs .ev-tab,#outline .ev-tabs .ev-tab:focus-visible,
+  #outline .ev-tabs:has(.ev-tab:not(:first-child)[aria-selected=true]) .ev-tab{opacity:1}
+  #outline .ev:not(.ev-show-line) .ev-tabs:not(:has(.ev-tab:not(:first-child)[aria-selected=true])){margin-bottom:0}
+}
+@media (prefers-reduced-motion:reduce){#outline .ev *{animation:none!important}#outline .ev-tabs .ev-tab{transition:none}}
+/* The reference line: the link in the line's own size, and one "open the source" icon, centred on the text. */
+#outline .ev-ref .ref-link,#outline .ev-ref .md-link{font-size:inherit;line-height:inherit;margin-left:0}
+#outline .ev-ref .md-link .md-ext{display:none}
+#outline .ev-ref .ev-open{display:inline-grid;place-items:center;width:1.6em;height:1.6em;margin:0 0 0 1px;padding:0;vertical-align:middle;border-radius:4px;color:var(--faint,var(--ink3));transform:translateY(-.08em)}
+#outline .ev-ref .ev-open svg{display:block;width:12px!important;height:12px!important;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+#outline .ev-ref .ev-open:hover,#outline .ev-ref .ev-open:focus-visible{color:var(--accent);outline:none}

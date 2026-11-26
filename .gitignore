@@ -3,3 +3,6 @@
 node_modules/
 zz-*
 *.log
+
+# BibTrace Chrome extension: kept out of git for now
+chrome-extension-bibtrace/

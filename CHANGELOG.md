@@ -1,5 +1,15 @@
 # Changelog
 
+## Unreleased (0.4.0)
+
+- **Edit mode.** "Edit mode" in the sidebar (or E) makes the reading page the editor, in place. Click a sentence to change its text (as stored, with its markup), Enter to add a sentence after it, Backspace in an empty sentence to take it out, Tab to move on. Undo and redo cover whole edits. Unsaved edits come back after a reload. "Save version" makes the edits on the stored document and saves the package as its next version: downloaded as a .trace.zip, or, in the BibTrace extension, back into the library with the earlier version kept (`scripts/edit-mode.js`).
+- **Comments and replies.** An opened sentence ends with one quiet line, "Add a comment"; a comment offers "Reply" only while the pointer is on it. The field grows as you type, and Post (with a name field, if no name is set) appears only once there is text. ⌘Enter posts, Escape cancels. Comments are stored as the format already defines them (a note with "Comment by" and "Commented on", replies as its children), recorded as changes, marked with a small dot until saved, kept across a reload and saved with the next version. Outside edit mode the bar shows only the count, Undo and Save version.
+- **Format 1.1.** Adds `changes`, the edit history: one record per edit (text, insert, remove) with who, when, the package version, and what is needed to undo it. Schema `schema/tracecite-1.1.schema.json`; the validator checks it, and a document with `changes` must declare `tracecite/1.1`. `TracePackage.withEdits` writes a new version; `applyChange` and `invert` make and undo an edit.
+- **Format 1.0 is frozen.** Its schema file may not change; `npm run validate` checks this (`scripts/check-format-lock.mjs`) and runs an edits round trip (`scripts/check-edits.mjs`).
+- An opened sentence is quiet: only its source, the exact words and the reference show. Where the words sit, who added and checked them, tags, the passage, notes and comments appear when the pointer rests on that source (or on focus, or a tap on touch screens). The tabs and the sentence's own review appear when the pointer rests on the sentence. Details are hidden with CSS and shown with one class change, with no observers (`scripts/quiet-evidence.js`, `scripts/quiet-evidence.css`).
+- The reference line shows one "open the source" icon, the same size as the text and centred on it.
+- An opened sentence shows tabs: Sources first, then Tags and Mathematics, each with a count. Empty tabs are left out. Notes, comments and the sentence's review sit under Sources, and "Sentence added by …" stays below whichever tab is open.
+
 ## 0.3.0 — 2026-11-25
 
 - **Edits.** A model streams suggested edits into the open page through `window.TraceLive`, word by word. Readers ask by selecting words and pressing Enter. They review each suggestion in the new Edits view, or from the bar at the bottom (Accept, Reject, Comment). A decision log, which models read first, records every outcome. Only sentences can be edited, and every edit is a suggestion. Accepted edits come back after a reload. The page makes no network requests unless a relay is set with `?edits-server=`. See `docs/edits.md`.

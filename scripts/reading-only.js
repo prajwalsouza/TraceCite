@@ -215,6 +215,34 @@
       for (const c of note.children || []) n.append(el('p', 'ev-note', c.text));
       ev.append(n);
     }
+    // Tabs: Sources first, because tracing is the point; then Tags; then Mathematics. The sentence's own
+    // provenance line stays visible under whichever tab is open. Empty tabs are left out; one tab needs no bar.
+    {
+      const prov = [...ev.children].find((n) => n.classList.contains('ev-prov') && /^Sentence added/.test(n.textContent));
+      const srcNodes = [...ev.children].filter((n) => n !== top && n !== mathRow && n !== prov);
+      mathRow.querySelector('.ev-math-label')?.remove();
+      const panes = [];
+      if (srcNodes.length) panes.push(['Sources', items.length, srcNodes]);
+      if (tagRow.childNodes.length) panes.push(['Tags', tagRow.childNodes.length, [tagRow]]);
+      if (mathRow.childNodes.length) panes.push(['Mathematics', symbols.length + kinds.length, [mathRow]]);
+      const bar = el('div', 'ev-tabs'); bar.setAttribute('role', 'tablist'); bar.setAttribute('aria-label', 'Evidence');
+      const tabs = [], divs = [];
+      panes.forEach(([name, count, nodes], i) => {
+        const t = el('button', 'ev-tab', name); t.type = 'button'; t.setAttribute('role', 'tab'); t.setAttribute('aria-selected', String(i === 0)); t.tabIndex = i === 0 ? 0 : -1;
+        if (count) t.append(el('span', 'ev-tab-n', String(count)));
+        const d = el('div', 'ev-pane ev-pane-' + name.toLowerCase()); d.setAttribute('role', 'tabpanel'); d.hidden = i !== 0; d.append(...nodes);
+        tabs.push(t); divs.push(d); bar.append(t);
+      });
+      const pick = (i) => tabs.forEach((t, k) => { t.setAttribute('aria-selected', String(k === i)); t.tabIndex = k === i ? 0 : -1; divs[k].hidden = k !== i; });
+      tabs.forEach((t, i) => {
+        t.addEventListener('click', (e) => { e.stopPropagation(); pick(i); });
+        t.addEventListener('keydown', (e) => { if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return; e.preventDefault(); e.stopPropagation(); const k = (i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length; pick(k); tabs[k].focus(); });
+      });
+      // With one tab there is nothing to switch: keep only the close button in the bar.
+      if (tabs.length <= 1) { bar.replaceChildren(); bar.classList.add('ev-tabs-single'); }
+      bar.append(close);
+      ev.replaceChildren(bar, ...divs, ...(prov ? [prov] : []));
+    }
     panel.append(ev);
   }
   const scan = (root) => root.querySelectorAll?.('.apa-evidence').forEach(build);
