@@ -479,8 +479,9 @@
   }
   const homeItem = el('button', { class: 'nav-button side-item home-item', type: 'button', title: (window.OUTLINE_SEED?.title || 'The paper') + ': go to the start', 'aria-label': 'Go to the start of the paper' },
     el('span', {}, 'Start'));
-  // A solid "T" drawn like the other sidebar icons (same weight, size and colour), not a typed letter.
-  homeItem.insertAdjacentHTML('afterbegin', '<svg viewBox="-32 0 512 512" aria-hidden="true"><path d="M64 32C46.3 32 32 46.3 32 64v48c0 17.7 14.3 32 32 32s32-14.3 32-32V96H192V416H160c-17.7 0-32 14.3-32 32s14.3 32 32 32H288c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V96H352v16c0 17.7 14.3 32 32 32s32-14.3 32-32V64c0-17.7-14.3-32-32-32H64z"/></svg>');
+  // A solid "T" drawn like the other sidebar icons, not a typed letter. Its weight was measured against them
+  // (ink and size near the set's median), since the first, thinner T read as lighter than its neighbours.
+  homeItem.insertAdjacentHTML('afterbegin', '<svg viewBox="0 0 512 512" aria-hidden="true"><path d="M48 16H464a32 32 0 0 1 32 32V88a32 32 0 0 1-32 32H312V464a32 32 0 0 1-32 32H232a32 32 0 0 1-32-32V120H48a32 32 0 0 1-32-32V48a32 32 0 0 1 32-32Z"/></svg>');
   homeItem.addEventListener('click', goHome);
   // Settings lives at the foot of the sidebar.
   const sideButton = el('button', { class: 'nav-button', id: 'settings-nav', type: 'button', html: svg('gear') }, el('span', {}, 'Settings'));
