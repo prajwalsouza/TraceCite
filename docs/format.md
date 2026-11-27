@@ -311,7 +311,7 @@ features go into the next version, with its own schema file.
 | Format | Schema | Status | Adds |
 | --- | --- | --- | --- |
 | `tracecite/1.0` | `schema/tracecite-1.0.schema.json` | Frozen with release 0.3.0 | Everything above |
-| `tracecite/1.1` | `schema/tracecite-1.1.schema.json` | In progress, frozen with release 0.4.0 | `changes`, the edit history |
+| `tracecite/1.1` | `schema/tracecite-1.1.schema.json` | Frozen with release 0.4.0 | `changes`, the edit history |
 
 A reader for 1.0 can open a 1.1 document: the edits are already made in its
 blocks, and `changes` is an extra field it may ignore. A document with

@@ -37,6 +37,10 @@ Mark part of a sentence with a tag: `[list of n numbers]{.hl-x}`. **Connected hi
 
 A model can stream suggested edits into an open page, word by word, through `window.TraceLive`. Select words in a sentence and press Enter to ask for one. Review each suggestion in the Edits view, or from the bar at the bottom: Accept, Reject or Comment. Every decision goes into a log that models read before writing again. Only sentences can be edited, and nothing leaves the page unless you connect a relay. See [the Edits protocol](docs/edits.md).
 
+## Edit mode and comments
+
+**Edit mode** in the sidebar (or E) turns the reading page into the editor, in place. Click a sentence to change it, Enter to add one after it, Backspace in an empty sentence to take it out. Undo and redo cover whole edits, and unsaved edits survive a reload. While reading, an opened sentence ends with "Add a comment", and comments take replies. **Save version** writes the edits into the document, records each one in its `changes` (format 1.1) and saves the package as its next version. See [edit history](docs/format.md#edit-history-11).
+
 ## Interactives
 
 A figure can be an interactive: a live drawing from a small script that the document brings in its package. Give the figure an `Interactive` field naming a component, list the script in `interactiveScripts`, and register the component with `TraceViz.register`. See [Interactives](docs/format.md#interactives). `api.tagColor(id)` draws in a highlight's colour, so a graph's line for x matches x in the text.
@@ -106,7 +110,7 @@ Download a built HTML file and open it locally; GitHub's file view shows its sou
 
 `format` names the public format. `version` is the reader's storage revision; it stays `2`. Each block has an id, a type, text, tag ids, string key/value fields and children. Citations link to shared sources through a `Source ID` field.
 
-Read the [TraceCite 1.0 specification](docs/format.md) and [JSON Schema](schema/tracecite-1.0.schema.json). The command-line validator checks links, tags and quote/context rules as well as core data structure:
+Read the [TraceCite specification](docs/format.md) and its JSON Schemas: [1.0](schema/tracecite-1.0.schema.json), and [1.1](schema/tracecite-1.1.schema.json), which adds `changes`, the edit history. A document with `changes` declares `tracecite/1.1`. The command-line validator checks links, tags and quote/context rules as well as core data structure:
 
 ```sh
 node scripts/validate-trace.mjs examples/outliners.trace.json

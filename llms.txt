@@ -14,12 +14,14 @@ When you write a TraceCite document, quote sources verbatim by copying, with the
 
 - [TraceCite 1.0 specification](https://github.com/prajwalsouza/TraceCite/blob/main/docs/format.md): blocks, tags, sources, span tags, connected highlights, links and interactives
 - [JSON Schema](https://github.com/prajwalsouza/TraceCite/blob/main/schema/tracecite-1.0.schema.json): draft 2020-12, `tracecite/1.0`
+- [JSON Schema 1.1](https://github.com/prajwalsouza/TraceCite/blob/main/schema/tracecite-1.1.schema.json): `tracecite/1.1` adds `changes`, the edit history; a document with `changes` must declare it
 - [BibTrace](https://github.com/prajwalsouza/TraceCite/blob/main/docs/bibtrace.md): BibTeX plus trace-* fields for exact quotes, passages and provenance
 - [Packages (.trace.zip)](https://github.com/prajwalsouza/TraceCite/blob/main/docs/package.md): the manifest, the version history and how documents are opened
 
 ## Edits
 
 - [Edits protocol](https://github.com/prajwalsouza/TraceCite/blob/main/docs/edits.md): models stream suggested edits into an open page through `window.TraceLive`; readers accept, reject or comment. On every run, first read `TraceLive.decisions` (what was accepted, rejected or commented), then the open requests in `TraceLive.inbox`, before writing anything. Only sentences are editable. Name yourself as an agent. Every edit is a suggestion the reader accepts or rejects.
+- [Edit history](https://github.com/prajwalsouza/TraceCite/blob/main/docs/format.md#edit-history-11): Edit mode in the reader edits sentences in place and saves the package as its next version, recording each edit in `changes` (text, insert, remove) with who and when. Comments are `note` blocks with `Comment by`; replies are their children.
 
 ## Tools
 

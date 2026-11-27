@@ -1,6 +1,6 @@
 {
   "name": "tracecite",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "A format and dependency-free builder for evidence-first documents with sources that open in place.",
   "license": "MIT",
   "type": "module",
