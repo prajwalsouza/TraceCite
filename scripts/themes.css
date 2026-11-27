@@ -191,6 +191,9 @@ html.house .apa-evidence .children{border-color:color-mix(in srgb,var(--ink) 14%
   #sidebar .reading-tag-select,#sidebar .reading-tag-toggle,#sidebar .contents-link,#sidebar .nav-button{min-height:48px}
   .reading-focus-dock{left:76px!important;right:14px!important;bottom:calc(14px + env(safe-area-inset-bottom))!important;max-width:none!important;min-height:52px}
   .reading-focus-dock #reading-focus-reopen{flex:1;min-width:0;justify-content:flex-start;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  /* On a phone the dock is one 50px row, so its label stays on one line and ends with … when it does not fit
+     (the desktop dock lets it wrap, with !important, further down). */
+  .reading-focus-dock #reading-focus-reopen #reading-focus-label{min-width:0;overflow:hidden!important;text-overflow:ellipsis!important;white-space:nowrap!important}
   .reading-focus-dock .focus-step{display:grid;place-items:center;min-width:44px;min-height:44px;border:0;background:none;color:inherit;cursor:pointer;border-radius:50%}
   .reading-focus-dock .focus-step svg{width:13px;height:13px;fill:currentColor}
   .reading-focus-dock .focus-count{font-size:11px;color:var(--muted);padding:0 4px;white-space:nowrap}

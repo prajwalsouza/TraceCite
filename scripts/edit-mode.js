@@ -304,7 +304,7 @@ html:not(.trace-editing) .te-bar :is(.te-name,.te-redo,.te-done){display:none}
 .te-bar button:disabled{opacity:.4;cursor:default}
 .te-bar button.te-save{background:var(--accent);color:var(--bg)}
 .te-bar button.te-save:hover:not(:disabled){background:var(--accent);color:var(--bg);filter:brightness(1.06)}
-.te-say{position:fixed;left:50%;bottom:64px;z-index:590;transform:translateX(-50%);padding:7px 14px;border-radius:999px;background:var(--ink);color:var(--bg);font:500 12px/1.3 var(--font-ui,system-ui);opacity:0;transition:opacity .2s;pointer-events:none}
+.te-say{position:fixed;left:50%;bottom:calc(24px + var(--te-bar-h, 40px));max-width:calc(100vw - 24px);text-align:center;z-index:590;transform:translateX(-50%);padding:7px 14px;border-radius:999px;background:var(--ink);color:var(--bg);font:500 12px/1.3 var(--font-ui,system-ui);opacity:0;transition:opacity .2s;pointer-events:none}
 .te-say.on{opacity:.92}
 .te-side[aria-pressed=true],.te-side[aria-pressed=true] svg{color:var(--accent)}
 #outline .cm-add{display:block;margin:12px 0 0;padding:4px 0;border:0;background:none;color:var(--faint,var(--ink3));font:500 12.5px/1.4 var(--font-ui,var(--font,system-ui));cursor:text;transition:color .15s}
@@ -335,6 +335,8 @@ html:not(.trace-editing) .te-bar :is(.te-name,.te-redo,.te-done){display:none}
     + '<button type="button" class="te-undo" title="Undo (⌘Z)">Undo</button><button type="button" class="te-redo" title="Redo (⇧⌘Z)">Redo</button>'
     + '<button type="button" class="te-save">Save version</button><button type="button" class="te-done" title="Leave edit mode (E)">Done</button>';
   document.body.append(el);
+  // The hint sits just above the bar, whose height grows when it wraps onto two rows on narrow screens.
+  new ResizeObserver(() => document.documentElement.style.setProperty('--te-bar-h', el.offsetHeight + 'px')).observe(el);
   const sayEl = document.createElement('div'); sayEl.className = 'te-say'; sayEl.setAttribute('role', 'status'); document.body.append(sayEl);
   function say(t) { sayEl.textContent = t; sayEl.classList.add('on'); clearTimeout(say.t); say.t = setTimeout(() => sayEl.classList.remove('on'), 3200); }
   const nameIn = el.querySelector('.te-name');
@@ -370,7 +372,7 @@ html:not(.trace-editing) .te-bar :is(.te-name,.te-redo,.te-done){display:none}
     const after = document.querySelector('.side-menu .le-side') || document.querySelector('.side-menu [data-side-view="tags"]'); if (!after) return false;
     const b = document.createElement('button'); b.type = 'button'; b.className = 'nav-button side-item te-side'; b.title = 'Edit mode (E)'; b.setAttribute('aria-pressed', 'false');
     b.innerHTML = ICON + '<span>Edit mode</span><span class="le-count te-n"></span>';
-    b.addEventListener('click', (ev) => { ev.preventDefault(); ev.stopPropagation(); toggle(); });
+    b.addEventListener('click', (ev) => { ev.preventDefault(); ev.stopPropagation(); toggle(); if (matchMedia('(max-width: 760px)').matches) document.getElementById('close-navigation')?.click(); });
     after.after(b); bar(); return true;
   }
 
